@@ -1,11 +1,11 @@
 {
-  "name": "irecord-app",
-  "id": "uk.ac.ceh.ir",
-  "title": "iRecord App",
-  "description": "iRecord mobile application.",
-  "version": "3.0.0",
-  "build": "7",
-  "homepage": "https://irecord.org.uk",
+  "name": "lerc-wales-app",
+  "id": "uk.ac.ceh.lercwales",
+  "title": "LERC Wales",
+  "description": "LERC Wales mobile application.",
+  "version": "1.0.0",
+  "build": "1",
+  "homepage": "https://www.lercwales.org.uk/",
   "scripts": {
     "build": "grunt",
     "build:update": "grunt udpate",
@@ -123,10 +123,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NERC-CEH/irecord-app"
+    "url": "https://github.com/NERC-CEH/lerc-wales-app"
   },
   "bugs": {
-    "url": "https://github.com/NERC-CEH/irecord-app/issues"
+    "url": "https://github.com/NERC-CEH/lerc-wales-app/issues"
   },
   "licenses": [
     {
@@ -137,11 +137,12 @@
   "keywords": [
     "irecord",
     "biological",
+    "lerc",
+    "wales",
     "recording",
     "mobile",
     "app",
     "offline",
-    "ceh",
     "brc"
   ]
 }

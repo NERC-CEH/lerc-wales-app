@@ -93,7 +93,7 @@ module.exports = grunt => ({
       replacements: [
         {
           from: /\{ID\}/g, // string replacement
-          to: () => grunt.option('android') ? 'uk.ac.ceh.irecord' : pkg.id,
+          to: () => pkg.id,
         },
         {
           from: /\{APP_VER\}/g, // string replacement
@@ -113,13 +113,7 @@ module.exports = grunt => ({
         },
         {
           from: /\{ANDROID_BUNDLE_VER\}/g,
-          to() {
-            let version = pkg.version.replace(/\./g, '') + pkg.build;
-            if (!grunt.option('oldversion')) {
-              version += 8;
-            }
-            return version;
-          },
+          to: () => pkg.version.replace(/\./g, '') + pkg.build
         },
       ],
     },

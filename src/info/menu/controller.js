@@ -14,7 +14,7 @@ const API = {
 
     const headerView = new HeaderView({
       model: new Backbone.Model({
-        title: 'iRecord App',
+        title: 'LERC Wales',
       }),
       classes: 'non-capitalize',
     });

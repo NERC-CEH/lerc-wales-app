@@ -33,7 +33,7 @@ const CONFIG = {
   // error analytics
   sentry: {
     key: notInTest && process.env.APP_SENTRY_KEY,
-    project: '128357',
+    project: '1132743',
   },
 
   users: {
