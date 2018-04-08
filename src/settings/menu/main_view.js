@@ -58,6 +58,7 @@ export default Marionette.View.extend({
     const appModel = this.model;
     return {
       useTraining: appModel.get('useTraining'),
+      language: appModel.get('language'),
       useGridRef: appModel.get('useGridRef'),
       useGridMap: appModel.get('useGridMap'),
       useExperiments: appModel.get('useExperiments'),

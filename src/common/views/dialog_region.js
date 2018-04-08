@@ -53,7 +53,7 @@ const StandardDialogView = Marionette.View.extend({
       } else {
         const title = new Marionette.View({
           tagName: 'h3',
-          template: _.template(this.options.title),
+          template: _.template(window.t(this.options.title)),
         });
         this.showChildView('header', title);
       }
@@ -85,7 +85,7 @@ const StandardDialogView = Marionette.View.extend({
             const className = this.model.get('class');
             return `btn ${className || ''}`;
           },
-          template: _.template('<%- obj.title %>'),
+          template: _.template('<%- t(obj.title) %>'),
           events: {
             click() {
               const onClick = this.model.attributes.onClick;

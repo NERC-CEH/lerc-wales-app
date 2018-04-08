@@ -3,46 +3,41 @@
     <div id="swaps">
       <div class="swap first">
         <div class="message">
-          <h2>Welcome</h2>
+          <h2><%= t("Welcome") %></h2>
           <p>
-            <b>iRecord</b> is a platform for management and sharing of your
-            wildlife observations. Learn more by swiping left.
+            <%= t("<b>iRecord</b> is a platform for management and sharing of your wildlife observations. Learn more by swiping left") %>.
           </p>
         </div>
       </div>
       <div class="swap second">
         <div class="message">
-          <h2>Record</h2>
+          <h2><%= t("Record") %></h2>
           <p>
-            Record all the wildlife you see. Over <b>100,000 taxa</b> to choose
-            from.
+            <%= t("Record all the wildlife you see. Over <b>100,000 taxa</b> to choose from") %>.
           </p>
         </div>
       </div>
       <div class="swap third">
         <div class="message">
-          <h2>Accuracy</h2>
+          <h2><%= t("Accuracy") %></h2>
           <p>
-            Benefit from your <b>GPS and rich mapping choices</b>, further
-            automatic <b>data checks</b> and review by experts.
+           <%= t(" Benefit from your <b>GPS and rich mapping choices</b>, further automatic <b>data checks</b> and review by experts") %>.
           </p>
         </div>
       </div>
       <div class="swap fourth">
         <div class="message">
-          <h2>Science</h2>
+          <h2><%= t("Science") %></h2>
           <p>
-            Become a citizen scientist and contribute your sightings to
-            <b>research and conservation</b>.
+            <%= t("Become a citizen scientist and contribute your sightings to <b>research and conservation</b>") %>.
           </p>
         </div>
       </div>
       <div class="swap fifth">
         <div class="message">
-          <h2>Lets start!</h2>
+          <h2><%= t("Lets start!") %></h2>
           <p>
-            All that’s left to do is to click on the
-            <b style="white-space: nowrap;">Get Started</b> button below.
+            <%= t("All that’s left to do is to click on the") %> <b style="white-space: nowrap;"><%= t("Get Started") %></b> <%= t("button below") %>.
           </p>
         </div>
       </div>
@@ -56,6 +51,6 @@
     <div class="circle" data-id="4" />
   </div>
   <button id="exit" class="btn btn-block">
-    Get Started
+    <%= t("Get Started") %>
   </button>
 </div>
