@@ -5,7 +5,7 @@
         <div class="message">
           <h2><%= t("Welcome") %></h2>
           <p>
-            <%= t("<b>LERC Wales</b> helps you with management and sharing of your wildlife observations.") %>.
+            <%= t("<b>LERC Wales</b> helps you with management and sharing of your wildlife observations") %>.
           </p>
         </div>
       </div>

@@ -1,5 +1,7 @@
 <ul class="table-view">
-  <li><img src="images/sponsor_logo.png" alt=""></li>
+  <li style="text-align: center;">
+    <img src="images/sponsor_logo.png" alt="">
+  </li>
   <li>
     <p>
       <strong><%= t("We are very grateful for all the people that helped to create this app") %>:</strong>
