@@ -117,10 +117,10 @@ const API = {
     Log('Surveys:Samples:List:Controller: photo select.');
 
     radio.trigger('app:dialog', {
-      title: 'Choose a method to upload a photo',
+      title: window.t('Choose a method to upload a photo'),
       buttons: [
         {
-          title: 'Camera',
+          title: window.t('Camera'),
           onClick() {
             ImageHelp.getImage()
               .then(entry => {
@@ -132,7 +132,7 @@ const API = {
           },
         },
         {
-          title: 'Gallery',
+          title: window.t('Gallery'),
           onClick() {
             ImageHelp.getImage({
               sourceType: window.Camera.PictureSourceType.PHOTOLIBRARY,

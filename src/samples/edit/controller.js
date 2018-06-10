@@ -152,12 +152,12 @@ const API = {
     let missing = '';
     if (invalids.occurrences) {
       _.each(invalids.occurrences, (message, invalid) => {
-        missing += `<b>${invalid}</b> - ${t(message)}</br>`;
+        missing += `<b>${t(invalid)}</b> - ${t(message)}</br>`;
       });
     }
     if (invalids.attributes) {
       _.each(invalids.attributes, (message, invalid) => {
-        missing += `<b>${invalid}</b> - ${t(message)}</br>`;
+        missing += `<b>${t(invalid)}</b> - ${t(message)}</br>`;
       });
     }
 
@@ -218,10 +218,10 @@ const API = {
     const occurrence = sample.getOccurrence();
 
     radio.trigger('app:dialog', {
-      title: 'Choose a method to upload a photo',
+      title: window.t('Choose a method to upload a photo'),
       buttons: [
         {
-          title: 'Camera',
+          title: window.t('Camera'),
           onClick() {
             ImageHelp.getImage()
               .then(entry => {
@@ -237,7 +237,7 @@ const API = {
           },
         },
         {
-          title: 'Gallery',
+          title: window.t('Gallery'),
           onClick() {
             ImageHelp.getImage({
               sourceType: window.Camera.PictureSourceType.PHOTOLIBRARY,
