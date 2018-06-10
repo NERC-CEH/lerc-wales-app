@@ -59,7 +59,7 @@
       <div class="attributes">
         <% if (obj.isDefaultSurvey) { %>
           <div class="number <%= obj.numberLocked && 'locked' %>"><%= obj.number %></div>
-          <div class="stage <%= obj.stageLocked && 'locked' %>"><%= obj.stage %></div>
+          <div class="stage <%= obj.stageLocked && 'locked' %>"><%= t(obj.stage) %></div>
         <% } %>
         <div class="comment <%= obj.commentLocked && 'locked' %>"><%= obj.comment %></div>
       </div>

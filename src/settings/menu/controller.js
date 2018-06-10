@@ -31,8 +31,11 @@ const API = {
       radio.trigger('app:dialog', {
         title: 'Reset',
         class: 'error',
-        body:
-          window.t('Are you sure you want to reset the application to its initial state? <p><b>This will wipe all the locally stored app data!</b></p>'),
+        body: `${window.t(
+          'Are you sure you want to reset the application to its initial state?'
+        )}<p><b>${t(
+          'This will wipe all the locally stored app data!'
+        )}</b></p>`,
         buttons: [
           {
             title: 'Cancel',
@@ -69,7 +72,11 @@ const API = {
   },
 
   deleteAllSamples() {
-    const body = window.t('Are you sure you want to remove all successfully synchronised local records? <p><i><b>Note:</b> records on the server will not be touched.</i></p>');
+    const body = `${t(
+      'Are you sure you want to remove all successfully synchronised local records?'
+    )}<p><i><b>${t('Note')}:</b> ${t(
+      'records on the server will not be touched.'
+    )}</i></p>`;
 
     radio.trigger('app:dialog', {
       title: 'Remove All',
@@ -111,7 +118,9 @@ const API = {
   sendAllSamples() {
     radio.trigger('app:dialog', {
       title: 'Submit All',
-      body: window.t('Are you sure you want to set all valid records for submission?'),
+      body: window.t(
+        'Are you sure you want to set all valid records for submission?'
+      ),
       buttons: [
         {
           title: 'Cancel',

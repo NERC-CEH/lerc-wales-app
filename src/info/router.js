@@ -7,9 +7,12 @@ import Log from 'helpers/log';
 import CONFIG from 'config';
 import App from 'app';
 import radio from 'radio';
+import JST from 'JST';
+import appModel from 'app_model';
 import CommonController from '../common/controller';
 import InfoMenuController from './menu/controller';
 import WelcomeController from './welcome/controller';
+import LanguageController from './language/controller';
 import './brc_approved/BRC_approved_logo.png';
 import './brc_approved/styles.scss';
 import './help/swipe_record.png';
@@ -43,17 +46,27 @@ const Router = Marionette.AppRouter.extend({
       });
     },
     'info/privacy(/)': () => {
+      const language = appModel.get('language');
+      const template =
+        language === 'EN'
+          ? JST['info/privacy/main']
+          : JST['info/privacy/welsh'];
       CommonController.show({
         title: 'Privacy Policy',
         App,
         route: 'info/privacy/main',
+        template,
       });
     },
     'info/terms(/)': () => {
+      const language = appModel.get('language');
+      const template =
+        language === 'EN' ? JST['info/terms/main'] : JST['info/terms/welsh'];
       CommonController.show({
         title: 'T&Cs',
         App,
         route: 'info/terms/main',
+        template,
       });
     },
     'info/brc-approved(/)': () => {
@@ -79,6 +92,10 @@ const Router = Marionette.AppRouter.extend({
 radio.on('info:welcome', options => {
   App.navigate('info/welcome', options);
   WelcomeController.show();
+});
+radio.on('info:language', options => {
+  App.navigate('info/language', options);
+  LanguageController.show();
 });
 
 App.on('before:start', () => {

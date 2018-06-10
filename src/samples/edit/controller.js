@@ -110,7 +110,7 @@ const API = {
         // should we sync?
         if (!Device.isOnline()) {
           radio.trigger('app:dialog:error', {
-            message: 'Looks like you are offline!',
+            message: t('Looks like you are offline!'),
           });
           return;
         }
@@ -152,12 +152,12 @@ const API = {
     let missing = '';
     if (invalids.occurrences) {
       _.each(invalids.occurrences, (message, invalid) => {
-        missing += `<b>${invalid}</b> - ${message}</br>`;
+        missing += `<b>${invalid}</b> - ${t(message)}</br>`;
       });
     }
     if (invalids.attributes) {
       _.each(invalids.attributes, (message, invalid) => {
-        missing += `<b>${invalid}</b> - ${message}</br>`;
+        missing += `<b>${invalid}</b> - ${t(message)}</br>`;
       });
     }
 
@@ -183,8 +183,8 @@ const API = {
     radio.trigger('app:dialog', {
       title: 'Delete',
       body:
-        'Are you sure you want to remove this photo from the sample?' +
-        '</br><i><b>Note:</b> it will remain in the gallery.</i>',
+        window.t('Are you sure you want to remove this photo from the sample?') +
+        window.t('</br><i><b>Note:</b> it will remain in the gallery.</i>'),
       buttons: [
         {
           title: 'Cancel',

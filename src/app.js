@@ -63,7 +63,7 @@ App.on('start', () => {
 
       if (App.getCurrentRoute() === '') {
         if (appModel.get('showWelcome')) {
-          radio.trigger('info:welcome');
+          radio.trigger('info:language');
         } else {
           radio.trigger('samples:list');
         }
