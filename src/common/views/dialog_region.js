@@ -53,7 +53,7 @@ const StandardDialogView = Marionette.View.extend({
       } else {
         const title = new Marionette.View({
           tagName: 'h3',
-          template: _.template(window.t(this.options.title)),
+          template: _.template(t(this.options.title)),
         });
         this.showChildView('header', title);
       }

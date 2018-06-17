@@ -57,7 +57,9 @@ const API = {
         },
       });
     });
-    mainView.on('attr:update', (attr, value) => API.updateAttr(sample, attr, value));
+    mainView.on('attr:update', (attr, value) =>
+      API.updateAttr(sample, attr, value)
+    );
     radio.trigger('app:main', mainView);
 
     // HEADER
@@ -183,8 +185,8 @@ const API = {
     radio.trigger('app:dialog', {
       title: 'Delete',
       body:
-        window.t('Are you sure you want to remove this photo from the sample?') +
-        window.t('</br><i><b>Note:</b> it will remain in the gallery.</i>'),
+        t('Are you sure you want to remove this photo from the sample?') +
+        t('</br><i><b>Note:</b> it will remain in the gallery.</i>'),
       buttons: [
         {
           title: 'Cancel',

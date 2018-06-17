@@ -31,7 +31,7 @@ const API = {
       radio.trigger('app:dialog', {
         title: 'Reset',
         class: 'error',
-        body: `${window.t(
+        body: `${t(
           'Are you sure you want to reset the application to its initial state?'
         )}<p><b>${t(
           'This will wipe all the locally stored app data!'
@@ -118,8 +118,7 @@ const API = {
   sendAllSamples() {
     radio.trigger('app:dialog', {
       title: 'Submit All',
-      body:
-        'Are you sure you want to set all valid records for submission?',
+      body: 'Are you sure you want to set all valid records for submission?',
       buttons: [
         {
           title: 'Cancel',

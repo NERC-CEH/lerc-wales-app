@@ -8,6 +8,7 @@ import Analytics from 'helpers/analytics';
 import ImageHelp from 'helpers/image';
 import showErrMsg from 'helpers/show_err_msg';
 import appModel from 'app_model';
+import userModel from 'user_model';
 import savedSamples from 'saved_samples';
 import Factory from 'model_factory';
 import MainView from './main_view';
@@ -49,9 +50,12 @@ const API = {
   },
 
   showMainView(options) {
+    const training = appModel.get('useTraining');
+
     // get subcollection
     const collection = savedSamples.subcollection({
-      filter: model => !model.metadata.complex_survey,
+      filter: model =>
+        !model.metadata.complex_survey && model.metadata.training === training,
     });
     collection.comparator = savedSamples.comparator;
     collection.sort();
@@ -60,6 +64,7 @@ const API = {
       collection,
       scroll: options.scroll,
       appModel,
+      userModel,
     });
 
     mainView.on('childview:create', () => API.createNewSample());
@@ -93,8 +98,8 @@ const API = {
       'are you sure you want to remove it from your device?');
 
     if (syncStatus === Indicia.SYNCED) {
-      body = window.t('Are you sure you want to remove this record from your device?');
-      body += '</br><i><b>Note:</b> it will remain on the server.</i>';
+      body = t('Are you sure you want to remove this record from your device?' +
+      '</br><i><b>Note:</b> it will remain on the server.</i>');
     }
     radio.trigger('app:dialog', {
       title: 'Delete',
