@@ -32,7 +32,7 @@ const API = {
       if (!Device.isOnline()) {
         radio.trigger('app:dialog', {
           title: 'Sorry',
-          body: t('Looks like you are offline!'),
+          body: 'Looks like you are offline!',
         });
         return;
       }

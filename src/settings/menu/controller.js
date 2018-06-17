@@ -118,9 +118,8 @@ const API = {
   sendAllSamples() {
     radio.trigger('app:dialog', {
       title: 'Submit All',
-      body: window.t(
-        'Are you sure you want to set all valid records for submission?'
-      ),
+      body:
+        'Are you sure you want to set all valid records for submission?',
       buttons: [
         {
           title: 'Cancel',

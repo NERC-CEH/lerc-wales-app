@@ -13,11 +13,11 @@
   </div>
   <div class="input-row">
     <label class="media-object pull-left icon icon-key"></label>
-    <input id="user-password" type="text" placeholder='<%= t("Password") %>' name="password" >
+    <input id="user-password" type="password" placeholder='<%= t("Password") %>' name="password" >
   </div>
   <div class="input-row">
     <label class="media-object pull-left icon icon-key"></label>
-    <input id="user-password-confirm" type="text" placeholder='<%= t("Confirm password") %>' name="password-confirm" >
+    <input id="user-password-confirm" type="password" placeholder='<%= t("Confirm password") %>' name="password-confirm" >
   </div>
 </div>
 

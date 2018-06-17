@@ -120,7 +120,7 @@ const API = {
       title: window.t('Choose a method to upload a photo'),
       buttons: [
         {
-          title: window.t('Camera'),
+          title: 'Camera',
           onClick() {
             ImageHelp.getImage()
               .then(entry => {
@@ -132,7 +132,7 @@ const API = {
           },
         },
         {
-          title: window.t('Gallery'),
+          title: 'Gallery',
           onClick() {
             ImageHelp.getImage({
               sourceType: window.Camera.PictureSourceType.PHOTOLIBRARY,

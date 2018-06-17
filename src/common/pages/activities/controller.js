@@ -209,7 +209,7 @@ const API = {
     radio.trigger('app:dialog', {
       title: 'Information',
       body:
-        window.t('Please log in to the app before selecting an alternative activity for your records.'),
+        'Please log in to the app before selecting an alternative activity for your records.',
       buttons: [
         {
           id: 'ok',

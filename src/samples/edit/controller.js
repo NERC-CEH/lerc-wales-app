@@ -110,7 +110,7 @@ const API = {
         // should we sync?
         if (!Device.isOnline()) {
           radio.trigger('app:dialog:error', {
-            message: t('Looks like you are offline!'),
+            message: 'Looks like you are offline!',
           });
           return;
         }
@@ -131,7 +131,7 @@ const API = {
           if (err.message && !visibleDialog) {
             radio.trigger(
               'app:dialog:error',
-              `Sorry, we have encountered a problem while sending the record.
+              `${t('Sorry, we have encountered a problem while sending the record.')}
                 
                  <p><i>${err.message}</i></p>`
             );
@@ -218,10 +218,10 @@ const API = {
     const occurrence = sample.getOccurrence();
 
     radio.trigger('app:dialog', {
-      title: window.t('Choose a method to upload a photo'),
+      title: 'Choose a method to upload a photo',
       buttons: [
         {
-          title: window.t('Camera'),
+          title: 'Camera',
           onClick() {
             ImageHelp.getImage()
               .then(entry => {
@@ -237,7 +237,7 @@ const API = {
           },
         },
         {
-          title: window.t('Gallery'),
+          title: 'Gallery',
           onClick() {
             ImageHelp.getImage({
               sourceType: window.Camera.PictureSourceType.PHOTOLIBRARY,

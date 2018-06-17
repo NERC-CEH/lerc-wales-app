@@ -63,7 +63,7 @@ const API = {
       });
     } else {
       radio.trigger('app:dialog:error', {
-        message: t('Looks like you are offline!'),
+        message: 'Looks like you are offline!',
       });
     }
   },

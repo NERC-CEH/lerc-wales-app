@@ -64,8 +64,13 @@ const StandardDialogView = Marionette.View.extend({
       if (this.options.body instanceof Marionette.View) {
         this.showChildView('body', this.options.body);
       } else {
+        let bodyView = this.options.body;
+        if (typeof this.options.body === 'string') {
+          bodyView = t(bodyView);
+        }
+
         const body = new Marionette.View({
-          template: _.template(this.options.body),
+          template: _.template(bodyView),
         });
         this.showChildView('body', body);
       }
