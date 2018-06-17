@@ -65,6 +65,14 @@
   color: $button-black;
 }
 
+.inputs {
+  .table-view-cell a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
 .descript {
   width: 52%;
 
@@ -130,6 +138,7 @@
     content: '\e80c';
   }
 }
+
 // location below location name
 .location.lock:after {
   top: 10px;

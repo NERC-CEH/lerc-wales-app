@@ -5,7 +5,7 @@
   </div>
   <div class="input-row">
     <label class="media-object pull-left icon icon-user"></label>
-    <input id="user-firstname" type="text" placeholder='<%= t("Firstname") %>' name="firstname" >
+    <input id="user-firstname" type="text" placeholder='<%= t("First Name") %>' name="firstname" >
   </div>
   <div class="input-row">
     <label class="media-object pull-left icon icon-user"></label>
