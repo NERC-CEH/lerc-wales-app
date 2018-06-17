@@ -7,7 +7,7 @@ import HeaderView from '../../common/views/header_view';
 
 const API = {
   show() {
-    const mainView = new MainView({ model: userModel });
+    const mainView = new MainView({model: userModel});
     radio.trigger('app:main', mainView);
 
     mainView.on('user:logout', API.logout);
@@ -21,10 +21,35 @@ const API = {
     radio.trigger('app:header', headerView);
   },
 
+  showLogoutConfirmationDialog(callbackIfTrue) {
+    radio.trigger('app:dialog', {
+      title: 'Are you sure you want to logout?',
+      buttons: [
+        {
+          title: 'Cancel',
+          class: 'btn-clear',
+          onClick() {
+            radio.trigger('app:dialog:hide');
+          },
+        },
+        {
+          title: 'Logout',
+          class: 'btn-negative',
+          onClick() {
+            callbackIfTrue();
+            radio.trigger('app:dialog:hide');
+          },
+        },
+      ],
+    });
+  },
+
   logout() {
     Log('Info:Menu:Controller: logging out.');
-    userModel.logOut();
+    API.showLogoutConfirmationDialog(() => {
+      userModel.logOut();
+    });
   },
 };
 
-export { API as default };
+export {API as default};
