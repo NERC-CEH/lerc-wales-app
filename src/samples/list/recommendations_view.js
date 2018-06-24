@@ -55,20 +55,20 @@ const MainView = Marionette.View.extend({
     const storeName = Device.isIOS() ? 'App Store' : 'Play Store';
     const steps = {
       initial: {
-        question: 'Enjoying iRecord App?',
-        negativeOption: 'Not really',
-        positiveOption: 'Yes!',
+        question: t('Enjoying the app?'),
+        negativeOption: t('Not really'),
+        positiveOption: t('Yes!'),
       },
       negativeFeedback: {
-        question: 'Would you mind giving us some feedback?',
-        negativeOption: 'No, thanks',
-        positiveOption: 'OK, sure',
+        question: t('Would you mind giving us some feedback?'),
+        negativeOption: t('No, thanks'),
+        positiveOption: t('OK, sure'),
         link: true,
       },
       positiveFeedback: {
-        question: `How about a rating on the ${storeName} then?`,
-        negativeOption: 'No, thanks',
-        positiveOption: 'OK, sure',
+        question: t(`How about a rating on the ${storeName} then?`),
+        negativeOption: t('No, thanks'),
+        positiveOption: t('OK, sure'),
       },
     };
     return steps[this.step || 'initial'];

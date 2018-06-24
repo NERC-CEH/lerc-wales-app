@@ -7,21 +7,24 @@
       <strong><%= t("We are very grateful for all the people that helped to create this app") %>:</strong>
     </p>
     <p>
-    <ul style="list-style-type: none;">
-      <li>David Slade</li>
-      <li>Karolis Kazlauskis</li>
-
-    </ul>
+      <ul style="list-style-type: none;">
+        <li>David Slade</li>
+        <li>Karolis Kazlauskis</li>
+        <li>Tim May</li>
+        <li>Jo Milborrow</li>
+        <li>Adam Rowe</li>
+        <li>Jim Bacon</li>
+        <li>David Roy</li>
+      </ul>
     </p>
     <p>
-      <%= t("This app was funded by the") %>
-      <a href="https://www.lercwales.org.uk/"><%= t("Local Records Centres of Wales") %></a>.
+      <%= t("The development was led by SEWBReC, and was jointly funded by BIS, WWBIC and Cofnod.") %>
     </p>
     <p>
-      <strong><%= t("Welcome screen credits") %>:</strong>
+      <%= t("Also thanks to all the beta testers and the rest of the LERC Wales staff for their input.") %>
     </p>
-    <ul style="list-style-type: none;">
-      <li>UK Ladybird Survey</li>
-    </ul>
+    <p>
+      <strong><%= t("Welcome screen credits") %>:</strong> UK Ladybird Survey
+    </p>
   </li>
 </ul>

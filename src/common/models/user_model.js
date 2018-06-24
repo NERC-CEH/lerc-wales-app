@@ -109,7 +109,7 @@ let UserModel = Backbone.Model.extend({
     if (!attrs.email) {
       errors.email = t("can't be blank");
     } else if (!Validate.email(attrs.email)) {
-      errors.email = 'invalid';
+      errors.email = t('invalid');
     }
 
     if (!attrs.firstname) {

@@ -147,7 +147,7 @@ const API = {
           if (err.message && !visibleDialog) {
             radio.trigger(
               'app:dialog:error',
-              `Sorry, we have encountered a problem while sending the record.
+              `${t('Sorry, we have encountered a problem while sending the record.')}
                 
                  <p><i>${err.message}</i></p>`
             );
