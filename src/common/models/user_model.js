@@ -1,69 +1,82 @@
 /** ****************************************************************************
  * User model describing the user model on backend. Persistent.
  **************************************************************************** */
-import _ from 'lodash';
 import Backbone from 'backbone';
-import Store from 'backbone.localstorage';
-import CONFIG from 'config';
-import Log from 'helpers/log';
-import Validate from 'helpers/validate';
 import Analytics from 'helpers/analytics';
+import Log from 'helpers/log';
+import { observable, set as setMobXAttrs } from 'mobx';
+import { getStore } from 'common/store';
 import activitiesExtension from './user_model_activities_ext';
 import statisticsExtension from './user_model_statistics_ext';
 
-let UserModel = Backbone.Model.extend({
-  // eslint-disable-line
-  id: 'user',
+const getDefaultAttrs = () => ({
+  isLoggedIn: false,
+  drupalID: '',
+  name: '',
+  firstname: '',
+  secondname: '',
+  email: '',
+  password: '',
 
-  defaults: {
-    drupalID: '',
-    name: '',
-    firstname: '',
-    secondname: '',
-    email: '',
-    password: '',
+  activities: [],
 
-    activities: [],
-
-    statistics: {
-      synced_on: null,
-      species: [],
-      speciesRaw: [],
-    },
+  statistics: {
+    synced_on: null,
+    species: [],
+    speciesRaw: [],
   },
+});
 
-  localStorage: new Store(CONFIG.name),
+class UserModel {
+  @observable attrs = getDefaultAttrs();
 
-  /**
-   * Initializes the user.
-   */
-  initialize() {
+  constructor() {
     Log('UserModel: initializing');
 
-    this.fetch();
-    this.syncActivities();
-    this.syncStats();
-  },
+    this._init = getStore()
+      .then(store => store.getItem('user'))
+      .then(userStr => {
+        const user = JSON.parse(userStr);
+        if (!user) {
+          Log('UserModel: persisting for the first time');
+          this._initDone = true;
+          this.save();
+          return;
+        }
+
+        setMobXAttrs(this.attrs, user.attrs);
+        this._initDone = true;
+      })
+      .then(() => this.statisticsExtensionInit())
+      .then(() => this.activitiesExtensionInit());
+  }
+
+  get(name) {
+    return this.attrs[name];
+  }
+
+  set(name, value) {
+    this.attrs[name] = value;
+    return this;
+  }
+
+  save() {
+    if (!this._initDone) {
+      throw new Error(`User Model can't be saved before initialisation`);
+    }
+    const userStr = JSON.stringify({
+      attrs: this.attrs,
+    });
+    return getStore().then(store => store.setItem('user', userStr));
+  }
 
   /**
    * Resets the user login information.
    */
   logOut() {
-    Log('UserModel: logging out.');
-
-    this.set('email', '');
-    this.set('password', '');
-    this.set('name', '');
-    this.set('firstname', '');
-    this.set('secondname', '');
-
-    this.resetActivities();
-    this.resetStats();
-
-    this.save();
-    this.trigger('logout');
-    Analytics.trackEvent('User', 'logout');
-  },
+    setMobXAttrs(this.attrs, getDefaultAttrs());
+    return this.save();
+  }
 
   /**
    * Sets the app login state of the user account.
@@ -80,107 +93,44 @@ let UserModel = Backbone.Model.extend({
     this.set('name', user.name || '');
     this.set('firstname', user.firstname || '');
     this.set('secondname', user.secondname || '');
-    this.save();
+    this.set('isLoggedIn', true);
 
-    this.trigger('login');
     this.syncActivities();
     this.syncStats();
+
     Analytics.trackEvent('User', 'login');
-  },
+
+    return this.save();
+  }
 
   /**
    * Returns user contact information.
    */
   hasLogIn() {
-    return this.get('password');
-  },
+    return this.attrs.isLoggedIn;
+  }
 
   getUser() {
     return this.get('email');
-  },
+  }
 
   getPassword() {
     return this.get('password');
-  },
+  }
 
-  validateRegistration(attrs) {
-    const errors = {};
-
-    if (!attrs.email) {
-      errors.email = t("can't be blank");
-    } else if (!Validate.email(attrs.email)) {
-      errors.email = t('invalid');
-    }
-
-    if (!attrs.firstname) {
-      errors.firstName = t("can't be blank");
-    }
-
-    if (!attrs.secondname) {
-      errors.secondname = t("can't be blank");
-    }
-
-    if (!attrs.password) {
-      errors.password = t("can't be blank");
-    } else if (attrs.password.length < 2) {
-      errors.password = t('is too short');
-    }
-
-    if (!attrs['password-confirm']) {
-      errors['password-confirm'] = t("can't be blank");
-    } else if (attrs['password-confirm'] !== attrs.password) {
-      errors['password-confirm'] = t('passwords are not equal');
-    }
-
-    if (!attrs['terms-agree']) {
-      errors['terms-agree'] = t('you must agree to the terms');
-    }
-
-    if (!_.isEmpty(errors)) {
-      return errors;
-    }
-
-    return null;
-  },
-
-  validateLogin(attrs) {
-    const errors = {};
-
-    if (!attrs.name) {
-      errors.name = t("can't be blank");
-    }
-
-    if (!attrs.password) {
-      errors.password = t("can't be blank");
-    }
-
-    if (!_.isEmpty(errors)) {
-      return errors;
-    }
-
-    return null;
-  },
-
-  validateReset(attrs) {
-    const errors = {};
-
-    if (!attrs.name) {
-      errors.name = t("can't be blank");
-    }
-
-    if (!_.isEmpty(errors)) {
-      return errors;
-    }
-
-    return null;
-  },
-});
+  resetDefaults() {
+    return this.logOut();
+  }
+}
 
 // add activities management
-UserModel = UserModel.extend(activitiesExtension);
+UserModel.prototype = Object.assign(UserModel.prototype, activitiesExtension);
 
 // add statistics management
-UserModel = UserModel.extend(statisticsExtension);
+UserModel.prototype = Object.assign(UserModel.prototype, statisticsExtension);
+
+// for legacy support
+UserModel.prototype = Object.assign(UserModel.prototype, Backbone.Events);
 
 const userModel = new UserModel();
 export { userModel as default, UserModel };

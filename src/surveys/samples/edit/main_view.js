@@ -3,25 +3,22 @@
  **************************************************************************** */
 import Marionette from 'backbone.marionette';
 import $ from 'jquery';
-import Indicia from 'indicia';
-import JST from 'JST';
 import DateHelp from 'helpers/date';
-import Device from 'helpers/device';
 import StringHelp from 'helpers/string';
 
 import './styles.scss';
+import template from './templates/main.tpl';
 
 export default Marionette.View.extend({
-  template: JST['surveys/samples/edit/main'],
+  template,
 
   triggers: {
-    'click a#species-button': 'taxon:update',
-    'click a#location-button': 'location:update',
+    'click ion-item#species-button': 'taxon:update',
+    'click ion-item#location-button': 'location:update',
   },
 
   events: {
-    'toggle #sensitive-btn': 'onSettingToggled',
-    'click #sensitive-btn': 'onSettingToggled',
+    'ionChange #sensitive-btn': 'onSettingToggled',
   },
 
   initialize() {
@@ -34,15 +31,8 @@ export default Marionette.View.extend({
   },
 
   onSettingToggled(e) {
-    const setting = $(e.currentTarget).data('setting');
-    let active = $(e.currentTarget).hasClass('active');
-
-    if (e.type !== 'toggle' && !Device.isMobile()) {
-      // Device.isMobile() android generates both swipe and click
-
-      active = !active; // invert because it takes time to get the class
-      $(e.currentTarget).toggleClass('active', active);
-    }
+    const setting = $(e.currentTarget).prop('value');
+    const active = $(e.currentTarget).prop('checked');
 
     this.trigger('setting:toggled', setting, active);
   },
@@ -54,7 +44,8 @@ export default Marionette.View.extend({
 
     // taxon
     const scientificName = specie.scientific_name;
-    const commonName = specie.common_name;
+    const commonName =
+      specie.found_in_name >= 0 && specie.common_names[specie.found_in_name];
 
     const locationPrint = sample.printLocation();
     const location = sample.get('location') || {};
@@ -74,7 +65,7 @@ export default Marionette.View.extend({
       commonName,
       sensitive: occ.metadata.sensitivity_precision,
       isLocating: sample.isGPSRunning(),
-      isSynchronising: sample.getSyncStatus() === Indicia.SYNCHRONISING,
+      isSynchronising: sample.remote.synchronising,
       location: locationPrint,
       locationName: location.name,
       locationEditAllowed: this.options.locationEditAllowed,

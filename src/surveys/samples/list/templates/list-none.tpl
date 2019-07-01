@@ -1,6 +1,5 @@
-<p>No species added.</p>
+<h6>No species added.</h6>
 
-<a id="create-new-btn" class="btn btn-positive btn-outlined">
-  <span class="icon icon-plus pull-left"></span>
+<ion-button  id="create-new-btn">
   Add
-</a>
+</ion-button>

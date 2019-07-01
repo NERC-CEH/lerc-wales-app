@@ -4,23 +4,27 @@
 import Indicia from 'indicia';
 import Log from 'helpers/log';
 import CONFIG from 'config';
-import SpeciesSearchEngine from '../pages/taxon/search/taxon_search_engine';
+import { observable } from 'mobx';
+import SpeciesSearchEngine from '../pages/Taxon/utils/taxon_search_engine';
 
 export default {
+  statisticsExtensionInit() {
+    this.statistics = observable({ synchronizing: null });
+    this.syncStats();
+  },
+
   syncStats(force) {
     Log('UserModel:Statistics: synchronising.');
 
-    if (this.synchronizingStatistics) {
-      return this.synchronizingStatistics;
+    if (this.statistics.synchronizing) {
+      return this.statistics.synchronizing;
     }
 
     if ((this.hasLogIn() && this._lastStatsSyncExpired()) || force) {
       // init or refresh
-      this.trigger('sync:statistics:species:start');
-
       const statistics = this.get('statistics');
 
-      this.synchronizingStatistics = this._fetchStatsSpecies()
+      this.statistics.synchronizing = this._fetchStatsSpecies()
         .then(stats =>
           this._processStatistics(stats).then(species => {
             const updatedStatistics = Object.assign({}, statistics, {
@@ -31,24 +35,16 @@ export default {
             this.set('statistics', updatedStatistics);
             this.save();
 
-            delete this.synchronizingStatistics;
-            this.trigger('sync:statistics:species:end');
+            this.statistics.synchronizing = false;
           })
         )
         .catch(err => {
-          delete this.synchronizingStatistics;
-          this.trigger('sync:statistics:species:end');
+          this.statistics.synchronizing = false;
           return Promise.reject(err);
         });
     }
 
-    return this.synchronizingStatistics;
-  },
-
-  resetStats() {
-    Log('UserModel:Statistics: resetting.');
-    this.set('statistics', this.defaults.statistics);
-    this.save();
+    return this.statistics.synchronizing;
   },
 
   /**
@@ -105,8 +101,8 @@ export default {
         SpeciesSearchEngine.search(stat.taxon, options).then(results => {
           const foundedSpecies = results[0];
           if (results.length && foundedSpecies.scientific_name === stat.taxon) {
-            if (foundedSpecies.common_name) {
-              foundedSpecies.found_in_name = 'common_name';
+            if (foundedSpecies.common_names.length) {
+              foundedSpecies.found_in_name = 0;
             }
             species.push(foundedSpecies);
           }

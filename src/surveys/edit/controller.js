@@ -4,7 +4,6 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
 import _ from 'lodash';
-import Indicia from 'indicia';
 import Device from 'helpers/device';
 import Log from 'helpers/log';
 import App from 'app';
@@ -38,7 +37,7 @@ const API = {
 
     // can't edit a saved one - to be removed when sample update
     // is possible on the server
-    if (sample.getSyncStatus() === Indicia.SYNCED) {
+    if (sample.metadata.synced_on) {
       radio.trigger('surveys:show', sampleID, { replace: true });
       return;
     }
@@ -186,7 +185,7 @@ const API = {
    * @param reset
    * @returns {Promise.<T>}
    */
-  setLocation(sample, loc, reset) {
+  async setLocation(sample, loc, reset) {
     // 1st validation of location accuracy
     let gridSquareUnit = sample.metadata.gridSquareUnit;
     if (!LocHelp.checkGridType(loc, gridSquareUnit)) {
@@ -215,8 +214,10 @@ const API = {
     }
 
     // save to past locations
-    const locationID = appModel.setLocation(location);
-    location.id = locationID;
+    const savedLocation = await appModel.setLocation(location);
+    if (savedLocation.id) {
+      location.id = savedLocation.id;
+    }
 
     // set the gridSquareUnit so that future changes in the settings don't change that;
     sample.metadata.gridSquareUnit = gridSquareUnit; // eslint-disable-line

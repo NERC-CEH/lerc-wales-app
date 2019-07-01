@@ -1,87 +1,88 @@
 /** ****************************************************************************
  * Info router.
  **************************************************************************** */
-import Backbone from 'backbone';
+import React from 'react';
 import Marionette from 'backbone.marionette';
 import Log from 'helpers/log';
 import CONFIG from 'config';
 import App from 'app';
 import radio from 'radio';
-import JST from 'JST';
+import userModel from 'user_model';
 import appModel from 'app_model';
-import CommonController from '../common/controller';
-import InfoMenuController from './menu/controller';
-import WelcomeController from './welcome/controller';
-import LanguageController from './language/controller';
-import './brc_approved/BRC_approved_logo.png';
-import './brc_approved/styles.scss';
-import './help/swipe_record.png';
-import './credits/sponsor_logo.png';
+import savedSamples from 'saved_samples';
+import Header from '../common/Components/Header';
+import InfoMenu from './Menu';
+import Welcome from './Welcome';
+import PrivacyPolicy from './PrivacyPolicy';
+import PrivacyPolicyWelsh from './PrivacyPolicyWelsh';
+// import LanguageController from './language/controller'; //XXXX
+import BRCApproved from './BRCApproved';
+import Terms from './Terms';
+import TermsWelsh from './TermsWelsh';
+import Credits from './Credits';
+import Help from './Help';
+import About from './About';
 
 App.info = {};
 
+function showWelcome() {
+  Log('Info:Welcome: visited.');
+  radio.trigger('app:main', <Welcome appModel={appModel} />);
+}
+
 const Router = Marionette.AppRouter.extend({
   routes: {
-    'info(/)': InfoMenuController.show,
-    'info/welcome(/)': WelcomeController.show,
+    'info(/)': () => {
+      Log('Info:Menu: visited.');
+      radio.trigger('app:header', <Header>iRecord App</Header>);
+      radio.trigger(
+        'app:main',
+        <InfoMenu
+          userModel={userModel}
+          appModel={appModel}
+          savedSamples={savedSamples}
+        />
+      );
+    },
+    'info/welcome(/)': showWelcome,
     'info/about(/)': () => {
-      CommonController.show({
-        title: 'About',
-        App,
-        route: 'info/about/main',
-        model: new Backbone.Model({
-          version: CONFIG.version,
-          build: CONFIG.build,
-        }),
-      });
+      Log('Info:About: visited.');
+      radio.trigger('app:header', <Header>{t('About')}</Header>);
+      radio.trigger(
+        'app:main',
+        <About version={CONFIG.version} build={CONFIG.build} />
+      );
     },
     'info/help(/)': () => {
-      CommonController.show({
-        title: 'Help',
-        App,
-        route: 'info/help/main',
-        model: new Backbone.Model({
-          site_url: CONFIG.site_url,
-        }),
-      });
+      Log('Info:Help: visited.');
+      radio.trigger('app:header', <Header>{t('Help')}</Header>);
+      radio.trigger('app:main', <Help />);
     },
     'info/privacy(/)': () => {
       const language = appModel.get('language');
-      const template =
-        language === 'EN'
-          ? JST['info/privacy/main']
-          : JST['info/privacy/welsh'];
-      CommonController.show({
-        title: 'Privacy Policy',
-        App,
-        route: 'info/privacy/main',
-        template,
-      });
+      const getPolicy = () => language === 'EN' ? <PrivacyPolicy /> : <PrivacyPolicyWelsh />
+
+      Log('Info:Privacy: visited.');
+      radio.trigger('app:header', <Header>{t('Privacy Policy')}</Header>);
+      radio.trigger('app:main', getPolicy());
     },
     'info/terms(/)': () => {
       const language = appModel.get('language');
-      const template =
-        language === 'EN' ? JST['info/terms/main'] : JST['info/terms/welsh'];
-      CommonController.show({
-        title: 'T&Cs',
-        App,
-        route: 'info/terms/main',
-        template,
-      });
+      const getTerms = () => language === 'EN' ? <Terms /> : <TermsWelsh />
+
+      Log('Info:Terms: visited.');
+      radio.trigger('app:header', <Header>{t('T&Cs')}</Header>);
+      radio.trigger('app:main', getTerms());
     },
     'info/brc-approved(/)': () => {
-      CommonController.show({
-        title: 'BRC Approved',
-        App,
-        route: 'info/brc_approved/main',
-      });
+      Log('Info:BRCApproved: visited.');
+      radio.trigger('app:header', <Header>{t('BRC Approved')}</Header>);
+      radio.trigger('app:main', <BRCApproved />);
     },
     'info/credits(/)': () => {
-      CommonController.show({
-        title: 'Credits',
-        App,
-        route: 'info/credits/main',
-      });
+      Log('Info:Credits: visited.');
+      radio.trigger('app:header', <Header>{t('Credits')}</Header>);
+      radio.trigger('app:main', <Credits />);
     },
     'info/*path': () => {
       radio.trigger('app:404:show');
@@ -91,7 +92,7 @@ const Router = Marionette.AppRouter.extend({
 
 radio.on('info:welcome', options => {
   App.navigate('info/welcome', options);
-  WelcomeController.show();
+  showWelcome();
 });
 radio.on('info:language', options => {
   App.navigate('info/language', options);

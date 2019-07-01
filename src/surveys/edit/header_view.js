@@ -2,12 +2,11 @@
  * Sample Edit header view.
  **************************************************************************** */
 import Marionette from 'backbone.marionette';
-import Indicia from 'indicia';
-import JST from 'JST';
+import template from './templates/header.tpl';
 
 export default Marionette.View.extend({
   tagName: 'nav',
-  template: JST['surveys/edit/header'],
+  template,
 
   events: {
     'click a[data-rel="back"]': 'navigateBack',
@@ -28,7 +27,7 @@ export default Marionette.View.extend({
   serializeData() {
     return {
       training: this.model.metadata.training,
-      isSynchronising: this.model.getSyncStatus() === Indicia.SYNCHRONISING,
+      isSynchronising: this.model.remote.synchronising,
     };
   },
 });

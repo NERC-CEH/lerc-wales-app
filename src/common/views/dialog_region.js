@@ -6,7 +6,8 @@ import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
 import _ from 'lodash';
 import radio from 'radio';
-import JST from 'JST';
+import template from 'templates/dialog.tpl';
+import Device from 'helpers/device';
 import '../styles/dialog.scss';
 
 const errorsTable = {
@@ -26,7 +27,7 @@ const errorsTable = {
 };
 
 const StandardDialogView = Marionette.View.extend({
-  template: JST['common/dialog'],
+  template,
   className() {
     let classes = 'content';
     if (this.options.class) {
@@ -85,11 +86,14 @@ const StandardDialogView = Marionette.View.extend({
           id() {
             return this.model.id || Math.floor(Math.random() * 10000);
           },
-          tagName: 'button',
-          className() {
-            const className = this.model.get('class');
-            return `btn ${className || ''}`;
+          attributes() {
+            return {
+              expand: 'full',
+              fill: this.model.get('fill') || 'solid',
+              color: this.model.get('color') || 'primary',
+            };
           },
+          tagName: 'ion-button',
           template: _.template('<%- t(obj.title) %>'),
           events: {
             click() {
@@ -196,8 +200,9 @@ export default Marionette.Region.extend({
   },
 
   showLoader() {
+    const type = Device.isIOS() ? 'lines' : 'dots';
     const view = new Marionette.View({
-      template: _.template('<span class="icon icon-plus spin"></span>'),
+      template: _.template(`<ion-spinner class="centered" name="${type}"/>`),
     });
 
     this.show({ view, hideAllowed: false });

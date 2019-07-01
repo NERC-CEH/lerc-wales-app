@@ -1,23 +1,28 @@
-import dictionary from 'translations.data';
-import appModel from 'app_model';
+/** At the moment all disabled because iRecord App
+ * doesn't support other languages than English.
+ */
+
+// import dictionary from 'common/data/translations.data';
+// import appModel from 'app_model';
 
 function translate(key) {
-  window.dictionary = dictionary;
+  return key;
 
-  const language = appModel.get('language');
-  const translations = dictionary[key];
-  if (!translations) {
-    dictionary[key] = { CK: '' };
-    console.log(`!new: ${key}`); // todo: remove
-    return key;
-  }
+  // // eslint-disable-next-line
+  // const language = appModel.get('language');
+  // const translations = dictionary[key];
+  // if (!translations) {
+  //   dictionary[key] = { CK: '' };
+  //   console.log(`!new: ${key}`); // TODO: remove
+  //   return key;
+  // }
 
-  const translated = translations[language];
-  if (!translated) {
-    return key;
-  }
+  // const translated = translations[language];
+  // if (!translated) {
+  //   return key;
+  // }
 
-  return translated;
+  // return translated;
 }
 
 window.t = translate;

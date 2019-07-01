@@ -276,14 +276,13 @@ if (false) {
           pos.bottom + actualHeight > viewportDim.bottom
             ? 'top'
             : placement == 'top' && pos.top - actualHeight < viewportDim.top
-              ? 'bottom'
-              : placement == 'right' &&
-                pos.right + actualWidth > viewportDim.width
-                ? 'left'
-                : placement == 'left' &&
-                  pos.left - actualWidth < viewportDim.left
-                  ? 'right'
-                  : placement;
+            ? 'bottom'
+            : placement == 'right' &&
+              pos.right + actualWidth > viewportDim.width
+            ? 'left'
+            : placement == 'left' && pos.left - actualWidth < viewportDim.left
+            ? 'right'
+            : placement;
 
         $tip.removeClass(orgPlacement).addClass(placement);
       }
@@ -471,19 +470,19 @@ if (false) {
           left: pos.left + pos.width / 2 - actualWidth / 2,
         }
       : placement == 'top'
-        ? {
-            top: pos.top - actualHeight,
-            left: pos.left + pos.width / 2 - actualWidth / 2,
-          }
-        : placement == 'left'
-          ? {
-              top: pos.top + pos.height / 2 - actualHeight / 2,
-              left: pos.left - actualWidth,
-            }
-          : /* placement == 'right' */ {
-              top: pos.top + pos.height / 2 - actualHeight / 2,
-              left: pos.left + pos.width,
-            };
+      ? {
+          top: pos.top - actualHeight,
+          left: pos.left + pos.width / 2 - actualWidth / 2,
+        }
+      : placement == 'left'
+      ? {
+          top: pos.top + pos.height / 2 - actualHeight / 2,
+          left: pos.left - actualWidth,
+        }
+      : /* placement == 'right' */ {
+          top: pos.top + pos.height / 2 - actualHeight / 2,
+          left: pos.left + pos.width,
+        };
   };
 
   Tooltip.prototype.getViewportAdjustedDelta = function(
@@ -693,7 +692,9 @@ if (false) {
       .end() // we use append for html objects to maintain js events
       [
         this.options.html
-          ? typeof content == 'string' ? 'html' : 'append'
+          ? typeof content == 'string'
+            ? 'html'
+            : 'append'
           : 'text'
       ](content);
 

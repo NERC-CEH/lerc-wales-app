@@ -1,22 +1,41 @@
-import _ from 'lodash';
 import { AppModel } from 'app_model';
-import { getRandomSample } from 'test-helpers'; // eslint-disable-line
 
 /* eslint-disable no-unused-expressions */
+function initAppModel() {
+  const appModel = new AppModel();
+  return appModel._init.then(() => appModel);
+}
 
 describe('App Model', () => {
-  before(() => {
-    const appModel = new AppModel();
-    appModel.clear();
-    appModel.save();
-  });
+  before(() =>
+    initAppModel().then(appModel => {
+      appModel.resetDefaults();
+    })
+  );
 
   it('has default values', () => {
     const appModel = new AppModel();
-    expect(_.keys(appModel.attributes).length).to.be.equal(12);
+    console.log(Object.keys(appModel.attrs));
+    expect(appModel.attrs).to.have.all.keys([
+      'showWelcome',
+      'language',
+      'locations',
+      'attrLocks',
+      'autosync',
+      'useGridRef',
+      'useGridMap',
+      'useExperiments',
+      'useTraining',
+      'useGridNotifications',
+      'gridSquareUnit',
+      'feedbackGiven',
+      'taxonGroupFilters',
+      'searchNamesOnly',
+    ]);
+
     // should set the exact value checks in the modules requiring them
     expect(appModel.get('showWelcome')).to.be.equal(true);
-    expect(appModel.get('locations')).to.be.an('array');
+    expect(appModel.get('locations') instanceof Array).to.be.true;
     expect(appModel.get('attrLocks'))
       .to.be.an('object')
       .and.has.all.keys('general', 'complex');
@@ -39,16 +58,18 @@ describe('App Model', () => {
       return activity;
     }
 
-    it('should remove expired activity lock', () => {
-      let appModel = new AppModel();
-      const activity = getRandActivity();
-      activity.activity_to_date = '2000-01-01';
-      appModel.setAttrLock('smp:activity', activity);
-      appModel.save();
-      expect(appModel.getAttrLock('smp:activity')).to.be.an('object');
-
-      appModel = new AppModel();
-      expect(appModel.getAttrLock('smp:ctivity')).to.be.undefined;
-    });
+    it('should remove expired activity lock', () =>
+      initAppModel()
+        .then(appModel => {
+          const activity = getRandActivity();
+          activity.activity_to_date = '2000-01-01';
+          appModel.setAttrLock('smp:activity', activity);
+          appModel.save();
+          expect(appModel.getAttrLock('smp:activity')).to.be.an('object');
+        })
+        .then(initAppModel)
+        .then(appModel => {
+          expect(appModel.getAttrLock('smp:ctivity')).to.be.undefined;
+        }));
   });
 });

@@ -2,44 +2,77 @@
  * App model. Persistent.
  **************************************************************************** */
 import Backbone from 'backbone';
-import Store from 'backbone.localstorage';
-import CONFIG from 'config';
 import Log from 'helpers/log';
-import pastLocationsExtension from './app_model_past_loc_ext';
+import { observable, set as setMobXAttrs } from 'mobx';
+import { getStore } from 'common/store';
 import attributeLockExtension from './app_model_attr_lock_ext';
+import pastLocationsExtension from './app_model_past_loc_ext';
 
-const AppModel = Backbone.Model.extend({
-  id: 'app',
+const getDefaultAttrs = () => ({
+  showWelcome: true,
+  language: 'EN',
 
-  defaults: {
-    showWelcome: true,
-    language: 'EN',
+  locations: [],
+  attrLocks: { general: {}, complex: {} },
+  autosync: true,
+  useGridRef: true,
+  useGridMap: true,
+  useTraining: false,
 
-    locations: [],
-    attrLocks: { general: {}, complex: {} },
-    autosync: true,
-    useGridRef: true,
-    useGridMap: true,
+  useExperiments: false,
+  useGridNotifications: false,
+  gridSquareUnit: 'monad',
 
-    useExperiments: false,
-    useGridNotifications: false,
-    gridSquareUnit: 'monad',
+  feedbackGiven: false,
+  taxonGroupFilters: [],
+  searchNamesOnly: null,
+});
 
-    feedbackGiven: false,
-    taxonGroupFilters: [],
-  },
+class AppModel {
+  @observable attrs = getDefaultAttrs();
 
-  localStorage: new Store(CONFIG.name),
-
-  /**
-   * Initializes the object.
-   */
-  initialize() {
+  constructor() {
     Log('AppModel: initializing');
+    this._init = getStore()
+      .then(store => store.getItem('app'))
+      .then(appStr => {
+        const app = JSON.parse(appStr);
+        if (!app) {
+          Log('AppModel: persisting for the first time');
+          this._initDone = true;
+          this.save();
+          return;
+        }
 
-    this.fetch();
-    this.checkExpiredAttrLocks();
-  },
+        setMobXAttrs(this.attrs, app.attrs);
+        this._initDone = true;
+      })
+      .then(() => this.attrLocksExtensionInit());
+  }
+
+  get(name) {
+    return this.attrs[name];
+  }
+
+  set(name, value) {
+    this.attrs[name] = value;
+    return this;
+  }
+
+  save() {
+    if (!this._initDone) {
+      throw new Error(`App Model can't be saved before initialisation`);
+    }
+    const userStr = JSON.stringify({
+      attrs: this.attrs,
+    });
+    return getStore().then(store => store.setItem('app', userStr));
+  }
+
+  resetDefaults() {
+    setMobXAttrs(this.attrs, getDefaultAttrs());
+    return this.save();
+  }
 
   toggleTaxonFilter(filter) {
     const taxonGroupFilters = this.get('taxonGroupFilters');
@@ -51,13 +84,17 @@ const AppModel = Backbone.Model.extend({
     }
 
     this.save();
-  },
-});
+  }
+}
 
 // add previous/pased saved locations management
-const AppModelLocations = AppModel.extend(pastLocationsExtension);
-// add sample/occurrence attribute management
-const AppModelLocationsLock = AppModelLocations.extend(attributeLockExtension);
+AppModel.prototype = Object.assign(AppModel.prototype, pastLocationsExtension);
 
-const appModel = new AppModelLocationsLock();
-export { appModel as default, AppModelLocationsLock as AppModel };
+// add sample/occurrence attribute management
+AppModel.prototype = Object.assign(AppModel.prototype, attributeLockExtension);
+
+// for legacy support
+AppModel.prototype = Object.assign(AppModel.prototype, Backbone.Events);
+
+const appModel = new AppModel();
+export { appModel as default, AppModel };

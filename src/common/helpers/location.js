@@ -91,19 +91,19 @@ const helpers = {
     const x = gridCoords.x;
     const y = gridCoords.y;
 
-    if (x % normAcc - accuracy < 0) {
+    if ((x % normAcc) - accuracy < 0) {
       return true;
     }
 
-    if (x % normAcc + accuracy > normAcc) {
+    if ((x % normAcc) + accuracy > normAcc) {
       return true;
     }
 
-    if (y % normAcc - accuracy < 0) {
+    if ((y % normAcc) - accuracy < 0) {
       return true;
     }
 
-    if (y % normAcc + accuracy > normAcc) {
+    if ((y % normAcc) + accuracy > normAcc) {
       return true;
     }
 

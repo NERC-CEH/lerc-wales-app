@@ -4,13 +4,13 @@
 import Backbone from 'backbone';
 import $ from 'jquery';
 import Marionette from 'backbone.marionette';
-import JST from 'JST';
+import template from 'templates/radio.tpl';
 
 export default Marionette.View.extend({
-  template: JST['common/radio'],
+  template,
 
   triggers: {
-    'click input[type="radio"]': 'save',
+    'ionSelect ion-radio': 'save',
   },
 
   initialize() {
@@ -33,7 +33,7 @@ export default Marionette.View.extend({
 
   getValues() {
     let values;
-    const $inputs = this.$el.find('input');
+    const $inputs = this.$el.find('ion-radio');
     $inputs.each((int, elem) => {
       if ($(elem).prop('checked')) {
         const newVal = $(elem).val();
@@ -48,7 +48,7 @@ export default Marionette.View.extend({
   },
 
   resetValue() {
-    const $inputs = this.$el.find('input[type="radio"]');
+    const $inputs = this.$el.find('ion-radio');
     $inputs.each((int, elem) => {
       $(elem).prop('checked', false);
     });

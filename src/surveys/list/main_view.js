@@ -1,23 +1,21 @@
 /** ****************************************************************************
  * Surveys List main view.
  **************************************************************************** */
-import Indicia from 'indicia';
 import Marionette from 'backbone.marionette';
 import radio from 'radio';
-import JST from 'JST';
 import DateHelp from 'helpers/date';
-import Gallery from '../../common/gallery';
-import _MainView, {
-  SampleView as _SampleView,
-} from '../../samples/list/main_view';
+import _MainView, { SampleView as _SampleView } from './main_view_old';
 import SlidingView from '../../common/views/sliding_view';
 import './styles.scss';
+import templateSample from './templates/sample.tpl';
+import templateListNone from './templates/list-none.tpl';
+import template from './templates/main.tpl';
+import './empty-survey-list-icon.svg';
 
 const SampleView = Marionette.View.extend({
-  tagName: 'li',
-  className: 'table-view-cell swipe',
+  tagName: 'ion-item-sliding',
 
-  template: JST['surveys/list/sample'],
+  template: templateSample,
 
   triggers: _SampleView.prototype.triggers,
 
@@ -25,39 +23,18 @@ const SampleView = Marionette.View.extend({
 
   modelEvents: _SampleView.prototype.modelEvents,
 
-  photoView(e) {
-    e.preventDefault();
-
-    const items = [];
-
-    this.model.media.each(image => {
-      items.push({
-        src: image.getURL(),
-        w: image.get('width') || 800,
-        h: image.get('height') || 800,
-      });
-    });
-
-    // Initializes and opens PhotoSwipe
-    const gallery = new Gallery(items);
-    gallery.init();
-  },
-
-  onRender: _SampleView.prototype.onRender,
   remove: _SampleView.prototype.remove,
 
   serializeData() {
     const sample = this.model;
     const date = DateHelp.print(sample.get('date'), true);
-    const media = sample.media;
-    let img = media.length && media.at(0).get('thumbnail');
+    const media = sample.media.length && sample.media.models[0];
+    let img = media && media.get('thumbnail');
 
     if (!img) {
       // backwards compatibility
-      img = media.length && media.at(0).getURL();
+      img = media && media.getURL();
     }
-
-    const syncStatus = this.model.getSyncStatus();
 
     const locationPrint = sample.printLocation();
     const location = sample.get('location') || {};
@@ -76,27 +53,24 @@ const SampleView = Marionette.View.extend({
       surveyLabel: 'Plant',
       id: sample.cid,
       saved: sample.metadata.saved,
-      onDatabase: syncStatus === Indicia.SYNCED,
+      onDatabase: sample.metadata.synced_on,
       isLocating: sample.isGPSRunning(),
       location: locationPrint,
       locationName: location.name,
       samples: Object.keys(uniqueTaxa).length,
       comment: sample.get('comment'),
-      isSynchronising: syncStatus === Indicia.SYNCHRONISING,
+      isSynchronising: sample.remote.synchronising,
       date,
       img: img ? `<img src="${img}"/>` : '',
     };
   },
-
-  _swipe: _SampleView.prototype._swipe,
-  _swipeEnd: _SampleView.prototype._swipeEnd,
-  _swipeHome: _SampleView.prototype._swipeHome,
 });
 
 const NoSamplesView = Marionette.View.extend({
-  tagName: 'li',
-  className: 'table-view-cell empty',
-  template: JST['surveys/list/list-none'],
+  tagName: 'div',
+  className: 'empty',
+  id: 'empty-message',
+  template: templateListNone,
 
   triggers: {
     'click #create-new-btn': 'create',
@@ -114,7 +88,7 @@ const SmartCollectionView = SlidingView.extend({
 });
 
 const MainView = _MainView.extend({
-  template: JST['surveys/list/main'],
+  template,
 
   regions: {
     body: {

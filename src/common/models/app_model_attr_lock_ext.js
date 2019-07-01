@@ -7,13 +7,38 @@ import Analytics from 'helpers/analytics';
 import { coreAttributes } from 'common/config/surveys/general';
 import userModel from 'user_model';
 import Indicia from 'indicia';
+import { observable, extendObservable, observe } from 'mobx';
 
 export default {
+  attrLocksExtensionInit() {
+    const activity = this.getAttrLock('smp:activity');
+    if (activity) {
+      if (userModel.hasActivityExpired(activity)) {
+        Log('AppModel:AttrLocks: currently locked activity has expired.');
+        this.unsetAttrLock('smp:activity');
+      }
+    }
+
+    function onLogout(change) {
+      if (change.newValue === false) {
+        Log('AppModel:AttrLocks: removing currently locked activity.');
+        this.unsetAttrLock('smp:activity');
+      }
+    }
+
+    observe(userModel.attrs, 'isLoggedIn', onLogout.bind(this));
+  },
+
   _getRawLocks(surveyType, surveyName) {
     const locks = this.get('attrLocks');
 
     if (!locks[surveyType] || !locks[surveyType][surveyName]) {
-      locks[surveyType] = Object.assign({}, locks[surveyType], {
+      if (!locks[surveyType]) {
+        extendObservable(locks, {
+          [surveyType]: {},
+        });
+      }
+      extendObservable(locks[surveyType], {
         [surveyName]: {},
       });
       this.set('attrLocks', locks);
@@ -41,8 +66,12 @@ export default {
     const { surveyType, surveyName } = this._extractTypeName(surveyConfig);
     const locks = this._getRawLocks(surveyType, surveyName);
 
-    locks[surveyType][surveyName][attr] = val;
-    this.set('attrLocks', locks);
+    locks[surveyType][surveyName] = Object.assign(
+      {},
+      locks[surveyType][surveyName],
+      { [attr]: val }
+    );
+    this.set('attrLocks', observable(locks));
     this.save();
     this.trigger('change:attrLocks');
 
@@ -61,7 +90,7 @@ export default {
     const locks = this._getRawLocks(surveyType, surveyName);
 
     delete locks[surveyType][surveyName][attr];
-    this.set('attrLocks', locks);
+    this.set('attrLocks', observable(locks));
     this.save();
     this.trigger('change:attrLocks');
   },
@@ -145,19 +174,5 @@ export default {
         value = model.get(attr);
         return value === lockedVal;
     }
-  },
-
-  checkExpiredAttrLocks() {
-    const activity = this.getAttrLock('smp:activity');
-    if (activity) {
-      if (userModel.hasActivityExpired(activity)) {
-        Log('AppModel:AttrLocks: activity has expired.');
-        this.unsetAttrLock('smp:activity');
-      }
-    }
-    userModel.on('logout', () => {
-      Log('AppModel:AttrLocks: activity has expired.');
-      this.unsetAttrLock('smp:activity'); // remove locked activity
-    });
   },
 };

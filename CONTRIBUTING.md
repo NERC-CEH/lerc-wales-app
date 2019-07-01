@@ -96,6 +96,10 @@ folder within common folder.
 For clarity reasons, Libraries and Helper code must be imported as capitalized 
 variables: App, Backbone, Device, GPS etc.
 
+### Adding language translations
+* Add to the package.json scripts:  `"build:translations": "cd src/common/data && node make_translations.js"`
+* create a `translations.csv` file in `src/common/data/`
+* uncomment `src/common/helpers/translator.js`
 
 # Continous Integration and Testing
 
@@ -108,6 +112,12 @@ commits and runs the app tests on 20+ browsers using Sauce Labs.
 
 ```bash
 npm test
+```
+
+- To run the tests on Sauce labs, download the [sauce labs connector](https://saucelabs.com/docs/connect) and then:
+```bash
+./sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY
+
 ```
 
 - Auto watch:
@@ -138,7 +148,13 @@ npm run build:cordova:android
 # Acceptance tests
  Check that `appium-doctor` shows all green and then:
  
-`mb --configfile test/imposters.js`
+`mb --configfile test/acceptance/imposters.json`
+
 `emulate test`
-`export APP_INDICIA_API_HOST=localhost:4545`
+
+`npm i chromedriver@2.34.1`
+
+`export APP_FORCE=true && export APP_INDICIA_API_HOST=localhost:4545`
+
+`npm run build:cordova`
 `npm run test:acceptance`

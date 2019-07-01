@@ -188,7 +188,7 @@ const API = {
     Log('Surveys:Sample:Edit:Controller: photo uploaded.');
 
     const occurrence = sample.getOccurrence();
-    // todo: show loader
+    // TODO: show loader
     API.addPhoto(occurrence, photo).catch(err => {
       Log(err, 'e');
       radio.trigger('app:dialog:error', err);
@@ -204,14 +204,14 @@ const API = {
       buttons: [
         {
           title: 'Cancel',
-          class: 'btn-clear',
+          fill: 'clear',
           onClick() {
             radio.trigger('app:dialog:hide');
           },
         },
         {
           title: 'Remove',
-          class: 'btn-negative',
+          color: 'danger',
           onClick() {
             // show loader
             photo.destroy({
@@ -237,23 +237,8 @@ const API = {
       title: window.t('Choose a method to upload a photo'),
       buttons: [
         {
-          title: window.t('Camera'),
-          onClick() {
-            ImageHelp.getImage()
-              .then(entry => {
-                entry &&
-                  API.addPhoto(occurrence, entry.nativeURL, occErr => {
-                    if (occErr) {
-                      radio.trigger('app:dialog:error', occErr);
-                    }
-                  });
-              })
-              .catch(showErrMsg);
-            radio.trigger('app:dialog:hide');
-          },
-        },
-        {
-          title: window.t('Gallery'),
+          title: 'Gallery',
+          fill: 'clear',
           onClick() {
             ImageHelp.getImage({
               sourceType: window.Camera.PictureSourceType.PHOTOLIBRARY,
@@ -264,6 +249,22 @@ const API = {
                   API.addPhoto(occurrence, entry.nativeURL, occErr => {
                     if (occErr) {
                       showErrMsg(occErr);
+                    }
+                  });
+              })
+              .catch(showErrMsg);
+            radio.trigger('app:dialog:hide');
+          },
+        },
+        {
+          title: 'Camera',
+          onClick() {
+            ImageHelp.getImage()
+              .then(entry => {
+                entry &&
+                  API.addPhoto(occurrence, entry.nativeURL, occErr => {
+                    if (occErr) {
+                      radio.trigger('app:dialog:error', occErr);
                     }
                   });
               })
@@ -291,7 +292,7 @@ const API = {
    * @param reset
    * @returns {Promise.<T>}
    */
-  setLocation(sample, loc, reset) {
+  async setLocation(sample, loc, reset) {
     // validate this new location
     const valid = API.validateLocation(sample, loc);
     if (!valid) {
@@ -315,8 +316,10 @@ const API = {
     }
 
     // save to past locations
-    const locationID = appModel.setLocation(location);
-    location.id = locationID;
+    const savedLocation = await appModel.setLocation(location);
+    if (savedLocation.id) {
+      location.id = savedLocation.id;
+    }
 
     sample.set('location', location);
     sample.trigger('change:location');

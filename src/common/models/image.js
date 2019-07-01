@@ -1,36 +1,65 @@
 import Indicia from 'indicia';
-import CONFIG from 'config';
-import ImageHelp from 'helpers/image';
 import Log from 'helpers/log';
-import Device from 'helpers/device';
+
+function fixPreviousVersions(URL) {
+  if (URL.search('file://') >= 0) {
+    return URL.split('/').pop();
+  }
+  return URL;
+}
+
+function deleteFile(fileName) {
+  return new Promise((resolve, reject) => {
+    function onFileGet(fileEntry) {
+      if (!fileEntry) {
+        resolve();
+        return;
+      }
+
+      fileEntry.remove(() => {
+        Log('Helpers:Image: removed.');
+        resolve();
+      }, reject);
+    }
+
+    window.resolveLocalFileSystemURL(
+      cordova.file.dataDirectory,
+      fileSystem => {
+        fileSystem.getFile(fileName, { create: false }, onFileGet, reject);
+      },
+      reject
+    );
+  });
+}
 
 export default Indicia.Media.extend({
   destroy(...args) {
     Log('MediaModel: destroying.');
 
     // remove from internal storage
-    if (window.cordova) {
-      const URL = this.getURL();
-      ImageHelp.deleteInternalStorage(URL, () => {
-        Indicia.Media.prototype.destroy.apply(this, args);
-      });
+    if (!window.cordova || window.testing) {
+      Indicia.Media.prototype.destroy.apply(this, args);
+      return;
     }
 
-    Indicia.Media.prototype.destroy.apply(this, args);
+    let URL = this.get('data');
+    URL = fixPreviousVersions(URL);
+
+    deleteFile(URL)
+      .then(() => {
+        Indicia.Media.prototype.destroy.apply(this, args);
+      })
+      .catch(err => Log(err, 'e'));
   },
 
   getURL() {
     let URL = this.get('data');
-    if (window.cordova && Device.isIOS() && !window.testing) {
-      if (CONFIG.build >= 8 && URL.search('file://') >= 0) {
-        // fix previous versions
-        const pathArray = URL.split('/');
-        URL = cordova.file.dataDirectory + pathArray[pathArray.length - 1];
-      } else {
-        URL = cordova.file.dataDirectory + URL;
-      }
+
+    if (!window.cordova || window.testing) {
+      return URL;
     }
 
-    return URL;
+    URL = cordova.file.dataDirectory + fixPreviousVersions(URL);
+    return window.Ionic.WebView.convertFileSrc(URL);
   },
 });

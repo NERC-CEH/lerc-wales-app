@@ -2,7 +2,6 @@
  * Surveys Samples List controller.
  **************************************************************************** */
 import _ from 'lodash';
-import Indicia from 'indicia';
 import radio from 'radio';
 import savedSamples from 'saved_samples';
 import Log from 'helpers/log';
@@ -36,7 +35,7 @@ const API = {
 
     // can't edit a saved one - to be removed when sample update
     // is possible on the server
-    if (surveySample.getSyncStatus() === Indicia.SYNCED) {
+    if (surveySample.metadata.synced_on) {
       radio.trigger('samples:show', options.surveySampleID, { replace: true });
       return;
     }
@@ -98,6 +97,7 @@ const API = {
       );
     });
     mainView.on('childview:sample:delete', childView => {
+      childView.el.closeOpened();
       API.sampleDelete(childView.model);
     });
     radio.trigger('app:main', mainView);
@@ -120,9 +120,13 @@ const API = {
       title: window.t('Choose a method to upload a photo'),
       buttons: [
         {
-          title: 'Camera',
+          title: 'Gallery',
+          fill: 'clear',
           onClick() {
-            ImageHelp.getImage()
+            ImageHelp.getImage({
+              sourceType: window.Camera.PictureSourceType.PHOTOLIBRARY,
+              saveToPhotoAlbum: false,
+            })
               .then(entry => {
                 entry &&
                   API.createNewSampleWithPhoto(surveySample, entry.nativeURL);
@@ -132,12 +136,9 @@ const API = {
           },
         },
         {
-          title: 'Gallery',
+          title: 'Camera',
           onClick() {
-            ImageHelp.getImage({
-              sourceType: window.Camera.PictureSourceType.PHOTOLIBRARY,
-              saveToPhotoAlbum: false,
-            })
+            ImageHelp.getImage()
               .then(entry => {
                 entry &&
                   API.createNewSampleWithPhoto(surveySample, entry.nativeURL);
@@ -157,7 +158,7 @@ const API = {
    * @returns {*}
    */
   createNewSampleWithPhoto(surveySample, photo) {
-    // todo: show loader
+    // TODO: show loader
     return (
       Factory.createSampleWithPhoto('plant', photo)
         .then(sample => API.configNewSample(surveySample, sample))
@@ -215,7 +216,7 @@ const API = {
   configNewSample(surveySample, sample) {
     // set sample location to survey's location which
     // can be corrected by GPS or user later on
-    // todo: listen for surveySample attribute changes
+    // TODO: listen for surveySample attribute changes
     if (SurveysEditController.isSurveyLocationSet(surveySample)) {
       const surveyLocation = _.cloneDeep(surveySample.get('location'));
       delete surveyLocation.name;

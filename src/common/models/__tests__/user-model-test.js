@@ -1,24 +1,55 @@
 import _ from 'lodash';
+import * as store from 'common/store';
 import { UserModel } from '../user_model';
 
 /* eslint-disable no-unused-expressions */
+function initUserModel(login) {
+  const userModel = new UserModel();
+  return userModel._init.then(() => {
+    if (login) {
+      return userModel
+        .logIn({
+          isLoggedIn: true,
+          secret: '123',
+          email: '123@123.com',
+          password: '123@123.com',
+          name: '123',
+          surname: '123',
+        })
+        .then(() => userModel);
+    }
+    return userModel;
+  });
+}
 
 describe('User Model', () => {
+  let getStoreStub;
   let server;
+
+  before(() => {
+    getStoreStub = sinon.stub(store, 'getStore').resolves({
+      getItem: () => Promise.resolve('{}'),
+      setItem: () => Promise.resolve(),
+    });
+  });
+
+  after(() => {
+    getStoreStub.restore();
+  });
+
   beforeEach(() => {
     server = sinon.fakeServer.create();
-
-    const userModel = new UserModel();
-    userModel.clear();
-    userModel.save();
+    return initUserModel().then(userModel => {
+      userModel.resetDefaults();
+    });
   });
 
-  afterEach(() => {
-    const userModel = new UserModel();
-    userModel.clear();
-    userModel.save();
-    server.restore();
-  });
+  afterEach(() =>
+    initUserModel().then(userModel => {
+      userModel.resetDefaults();
+      server.restore();
+    })
+  );
 
   it('has default values', () => {
     const userModel = new UserModel();
@@ -31,18 +62,6 @@ describe('User Model', () => {
   });
 
   describe('Activities support', () => {
-    beforeEach(() => {
-      const userModel = new UserModel();
-
-      userModel.logIn({
-        secret: '123',
-        email: '123@123.com',
-        password: '123@123.com',
-        name: '123',
-        surname: '123',
-      });
-      userModel.save();
-    });
     function getRandActivity() {
       const id = parseInt((Math.random() * 100).toFixed(0), 10);
       const activity = {
@@ -72,12 +91,10 @@ describe('User Model', () => {
 
     it('should have attributes', () => {
       const userModel = new UserModel();
-      expect(userModel.get('activities')).to.be.an('array');
+      expect(userModel.get('activities') instanceof Array).to.be.true;
     });
 
-    it('should sync activities from server', done => {
-      const userModel = new UserModel();
-
+    it('should sync activities from server', () => {
       const activity = getRandActivity();
       server.respondWith([
         200,
@@ -85,29 +102,28 @@ describe('User Model', () => {
         JSON.stringify({ data: [activity] }),
       ]);
 
-      userModel
-        .fetchActivities()
-        .then(() => {
+      return initUserModel().then(userModel => {
+        const activitiesPromise = userModel.fetchActivities().then(() => {
           const activities = userModel.get('activities');
           expect(activities.length).to.be.equal(1);
-          done();
-        })
-        .catch(done);
+        });
 
-      server.respond();
+        server.respond();
+        return activitiesPromise;
+      });
     });
 
-    it('should not sync if user not logged in', () => {
-      let userModel = new UserModel();
-      userModel.logOut();
-      userModel.save();
+    it('should not sync if user not logged in', () =>
+      initUserModel().then(userModel => {
+        userModel.logOut();
+        userModel.save();
 
-      sinon.spy(UserModel.prototype, 'fetchActivities');
-      userModel = new UserModel();
+        sinon.spy(UserModel.prototype, 'fetchActivities');
+        userModel = new UserModel();
 
-      expect(userModel.fetchActivities.called).to.be.false;
-      userModel.fetchActivities.restore();
-    });
+        expect(userModel.fetchActivities.called).to.be.false;
+        userModel.fetchActivities.restore();
+      }));
 
     it.skip('should force fetch', done => {
       // skip because unstable async problems
@@ -120,7 +136,7 @@ describe('User Model', () => {
       ]);
 
       // first fetch
-      userModel.synchronizingActivities.then(() => {
+      userModel.activities.synchronizing.then(() => {
         sinon.spy(UserModel.prototype, 'fetchActivities');
         userModel = new UserModel();
         // already fetched sync
@@ -148,37 +164,37 @@ describe('User Model', () => {
       server.respond();
     });
 
-    it('should set synchronizingActivities on sync', () => {
-      const userModel = new UserModel();
-      expect(userModel.synchronizingActivities).to.be.instanceOf(Promise);
-    });
+    it('should set activities.synchronizing on sync', () =>
+      initUserModel(true).then(userModel => {
+        expect(userModel.activities.synchronizing).to.be.instanceOf(Promise);
+      }));
 
     it('should fire event on sync start and end', done => {
-      const userModel = new UserModel();
+      initUserModel(true).then(userModel => {
+        userModel.on('sync:activities:end', () => {
+          userModel.on('sync:activities:start', done);
+          userModel.syncActivities(true).catch(done);
+        });
 
-      userModel.on('sync:activities:end', () => {
-        userModel.on('sync:activities:start', done);
-        userModel.syncActivities(true).catch(done);
+        const activity = getRandActivity();
+
+        server.respondWith([
+          200,
+          { 'Content-Type': 'application/json' },
+          JSON.stringify({ data: [activity] }),
+        ]);
+        server.respond();
       });
-
-      const activity = getRandActivity();
-
-      server.respondWith([
-        200,
-        { 'Content-Type': 'application/json' },
-        JSON.stringify({ data: [activity] }),
-      ]);
-      server.respond();
     });
 
-    it('should reset activities on logout', () => {
-      const userModel = new UserModel();
-      userModel.set('activities', [getRandActivity(), getRandActivity()]);
+    it('should reset activities on logout', () =>
+      initUserModel().then(userModel => {
+        userModel.set('activities', [getRandActivity(), getRandActivity()]);
 
-      userModel.logOut();
-      const activities = userModel.get('activities');
-      expect(activities.length).to.be.equal(0);
-    });
+        userModel.logOut();
+        const activities = userModel.get('activities');
+        expect(activities.length).to.be.equal(0);
+      }));
 
     it('should check activity expiry', () => {
       const userModel = new UserModel();
@@ -223,32 +239,34 @@ describe('User Model', () => {
     it('should auto fetch new activities every day', done => {
       const clock = sinon.useFakeTimers();
 
-      let userModel = new UserModel();
-      const activity = getRandActivity();
-      server.respondWith([
-        200,
-        { 'Content-Type': 'application/json' },
-        JSON.stringify({ data: [activity] }),
-      ]);
+      initUserModel(true).then(userModel => {
+        const activity = getRandActivity();
+        server.respondWith([
+          200,
+          { 'Content-Type': 'application/json' },
+          JSON.stringify({ data: [activity] }),
+        ]);
 
-      userModel.synchronizingActivities
-        .then(() => {
-          sinon.spy(UserModel.prototype, 'fetchActivities');
+        userModel.activities.synchronizing
+          .then(() => {
+            sinon.spy(UserModel.prototype, 'fetchActivities');
 
-          clock.tick(1000 * 60 * 60 * 24); // 1day
-          userModel = new UserModel();
-          userModel.synchronizingActivities
-            .then(() => {
-              expect(userModel.fetchActivities.called).to.be.true;
-              clock.restore();
-              userModel.fetchActivities.restore();
-              done();
-            })
-            .catch(done);
-          server.respond();
-        })
-        .catch(done);
-      server.respond();
+            clock.tick(1000 * 60 * 60 * 24); // 1day
+            initUserModel(true).then(userModel2 => {
+              userModel2.activities.synchronizing
+                .then(() => {
+                  expect(userModel2.fetchActivities.called).to.be.true;
+                  clock.restore();
+                  userModel2.fetchActivities.restore();
+                  done();
+                })
+                .catch(done);
+              server.respond();
+            });
+          })
+          .catch(done);
+        server.respond();
+      });
     });
 
     it('should get activity by id', () => {
@@ -260,35 +278,37 @@ describe('User Model', () => {
     });
 
     describe('Activity', () => {
-      it('should have default values', () => {
-        const userModel = new UserModel();
-        server.respondWith([
-          200,
-          { 'Content-Type': 'application/json' },
-          JSON.stringify({
-            data: [
-              {
-                id: 1,
-                activity_from_date: '2016-05-03',
-                activity_to_date: '2016-05-25',
-              },
-            ],
-          }),
-        ]);
-        userModel.synchronizingActivities.then(() => {
-          const activities = userModel.get('activities');
-          const parsedActivity = activities[0];
+      it('should have default values', done => {
+        initUserModel(true).then(userModel => {
+          server.respondWith([
+            200,
+            { 'Content-Type': 'application/json' },
+            JSON.stringify({
+              data: [
+                {
+                  id: 1,
+                  activity_from_date: '2016-05-03',
+                  activity_to_date: '2016-05-25',
+                },
+              ],
+            }),
+          ]);
+          userModel.activities.synchronizing.then(() => {
+            const activities = userModel.get('activities');
+            const parsedActivity = activities[0];
 
-          expect(parsedActivity).to.be.an('object');
-          expect(typeof parsedActivity.id).be.equal('number');
-          expect(parsedActivity.title).to.be.a('string');
-          // expect(parsedActivity.description).to.be.a('string');
-          // expect(parsedActivity.type).to.be.a('string');
-          // expect(parsedActivity.activity_from_date).to.be.a('string');
-          // expect(parsedActivity.activity_to_date).to.be.a('string');
-          // expect(parsedActivity.synced_on).to.be.a('string');
+            expect(parsedActivity).to.be.an('object');
+            expect(typeof parsedActivity.id).be.equal('number');
+            expect(parsedActivity.title).to.be.a('string');
+            // expect(parsedActivity.description).to.be.a('string');
+            // expect(parsedActivity.type).to.be.a('string');
+            // expect(parsedActivity.activity_from_date).to.be.a('string');
+            // expect(parsedActivity.activity_to_date).to.be.a('string');
+            // expect(parsedActivity.synced_on).to.be.a('string');
+            done();
+          });
+          server.respond();
         });
-        server.respond();
       });
 
       it('should complain on unfamiliar server serponse', () => {

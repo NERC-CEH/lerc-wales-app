@@ -43,13 +43,11 @@ fs.readFile('./translations.csv', 'utf8', (err, data) => {
 
   parse(data, {}, (parseErr, output) => {
     const obj = main(output);
-
     fs.writeFile(
       './translations.data.json',
       JSON.stringify(obj),
-      null,
-      4,
-      (writeErr) => {
+
+      writeErr => {
         if (err) {
           console.log(writeErr);
           return;

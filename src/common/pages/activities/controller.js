@@ -1,8 +1,6 @@
 /** *****************************************************************************
  * Activities List controller.
  ***************************************************************************** */
-import $ from 'jquery';
-import _ from 'lodash';
 import Backbone from 'backbone';
 import Log from 'helpers/log';
 import Analytics from 'helpers/analytics';
@@ -55,7 +53,7 @@ const ActivitiesCollection = Backbone.Collection.extend({
     Log('Activities:Controller: updating collection.');
 
     // if loading have empty collection
-    if (userModel.synchronizingActivities) {
+    if (userModel.activities && userModel.activities.synchronizing) {
       this.reset();
       return;
     }
@@ -76,23 +74,21 @@ const ActivitiesCollection = Backbone.Collection.extend({
       checked: !selectedActivity.id,
     });
 
-    let foundOneToCheck = false;
     this.reset();
     this.add(defaultActivity);
 
     // add user activities
-    const activitiesData = _.cloneDeep(userModel.get('activities'));
-    $.each(activitiesData, (index, active) => {
-      // todo:  server '71' == local 71
-      active.checked = selectedActivity.id === active.id; // eslint-disable-line
-      foundOneToCheck = foundOneToCheck || active.checked;
-
-      this.add(new ActivityModel(active));
+    userModel.get('activities').forEach(activity => {
+      // TODO:  server '71' == local 71
+      const checkedActivity = Object.assign({}, activity, {
+        checked: selectedActivity.id === activity.id,
+      });
+      this.add(new ActivityModel(checkedActivity));
     });
   },
 });
 
-const activitiesCollection = new ActivitiesCollection();
+let activitiesCollection;
 
 const API = {
   show(sampleID) {
@@ -100,6 +96,10 @@ const API = {
 
     if (!userModel.hasLogIn()) {
       API.userLoginMessage();
+    }
+
+    if (!activitiesCollection) {
+      activitiesCollection = new ActivitiesCollection();
     }
 
     // HEADER
@@ -214,7 +214,6 @@ const API = {
         {
           id: 'ok',
           title: 'OK',
-          class: 'btn-positive',
           onClick: App.regions.getRegion('dialog').hide,
         },
       ],

@@ -1,10 +1,6 @@
-// ES5 shims for Function.prototype.bind, Object.prototype.keys, etc.
-require('core-js/es5');
-// other shims
-require('indexeddbshim');
-require('es6-promise/auto');
-require('helpers/object-assign');
-require('helpers/array-fill');
+// polyfills for Android 5.0
+require('core-js/features/map');
+require('core-js/features/set');
 
 // Replace ./src/js with the directory of your application code and
 // make sure the file name regexp matches your test files.

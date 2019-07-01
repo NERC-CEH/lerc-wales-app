@@ -1,7 +1,6 @@
 /** ****************************************************************************
  * Surveys List controller.
  **************************************************************************** */
-import Indicia from 'indicia';
 import Backbone from 'backbone';
 import radio from 'radio';
 import Log from 'helpers/log';
@@ -65,6 +64,7 @@ const API = {
 
     mainView.on('childview:create', API.addSurvey);
     mainView.on('childview:sample:delete', childView => {
+      childView.el.closeOpened();
       API.sampleDelete(childView.model);
     });
 
@@ -95,12 +95,11 @@ const API = {
   sampleDelete(sample) {
     Log('Samples:List:Controller: deleting sample.');
 
-    const syncStatus = sample.getSyncStatus();
     let body =
       "This record hasn't been saved to iRecord yet, " +
       'are you sure you want to remove it from your device?';
 
-    if (syncStatus === Indicia.SYNCED) {
+    if (sample.metadata.synced_on) {
       body = 'Are you sure you want to remove this record from your device?';
       body += '</br><i><b>Note:</b> it will remain on the server.</i>';
     }
@@ -110,14 +109,14 @@ const API = {
       buttons: [
         {
           title: 'Cancel',
-          class: 'btn-clear',
+          fill: 'clear',
           onClick() {
             radio.trigger('app:dialog:hide');
           },
         },
         {
           title: 'Delete',
-          class: 'btn-negative',
+          color: 'danger',
           onClick() {
             sample.destroy();
             radio.trigger('app:dialog:hide');

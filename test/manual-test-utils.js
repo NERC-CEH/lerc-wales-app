@@ -48,30 +48,28 @@ testing.records = {
         warehouse_id: 113813,
       };
 
-      Factory.createSample('general', image, taxon).then(
-        sample => {
-          sample.set('location', {
-            accuracy: 1,
-            gridref: 'SD79735954',
-            latitude: 54.0310862,
-            longitude: -2.3106393,
-            name: `${sampleTestID} location`,
-            source: 'map',
-          });
-          sample.getOccurrence().set('comment', sampleTestID);
+      Factory.createSample('general', image, taxon).then(sample => {
+        sample.set('location', {
+          accuracy: 1,
+          gridref: 'SD79735954',
+          latitude: 54.0310862,
+          longitude: -2.3106393,
+          name: `${sampleTestID} location`,
+          source: 'map',
+        });
+        sample.getOccurrence().set('comment', sampleTestID);
 
-          sample.save().then(() => {
-            savedRecords.add(sample);
+        sample.save().then(() => {
+          savedRecords.add(sample);
 
-            if (--count) {
-              console.log(`Adding: ${count}`);
-              testing.records.addDummyRecord(count, imageData, testID);
-            } else {
-              console.log('Finished Adding');
-            }
-          });
-        }
-      );
+          if (--count) {
+            console.log(`Adding: ${count}`);
+            testing.records.addDummyRecord(count, imageData, testID);
+          } else {
+            console.log('Finished Adding');
+          }
+        });
+      });
     });
   },
 
@@ -143,6 +141,23 @@ testing.GPS = {
 
     console.log(location);
     return GPS.change(location);
+  },
+};
+
+testing.images = {
+  getAllSavedFiles() {
+    return new Promise((resolve, reject) => {
+      window.resolveLocalFileSystemURL(
+        cordova.file.dataDirectory,
+        fileSystem => {
+          const reader = fileSystem.createReader();
+          reader.readEntries(entries => {
+            resolve(entries.filter(e => e.isFile));
+          }, reject);
+        },
+        reject
+      );
+    });
   },
 };
 

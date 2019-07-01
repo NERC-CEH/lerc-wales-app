@@ -48,6 +48,13 @@ describe('Helpers Image', () => {
         });
       });
 
+      it('should care for missing error', done => {
+        _onGetImageError({}, null, err => {
+          expect(err).to.eql('');
+          done();
+        });
+      });
+
       it('should resolve if error includes "cancelled"', done => {
         _onGetImageError('user has cancelled the process', done);
       });

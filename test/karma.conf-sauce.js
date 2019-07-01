@@ -6,71 +6,50 @@ require('dotenv').config({ silent: true }); // get local environment variables f
 const path = require('path');
 const _ = require('lodash');
 
-const webpack = require('webpack');
-
 process.env.NODE_ENV = 'test';
-const ENV = process.env.NODE_ENV;
+process.env.SAUCE_LABS = true;
 
-// get development webpack config
-const webpackConfigDev = require('../other/webpack.dev');
-// clean it up a bit
-delete webpackConfigDev.context;
+const webpackConfigDev = require('../webpack.config');
+
 delete webpackConfigDev.entry; // the entry is the loader
 delete webpackConfigDev.output; // no need to output files
-webpackConfigDev.plugins.splice(1, 2); // temp remove of clashing plugins
-webpackConfigDev.plugins.splice(
-  0,
-  0,
-  new webpack.DefinePlugin({
-    'process.env': {
-      ENV: JSON.stringify(ENV),
-    },
-  })
-);
+delete webpackConfigDev.optimization; // no need
+
 webpackConfigDev.resolve.modules.push(path.resolve('./test/'));
 
-const sauceBrowsers = _.reduce(
-  [
-    ['firefox', '45'],
-    ['firefox', '44'],
-    ['firefox', '43'],
-    ['firefox', '42'],
-    ['firefox', '41'],
+const sauceBrowsers = [
+  /**  Browser environment */
+  ['chrome', '69'], // latest
+  ['chrome', '38'], // bottom support
+  ['safari', '11'], // latest
+  ['safari', '8'], // bottom support
 
-    ['chrome', '48'],
-    ['chrome', '46'],
-    ['chrome', '44'],
-    ['chrome', '42'],
-    ['chrome', '40'],
-    ['chrome', '38'],
-    ['chrome', '30'],
+  /**  Mobile environment */
+  ['android', '6'], // latest
+  ['Browser', '5.1', 'Android', 'Android Emulator'],
+  // ['Browser', '5', 'Android', 'Android Emulator'], // bottom support - sauce labs missing
 
-    ['internet explorer', '11', 'Windows 10'],
-
-    ['android', '5.1'],
-    ['android', '5'],
-    ['android', '4.4'],
-  ],
-  (memo, platform) => {
-    // internet explorer -> ie
-    let label = platform[0].split(' ');
-    if (label.length > 1) {
-      label = _.invoke(label, 'charAt', 0);
-    }
-    label = `${label.join('')}_v${platform[1]}`.replace(' ', '_').toUpperCase();
-    memo[label] = _.pick(
-      {
-        base: 'SauceLabs',
-        browserName: platform[0],
-        version: platform[1],
-        platform: platform[2],
-      },
-      Boolean
-    );
-    return memo;
-  },
-  {}
-);
+  ['Safari', '12.2', 'iOS', 'iPhone 6'], // latest
+  ['Safari', '11.1', 'iOS', 'iPhone 6'],
+  ['Safari', '10.3', 'iOS', 'iPhone 6'], // bottom support
+].reduce((memo, platform) => {
+  let label = platform[0].split(' ');
+  if (label.length > 1) {
+    label = _.invoke(label, 'charAt', 0);
+  }
+  label = `${label.join('')}_v${platform[1]}`.replace(' ', '_').toUpperCase();
+  memo[label] = _.pick(
+    {
+      base: 'SauceLabs',
+      browserName: platform[0],
+      version: platform[1],
+      platform: platform[2],
+      device: platform[3],
+    },
+    Boolean
+  );
+  return memo;
+}, {});
 
 module.exports = config => {
   // Use ENV vars on Travis and sauce.json locally to get credentials
@@ -114,7 +93,7 @@ module.exports = config => {
     singleRun: true,
 
     // Number of sauce tests to start in parallel
-    concurrency: 9,
+    concurrency: 5,
 
     // test results reporter to use
     reporters: ['dots', 'saucelabs'],
@@ -128,12 +107,17 @@ module.exports = config => {
       startConnect: false,
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
     },
+    urlRoot: '/__karma__/',
 
+    proxies: {
+      '/': 'http://localhost:4445',
+    },
     captureTimeout: 120000,
     customLaunchers: sauceBrowsers,
+    browserNoActivityTimeout: 45000,
 
     // Browsers to launch, commented out to prevent karma from starting
     // too many concurrent browsers and timing sauce out.
-    browsers: _.keys(sauceBrowsers),
+    browsers: Object.keys(sauceBrowsers),
   });
 };

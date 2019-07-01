@@ -3,7 +3,7 @@
  **************************************************************************** */
 import _ from 'lodash';
 import Indicia from 'indicia';
-import bigu from 'bigu';
+import { observable } from 'mobx';
 import CONFIG from 'config';
 import userModel from 'user_model';
 import appModel from 'app_model';
@@ -13,7 +13,7 @@ import Survey from 'common/config/surveys/Survey';
 import { coreAttributes } from 'common/config/surveys/general';
 import Device from 'helpers/device';
 import store from '../store';
-import GeolocExtension from './sample_geoloc_ext';
+import GPSExtension from './sample_gps_ext';
 
 let Sample = Indicia.Sample.extend({
   api_key: CONFIG.indicia.api_key,
@@ -27,6 +27,7 @@ let Sample = Indicia.Sample.extend({
 
   metadata() {
     return {
+      saved: null,
       training: appModel.get('useTraining'),
     };
   },
@@ -42,14 +43,41 @@ let Sample = Indicia.Sample.extend({
    */
   defaults() {
     return {
-      location: {},
+      location: {
+        accuracy: null,
+        altitude: null,
+        gridref: null,
+        latitude: null,
+        longitude: null,
+        name: null,
+        source: null,
+      },
     };
   },
 
   initialize() {
+    this.attributes = observable(this.attributes);
+    this.metadata = observable(this.metadata);
+    this.remote = observable({ synchronising: null });
+    this.media.models = observable(this.media.models);
+
+    // for mobx to keep same refs
+    this.media.models.add = (...args) =>
+      Indicia.Collection.prototype.add.apply(this, [...args, { sort: false }]);
+
     this.checkExpiredActivity(); // activities
     this.listenTo(userModel, 'sync:activities:end', this.checkExpiredActivity);
-    this._setGPSlocationSetter();
+    this.gpsExtensionInit();
+  },
+
+  /**
+   * Disable sort for mobx to keep the same refs.
+   * @param mediaObj
+   */
+  addMedia(mediaObj) {
+    if (!mediaObj) return;
+    mediaObj.setParent(this);
+    this.media.add(mediaObj, { sort: false });
   },
 
   validateRemote() {
@@ -149,52 +177,6 @@ let Sample = Indicia.Sample.extend({
     return Indicia.Sample.prototype._syncRemote.apply(this, args);
   },
 
-  _setGPSlocationSetter() {
-    if (!this.metadata.complex_survey) {
-      return;
-    }
-
-    // modify GPS service
-    this.setGPSLocation = location => {
-      // child samples
-      if (this.parent) {
-        this.set('location', location);
-        return this.save();
-      }
-
-      const gridSquareUnit = this.metadata.gridSquareUnit;
-      const gridCoords = bigu.latlng_to_grid_coords(
-        location.latitude,
-        location.longitude
-      );
-
-      if (!gridCoords) {
-        return null;
-      }
-
-      location.source = 'gridref'; // eslint-disable-line
-      if (gridSquareUnit === 'monad') {
-        // monad
-        location.accuracy = 500; // eslint-disable-line
-
-        gridCoords.x += -gridCoords.x % 1000 + 500;
-        gridCoords.y += -gridCoords.y % 1000 + 500;
-        location.gridref = gridCoords.to_gridref(1000); // eslint-disable-line
-      } else {
-        // tetrad
-        location.accuracy = 1000; // eslint-disable-line
-
-        gridCoords.x += -gridCoords.x % 2000 + 1000;
-        gridCoords.y += -gridCoords.y % 2000 + 1000;
-        location.gridref = gridCoords.to_gridref(2000); // eslint-disable-line
-        location.accuracy = 1000; // eslint-disable-line
-      }
-
-      this.set('location', location);
-      return this.save();
-    };
-  },
-
   checkExpiredActivity() {
     const activity = this.get('activity');
     if (activity) {
@@ -214,14 +196,6 @@ let Sample = Indicia.Sample.extend({
         }
       }
     }
-  },
-
-  isLocalOnly() {
-    const status = this.getSyncStatus();
-    return (
-      this.metadata.saved &&
-      (status === Indicia.LOCAL || status === Indicia.SYNCHRONISING)
-    );
   },
 
   timeout() {
@@ -288,6 +262,6 @@ let Sample = Indicia.Sample.extend({
 });
 
 // add geolocation functionality
-Sample = Sample.extend(GeolocExtension);
+Sample = Sample.extend(GPSExtension);
 
 export { Sample as default };

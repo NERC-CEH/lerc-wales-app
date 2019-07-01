@@ -1,7 +1,7 @@
 module.exports = grunt => ({
-  default: ['init', 'jst', 'webpack:main'],
+  default: ['init', 'webpack:main'],
 
-  init: ['init:validate', 'exec:data', 'copy', 'vendor'],
+  init: ['init:validate', 'copy:main', 'exec:ionic_copy', 'vendor'],
 
   'init:validate': () => {
     if (process.env.APP_FORCE) {
@@ -14,6 +14,9 @@ module.exports = grunt => ({
     }
     if (process.env.APP_TRAINING) {
       grunt.warn('APP_TRAINING is enabled');
+    }
+    if (process.env.APP_INDICIA_API_HOST) {
+      grunt.warn('APP_INDICIA_API_HOST is enabled');
     }
     if (process.env.APP_SCREENSHOTS) {
       grunt.warn('APP_SCREENSHOTS is enabled');
@@ -34,20 +37,14 @@ module.exports = grunt => ({
   },
 
   vendor: [
+    'replace:leaflet',
     'replace:ratchet',
     'replace:ratchet_fonts',
     'replace:fontello_fonts',
     'replace:photoswipe',
   ],
 
-  // Development run
-  update: ['jst', 'webpack:main'],
-
-  // Development update
-  dev: ['init', 'jst', 'webpack:dev'],
-
-  // Development run
-  'dev:update': ['jst', 'webpack:dev'],
+  update: ['webpack:main'],
 
   // Cordova set up
   cordova: [
@@ -62,6 +59,7 @@ module.exports = grunt => ({
     'exec:cordova_copy_dist',
     'replace:cordova_config',
     'replace:cordova_build',
+    'copy:cordova_hooks',
     'exec:cordova_add_platforms',
   ],
 

@@ -2,19 +2,18 @@
  * Surveys Sample List main view.
  **************************************************************************** */
 import Marionette from 'backbone.marionette';
-import JST from 'JST';
 import radio from 'radio';
-import _MainView, {
-  SampleView as _SampleView,
-} from '../../../samples/list/main_view';
+import _MainView, { SampleView as _SampleView } from '../../list/main_view_old';
 import SlidingView from '../../../common/views/sliding_view';
 import './styles.scss';
+import template from './templates/main.tpl';
+import templateSample from './templates/sample.tpl';
+import templateNone from './templates/list-none.tpl';
 
 const SampleView = Marionette.View.extend({
-  tagName: 'li',
-  className: 'table-view-cell swipe',
+  tagName: 'ion-item-sliding',
 
-  template: JST['surveys/samples/list/sample'],
+  template: templateSample,
 
   triggers: _SampleView.prototype.triggers,
 
@@ -22,26 +21,31 @@ const SampleView = Marionette.View.extend({
 
   modelEvents: _SampleView.prototype.modelEvents,
 
-  photoView: _SampleView.prototype.photoView,
-  onRender: _SampleView.prototype.onRender,
   remove: _SampleView.prototype.remove,
 
   serializeData() {
     const sample = this.model;
     const occ = sample.getOccurrence();
-    const media = occ.media;
-    let img = media.length && media.at(0).get('thumbnail');
+    const media = occ.media.length && occ.media.models[0];
+    let img = media && media.get('thumbnail');
 
     if (!img) {
       // backwards compatibility
-      img = media.length && media.at(0).getURL();
+      img = media && media.getURL();
     }
     const specie = occ.get('taxon') || {};
 
     // taxon
     const scientificName = specie.scientific_name;
-    const commonName = specie.common_name;
 
+    let commonName =
+      specie.found_in_name >= 0 && specie.common_names[specie.found_in_name];
+
+    if (specie.found_in_name === 'common_name') {
+      // This is just to be backwards compatible
+      // TODO: remove in the next update
+      commonName = specie.common_name;
+    }
     const locationPrint = sample.printLocation();
     const location = sample.get('location') || {};
     const surveylocation = sample.parent.get('location') || {};
@@ -72,9 +76,10 @@ const SampleView = Marionette.View.extend({
 });
 
 const NoSamplesView = Marionette.View.extend({
-  tagName: 'li',
-  className: 'table-view-cell empty',
-  template: JST['surveys/samples/list/list-none'],
+  tagName: 'div',
+  className: 'empty',
+  id: 'empty-message',
+  template: templateNone,
 
   triggers: {
     'click #create-new-btn': 'create',
@@ -98,7 +103,7 @@ const SmartCollectionView = SlidingView.extend({
 });
 
 const MainView = _MainView.extend({
-  template: JST['surveys/samples/list/main'],
+  template,
 
   /**
    * Need to push the main content down due to the subheader

@@ -1,12 +1,11 @@
 /******************************************************************************
  * App wide styles. Only place where tag only selectors allowed.
  *****************************************************************************/
+@import '../../../node_modules/@ionic/core/css/ionic.bundle.css';
 @import '../vendor/bootstrap/css/bootstrap.css';
-@import '../vendor/ionic/css/ionic.css';
 
 @import './_variables.scss';
 @import './bootstrap-ext.scss';
-@import './ionic-ext.scss';
 @import './app-wide.scss';
 @import './cordova.scss';
 
@@ -62,6 +61,31 @@ img {
     & + input {
       padding-right: $button-height;
     }
+  }
+}
+
+ion-item[error] {
+  height: 50px;
+  transition: border 0.2s ease-in-out;
+
+  .item-inner {
+    border-bottom: 1px solid $color-orange;
+  }
+
+  .icon {
+    color: $color-orange;
+  }
+
+  &::after {
+    position: absolute;
+    bottom: 2px;
+    left: 50px;
+    right: 0;
+    font-size: 0.75em;
+    color: $color-orange;
+    content: attr(error);
+    white-space: nowrap;
+    transition: content 0.2s ease-in-out;
   }
 }
 
@@ -145,6 +169,10 @@ button {
   }
 }
 
+.bar-nav ~ .content {
+  padding-top: $header-height;
+}
+
 header {
   .pull-left {
     margin-right: 2px;
@@ -159,8 +187,9 @@ header {
 
   .pull-left,
   .pull-right {
-    height: 44px;
+    height: $header-height;
     width: 33%;
+    padding-top: 5px;
 
     button,
     a {
@@ -190,6 +219,7 @@ header {
 header .title {
   width: 33%;
   position: relative;
+  padding-top: 5px;
 
   white-space: nowrap;
   overflow: hidden;
@@ -209,13 +239,12 @@ header .title {
 header #right-panel.pull-right:empty {
   display: none;
 
-  &  + .title {
+  & + .title {
     position: absolute;
     display: block;
     width: 100%;
   }
 }
-
 
 header .subtitle {
   position: absolute;
@@ -339,7 +368,7 @@ header .subtitle {
   background-color: $color-orange;
 }
 
-//todo: alert is absolete
+//TODO: alert is absolete
 .alert {
   color: $color-orange;
 
@@ -380,7 +409,7 @@ header .subtitle {
   border-top: none;
 }
 
-.table-view > * {
+.table-view > *:not(ion-item) {
   padding: 11px 15px 11px 15px;
 
   //no border on last item since table-view has a border
@@ -455,7 +484,7 @@ li h3 {
 .warning-message {
   font-size: 13px;
   font-weight: normal;
-  margin: 0 (-$main-content-margin);
+  margin: 0 (-$main-content-margin) 2px;
   border-radius: 0;
   padding: 3px 15px 3px 42px;
   line-height: 1.4em;
@@ -483,6 +512,10 @@ li h3 {
       right: 15px;
       top: 0;
     }
+  }
+
+  ion-button {
+    display: block;
   }
 }
 
@@ -541,8 +574,9 @@ input {
   }
 }
 
-.toggle.active:before, .toggle:before {
-    content: '';
+.toggle.active:before,
+.toggle:before {
+  content: '';
 }
 
 .toggle.active {
@@ -588,7 +622,7 @@ input {
   }
 }
 
-//todo: should be automatic centering
+//TODO: should be automatic centering
 a.btn span:before {
   padding-top: 13px;
 }
@@ -831,4 +865,32 @@ header .pull-right {
 // increase margin on pull left list items
 .table-view .media-object.pull-left {
   margin-right: 15px;
+}
+
+ion-item > span.icon {
+  margin-left: -13px !important;
+}
+
+ion-item-sliding {
+  ion-item {
+    --background: white;
+  }
+}
+
+input[type='search'] {
+  margin-bottom: 0;
+}
+
+@media only screen and (min-width: 500px) {
+  #main ion-button[expand='full'] {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+//# Ratchet overwrites
+ion-item ion-input input {
+  height: auto !important;
+  margin-bottom: 0 !important;
+  line-height: inherit !important;
 }

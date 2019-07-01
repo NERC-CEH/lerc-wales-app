@@ -2,12 +2,11 @@
  * Surveys Attr controller.
  **************************************************************************** */
 import Backbone from 'backbone';
-import Indicia from 'indicia';
 import savedSamples from 'saved_samples';
 import radio from 'radio';
 import appModel from 'app_model';
 import Log from 'helpers/log';
-import viceCounties from 'vice_counties.data';
+import viceCounties from 'common/data/vice_counties.data';
 import MainView from './main_view';
 import HeaderView from '../../common/views/header_view';
 // import LockView from '../../common/views/attr_lock_view';
@@ -34,7 +33,7 @@ const API = {
 
     // can't edit a saved one - to be removed when sample update
     // is possible on the server
-    if (sample.getSyncStatus() === Indicia.SYNCED) {
+    if (sample.metadata.synced_on) {
       radio.trigger('Surveys:show', sampleID, { replace: true });
       return;
     }
@@ -138,7 +137,7 @@ const API = {
         currentVal = sample.get(attr);
         newVal = values[attr];
 
-        // todo:validate before setting up
+        // TODO:validate before setting up
         sample.set(attr, newVal);
         break;
       default:

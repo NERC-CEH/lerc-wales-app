@@ -1,10 +1,10 @@
 import { AppModel } from 'app_model';
 
-describe('App Model attr locks', () => {
+describe('App Model attr locks extension', () => {
   let localStorageStub;
   before(() => {
     // disable local storage
-    localStorageStub = sinon.stub(AppModel.prototype, 'sync').returns(() => {});
+    localStorageStub = sinon.stub(AppModel.prototype, 'save').returns(() => {});
   });
   after(() => {
     localStorageStub.restore();

@@ -4,18 +4,18 @@
 import $ from 'jquery';
 import _ from 'lodash';
 import Marionette from 'backbone.marionette';
-import JST from 'JST';
 import CONFIG from 'config';
 import LoaderView from '../../views/loader_view';
 import './styles.scss';
+import template from './templates/activity.tpl';
+import templateWrapper from './templates/wrapper.tpl';
 
 /**
  * Single activity item view
  */
 const ActivityView = Marionette.View.extend({
-  tagName: 'div',
-  className: 'activity',
-  template: JST['common/activities/activity'],
+  tagName: 'ion-item',
+  template,
 });
 
 /**
@@ -26,13 +26,13 @@ export default Marionette.CompositeView.extend({
   className: 'no-top',
   emptyView: LoaderView,
   childView: ActivityView,
-  template: JST['common/activities/wrapper'],
-  childViewContainer: 'div.list',
+  template: templateWrapper,
+  childViewContainer: 'ion-radio-group',
 
   // Checking an item fires save and closes the page
   triggers() {
     return {
-      'click input': 'save',
+      'ionSelect ion-radio': 'save',
     };
   },
 
@@ -41,7 +41,7 @@ export default Marionette.CompositeView.extend({
    * @returns {*}
    */
   getActivity() {
-    const $inputs = this.$el.find('input');
+    const $inputs = this.$el.find('ion-radio');
     let activity;
     $inputs.each((int, elem) => {
       if ($(elem).prop('checked')) {

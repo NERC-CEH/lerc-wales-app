@@ -1,16 +1,15 @@
 /** ****************************************************************************
  * Surveys List main view.
  **************************************************************************** */
-import Indicia from 'indicia';
 import Marionette from 'backbone.marionette';
 import CONFIG from 'config';
 import DateHelp from 'helpers/date';
-import JST from 'JST';
+import template from './templates/main.tpl';
 
 export default Marionette.View.extend({
   tagName: 'ul',
   className: 'table-view',
-  template: JST['surveys/show/main'],
+  template,
 
   events: {},
 
@@ -20,8 +19,6 @@ export default Marionette.View.extend({
     const sample = this.model;
     const vc = sample.get('vice-county') || {};
 
-    const syncStatus = sample.getSyncStatus();
-
     const locationPrint = sample.printLocation();
     const location = sample.get('location') || {};
 
@@ -29,8 +26,8 @@ export default Marionette.View.extend({
       site_url: CONFIG.site_url,
       id: sample.id,
       cid: sample.cid,
-      isSynchronising: syncStatus === Indicia.SYNCHRONISING,
-      onDatabase: syncStatus === Indicia.SYNCED,
+      isSynchronising: sample.remote.synchronising,
+      onDatabase: sample.metadata.synced_on,
       location: locationPrint,
       locationName: location.name,
       date: DateHelp.print(sample.get('date'), true),
