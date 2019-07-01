@@ -70,7 +70,7 @@ $OS_MAP_URL: 'https://openspace.ordnancesurvey.co.uk/osmapapi/ts?KEY=#{$OS_MAP_K
 https://beta.ionicframework.com/docs/theming/color-generator **/
 :root {
   /** primary **/
-  --ion-color-primary: #91a71c;
+  --ion-color-primary: #47934f; //$color-main;
   --ion-color-primary-rgb: 145, 167, 28;
   --ion-color-primary-contrast: #fff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;

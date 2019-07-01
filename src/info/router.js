@@ -15,7 +15,7 @@ import InfoMenu from './Menu';
 import Welcome from './Welcome';
 import PrivacyPolicy from './PrivacyPolicy';
 import PrivacyPolicyWelsh from './PrivacyPolicyWelsh';
-// import LanguageController from './language/controller'; //XXXX
+import LanguageSelect from '../common/pages/LanguageSelect';
 import BRCApproved from './BRCApproved';
 import Terms from './Terms';
 import TermsWelsh from './TermsWelsh';
@@ -60,7 +60,8 @@ const Router = Marionette.AppRouter.extend({
     },
     'info/privacy(/)': () => {
       const language = appModel.get('language');
-      const getPolicy = () => language === 'EN' ? <PrivacyPolicy /> : <PrivacyPolicyWelsh />
+      const getPolicy = () =>
+        language === 'EN' ? <PrivacyPolicy /> : <PrivacyPolicyWelsh />;
 
       Log('Info:Privacy: visited.');
       radio.trigger('app:header', <Header>{t('Privacy Policy')}</Header>);
@@ -68,7 +69,7 @@ const Router = Marionette.AppRouter.extend({
     },
     'info/terms(/)': () => {
       const language = appModel.get('language');
-      const getTerms = () => language === 'EN' ? <Terms /> : <TermsWelsh />
+      const getTerms = () => (language === 'EN' ? <Terms /> : <TermsWelsh />);
 
       Log('Info:Terms: visited.');
       radio.trigger('app:header', <Header>{t('T&Cs')}</Header>);
@@ -94,9 +95,13 @@ radio.on('info:welcome', options => {
   App.navigate('info/welcome', options);
   showWelcome();
 });
+
 radio.on('info:language', options => {
   App.navigate('info/language', options);
-  LanguageController.show();
+  const navigateHome = () => radio.trigger('info:welcome', { replace: true });
+
+  radio.trigger('app:header:hide');
+  radio.trigger('app:main', <LanguageSelect onSelect={navigateHome} />);
 });
 
 App.on('before:start', () => {

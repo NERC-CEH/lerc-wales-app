@@ -89,9 +89,6 @@ function photoUpload(e) {
   createNewSampleWithPhoto('general', photo);
 }
 
-function navigateToSurveys() {
-  radio.trigger('surveys:list', { replace: true });
-}
 
 @observer
 class Component extends React.Component {
@@ -105,11 +102,7 @@ class Component extends React.Component {
       <nav id="samples-header">
         <div className="pull-left">
           <a href="#info" className="menu-link icon icon-menu" />
-          <button
-            id="surveys-btn"
-            className="icon icon-surveys"
-            onClick={navigateToSurveys}
-          />
+          
           <a
             href="#user/activities"
             id="activities-btn"

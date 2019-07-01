@@ -147,6 +147,7 @@ class Component extends React.Component {
     const useGridMap = appModel.get('useGridMap');
     const useExperiments = appModel.get('useExperiments');
     const gridSquareUnit = appModel.get('gridSquareUnit');
+    const language = appModel.get('language');
 
     return (
       <ion-list lines="full">
@@ -196,15 +197,16 @@ class Component extends React.Component {
           <span slot="start" className="icon icon-location" />
           {t('Manage Saved')}
         </ion-item>
-        <ion-item href="#settings/survey" detail>
-          <span slot="start" className="icon icon-grid" />
-          <span slot="end" className="descript" style={{ width: '25%' }}>
-            {gridSquareUnit}
-          </span>
-          {t('Grid Square Unit')}
-        </ion-item>
 
         <ion-item-divider>{t('Application')}</ion-item-divider>
+        <ion-item href="#settings/language">
+          <span slot="start" className="icon icon-grid" />
+          <span slot="end" className="descript" style={{ width: '25%' }}>
+            {language}
+          </span>
+          {t('Language')}
+        </ion-item>
+
         <ion-item>
           <span slot="start" className="icon icon-fire" />
           <ion-label>{t('Experimental Features')}</ion-label>

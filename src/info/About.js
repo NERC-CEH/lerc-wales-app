@@ -55,13 +55,17 @@ const Component = props => (
 (
         <a href="https://www.bis.org.uk/">BIS</a>
 ,
+        {' '}
         <a href="https://www.cofnod.org.uk/Home">Cofnod</a>
 ,
+        {' '}
         <a href="http://www.sewbrec.org.uk/">SEWBReC</a>
         {' '}
 and
+        {' '}
         <a href="https://www.wwbic.org.uk/">WWBIC</a>
         ).
+        {' '}
         {t(
           ' We work closely together to provide a seamless service for the data users in Wales and to support the voluntary recording community across the principality'
         )}

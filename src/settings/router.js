@@ -10,7 +10,7 @@ import userModel from 'user_model';
 import savedSamples from 'saved_samples';
 import Log from 'helpers/log';
 import Locations from './Locations';
-import LanguageController from './language/controller'; // XXX
+import LanguageSelect from '../common/pages/LanguageSelect';
 import Survey from './Survey';
 import Menu from './Menu';
 
@@ -30,6 +30,11 @@ function showLocations(options) {
   );
 }
 
+function showLanguageSelect() {
+  radio.trigger('app:header', <Header>{t('Language')}</Header>);
+  radio.trigger('app:main', <LanguageSelect />);
+}
+
 const Router = Marionette.AppRouter.extend({
   routes: {
     'settings(/)': () => {
@@ -45,7 +50,7 @@ const Router = Marionette.AppRouter.extend({
       );
       radio.trigger('app:footer:hide');
     },
-    'settings/language(/)': LanguageController.show,
+    'settings/language(/)': showLanguageSelect,
     'settings/locations(/)': showLocations,
     'settings/survey(/)': () => {
       Log('Settings:Survey: visited.');

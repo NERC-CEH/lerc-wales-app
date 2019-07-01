@@ -12,7 +12,7 @@ export default () => (
         on the
         <a href="http://irecord.org.uk" rel="external">
           {' '}
-          Biological Record Centre's iRecord system
+          {`Biological Record Centre's iRecord system`}
         </a>
         . This enables you to log in and see your records and those submitted by
         other people for all species. Your name, as specified when you create

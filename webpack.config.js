@@ -88,6 +88,7 @@ const config = {
           `sass-loader?includePaths[]=${SRC_DIR}`,
         ],
       },
+      { test: /\.pot?$/, loader: 'json-loader!po-loader?format=mf' },
     ],
   },
 
@@ -136,7 +137,7 @@ const config = {
         APP_EXPERIMENTS: process.env.APP_EXPERIMENTS || false,
         APP_SENTRY_KEY: JSON.stringify(process.env.APP_SENTRY_KEY || ''),
         APP_GA: JSON.stringify(process.env.APP_GA || false),
-        
+
         // https://github.com/webpack-contrib/karma-webpack/issues/316
         SAUCE_LABS: JSON.stringify(process.env.SAUCE_LABS),
       },

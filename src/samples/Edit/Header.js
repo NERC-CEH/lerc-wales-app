@@ -101,7 +101,7 @@ class Header extends Component {
 
     const sendButton = !isSynchronising ? (
       <button id="sample-save-btn" onClick={this.send}>
-        Send 
+        {t('Send')}
         {' '}
         <span className="icon icon-send" />
       </button>
