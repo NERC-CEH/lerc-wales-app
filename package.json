@@ -3,8 +3,8 @@
   "id": "uk.ac.ceh.lercwales",
   "title": "LERC Wales",
   "description": "LERC Wales mobile application.",
-  "version": "1.0.0",
-  "build": "4",
+  "version": "4.0.2",
+  "build": "1",
   "homepage": "https://www.lercwales.org.uk/",
   "scripts": {
     "build": "NODE_ENV=production grunt",

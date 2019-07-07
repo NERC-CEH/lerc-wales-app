@@ -90,14 +90,14 @@ const API = {
       const newBuild = CONFIG.build;
 
       // part of 4.0.0 update START
-      const oldStr = localStorage.getItem('irecord-app-app');
+      const oldStr = localStorage.getItem('lerc-wales-app-app');
       const old = JSON.parse(oldStr);
       if (old && typeof old === 'object' && old.appVersion) {
         currentVersion = old.appVersion;
         currentBuild = old.appBuild;
         delete old.appVersion;
         delete old.appBuild;
-        localStorage.setItem('irecord-app-app', JSON.stringify(old));
+        localStorage.setItem('lerc-wales-app-app', JSON.stringify(old));
       }
       // part of 4.0.0 update END
 
@@ -138,33 +138,13 @@ const API = {
    * The sequence of updates that should take place.
    * @type {string[]}
    */
-  updatesSeq: ['3.0.0', '4.0.0'],
+  updatesSeq: ['4.0.0'],
 
   /**
    * Update functions.
    * @type {{['1.1.0']: (())}}
    */
   updates: {
-    '3.0.0': callback => {
-      Log('Update: version 3.0.0', 'i');
-
-      function onFinish() {
-        Log('Update: finished.', 'i');
-        callback();
-      }
-
-      if (savedSamples.fetching) {
-        Log('Update: waiting for samples collection to be ready', 'i');
-        savedSamples.once('fetching:done', () =>
-          updateSamples(savedSamples, onFinish)
-        );
-        savedSamples.once('fetching:error', callback);
-        return;
-      }
-
-      updateSamples(savedSamples, onFinish);
-    },
-
     '4.0.0': callback => {
       Log('Update: version 4.0.0', 'i');
 
@@ -179,12 +159,12 @@ const API = {
       }
 
       const userModelPromise = new Promise(resolve => {
-        const oldStr = localStorage.getItem('irecord-app-user');
+        const oldStr = localStorage.getItem('lerc-wales-app-user');
         const old = JSON.parse(oldStr);
         if (old && typeof old === 'object') {
           Log('Update: updating userModel.', 'i');
           setMobXAttrs(userModel.attrs, old);
-          localStorage.removeItem('irecord-app-user');
+          localStorage.removeItem('lerc-wales-app-user');
           userModel.save().then(resolve);
           return;
         }
@@ -192,12 +172,12 @@ const API = {
       });
 
       const appModelPromise = new Promise(resolve => {
-        const oldStr = localStorage.getItem('irecord-app-app');
+        const oldStr = localStorage.getItem('lerc-wales-app-app');
         const old = JSON.parse(oldStr);
         if (old && typeof old === 'object') {
           Log('Update: updating appModel.', 'i');
           setMobXAttrs(appModel.attrs, old);
-          localStorage.removeItem('irecord-app-app');
+          localStorage.removeItem('lerc-wales-app-app');
           appModel.save().then(resolve);
           return;
         }
