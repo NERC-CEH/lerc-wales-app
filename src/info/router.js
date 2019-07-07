@@ -61,7 +61,7 @@ const Router = Marionette.AppRouter.extend({
     'info/privacy(/)': () => {
       const language = appModel.get('language');
       const getPolicy = () =>
-        language === 'EN' ? <PrivacyPolicy /> : <PrivacyPolicyWelsh />;
+        language === 'en' ? <PrivacyPolicy /> : <PrivacyPolicyWelsh />;
 
       Log('Info:Privacy: visited.');
       radio.trigger('app:header', <Header>{t('Privacy Policy')}</Header>);
@@ -69,7 +69,7 @@ const Router = Marionette.AppRouter.extend({
     },
     'info/terms(/)': () => {
       const language = appModel.get('language');
-      const getTerms = () => (language === 'EN' ? <Terms /> : <TermsWelsh />);
+      const getTerms = () => (language === 'en' ? <Terms /> : <TermsWelsh />);
 
       Log('Info:Terms: visited.');
       radio.trigger('app:header', <Header>{t('T&Cs')}</Header>);
