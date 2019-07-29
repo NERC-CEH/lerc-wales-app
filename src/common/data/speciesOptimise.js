@@ -55,7 +55,8 @@ const flattenSpeciesReport = speciesFromReport =>
       flattened[COMMON_NAMES].push(s.synonym);
     }
     if (enableWelsh && s.cym) {
-      flattened[COMMON_NAMES].push(s.cym);
+      const cleaned = taxonCleaner.cym(s.cym);
+      flattened[COMMON_NAMES].push(cleaned);
     }
 
     return flattened;

@@ -74,3 +74,28 @@ module.exports = (taxon, common) => {
 
   return cleaned;
 };
+
+module.exports.cym = name => {
+  // capitalize
+  let cleaned = name
+    .toLowerCase()
+    .split(' ')
+    .map(w => w.charAt(0).toUpperCase() + w.substring(1))
+    .join(' ');
+
+  // cherry-pick the corrections
+  const corrections = [
+    [' Ac ', ' ac '],
+    [' Y ', ' y '],
+    [' Yr ', ' yr '],
+    [' A ', ' a '],
+    [' I ', ' i '],
+    [' Ag ', ' ag '],
+    ['-Y-', '-y-'],
+  ];
+  corrections.forEach(([str, replaceStr]) => {
+    cleaned = cleaned.replace(new RegExp(str, 'g'), replaceStr);
+  });
+
+  return cleaned;
+};
