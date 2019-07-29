@@ -1,66 +1,81 @@
 import Raven from 'raven-js';
-import { removeUserId, breadcrumbCallback, dataCallback } from '../analytics';
+import CONFIG from 'config';
+import userModel from 'user_model';
+import appModel from 'app_model';
+import analytics, {
+  removeUserId,
+  breadcrumbCallback,
+  dataCallback,
+} from '../analytics';
 
-// a = [
-//   {
-//     timestamp: 1518983843.872,
-//     category: 'navigation',
-//     data: { to: '/#info', from: '/#samples' },
-//   },
-//   {
-//     timestamp: 1518983844.015,
-//     category: 'ui.click',
-//     message: 'div#left-panel.pull-left > a.icon.icon-left-nav',
-//   },
-//   {
-//     timestamp: 1518983844.019,
-//     message: 'Samples:List:Controller: showing 13.',
-//     level: 'debug',
-//     category: 'console',
-//   },
-//   {
-//     timestamp: 1518983845.561,
-//     category: 'ui.click',
-//     message: 'li.table-view-cell.swipe > a.mobile > div.media-body > div.core',
-//   },
-//   {
-//     timestamp: 1518983845.562,
-//     category: 'navigation',
-//     data: { to: '/#samples/UUID/edit', from: '/#samples' },
-//   },
-//   {
-//     timestamp: 1518983850.738,
-//     type: 'http',
-//     category: 'xhr',
-//     data: { url: 'https://www.brc.ac.uk/irecord/api/v1/samples' },
-//   },
-//   {
-//     timestamp: 1518983935.123,
-//     type: 'http',
-//     category: 'xhr',
-//     data: { url: 'https://www.brc.ac.uk/irecord/api/v1/users/USERID' },
-//   },
-//   {
-//     timestamp: 1518983935.126,
-//     message: 'Incorrect password or email.\n    ',
-//     level: 'error',
-//     category: 'console',
-//   },
-//
-//   {
-//     timestamp: 1518983844.015,
-//     category: 'ui.click',
-//     message: 'div#left-panel.pull-left > a.icon.icon-left-nav',
-//   },
-// ];
 describe('Helpers Analytics', () => {
   let RavenStub;
-  before(() => {
+  let hasLogInStub;
+  beforeEach(() => {
+    hasLogInStub = sinon.stub(userModel, 'hasLogIn');
+    hasLogInStub.returns(true);
+
     RavenStub = sinon.stub(Raven, 'config');
     RavenStub.returns({ install() {} });
   });
-  after(() => {
+  afterEach(() => {
     RavenStub.restore();
+    hasLogInStub.restore();
+  });
+
+  describe('init', () => {
+    let origKey;
+    beforeEach(() => {
+      origKey = CONFIG.sentry.key;
+      CONFIG.sentry.key = 1234;
+    });
+    afterEach(() => {
+      CONFIG.sentry.key = origKey;
+      analytics.initialized = false;
+    });
+
+    it('should initialize Sentry', () => {
+      // Given
+
+      // When
+      analytics.init();
+
+      // Then
+      expect(RavenStub.called).to.be.equal(true);
+    });
+
+    it('should not initialize without key', () => {
+      // Given
+      delete CONFIG.sentry.key;
+
+      // When
+      analytics.init();
+
+      // Then
+      expect(RavenStub.called).to.be.equal(false);
+    });
+
+    it('should not initialize if user not logged in', () => {
+      // Given
+      hasLogInStub.returns(false);
+
+      // When
+      analytics.init();
+
+      // Then
+      expect(RavenStub.called).to.be.equal(false);
+    });
+
+    it('should not initialize if user doesnt share analytics', () => {
+      // Given
+      appModel.set('sendAnalytics', false);
+
+      // When
+      analytics.init();
+
+      // Then
+      expect(RavenStub.called).to.be.equal(false);
+    });
   });
 
   describe('breadcrumbCallback', () => {

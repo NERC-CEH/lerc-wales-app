@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import * as store from 'common/store';
+import Analytics from 'helpers/analytics';
 import { UserModel } from '../user_model';
 
 /* eslint-disable no-unused-expressions */
@@ -25,8 +26,9 @@ function initUserModel(login) {
 describe('User Model', () => {
   let getStoreStub;
   let server;
-
+  let analyticsInitStub;
   before(() => {
+    analyticsInitStub = sinon.stub(Analytics, 'init');
     getStoreStub = sinon.stub(store, 'getStore').resolves({
       getItem: () => Promise.resolve('{}'),
       setItem: () => Promise.resolve(),
@@ -34,6 +36,7 @@ describe('User Model', () => {
   });
 
   after(() => {
+    analyticsInitStub.restore();
     getStoreStub.restore();
   });
 
@@ -59,6 +62,19 @@ describe('User Model', () => {
     expect(userModel.get('secondname')).to.be.equal('');
     expect(userModel.get('email')).to.be.equal('');
     expect(userModel.get('password')).to.be.equal('');
+  });
+
+  describe('logIn', () => {
+    it('should initialize analytics', async () => {
+      // Given
+      const userModel = await initUserModel();
+
+      // When
+      userModel.logIn({});
+
+      // Then
+      expect(analyticsInitStub.calledOnce).to.be.equal(true);
+    });
   });
 
   describe('Activities support', () => {

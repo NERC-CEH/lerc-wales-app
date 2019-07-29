@@ -146,6 +146,7 @@ class Component extends React.Component {
     const useGridRef = appModel.get('useGridRef');
     const useGridMap = appModel.get('useGridMap');
     const useExperiments = appModel.get('useExperiments');
+    const sendAnalytics = appModel.get('sendAnalytics');
     const gridSquareUnit = appModel.get('gridSquareUnit');
     const language = appModel.get('language');
 
@@ -207,6 +208,14 @@ class Component extends React.Component {
           {t('Language')}
         </ion-item>
 
+        <ion-item>
+          <span slot="start" className="icon icon-share" />
+          <ion-label>{t('Share App Analytics')}</ion-label>
+          <Toggle
+            onToggle={checked => this.onToggle('sendAnalytics', checked)}
+            checked={sendAnalytics}
+          />
+        </ion-item>
         <ion-item>
           <span slot="start" className="icon icon-fire" />
           <ion-label>{t('Experimental Features')}</ion-label>

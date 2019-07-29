@@ -84,7 +84,7 @@ class UserModel {
    *
    * @param user User object or empty object
    */
-  logIn(user) {
+  async logIn(user) {
     Log('UserModel: logging in.');
 
     this.set('drupalID', user.id || '');
@@ -98,6 +98,7 @@ class UserModel {
     this.syncActivities();
     this.syncStats();
 
+    await Analytics.init();
     Analytics.trackEvent('User', 'login');
 
     return this.save();

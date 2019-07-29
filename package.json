@@ -4,7 +4,7 @@
   "title": "LERC Wales",
   "description": "LERC Wales mobile application.",
   "version": "4.0.2",
-  "build": "1",
+  "build": "2",
   "homepage": "https://www.lercwales.org.uk/",
   "scripts": {
     "build": "NODE_ENV=production grunt",

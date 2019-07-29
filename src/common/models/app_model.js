@@ -19,6 +19,7 @@ const getDefaultAttrs = () => ({
   useGridMap: true,
   useTraining: false,
 
+  sendAnalytics: true,
   useExperiments: false,
   useGridNotifications: false,
   gridSquareUnit: 'monad',

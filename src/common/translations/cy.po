@@ -1439,3 +1439,6 @@ msgstr "Heb ddewis"
 
 msgid "Send"
 msgstr "Cyflwyno"
+
+msgid "Share App Analytics"
+msgstr "Anfon Ap Analytics"

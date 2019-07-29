@@ -24,6 +24,7 @@ describe('App Model', () => {
       'autosync',
       'useGridRef',
       'useGridMap',
+      'sendAnalytics',
       'useExperiments',
       'useTraining',
       'useGridNotifications',

@@ -7,6 +7,8 @@
 import Backbone from 'backbone';
 import Raven from 'raven-js';
 import CONFIG from 'config';
+import userModel from 'user_model';
+import appModel from 'app_model';
 import Log from './log';
 
 function _removeUUID(string) {
@@ -105,44 +107,44 @@ export function dataCallback(data) {
 }
 
 const API = {
-  initialized: false,
-
-  init() {
-    Log('Analytics: initializing.');
-
-    // initialize only once
-    if (this.initialized) {
+  async init() {
+    if (!userModel.hasLogIn() || !appModel.get('sendAnalytics')) {
       return;
     }
 
-    // Turn on the error logging
-    if (CONFIG.sentry.key) {
-      Log('Analytics: turning on server error logging.');
-      Raven.config(
-        `https://${CONFIG.sentry.key}@sentry.io/${CONFIG.sentry.project}`,
-        {
-          environment: CONFIG.environment,
-          release: CONFIG.version,
-          ignoreErrors: [
-            'setSelectionRange', // there is some fastclick issue (does not affect ux)
-            'Incorrect password or email', // no need to log that
-            'Backbone.history', // on refresh fires this error, todo: fix it
-          ],
-          // breadcrumbCallback, // moved to dataCallback
-          dataCallback,
-        }
-      ).install();
+    Log('Analytics: initializing.');
+    this._initSentry();
+    await this._initGA();
+  },
 
-      // increase breadcrumbs captured before send
-      // this is undocumented use of _globalOptions so might break in the future
-      Raven._globalOptions.maxBreadcrumbs = 400;
-      // console.log(Raven._globalOptions);
-    } else {
+  _initSentry() {
+    if (!CONFIG.sentry.key) {
       Log(
         'Analytics: server error logging is turned off. Please provide Sentry key.',
         'w'
       );
+      return;
     }
+
+    Log('Analytics: turning on server error logging.');
+    Raven.config(
+      `https://${CONFIG.sentry.key}@sentry.io/${CONFIG.sentry.project}`,
+      {
+        environment: CONFIG.environment,
+        release: CONFIG.version,
+        ignoreErrors: [
+          'setSelectionRange', // there is some fastclick issue (does not affect ux)
+          'Incorrect password or email', // no need to log that
+          'Backbone.history', // on refresh fires this error, todo: fix it
+        ],
+        // breadcrumbCallback, // moved to dataCallback
+        dataCallback,
+      }
+    ).install();
+
+    // increase breadcrumbs captured before send
+    // this is undocumented use of _globalOptions so might break in the future
+    Raven._globalOptions.maxBreadcrumbs = 400;
 
     // capture unhandled promises
     window.onunhandledrejection = e => {
@@ -150,8 +152,26 @@ const API = {
         extra: { unhandledPromise: true },
       });
     };
+  },
 
-    if (window.cordova && CONFIG.ga.id) {
+  _initGA() {
+    if (!window.cordova || !CONFIG.ga.id) {
+      Log(
+        `Analytics: Google Analytics is turned off. ${
+          window.cordova ? 'Please provide the GA tracking ID.' : ''
+        }`,
+        'w'
+      );
+
+      return null;
+    }
+
+    if (this._ga) {
+      // don't init twice
+      return null;
+    }
+
+    return new Promise(resolve => {
       document.addEventListener('deviceready', () => {
         Log('Analytics: turning on Google Analytics.');
 
@@ -163,44 +183,38 @@ const API = {
           API.trackView();
         });
 
-        this.initialized = true;
+        this._ga = window.analytics;
+        resolve();
       });
-    } else {
-      Log(
-        `Analytics: Google Analytics is turned off. ${
-          window.cordova ? 'Please provide the GA tracking ID.' : ''
-        }`,
-        'w'
-      );
-    }
+    });
   },
 
   /**
    * Sample page view.
    * @param view
    */
-  trackView(view) {
-    if (!this.initialized) {
+  async trackView(view) {
+    if (!this._ga) {
       return;
     }
 
     // submit the passed view
     if (view) {
-      window.analytics.trackView(view);
+      this._ga.trackView(view);
       return;
     }
 
     // get current view
     const url = this._getURL();
-    window.analytics.trackView(url);
+    this._ga.trackView(url);
   },
 
-  trackEvent(category, event) {
-    if (!this.initialized) {
+  async trackEvent(category, event) {
+    if (!this._ga) {
       return;
     }
 
-    window.analytics.trackEvent(category, event);
+    this._ga.trackEvent(category, event);
   },
 
   _getURL() {
@@ -215,8 +229,5 @@ const API = {
     return url;
   },
 };
-
-// init Analytics
-API.init();
 
 export { API as default };

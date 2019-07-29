@@ -1216,3 +1216,6 @@ msgstr "Not selected"
 
 msgid "Send"
 msgstr "Send"
+
+msgid "Share App Analytics"
+msgstr "Share App Analytics"

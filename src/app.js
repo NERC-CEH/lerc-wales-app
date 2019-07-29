@@ -56,6 +56,8 @@ App.on('before:start', () => {
 App.on('start', () => {
   const modelsInit = Promise.all([appModel._init, userModel._init]);
   modelsInit.then(() => {
+    Analytics.init();
+
     // update app first
     Update.run(() => {
       // release the beast
