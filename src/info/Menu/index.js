@@ -8,9 +8,16 @@ import Menu from './Menu';
 function showLogoutConfirmationDialog(callbackIfTrue) {
   radio.trigger('app:dialog', {
     title: 'Logout',
-    body: `${t('Are you sure you want to logout?')}<p><i>${t(
-      'This will delete all the records on this device.'
-    )}</i></p>`,
+    body: `${t('Are you sure you want to logout?')}
+    
+    <p>
+      <label>
+      <input id="delete-all-records" type="checkbox" checked/>
+      <i>${t('Delete all the locally stored app data.')}</i>
+      </label>
+    </p>
+    
+    `,
     buttons: [
       {
         title: 'Cancel',
@@ -23,7 +30,9 @@ function showLogoutConfirmationDialog(callbackIfTrue) {
         title: 'Logout',
         color: 'danger',
         onClick() {
-          callbackIfTrue();
+          const deleteAllData = document.getElementById('delete-all-records')
+            .checked;
+          callbackIfTrue(deleteAllData);
           radio.trigger('app:dialog:hide');
         },
       },
@@ -36,10 +45,13 @@ const Controller = observer(props => {
 
   function logOut() {
     Log('Info:Menu: logging out.');
-    showLogoutConfirmationDialog(() => {
+    showLogoutConfirmationDialog(deleteAllData => {
       appModel.resetDefaults();
       userModel.logOut();
-      return savedSamples.resetDefaults();
+      
+      if (deleteAllData) {
+        savedSamples.resetDefaults();
+      }
     });
   }
 

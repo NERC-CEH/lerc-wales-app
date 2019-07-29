@@ -1219,3 +1219,6 @@ msgstr "Send"
 
 msgid "Share App Analytics"
 msgstr "Share App Analytics"
+
+msgid "Delete all the locally stored app data."
+msgstr "Delete all the locally stored app data."
