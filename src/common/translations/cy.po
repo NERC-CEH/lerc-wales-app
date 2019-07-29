@@ -1,10 +1,11 @@
 # Translators:
 # Karolis, 2019
+# David Slade <david.slade@sewbrec.org.uk>, 2019
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: temp\n"
-"Last-Translator: Karolis, 2019\n"
+"Last-Translator: David Slade <david.slade@sewbrec.org.uk>, 2019\n"
 "Language-Team: Welsh (https://www.transifex.com/ceh/teams/100775/cy/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1401,40 +1402,40 @@ msgstr ""
 "adborth, cofiwch"
 
 msgid "Names:"
-msgstr ""
+msgstr "Enwau:"
 
 msgid "Common only"
-msgstr ""
+msgstr "Cyffredin yn unig"
 
 msgid "Scientific only"
-msgstr ""
+msgstr "Gwyddonol yn unig"
 
 msgid "Taxon groups:"
-msgstr ""
+msgstr "Grŵpiau Tacson"
 
 msgid "You have no previous locations."
-msgstr ""
+msgstr "Nid oes gennych unrhyw leoliadau blaenorol"
 
 msgid "Sex"
-msgstr ""
+msgstr "Rhyw"
 
 msgid "Mixed"
-msgstr ""
+msgstr "Cymysg"
 
 msgid "Please indicate the sex of the organism."
-msgstr ""
+msgstr "Nodwch ryw yr organeb"
 
 msgid "Eggs"
-msgstr ""
+msgstr "Wyau"
 
 msgid "Pupae"
-msgstr ""
+msgstr "Chwilerod"
 
 msgid "Larval webs"
-msgstr ""
+msgstr "Gweoedd larfal"
 
 msgid "Not selected"
-msgstr ""
+msgstr "Heb ddewis"
 
 msgid "Send"
 msgstr "Cyflwyno"

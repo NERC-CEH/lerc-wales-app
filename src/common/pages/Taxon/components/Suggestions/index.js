@@ -63,7 +63,7 @@ function deDuplicateSuggestions(suggestions) {
   return results;
 }
 
-const searchInfo = (
+const getSearchInfo = () => (
   <p id="taxa-shortcuts-info">
     {t(
       'For quicker searching of the taxa you can use different shortcuts. For example, to find'
@@ -90,7 +90,7 @@ const Suggestions = ({
   onSpeciesSelected,
 }) => {
   if (!searchResults) {
-    return <div id="suggestions">{searchInfo}</div>;
+    return <div id="suggestions">{getSearchInfo()}</div>;
   }
 
   let suggestionsList;
