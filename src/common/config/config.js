@@ -24,9 +24,7 @@ const CONFIG = {
   log: !__TEST__,
 
   // google analytics
-  ga: {
-    id: !__TEST__ && process.env.APP_GA,
-  },
+  ga: {},
 
   // error analytics
   sentry: {
