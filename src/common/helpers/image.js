@@ -6,6 +6,16 @@ import Log from './log';
 import Analytics from './analytics';
 import Device from './device';
 
+const resetStatusBar = () => {
+  // see: https://github.com/apache/cordova-plugin-statusbar/issues/156
+  if (Device.isAndroid()) {
+    return;
+  }
+
+  StatusBar.hide(); // eslint-disable-line
+  StatusBar.show(); // eslint-disable-line
+};
+
 export function _onGetImageError(err, resolve, reject) {
   if (typeof err !== 'string') {
     // for some reason the plugin's errors can be non-strings
@@ -84,7 +94,14 @@ const Image = {
         window.resolveLocalFileSystemURL(URI, onSuccessCopyFile, reject);
       }
 
+      function onError(err) {
+        resetStatusBar();
+        return _onGetImageError(err, resolve, reject);
+      }
+
       function onSuccess(fileURI) {
+        resetStatusBar();
+
         if (
           Device.isAndroid() &&
           cameraOptions.sourceType === window.Camera.PictureSourceType.CAMERA
@@ -102,11 +119,7 @@ const Image = {
         copyFileToAppStorage(fileURI);
       }
 
-      navigator.camera.getPicture(
-        onSuccess,
-        err => _onGetImageError(err, resolve, reject),
-        cameraOptions
-      );
+      navigator.camera.getPicture(onSuccess, onError, cameraOptions);
       Analytics.trackEvent('Image', 'get', cameraOptions.sourceType);
     });
   },
