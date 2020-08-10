@@ -8,7 +8,8 @@ import Device from './device';
 
 const resetStatusBar = () => {
   // see: https://github.com/apache/cordova-plugin-statusbar/issues/156
-  if (Device.isAndroid()) {
+  if (!window.StatusBar || Device.isAndroid()) {
+    // use StatusBar instead of cordova for tests
     return;
   }
 
