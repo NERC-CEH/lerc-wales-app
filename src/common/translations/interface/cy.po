@@ -1,0 +1,1761 @@
+# 
+# Translators:
+# David Slade <david.slade@sewbrec.org.uk>, 2019
+# Karolis, 2019
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: temp\n"
+"Last-Translator: Karolis, 2019\n"
+"Language-Team: Welsh (https://www.transifex.com/ceh/teams/100775/cy/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cy\n"
+"Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3;\n"
+"X-Generator: POEditor.com\n"
+
+msgid "Location"
+msgstr "Lleoliad "
+
+msgid "Date"
+msgstr "Dyddiad "
+
+msgid "Edit"
+msgstr "Golygu "
+
+msgid "Login"
+msgstr "Mewngofnodi "
+
+msgid "Register"
+msgstr "Cofrestru "
+
+msgid "Settings"
+msgstr "Gosodiadau "
+
+msgid "App"
+msgstr "Ap "
+
+msgid "Info"
+msgstr "Gwybodaeth "
+
+msgid "About"
+msgstr "Cefndir "
+
+msgid "Help"
+msgstr "Help "
+
+msgid "Privacy Policy"
+msgstr "Polisi Preifatrwydd "
+
+msgid "BRC Approved"
+msgstr "Cymeradwywyd gan BRC "
+
+msgid "Credits"
+msgstr "Cydnabyddiaeth    "
+
+msgid "LERC Wales"
+msgstr "LERC Cymru "
+
+msgid "Please sign in with your iRecord account or register."
+msgstr "Mewngofnodwch gyda'ch cyfrif iRecord neu gofrestru. "
+
+msgid "Sign in"
+msgstr "Mewngofnodi "
+
+msgid "Request a new password"
+msgstr "Gofyn am gyfrinair newydd "
+
+msgid "I agree to"
+msgstr "Rwyf yn cytuno i"
+
+msgid "Terms and Conditions"
+msgstr "Telerau ac Amodau "
+
+msgid "Create"
+msgstr "Creu "
+
+msgid "Enter your username or email address to request a password reset"
+msgstr ""
+"Nodwch eich enw defnyddiwr neu eich cyfeiriad e-bost i wneud cais am ailosod"
+" y cyfrinair "
+
+msgid "Request"
+msgstr "Cais "
+
+msgid "Reset"
+msgstr "Ailosod "
+
+msgid "Records"
+msgstr "Cofnodion "
+
+msgid "Submit All"
+msgstr "Cyflwyno Pob Un "
+
+msgid "Remove All Saved"
+msgstr "Dileu Pob Cofnod a Gadwyd "
+
+msgid "Training Mode"
+msgstr "Dull Hyfforddi "
+
+msgid "Use Grid Ref"
+msgstr "Defnyddio Cyfeirnod Map "
+
+msgid "Show Map Grid"
+msgstr "Dangos Grid Map "
+
+msgid "Manage Saved"
+msgstr "Rheoli Pob Lleoliad a Gadwyd"
+
+msgid "Grid Square Unit"
+msgstr "Uned Sgwâr Grid "
+
+msgid "Application"
+msgstr "Defnydd "
+
+msgid "Language"
+msgstr "Iaith "
+
+msgid "Experimental Features"
+msgstr "Nodweddion Arbrofol "
+
+msgid "Here you can select or swipe to edit your previous locations"
+msgstr "Yma cewch ddewis neu sweipio i olygu eich lleoliadau blaenorol "
+
+msgid "source"
+msgstr "ffynhonnell "
+
+msgid "map"
+msgstr "map "
+
+msgid "Past Locations"
+msgstr "Lleoliadau Blaenorol"
+
+msgid "Favourite"
+msgstr "Ffefryn "
+
+msgid "Please pick your grid square unit."
+msgstr "Dewiswch eich uned sgwâr grid "
+
+msgid "Tetrad (2km square)"
+msgstr "Tetrad (sgwâr 2km) "
+
+msgid "Monad (1km square)"
+msgstr "Monad (sgwâr 1km) "
+
+msgid "Locations"
+msgstr "Lleoliadau "
+
+msgid ""
+"The LERC Wales mobile application enables you to get involved in biological "
+"recording in Wales. You can contribute your sightings with photos, GPS "
+"acquired coordinates, descriptions and other information, thus providing "
+"scientists with important new biodiversity information that contributes to "
+"nature conservation, planning, research and education."
+msgstr ""
+"Mae ap symudol LERC Cymru yn galluogi i chi gymryd rhan mewn cofnodion "
+"biolegol yng Nghymru. Gallwch gyfrannu popeth rydych yn ei weld gyda "
+"lluniau, cyfesurynnau GPS, disgrifiadau a gwybodaeth arall, gan ddarparu "
+"gwybodaeth newydd bwysig i wyddonwyr am fioamrywiaeth a chyfrannu at "
+"gadwraeth, cynlluniau, ymchwil ac addysg natur. "
+
+msgid "Who can use the app?"
+msgstr "Pwy sy'n gallu defnyddio'r ap? "
+
+msgid ""
+"We encourage everyone to get involved with recording species as it is very "
+"easy and quick to submit useful records without specialist knowledge. It "
+"doesn't matter whether you are an amateur enthusiast or a qualified "
+"biologist, the LERC Wales app is for anyone who wants to contribute to our "
+"database observations of the natural environment"
+msgstr ""
+"Rydym yn annog pawb i gofnodi rhywogaethau oherwydd mae'n hawdd ac yn gyflym"
+" iawn cyflwyno cofnodion defnyddiol heb wybodaeth arbenigol.  Does dim ots "
+"os ydych chi'n amatur brwdfrydig neu'n fiolegydd cymwys, mae ap LERC Cymru "
+"ar gyfer unrhyw un sydd eisiau cyfrannu at arsylwadau ein bas data o'r "
+"amgylchedd naturiol"
+
+msgid "App Development"
+msgstr "Datblygu'r Ap"
+
+msgid ""
+"This app was developed by the BRC mobile development team on behalf of the "
+"Local Environmental Record Centres in Wales. For suggestions and feedback "
+"please do not hesitate to"
+msgstr ""
+"Datblygwyd yr ap yma gan dîm datblygu symudol BRC ar ran Canolfan Cofnodion "
+"Amgylcheddol Lleol Cymru. Am awgrymiadau ac adborth, cofiwch"
+
+msgid "contact us"
+msgstr "gysylltu â ni"
+
+msgid "Local Environmental Records Centres Wales"
+msgstr "Canolfan Cofnodion Amgylcheddol Lleol Cymru "
+
+msgid "The Local Environmental Records Centres Wales"
+msgstr "Mae Canolfan Cofnodion Amgylcheddol Lleol Cymru "
+
+msgid "is a consortium made up of the four Records Centres in Wales"
+msgstr "yn gonsortiwm sy'n cynnwys y pedair Ganolfan Cofnodion yng Nghymru."
+
+msgid ""
+" We work closely together to provide a seamless service for the data users "
+"in Wales and to support the voluntary recording community across the "
+"principality"
+msgstr ""
+"Rydym yn cydweithio'n agos er mwyn darparu gwasanaeth di-dor ar gyfer "
+"defnyddwyr y data yng Nghymru ac i gefnogi'r gymuned gofnodi wirfoddol "
+"ledled y wlad"
+
+msgid "How to make a new record"
+msgstr "Sut i wneud cofnod newydd "
+
+msgid "There are two ways to start a record"
+msgstr "Mae dwy ffordd i ddechrau cofnod "
+
+msgid "Taking a photo"
+msgstr "Tynnu llun "
+
+msgid "Press the camera button"
+msgstr "Pwyso'r botwm camera "
+
+msgid ""
+"in the home page header. This will prompt you to select the photo source: "
+"camera or gallery. Once you have picked a photo, the app will create a new "
+"record without any species associated with it. Clicking on the newly created"
+" record will open the taxa search page."
+msgstr ""
+"ym mhennawd yr hafan. Bydd yn eich annog i ddewis ffynhonnell llun: camera "
+"neu oriel. Ar ôl i chi ddewis llun, bydd yr ap yn creu cofnod newydd heb "
+"unrhyw rywogaeth yn gysylltiedig ag ef. Bydd clicio ar y cofnod sydd wedi'i "
+"greu o'r newydd yn agor y dudalen chwilio am tacsa."
+
+msgid "Selecting species"
+msgstr "Dewis rhywogaethau "
+
+msgid "Please press the plus"
+msgstr "Pwyswch y botwm"
+
+msgid ""
+"button in the home page header. This will bring you to the taxa search page."
+" After selecting the species, open the record (either by opening it directly"
+" from the taxa search page using the edit button"
+msgstr ""
+"plws ym mhennawd yr hafan. Bydd yn mynd â chi i'r dudalen chwilio am tacsa. "
+"Ar ôl dewis y rhywogaeth, agorwch y cofnod (naill ai drwy ei agor yn "
+"uniongyrchol o'r dudalen chwilio am tacsa gan ddefnyddio'r botwm golygu "
+
+msgid ""
+"beside the species name or through the home-list page) and fill in the "
+"details of the sighting, like location, date, number seen etc"
+msgstr ""
+"wrth enw'r rhywogaeth neu drwy dudalen y rhestr gartref) a llenwch y "
+"manylion am weld y rhywogaeth, fel lleoliad, dyddiad, nifer a welwyd ac ati "
+
+msgid "When finished, set for submission by pressing the paper plane"
+msgstr "Ar ôl gorffen, byddwch yn barod i gyflwyno drwy bwyso'r botwm "
+
+msgid "button"
+msgstr "awyren bapur"
+
+msgid "Searching for species"
+msgstr "Chwilio am rywogaethau "
+
+msgid ""
+"The application holds all of the UK’s species (70000+) and all the "
+"associated taxonomy ranks. For quicker searching of the taxa you can use "
+"different shortcuts. For example, to find"
+msgstr ""
+"Mae'r ap yn dal holl rywogaethau'r DU (70000+) a'r holl rengoedd tacsonomi "
+"cysylltiedig. I chwilio drwy'r tacsa'n gyflymach, gallwch ddefnyddio "
+"gwahanol lwybrau byr. Er enghraifft, i ddod o hyd i"
+
+msgid "you can type in the search bar"
+msgstr "gallwch deipio yn y bar chwilio "
+
+msgid "Sync. with iRecord"
+msgstr "Cysoni ag iRecord "
+
+msgid ""
+"All your saved records will be shown on the home page. By default a record "
+"is in"
+msgstr ""
+"Bydd eich holl gofnodion wedi'u cadw i'w gweld yn yr hafan. Yn ddiofyn mae'r"
+" cofnod ar"
+
+msgid "draft"
+msgstr "ffurf ddrafft"
+
+msgid "mode until it is set for submission. While it is in"
+msgstr "nes ei fod yn barod i'w gyflwyno. Tra mae ar ffurf"
+
+msgid ""
+"mode the application will not synchronise your record with the database. To "
+"set it for sending, open the record and press the"
+msgstr ""
+"ddrafft ni fydd yr ap yn cysoni eich cofnod â'r bas data. I'w baratoi ar "
+"gyfer anfon, agorwch y cofnod a phwyso'r"
+
+msgid ""
+"button in the header. The application will try to submit your record once "
+"there is a good network connection"
+msgstr ""
+"botwm yn y pennawd. Bydd yr ap yn ceisio cyflwyno eich cofnod unwaith mae "
+"cyswllt rhwydwaith da."
+
+msgid "If the record has reached the database a red"
+msgstr "Os yw'r cofnod wedi cyrraedd y bas data bydd coch"
+
+msgid "set for submission & saved locally"
+msgstr "parod i'w gyflwyno a'i gadw'n lleol "
+
+msgid ""
+"Once it has successfully reached the database the record becomes unavailable"
+" for new edits. To further edit it please use the"
+msgstr ""
+"Ar ôl i'r cofnod gyrraedd y bas data'n llwyddiannus, nid yw'r cofnod ar gael"
+" ar gyfer ei olygu o'r newydd. I'w olygu ymhellach defnyddiwch"
+
+msgid "iRecord Website"
+msgstr "Wefan iRecord"
+
+msgid "Note"
+msgstr "Sylwer "
+
+msgid ""
+"you have to be signed in to your iRecord account and have a network "
+"connection, for the records to be automatically synchronised in the "
+"background"
+msgstr ""
+"rhaid i chi fewngofnodi i'ch cyfrif iRecord a bod â chyswllt rhwydwaith er "
+"mwyn i'r cofnodion gysoni'n awtomatig yn y cefndir "
+
+msgid "Send all records"
+msgstr "Anfon pob cofnod "
+
+msgid ""
+"You can set all your draft records for submission. To do that go to the "
+"settings page"
+msgstr ""
+"Gallwch osod eich cofnodion drafft yn barod i'w cyflwyno. I wneud hynny, "
+"ewch i'r dudalen gosodiadau "
+
+msgid "and click Submit All"
+msgstr "a chlicio ar Cyflwyno Pob Un "
+
+msgid "This will try to send all the valid records"
+msgstr "Bydd hyn yn ceisio anfon yr holl gofnodion dilys "
+
+msgid "Delete a record"
+msgstr "Dileu cofnod "
+
+msgid ""
+"To delete a record, swipe it left in the home-list page and click the delete"
+msgstr ""
+"I ddileu cofnod, rhaid ei sweipio i'r chwith yn y dudalen rhestr gartref a "
+"chlicio ar dileu "
+
+msgid ""
+"You can also remove all the locally saved records that have been "
+"successfully synchronised with the database. This will leave the records on "
+"the database untouched. To do that go to settings page"
+msgstr ""
+"Hefyd gallwch ddileu'r holl gofnodion sydd wedi'u cadw yn lleol sydd wedi'u "
+"cysoni'n llwyddiannus gyda'r bas data. Bydd hyn yn gadael y cofnodion yn y "
+"bas data heb eu cyffwrdd. I wneud hynny, ewch i'r dudalen gosodiadau  "
+
+msgid "and click"
+msgstr "a chlicio  "
+
+msgid "Lock an attribute"
+msgstr "Cloi nodwedd "
+
+msgid ""
+"You can lock record attributes like date, location, number etc, which will "
+"preserve your current attribute value for the subsequently added records"
+msgstr ""
+"Gallwch gloi nodweddion cofnod fel dyddiad, lleoliad, niferoedd ac ati, a "
+"fydd yn gwarchod eich gwerth nodwedd gyfredol ar gyfer y cofnodion a "
+"ychwanegir wedyn "
+
+msgid "To lock an attribute click on the lock"
+msgstr "I gloi nodwedd cliciwch ar y botwm "
+
+msgid ""
+"button in the attribute edit page header. This will change the symbol to "
+"locked"
+msgstr ""
+"cloi ym mhennawd y dudalen golygu'r nodwedd. Bydd hyn yn newid y symbol i "
+"fod wedi cloi"
+
+msgid "both on the button and next to the attribute"
+msgstr "ar y botwm a nesaf at y nodwedd"
+
+msgid ""
+"For a GPS-sourced location, only the location name can be locked, not the "
+"GPS value. As you move about, the GPS value will change. This will allow "
+"recording of different GPS values within an named area while keeping the "
+"location name the same. You can lock a location if it is selected using a "
+"map or entered manually"
+msgstr ""
+"Ar gyfer lleoliad o ffynhonnell GPS, dim ond enw'r lleoliad ellir ei gloi, "
+"nid y gwerth GPS. Wrth i chi symud allan, bydd y gwerth GPS yn newid. Bydd "
+"hyn yn galluogi cofnodi gwahanol werthoedd GPS oddi mewn i ardal wedi'i nodi"
+" gan gadw enw'r lleoliad yr un fath. Gallwch gloi lleoliad os caiff ei "
+"ddewis gan ddefnyddio map neu ei nodi'n faniwal."
+
+msgid "User"
+msgstr "Defnyddiwr "
+
+msgid "Sign in/out or register"
+msgstr "Mewngofnodi/Allgofnodi neu gofrestru "
+
+msgid "To login, open the main menu page"
+msgstr "I fewngofnodi, agorwch y brif ddewislen "
+
+msgid "click Login"
+msgstr "cliciwch ar y botymau Allgofnodi "
+
+msgid "or Register"
+msgstr "neu Gofrestru "
+
+msgid "buttons and follow the instructions"
+msgstr "a dilyn y cyfarwyddiadau "
+
+msgid "To logout, visit the main menu page"
+msgstr "I allgofnodi, ewch i'r brif ddewislen "
+
+msgid "and click the logout"
+msgstr "a chlicio ar allgofnodi "
+
+msgid ""
+"after registering a new account you must verify your email address by "
+"clicking on a verification link sent to your email"
+msgstr ""
+"ar ôl cofrestru cyfrif newydd rhaid i chi ddilysu eich cyfeiriad e-bost drwy"
+" glicio ar ddolen ddilysu a anfonir i'ch e-bost"
+
+msgid "Activities"
+msgstr "Gweithgareddau "
+
+msgid ""
+"To send records to a specific activity you can select it in the Activities"
+msgstr ""
+"I anfon cofnodion i weithgaredd penodol gallwch ei ddewis yn y dudalen  "
+
+msgid "page"
+msgstr "Gweithgareddau "
+
+msgid ""
+"only the activities that allow this mobile app records and only the ones "
+"that you have joined on the iRecord website will be available to select"
+msgstr ""
+"dim ond y gweithgareddau sy'n caniatáu'r cofnodion ap symudol hyn a dim ond "
+"y rhai rydych wedi ymuno â hwy ar wefan iRecord fydd ar gael i'w dewis "
+
+msgid "Other"
+msgstr "Arall "
+
+msgid "Manage saved locations"
+msgstr "Rheoli lleoliadau a gadwyd "
+
+msgid ""
+"You can manage your saved locations both on any record's location page and "
+"from the settings page"
+msgstr ""
+"Gallwch reoli eich lleoliadau a gadwyd ar dudalen lleoliad unrhyw gofnod ac "
+"o'r dudalen gosodiadau "
+
+msgid "Swipe a location left and click edit"
+msgstr "Rhaid sweipio lleoliad i'r chwith a chlicio ar golygu "
+
+msgid "or delete"
+msgstr "neu'r botymau"
+
+msgid "buttons"
+msgstr "dileu"
+
+msgid ""
+"You can make your location stick to the top of the locations list by "
+"clicking the Favourite toggle"
+msgstr ""
+"Gallwch wneud i'ch lleoliad lynu wrth dop y rhestr lleoliadau drwy glicio ar"
+" y togl Ffefryn"
+
+msgid "Reset the application"
+msgstr "Ailosod yr ap "
+
+msgid "Go to the application settings page"
+msgstr "Ewch i dudalen gosodiadau'r ap "
+
+msgid "and click on the Reset"
+msgstr "a chlicio ar Ailosod "
+
+msgid "For more help please visit the iRecord"
+msgstr "Am fwy o help ewch i fforwm "
+
+msgid "forum"
+msgstr "iRecord"
+
+msgid ""
+"Wherever you see this logo on a biological recording app you can be assured "
+"that the data you submit will be: made available to experts for quality "
+"assurance; made available for conservation and research and preserved for "
+"long-term use."
+msgstr ""
+"Os gwelwch chi'r logo yma ar ap cofnodion biolegol gallwch fod yn sicr y "
+"bydd y data rydych yn eu cyflwyno: ar gael i arbenigwyr ar gyfer sicrhau eu "
+"hansawdd; ar gael i gadwraeth ac ymchwil ac yn cael eu gwarchod ar gyfer "
+"defnydd tymor hir."
+
+msgid "This logo indicates that your data is"
+msgstr "Mae'r logo yma'n dangos bod eich data'n"
+
+msgid ""
+"Sent to the Biological Record Centre’s data warehouse linked to the iRecord "
+"system where it accessible to you as the recorder, to an expert community of"
+" verifiers and other users of iRecord"
+msgstr ""
+"cael eu hanfon i warws data'r Ganolfan Cofnodion Biolegol yn gysylltiedig "
+"â'r system iRecord lle maent ar gael i chi fel y cofnodwr, i gymuned "
+"arbenigol o ddilyswyr ac i ddefnyddwyr eraill iRecord"
+
+msgid ""
+"Quality assured data is passed onto Local Environmental Records Centres, "
+"National Recording Schemes and to the NBN Gateway"
+msgstr ""
+"Mae data y mae eu hansawdd wedi'i sicrhau'n cael eu hanfon ymlaen i'r "
+"Canolfannau Cofnodion Amgylcheddol Lleol, i'r Cynlluniau Cofnodi "
+"Cenedlaethol ac i Borth NBN"
+
+msgid "About BRC"
+msgstr "Cefndir BRC"
+
+msgid ""
+"established in 1964, is a national focus in the UK for terrestrial and "
+"freshwater species recording. BRC works closely with the voluntary recording"
+" community, principally through support of national recording schemes and "
+"societies. BRC is supported by the Joint Nature Conservation Committee "
+"(JNCC) and the Centre for Ecology & Hydrology (CEH) within the Natural "
+"Environment Research Council (NERC). The work of BRC is a major component of"
+" the National Biodiversity Network (NBN)"
+msgstr ""
+"Wedi'i sefydlu yn 1964, mae'n ffocws cenedlaethol yn y DU ar gyfer cofnodi "
+"rhywogaethau tir a dŵr croyw. Mae BRC yn gweithio'n agos â'r gymuned gofnodi"
+" wirfoddol, yn bennaf drwy gefnogi cynlluniau a chymdeithasau cofnodi "
+"cenedlaethol. Cefnogir BRC gan y Cydbwyllgor Cadwraeth Natur (JNCC) a'r "
+"Ganolfan ar gyfer Ecoleg a Hydroleg (CEH) yn y Cyngor Ymchwil ar gyfer yr "
+"Amgylchedd Naturiol (NERC). Mae gwaith BRC yn elfen bwysig o'r Rhwydwaith "
+"Bioamrywiaeth Cenedlaethol (NBN)"
+
+msgid "Which app should I use?"
+msgstr "Pa ap ddylwn i ei ddefnyddio? "
+
+msgid "You might have noticed that several of"
+msgstr "Efallai eich bod wedi sylwi bod nifer o"
+
+msgid "BRC apps"
+msgstr "apiau BRC"
+
+msgid ""
+"feature some of the same species?  We have introduced the BRC Approved logo "
+"to signify that data from our apps all go to the same place. Therefore, you "
+"are free to choose which app you use to record a given species. All records "
+"will be sent to the same place, treated in the same way and will meet the "
+"established standards required by the Biological Record Centre"
+msgstr ""
+"yn cynnwys rhai o'r un rhywogaethau? Rydym wedi cyflwyno'r logo Cymeradwywyd"
+" gan BRC i ddynodi bod data pob ap gennym yn mynd i'r un lle. Felly mae "
+"croeso i chi ddewis pa ap rydych yn ei ddefnyddio i gofnodi rhywogaeth "
+"benodol. Anfonir pob cofnod i'r un lle, byddant yn cael eu trin yr un fath "
+"ac yn bodloni'r safonau wedi'u sefydlu sy'n ofynnol gan y Ganolfan Cofnodion"
+" Biolegol. "
+
+msgid "This app was funded by the"
+msgstr "Cyllidwyd yr ap yma gan "
+
+msgid "Local Records Centres of Wales"
+msgstr "Ganolfannau Cofnodion Lleol Cymru "
+
+msgid "Welcome screen credits"
+msgstr "Cydnabyddiaeth y sgrin groeso"
+
+msgid ""
+"For quicker searching of the taxa you can use different shortcuts. For "
+"example, to find"
+msgstr ""
+"I chwilio'n gyflymach am y tacsa gallwch ddefnyddio gwahanol lwybrau byr, er"
+" enghraifft, i ddod o hyd i"
+
+msgid "Species"
+msgstr "Rhywogaethau "
+
+msgid "date"
+msgstr "dyddiad "
+
+msgid "Unlocked"
+msgstr "Datglowyd"
+
+msgid "Please add any extra info about this record."
+msgstr "Ychwanegwch unrhyw wybodaeth ychwanegol am y cofnod yma. "
+
+msgid "comment"
+msgstr "sylw "
+
+msgid "Please pick the life stage."
+msgstr "Dewiswch y cyfnod bywyd. "
+
+msgid "Not Recorded"
+msgstr "Heb Gofnodi "
+
+msgid "Adult"
+msgstr "Oedolyn "
+
+msgid "Pre-adult"
+msgstr "Cyn-oedolyn"
+
+msgid "stage"
+msgstr "oedolyn "
+
+msgid "If anyone helped with the identification please enter their name here."
+msgstr "Os gwnaeth unrhyw un helpu gydag adnabod, nodwch ei enw yma."
+
+msgid "identifiers"
+msgstr "adnabyddwr"
+
+msgid "Abundance"
+msgstr "Niferoedd "
+
+msgid "Stage"
+msgstr "Cam "
+
+msgid "Identifiers"
+msgstr "Adnabyddwr"
+
+msgid "Present"
+msgstr "Presennol "
+
+msgid "Username or email"
+msgstr "Enw defnyddiwr neu e-bost "
+
+msgid "Password"
+msgstr "Cyfrinair "
+
+msgid "Email"
+msgstr "E-bost "
+
+msgid "First Name"
+msgstr "Enw cyntaf "
+
+msgid "Surname"
+msgstr "Cyfenw "
+
+msgid "Confirm password"
+msgstr "Cadarnhau cyfrinair "
+
+msgid "No photo has been added"
+msgstr "Dim llun wedi'i ychwanegu"
+
+msgid "acarine"
+msgstr "acarin "
+
+msgid "acorn worm"
+msgstr "mes-lynghyren "
+
+msgid "alderfly"
+msgstr "pryf y wernen "
+
+msgid "alga"
+msgstr "alga"
+
+msgid "amphibian"
+msgstr "amffibiad "
+
+msgid "annelid"
+msgstr "anelid "
+
+msgid "arrow worm"
+msgstr "saeth-lynghyren "
+
+msgid "bacterium"
+msgstr "bacteriwm "
+
+msgid "beardworm"
+msgstr "barf-lynghyren "
+
+msgid "beetle"
+msgstr "chwilen "
+
+msgid "bird"
+msgstr "aderyn "
+
+msgid "bony fish"
+msgstr "pysgodyn esgyrnog "
+
+msgid "booklouse"
+msgstr "lleuen llyfrau "
+
+msgid "bristletail"
+msgstr "sioncyn gwrychog"
+
+msgid "bryozoan"
+msgstr "bryosoad"
+
+msgid "butterfly"
+msgstr "glöyn byw "
+
+msgid "caddis fly"
+msgstr "pryf caddis"
+
+msgid "cartilagenous fish"
+msgstr "pysgodyn cartilagaidd "
+
+msgid "centipede"
+msgstr "neidr gantroed "
+
+msgid "chromist"
+msgstr "cromist "
+
+msgid "clubmoss"
+msgstr "cnwpfwsogl "
+
+msgid "cockroach"
+msgstr "cocrotsien "
+
+msgid "coelenterate"
+msgstr "selenteriad"
+
+msgid "comb jelly"
+msgstr "slefren gribog "
+
+msgid "conifer"
+msgstr "conwydd "
+
+msgid "crustacean"
+msgstr "cramennog "
+
+msgid "cycliophoran"
+msgstr "sycliofforan "
+
+msgid "diatom"
+msgstr "diatom "
+
+msgid "dragonfly"
+msgstr "gwas y neidr "
+
+msgid "earwig"
+msgstr "pryf clustiog "
+
+msgid "echinoderm"
+msgstr "ecinoderm "
+
+msgid "entoproct"
+msgstr "entoproct"
+
+msgid "false scorpion"
+msgstr "sgorpion ffug "
+
+msgid "fern"
+msgstr "rhedynen "
+
+msgid "flatworm"
+msgstr "llynghyren ledog "
+
+msgid "flea"
+msgstr "chwannen "
+
+msgid "flower. plant"
+msgstr "blodyn. planhigyn "
+
+msgid "foraminiferan"
+msgstr "fforaminiffer"
+
+msgid "fungoid"
+msgstr "ffyngoid "
+
+msgid "fungus"
+msgstr "ffwng"
+
+msgid "gastrotrich"
+msgstr "gastrotrich "
+
+msgid "ginkgo"
+msgstr "coeden ginco "
+
+msgid "gnathostomulid"
+msgstr "nathostomwlid "
+
+msgid "hairworm"
+msgstr "blewlynghyren "
+
+msgid "harvestman"
+msgstr "llynghyren y cynhaeaf "
+
+msgid "hornwort"
+msgstr "cyrnddail"
+
+msgid "horseshoe worm"
+msgstr "pedol-lynghyren"
+
+msgid "horsetail"
+msgstr "cynffon ceffyl "
+
+msgid "hymenopteran"
+msgstr "hymenopteran"
+
+msgid "jawless fish"
+msgstr "pysgodyn heb ên"
+
+msgid "lacewing"
+msgstr "adain siderog"
+
+msgid "lampshell"
+msgstr "braciopod"
+
+msgid "lancelet"
+msgstr "pysgodyn pengoll "
+
+msgid "lichen"
+msgstr "cen "
+
+msgid "liverwort"
+msgstr "llysiau'r afu "
+
+msgid "loriciferan"
+msgstr "lorisiffer "
+
+msgid "louse"
+msgstr "lleuen   "
+
+msgid "mammal"
+msgstr "mamal "
+
+msgid "mantis"
+msgstr "mantis "
+
+msgid "marine mammal"
+msgstr "mamal y môr "
+
+msgid "mayfly"
+msgstr "cylionyn Mai "
+
+msgid "mesozoan"
+msgstr "mesosoad"
+
+msgid "millipede"
+msgstr "neidr filtroed "
+
+msgid "mollusc"
+msgstr "molwsg "
+
+msgid "monogenean"
+msgstr "monogenead"
+
+msgid "moss"
+msgstr "mwsogl "
+
+msgid "moth"
+msgstr "gwyfyn "
+
+msgid "mud dragon"
+msgstr "draig y llaid "
+
+msgid "orthopteran"
+msgstr "orthopteran "
+
+msgid "pauropod"
+msgstr "pawropod "
+
+msgid "peanut worm"
+msgstr "llynghyren pysgnau "
+
+msgid "priapulid"
+msgstr "priapwlid "
+
+msgid "protozoan"
+msgstr "protosoan "
+
+msgid "proturan"
+msgstr "protwran "
+
+msgid "quillwort"
+msgstr "gwair merllyn"
+
+msgid "reptile"
+msgstr "ymlusgiad "
+
+msgid "ribbon worm"
+msgstr "rhuban-lynghyren "
+
+msgid "rotifer"
+msgstr "rhodfilyn "
+
+msgid "roundworm"
+msgstr "llynghyren gron "
+
+msgid "scorpion"
+msgstr "sgorpion   "
+
+msgid "scorpion fly"
+msgstr "pryf sgorpion "
+
+msgid "sea spider"
+msgstr "pryf copyn y môr "
+
+msgid "silverfish"
+msgstr "pysgodyn arian "
+
+msgid "slime mould"
+msgstr "llwydni llysnafedd "
+
+msgid "snakefly"
+msgstr "pryf gyddfog"
+
+msgid "spider"
+msgstr "pryf copyn   "
+
+msgid "sponge"
+msgstr "sbwng "
+
+msgid "spoon worm"
+msgstr "llwy-lynghyren "
+
+msgid "springtail"
+msgstr "cynffon sbonc "
+
+msgid "stick insect"
+msgstr "pryf pric "
+
+msgid "stonefly"
+msgstr "pryf y cerrig "
+
+msgid "stonewort"
+msgstr "rhawn yr ebol "
+
+msgid "stylops"
+msgstr "stylops"
+
+msgid "symphylan"
+msgstr "symffylan "
+
+msgid "tapeworm"
+msgstr "llynghyren rhuban "
+
+msgid "thorny-headed worm"
+msgstr "llynghyren ddreiniog "
+
+msgid "thrips"
+msgstr "thrips"
+
+msgid "trematode"
+msgstr "trematod"
+
+msgid "true bug"
+msgstr "gwir leuen"
+
+msgid "true fly"
+msgstr "gwir bryf "
+
+msgid "tunicate"
+msgstr "chwistrell "
+
+msgid "two-tailed bristletail"
+msgstr "sioncyn gwrychog dwy gynffon "
+
+msgid "unassigned"
+msgstr "heb neilltuo "
+
+msgid "undetermined"
+msgstr "heb benderfynu "
+
+msgid "waterbear"
+msgstr "copyn blewog "
+
+msgid "Comment"
+msgstr "Sylw "
+
+msgid "Filter"
+msgstr "Ffilter "
+
+msgid "Filters"
+msgstr ""
+
+msgid "Close"
+msgstr "Cau "
+
+msgid "How many individuals of this type?"
+msgstr "Faint o unigolion o'r math yma? "
+
+msgid "Yikes!"
+msgstr "Rargol! "
+
+msgid "OK"
+msgstr "Iawn "
+
+msgid "Cancel"
+msgstr "Canslo "
+
+msgid "Edit Location"
+msgstr "Golygu Lleoliad "
+
+msgid "Save"
+msgstr "Cadw "
+
+msgid ""
+"This record hasn't been saved to iRecord yet, are you sure you want to "
+"remove it from your device?"
+msgstr ""
+"Nid yw'r cofnod yma wedi cael ei gadw i iRecord eto - ydych chi'n siŵr eich "
+"bod eisiau ei dynnu oddi ar eich dyfais? "
+
+msgid "Delete"
+msgstr "Dileu  "
+
+msgid "Information"
+msgstr "Gwybodaeth "
+
+msgid "Refresh"
+msgstr "Adnewyddu "
+
+msgid ""
+"Click on the activity below which you would like to participate in. Any "
+"records you add from now on will be submitted to the chosen activity. You "
+"can join in with more activities by logging in to"
+msgstr ""
+"Cliciwch ar y gweithgaredd isod yr ydych eisiau cymryd rhan ynddo. Bydd "
+"unrhyw gofnodion y byddwch yn eu hychwanegu o hyn ymlaen yn cael eu cyflwyno"
+" i'r gweithgaredd o'ch dewis. Gallwch ymuno â mwy o weithgareddau drwy "
+"fewngofnodi i   "
+
+msgid "and visiting the Record > Activities page"
+msgstr "a mynd i'r dudalen Cofnod > Gweithgareddau"
+
+msgid "Are you sure you want to reset the application to its initial state?"
+msgstr ""
+"Ydych chi'n siŵr eich bod eisiau ailosod yr ap i'w gyflwr gwreiddiol? "
+
+msgid "This will wipe all the locally stored app data!"
+msgstr "Bydd hyn yn dileu'r holl ddata sydd wedi'u storio'n lleol yn yr ap!"
+
+msgid "Submit"
+msgstr "Cyflwyno  "
+
+msgid "Remove All"
+msgstr "Dileu Pob Un "
+
+msgid "Remove"
+msgstr "Dileu "
+
+msgid "No previous locations"
+msgstr "Dim lleoliadau blaenorol"
+
+msgid "Are you sure you want to set all valid records for submission?"
+msgstr ""
+"Ydych chi'n siŵr eich bod eisiau gosod yr holl gofnodion dilys ar gyfer eu "
+"cyflwyno?"
+
+msgid ""
+"Are you sure you want to remove all successfully synchronised local records?"
+msgstr ""
+"Ydych chi'n siŵr eich bod eisiau dileu'r holl gofnodion lleol sydd wedi'u "
+"cysoni'n llwyddiannus?"
+
+msgid "records on the server will not be touched."
+msgstr "ni fydd cofnodion ar y gweinydd yn cael eu cyffwrdd. "
+
+msgid "Training"
+msgstr "Hyfforddiant "
+
+msgid "No location name"
+msgstr "Dim enw lleoliad "
+
+msgid "Name missing"
+msgstr "Enw ar goll "
+
+msgid ""
+"Please log in to the app before selecting an alternative activity for your "
+"records."
+msgstr ""
+"Mewngofnodwch i'r ap cyn dewis gweithgaredd arall ar gyfer eich cofnodion. "
+
+msgid "Let's add one!"
+msgstr "Beth am ychwanegu un! "
+
+msgid "Species name"
+msgstr "Enw'r rhywogaeth "
+
+msgid "Page not found :("
+msgstr "Heb ddod o hyd i'r dudalen :("
+
+msgid "No location"
+msgstr "Dim lleoliad   "
+
+msgid "Location missing"
+msgstr "Lleoliad ar goll "
+
+msgid "Sorry"
+msgstr "Sori "
+
+msgid "Welcome"
+msgstr "Croeso "
+
+msgid "Welcome aboard!"
+msgstr "Croeso!"
+
+msgid "OK, got it"
+msgstr "Iawn"
+
+msgid "helps you with management and sharing of your wildlife observations"
+msgstr "yn eich helpu chi gyda rheoli a rhannu eich arsylwadau o fywyd gwyllt"
+
+msgid "Get Started"
+msgstr "Dechrau Arni "
+
+msgid "T&Cs"
+msgstr "Telerau ac Amodau "
+
+msgid "Species missing"
+msgstr "Dim enw rhywogaeth"
+
+msgid "Locating"
+msgstr "Yn lleoli "
+
+msgid "will become green"
+msgstr "bydd yn troi'n wyrdd "
+
+msgid "synced to the database"
+msgstr "wedi'i gysoni â'r bas data "
+
+msgid "Looks like you are offline!"
+msgstr "Rydych chi oddi ar-lein mae'n debyg! "
+
+msgid "Today"
+msgstr "Heddiw "
+
+msgid "Locked"
+msgstr "Wedi cloi "
+
+msgid "Grid reference"
+msgstr "Cyfeirnod grid "
+
+msgid "Nearest named place"
+msgstr "Lle agosaf wedi'i enwi "
+
+msgid "Default"
+msgstr "Diofyn "
+
+msgid "Site type"
+msgstr "Math o safle"
+
+msgid "Adults"
+msgstr "Oedolion "
+
+msgid "Cop. pairs"
+msgstr "Parau cop. "
+
+msgid "Ovip. females"
+msgstr "Benywod Ovip. "
+
+msgid "Larvae"
+msgstr "Larfa "
+
+msgid "Exuviae"
+msgstr "Hengroen "
+
+msgid "Emergents"
+msgstr "Yn ymddangos "
+
+msgid "Lake"
+msgstr "Llyn "
+
+msgid "Reservoir"
+msgstr "Cronfa ddŵr "
+
+msgid "Mill lodge"
+msgstr "Llety melin "
+
+msgid "Large pond"
+msgstr "Pwll mawr "
+
+msgid "Small pond"
+msgstr "Pwll bach "
+
+msgid "Garden pond"
+msgstr "Pwll gardd "
+
+msgid "River"
+msgstr "Afon "
+
+msgid "Stream"
+msgstr "Nant "
+
+msgid "Ditch"
+msgstr "Ffos "
+
+msgid "Canal"
+msgstr "Camlas "
+
+msgid "Other (please specify in comments)"
+msgstr "Arall (nodwch gyda sylwadau) "
+
+msgid "Habitat"
+msgstr "Cynefin "
+
+msgid "Microscopically Checked"
+msgstr "Archwiliwyd dan ficrosgop "
+
+msgid "Fruit"
+msgstr "Ffrwyth "
+
+msgid "Male"
+msgstr "Gwryw "
+
+msgid "Female"
+msgstr "Benyw "
+
+msgid "Bulbils"
+msgstr "Bylbynnau "
+
+msgid "Gemmae"
+msgstr "Blagur"
+
+msgid "Tubers"
+msgstr "Cloron "
+
+msgid "Arable land, gardens or parks"
+msgstr "Tir âr, gerddi neu barciau "
+
+msgid "Bogs and fens"
+msgstr "Corsydd a ffeniau "
+
+msgid "Coast"
+msgstr "Arfordir "
+
+msgid "Grassland"
+msgstr "Glaswelltir "
+
+msgid "Heathland, scrub, hedges"
+msgstr "Rhostir, prysgwydd, gwrychoedd "
+
+msgid "Industrial and urban"
+msgstr "Diwydiannol a threfol "
+
+msgid "Inland water"
+msgstr "Dŵr mewndirol "
+
+msgid "Mixed habitats"
+msgstr "Cynefinoedd cymysg "
+
+msgid "Unvegetated or sparsely vegetated habitats"
+msgstr "Cynefinoedd heb lystyfiant neu'r llystyfiant yn brin "
+
+msgid "Woodland"
+msgstr "Coetir "
+
+msgid "missing"
+msgstr "dim enw"
+
+msgid "Are you sure you want to remove this photo from the sample?"
+msgstr "Ydych chi'n siŵr eich bod eisiau tynnu'r llun yma o'r sampl?"
+
+msgid "</br><i><b>Note:</b> it will remain in the gallery.</i>"
+msgstr "</br><i><b>Sylwer:</b> bydd yn aros yn yr oriel.</i>"
+
+msgid "Choose a method to upload a photo"
+msgstr "Dewiswch ddull i uwchlwytho llun"
+
+msgid "Camera"
+msgstr "Camera"
+
+msgid "Gallery"
+msgstr "Oriel"
+
+msgid "Logout"
+msgstr "Allgofnodi "
+
+msgid "Statistics"
+msgstr "Ystadegau "
+
+msgid "Top species"
+msgstr "Prif rywogaethau "
+
+msgid "Activity"
+msgstr "Gweithgaredd "
+
+msgid "location name"
+msgstr "enw'r lleoliad"
+
+msgid "location"
+msgstr "lleoliad "
+
+msgid "Record"
+msgstr "Cofnod"
+
+msgid "can't be blank"
+msgstr "ni all bod yn wag"
+
+msgid "you must agree to the terms"
+msgstr "rhaid i chi gytuno â'r termau"
+
+msgid "passwords are not equal"
+msgstr "nid yw'r cyfrineiriau'n gyfartal"
+
+msgid "is too short"
+msgstr "yn rhy fyr"
+
+msgid "invalid"
+msgstr "annilys"
+
+msgid "View on iRecord"
+msgstr "Gweld ar iRecord"
+
+msgid "This record has been submitted and cannot be edited within this App."
+msgstr "Mae'r cofnod hwn wedi'i gyflwyno ac ni ellir ei olygu yn yr Ap hwn."
+
+msgid "No species found with this name"
+msgstr "Dim rhywogaethau wedi'u canfod gyda'r enw hwn"
+
+msgid "Sorry, we have encountered a problem while sending the record."
+msgstr "Rydym wedi dod ar draws problem wrth anfon y cofnod"
+
+msgid "Success"
+msgstr "Llwyddiant"
+
+msgid "Further instructions have been sent to your e-mail address."
+msgstr "Cyfarwyddiadau pellach wedi'u hanfon at eich cyfeiriad ebost."
+
+msgid ""
+"Before submitting any records please check your email and click on the "
+"verification link."
+msgstr ""
+"Cyn cyflwyno unrhyw gofnodion, edrychwch ar eich e-bost a chliciwch ar y "
+"ddolen wirio."
+
+msgid "Are you sure you want to logout?"
+msgstr "A ydych yn sicr eich bod am allgofnodi?"
+
+msgid "Incorrect password or email."
+msgstr "Cyfrinair neu ebost anghywir."
+
+msgid "Invalid date selected"
+msgstr "Dyddiad annilys wedi'i ddewis"
+
+msgid ""
+"Are you sure you want to remove this record from your "
+"device?</br><i><b>Note:</b> it will remain on the server.</i>"
+msgstr ""
+"A ydych yn sicr eich bod am ddileu'r cofnod hwn o'ch dyfais?<br "
+"/><i><b>Noder: Bydd o'n aros ar y gweinydd.</b>"
+
+msgid ""
+"The development was led by SEWBReC, and was jointly funded by BIS, WWBIC and"
+" Cofnod."
+msgstr ""
+"Arweiniwyd y datblygiad gan SEWBReC, a chafodd ei ariannu ar y cyd gan BIS, "
+"WWBIC a Cofnod."
+
+msgid ""
+"Also thanks to all the beta testers and the rest of the LERC Wales staff for"
+" their input."
+msgstr ""
+"Hefyd diolch i'r holl brofwyr beta a gweddill y staff LERC Cymru am eu "
+"cyfraniad."
+
+msgid "Enjoying the app?"
+msgstr "‘Dych chi’n mwynhau’r ap?"
+
+msgid "Not really"
+msgstr "Dim rili"
+
+msgid "Yes!"
+msgstr "Ydw!"
+
+msgid "Would you mind giving us some feedback?"
+msgstr "Fyddech chi’n meddwl rhoi tipyn o adborth i ni?"
+
+msgid "No, thanks"
+msgstr "Dim diolch"
+
+msgid "OK, sure"
+msgstr "Iawn, siwr"
+
+msgid "How about a rating on the App Store then?"
+msgstr "Beth am raddio ni ar App Store wedyn?"
+
+msgid "How about a rating on the Play Store then?"
+msgstr "Beth am raddio ni ar Play Store wedyn?"
+
+msgid "You have no records"
+msgstr "Dim cofnodion i'w dangos"
+
+msgid "Forgot password?"
+msgstr "Ailosod"
+
+msgid ""
+"We are very grateful for all the people that helped to create this app:"
+msgstr "Rydym yn ddiolchgar iawn i bawb sydd wedi helpu i greu'r ap yma"
+
+msgid "This app was developed by"
+msgstr "Datblygwyd yr ap yma gan"
+
+msgid ""
+" on behalf of the Local Environmental Record Centres in Wales. For "
+"suggestions and feedback please do not hesitate to"
+msgstr ""
+" ar ran Canolfan Cofnodion Amgylcheddol Lleol Cymru. Am awgrymiadau ac "
+"adborth, cofiwch"
+
+msgid "Names:"
+msgstr "Enwau:"
+
+msgid "Common only"
+msgstr "Cyffredin yn unig"
+
+msgid "Scientific only"
+msgstr "Gwyddonol yn unig"
+
+msgid "Taxon groups:"
+msgstr "Grŵpiau Tacson"
+
+msgid "You have no previous locations."
+msgstr "Nid oes gennych unrhyw leoliadau blaenorol"
+
+msgid "Sex"
+msgstr "Rhyw"
+
+msgid "Mixed"
+msgstr "Cymysg"
+
+msgid "Please indicate the sex of the organism."
+msgstr "Nodwch ryw yr organeb"
+
+msgid "Eggs"
+msgstr "Wyau"
+
+msgid "Pupae"
+msgstr "Chwilerod"
+
+msgid "Larval webs"
+msgstr "Gweoedd larfal"
+
+msgid "Not selected"
+msgstr "Heb ddewis"
+
+msgid "Send"
+msgstr "Cyflwyno"
+
+msgid "Share App Analytics"
+msgstr "Anfon Ap Analytics"
+
+msgid "Delete all the locally stored app data."
+msgstr "Dileu holl ddata sydd wedi'u storio'n lleol yn yr ap."
+
+msgid "Home"
+msgstr ""
+
+msgid "Photo"
+msgstr ""
+
+msgid "Menu"
+msgstr ""
+
+msgid "Tip: Adding Observations"
+msgstr ""
+
+msgid ""
+"Tap on the <ion-icon class=\"tip-icon\" src=\"/images/ios-add.svg\"></ion-"
+"icon> button to capture a new record."
+msgstr ""
+
+msgid "Pending"
+msgstr ""
+
+msgid "Uploaded"
+msgstr ""
+
+msgid "No finished pending records"
+msgstr ""
+
+msgid "No uploaded surveys"
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+msgid "cyanobacterium"
+msgstr ""
+
+msgid "web-spinner"
+msgstr ""
+
+msgid "For quicker searching of the taxa you can use different shortcuts."
+msgstr ""
+
+msgid "Upload"
+msgstr ""
+
+msgid "Grid Reference"
+msgstr ""
+
+msgid "Nearest named place (e.g town, park)"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Your location name"
+msgstr ""
+
+msgid "Enter more information here..."
+msgstr ""
+
+msgid "Breeding"
+msgstr ""
+
+msgid "Draft"
+msgstr ""
+
+msgid ""
+"This record hasn't been uploaded to the database yet. Are you sure you want "
+"to remove it from your device?"
+msgstr ""
+
+msgid "Enter your username or email address to request a password reset."
+msgstr ""
+
+msgid ""
+"Locations should be represented as UK Grid Reference instead of Latitude and"
+" Longitude."
+msgstr ""
+
+msgid "Show UK Grid Reference over the map."
+msgstr ""
+
+msgid "Mark any new records as 'training' and exclude from all reports."
+msgstr ""
+
+msgid "Share app crash data so we can make the app more reliable."
+msgstr ""
+
+msgid ""
+"A technical consultancy that excels at building bespoke environmental "
+"science and community focussed solutions."
+msgstr ""
+
+msgid "For suggestions and feedback please do not hesitate to"
+msgstr ""
+
+msgid ""
+"Quality assured data is passed onto Local Environmental Records Centres, "
+"National Recording Schemes and to the NBN Atlas"
+msgstr ""
+
+msgid "number"
+msgstr ""
+
+msgid "Are you sure you want to remove this photo?"
+msgstr ""
+
+msgid "Note: it will remain in the gallery."
+msgstr ""
+
+msgid "sex"
+msgstr ""
+
+msgid "Tip: Locking Attributes"
+msgstr ""
+
+msgid ""
+"You can preserve your current attribute value for the subsequently added "
+"records by locking it. Click on the <ion-icon src=\"/images/ios-lock.svg"
+"\"></ion-icon> button."
+msgstr ""
+
+# Part of Help page
+msgid ""
+"Press the camera button<1></1>in the home page header. This will prompt you "
+"to select the photo source: camera or gallery. Once you have picked a photo,"
+" the app will create a new record without any species associated with it."
+msgstr ""
+
+# Part of Help page
+msgid ""
+"Please press the plus<1></1>button in the home page. This will bring you to "
+"the taxa search page. After selecting the species, open the record (either "
+"by opening it directly from the taxa search page using the edit "
+"button<3></3>beside the species name or through the home-list page) and fill"
+" in the details of the sighting, like location, date, number seen "
+"etc.<br/><br/>When finished, press the Upload button in the record's page "
+"header."
+msgstr ""
+
+# Part of Help page
+msgid ""
+"All your saved records will be shown on the home page. By default a record "
+"is in <i>draft</i> mode until it is set for upload. While it is in "
+"<i>draft</i> mode the application will not synchronise your record with the "
+"database.<br/><br/>To set it for upload, open the record and press the "
+"Upload button in the header. The application will try to submit your record "
+"once there is a good network connection. If the record has reached the "
+"database, it will be moved to the Uploaded list in the Home page (see "
+"Uploaded tab).<br/><br/>Once it has successfully reached the database the "
+"record becomes unavailable for new edits. To further edit it please use the "
+"<16>iRecord website</16>.<br/><br/><20>Note:</20> you have to be signed in "
+"to your iRecord account and have a network connection, for the records to be"
+" automatically synchronised in the background .<br/>"
+msgstr ""
+
+# Part of Help page
+msgid ""
+"To delete a record, swipe it left in the Home page and click the "
+"delete<1></1>button.<3></3><br/><br/>You can also remove all the locally "
+"saved records that have been successfully synchronised with the database. "
+"This will leave the records on the database untouched. To do that go to "
+"settings page<7></7>and click <i>Remove All Saved</i><11></11>button."
+msgstr ""
+
+# Part of Help page
+msgid ""
+"You can lock record attributes like date, location, number etc, which will "
+"preserve your current attribute value for the subsequently added "
+"records.<br/><br/>To lock an attribute click on the lock<4></4>button in the"
+" attribute edit page header. This will change the symbol to "
+"locked<6></6>both on the button and next to the "
+"attribute.<br/><br/><10>Note:</10> For a GPS-sourced location, only the "
+"location name can be locked, not the GPS value. As you move about, the GPS "
+"value will change. This will allow recording of different GPS values within "
+"a named area while keeping the location name the same. You can lock a "
+"location if it is selected using a map or entered manually."
+msgstr ""
+
+# Part of Help page
+msgid ""
+"To send records to a specific activity you can select it in the Activities "
+"page.<1></1><br/><br/><4>Note:</4> only the activities that allow this "
+"mobile app records and only the ones that you have joined on the iRecord "
+"website will be available to select."
+msgstr ""
+
+# Part of Help page
+msgid ""
+"You can manage your saved locations both on any record's location page and "
+"from the settings page.<1></1>Swipe a location left and click edit<3></3>or "
+"delete<5></5>buttons.<br/><br/><9></9> You can make your location stick to "
+"the top of the locations list by clicking the Favourite toggle ."
+msgstr ""
+
+# Part of Help page
+msgid ""
+"For quicker searching of the taxa you can use different "
+"shortcuts.<br/><br/>For <5><i>Turdus merula</i></5>:<br/><br/><9><i>turdus "
+"me</i></9><br/><11><i>turdus .la</i></11><br/><13><i>turme</i></13> (3+2 "
+"characters)<br/><17><i>merula</i></17>"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "breeding"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "Non-breeding"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "Possible breeding"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "Probable breeding"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "Confirmed breeding"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "Please pick the breeding details for this record."
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "Not recorded"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "00: Migration, Flying or Summering (M/F/U)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "01: Nesting habitat (H)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "02: Singing male (S)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "03: Pair in suitable habitat (P)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "04: Permanent territory (T)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "05: Courtship and display (D)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "06: Visiting probable nest site (N)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "07: Agitated behaviour (A)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "08: Brood patch on incubating adult (I)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "09: Nest building (B)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "10: Distraction display (DD)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "11: Used nest or eggshells (UN)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "12: Recently fledged (FL)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "13: Occupied nest (ON)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "14: Faecal sac or food (FF)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "15: Nest with eggs (NE)"
+msgstr ""
+
+# Bird survey breeding attribute
+msgid "16: Nest with young (NY)"
+msgstr ""
+
+# Record upload alert
+msgid "Please log in first to upload the records."
+msgstr ""
+
+# Part of user account registration page
+msgid "I agree to <2>Terms and Conditions</2> and <6>Privacy Policy</6>"
+msgstr ""
+
+# Part of user account registration page
+msgid "Please wait..."
+msgstr ""

@@ -7,8 +7,7 @@ const API = {
   running: false,
 
   start(options = {}) {
-    const callback = options.callback;
-    const onUpdate = options.onUpdate;
+    const { callback, onUpdate } = options;
     const accuracyLimit = options.accuracyLimit || API.GPS_ACCURACY_LIMIT;
 
     // Early return if geolocation not supported.
@@ -22,7 +21,7 @@ const API = {
     // geolocation config
     const GPSoptions = {
       enableHighAccuracy: true,
-      maximumAge: 0,
+      maximumAge: 1, // ms
       timeout: API.TIMEOUT,
     };
 

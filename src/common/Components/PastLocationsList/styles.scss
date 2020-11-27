@@ -1,0 +1,45 @@
+#user-locations {
+  padding: 0;
+
+  .empty {
+    width: 80%;
+    max-width: 250px;
+    margin: 100px auto 0;
+    --border-width: 0;
+    --background: var(--ion-color-light);
+    --color: var(--ion-color-light-contrast);
+
+    span {
+      margin: 0 auto;
+      font-weight: 200;
+    }
+  }
+
+  .location {
+    .details {
+      ion-label {
+        margin-bottom: 5px;
+      }
+      .location-raw {
+        color: var(--ion-color-medium);
+        font-size: 0.85em;
+      }
+    }
+
+    .details + ion-label {
+      max-width: 80px;
+
+      .location-source {
+        position: absolute;
+        right: 10px;
+        bottom: 0;
+        font-weight: 200;
+      }
+    }
+
+    .location-favourite.on {
+      --detail-icon-color: var(--ion-color-warning);
+      --detail-icon-opacity: 1;
+    }
+  }
+}

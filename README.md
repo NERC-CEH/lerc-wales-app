@@ -13,4 +13,4 @@ Think you've found a bug or have a new feature to suggest?
 
 ## Authors
 
-[Karolis Kazlauskis](https://github.com/kazlauskis)
+[Karolis Kazlauskis](https://flumens.io)

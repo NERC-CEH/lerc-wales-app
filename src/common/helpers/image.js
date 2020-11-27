@@ -1,21 +1,9 @@
 /** ****************************************************************************
  * Functions to work with media.
  **************************************************************************** */
-import Indicia from 'indicia';
+import Indicia from '@indicia-js/core';
 import Log from './log';
-import Analytics from './analytics';
 import Device from './device';
-
-const resetStatusBar = () => {
-  // see: https://github.com/apache/cordova-plugin-statusbar/issues/156
-  if (!window.StatusBar || Device.isAndroid()) {
-    // use StatusBar instead of cordova for tests
-    return;
-  }
-
-  StatusBar.hide(); // eslint-disable-line
-  StatusBar.show(); // eslint-disable-line
-};
 
 export function _onGetImageError(err, resolve, reject) {
   if (typeof err !== 'string') {
@@ -59,7 +47,7 @@ const Image = {
         correctOrientation: true,
       };
 
-      const cameraOptions = Object.assign({}, defaultCameraOptions, options);
+      const cameraOptions = { ...{}, ...defaultCameraOptions, ...options };
 
       if (Device.isAndroid()) {
         // Android bug:
@@ -95,14 +83,7 @@ const Image = {
         window.resolveLocalFileSystemURL(URI, onSuccessCopyFile, reject);
       }
 
-      function onError(err) {
-        resetStatusBar();
-        return _onGetImageError(err, resolve, reject);
-      }
-
       function onSuccess(fileURI) {
-        resetStatusBar();
-
         if (
           Device.isAndroid() &&
           cameraOptions.sourceType === window.Camera.PictureSourceType.CAMERA
@@ -120,8 +101,11 @@ const Image = {
         copyFileToAppStorage(fileURI);
       }
 
-      navigator.camera.getPicture(onSuccess, onError, cameraOptions);
-      Analytics.trackEvent('Image', 'get', cameraOptions.sourceType);
+      navigator.camera.getPicture(
+        onSuccess,
+        err => _onGetImageError(err, resolve, reject),
+        cameraOptions
+      );
     });
   },
 
@@ -138,10 +122,12 @@ const Image = {
     const success = args => {
       const [data, type, width, height] = args;
       const imageModel = new ImageModel({
-        data,
-        type,
-        width,
-        height,
+        attrs: {
+          data,
+          type,
+          width,
+          height,
+        },
       });
 
       return imageModel.addThumbnail().then(() => imageModel);
@@ -152,13 +138,17 @@ const Image = {
       return Indicia.Media.getDataURI(file).then(success);
     }
 
-    file = window.Ionic.WebView.convertFileSrc(file);
+    file = window.Ionic.WebView.convertFileSrc(file); // eslint-disable-line
     return Indicia.Media.getDataURI(file).then(args => {
       // don't resize, only get width and height
       const [, , width, height] = args;
       const fileName = file.split('/').pop();
       return success([fileName, 'jpeg', width, height]);
     });
+  },
+
+  validateRemote() {
+    // nothing to validate yet
   },
 };
 

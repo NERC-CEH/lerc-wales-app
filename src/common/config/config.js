@@ -1,7 +1,7 @@
 /** ****************************************************************************
  * Main app configuration file.
  **************************************************************************** */
-import Indicia from 'indicia';
+import Indicia from '@indicia-js/core';
 
 const HOST =
   process.env.APP_INDICIA_API_HOST || 'https://www.brc.ac.uk/irecord/';
@@ -22,9 +22,6 @@ const CONFIG = {
 
   // use prod logging if testing otherwise full log
   log: !__TEST__,
-
-  // google analytics
-  ga: {},
 
   // error analytics
   sentry: {

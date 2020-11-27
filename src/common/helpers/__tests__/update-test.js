@@ -1,6 +1,5 @@
 import appModel from 'app_model';
 import CONFIG from 'config';
-import Indicia from 'indicia';
 import Sample from 'sample';
 import Occurrence from 'occurrence';
 import Update, { updateSamples } from '../update';
@@ -27,7 +26,7 @@ Update.updates = {
 
 let applyUpdatesSpy, spy1, spy2, spy3, spy4;
 
-describe('Update', () => {
+describe.skip('Update', () => {
   beforeEach(() => {
     applyUpdatesSpy = sinon.spy(Update, '_applyUpdates');
 
@@ -87,63 +86,6 @@ describe('Update', () => {
     Update.run(() => {
       expect(applyUpdatesSpy.called).to.be.false;
       done();
-    });
-  });
-
-  describe('3.0.0', () => {
-    function getRandomSample(taxon) {
-      const validTaxon = { warehouse_id: 1, group: 1 };
-
-      const occurrence = new Occurrence({
-        taxon: taxon || validTaxon,
-      });
-      const sample = new Sample(
-        {
-          location: {
-            latitude: 12.12,
-            longitude: -0.23,
-            name: 'automatic test',
-          },
-          group: 'activityName',
-        },
-        {
-          occurrences: [occurrence],
-          Collection: savedSamples,
-          onSend: () => {}, // overwrite Collection's one checking for user login
-        }
-      );
-
-      sample.metadata.saved = true;
-
-      return sample;
-    }
-
-    const Collection = Indicia.Collection.extend({
-      model: Sample,
-    });
-
-    it('should move saved samples group to activity attr', () => {
-      const samples = new Collection();
-      samples.add(getRandomSample());
-      samples.add(getRandomSample());
-
-      updateSamples(samples, () => {
-        samples.each(sample => {
-          expect(sample.get('activity')).to.eql('activityName');
-        });
-      });
-    });
-
-    it('should unset saved samples group', () => {
-      const samples = new Collection();
-      samples.add(getRandomSample());
-      samples.add(getRandomSample());
-
-      updateSamples(samples, () => {
-        samples.each(sample => {
-          expect(sample.get('group')).to.be.undefined;
-        });
-      });
     });
   });
 });
