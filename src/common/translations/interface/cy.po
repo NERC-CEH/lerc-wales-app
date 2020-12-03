@@ -1,12 +1,12 @@
 # 
 # Translators:
-# David Slade <david.slade@sewbrec.org.uk>, 2019
-# Karolis, 2019
+# Karolis, 2020
+# David Slade <david.slade@sewbrec.org.uk>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: temp\n"
-"Last-Translator: Karolis, 2019\n"
+"Last-Translator: David Slade <david.slade@sewbrec.org.uk>, 2020\n"
 "Language-Team: Welsh (https://www.transifex.com/ceh/teams/100775/cy/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -978,7 +978,7 @@ msgid "Filter"
 msgstr "Ffilter "
 
 msgid "Filters"
-msgstr ""
+msgstr "Ffilterau"
 
 msgid "Close"
 msgstr "Cau "
@@ -1451,125 +1451,145 @@ msgid "Delete all the locally stored app data."
 msgstr "Dileu holl ddata sydd wedi'u storio'n lleol yn yr ap."
 
 msgid "Home"
-msgstr ""
+msgstr "Cartref"
 
 msgid "Photo"
-msgstr ""
+msgstr "Llun"
 
 msgid "Menu"
-msgstr ""
+msgstr "Dewislen"
 
 msgid "Tip: Adding Observations"
-msgstr ""
+msgstr "Cyngor: Ychwanegu Sylwadau "
 
 msgid ""
 "Tap on the <ion-icon class=\"tip-icon\" src=\"/images/ios-add.svg\"></ion-"
 "icon> button to capture a new record."
 msgstr ""
+"Tapiwch ar y botwm <ion-icon class=\"tip-icon\" src=\"/images/ios-add.svg"
+"\"></ion-icon> i gofnodi cofnod newydd."
 
 msgid "Pending"
-msgstr ""
+msgstr "Yn aros"
 
 msgid "Uploaded"
-msgstr ""
+msgstr "Uwchlwythwyd"
 
 msgid "No finished pending records"
-msgstr ""
+msgstr "Dim cofnodion yn aros gorffenedig "
 
 msgid "No uploaded surveys"
-msgstr ""
+msgstr "Dim arolygon wedi’u huwchlwytho"
 
 msgid "Back"
-msgstr ""
+msgstr "Yn ôl"
 
 msgid "cyanobacterium"
-msgstr ""
+msgstr "syanobacteriwm"
 
 msgid "web-spinner"
-msgstr ""
+msgstr "troellwr gwe"
 
 msgid "For quicker searching of the taxa you can use different shortcuts."
 msgstr ""
+"Am chwilio cyflymach am y tacsa gallwch ddefnyddio llwybrau byr gwahanol. "
 
 msgid "Upload"
-msgstr ""
+msgstr "Uwchlwytho"
 
 msgid "Grid Reference"
-msgstr ""
+msgstr "Cyfeirnod Grid"
 
 msgid "Nearest named place (e.g town, park)"
-msgstr ""
+msgstr "Y lle agosaf gydag enw (e.e tref, parc)"
 
 msgid "Name"
-msgstr ""
+msgstr "Enw"
 
 msgid "Your location name"
-msgstr ""
+msgstr "Enw eich lleoliad "
 
 msgid "Enter more information here..."
-msgstr ""
+msgstr "Nodwch fwy o wybodaeth yma ..."
 
 msgid "Breeding"
-msgstr ""
+msgstr "Magu"
 
 msgid "Draft"
-msgstr ""
+msgstr "Drafft"
 
 msgid ""
 "This record hasn't been uploaded to the database yet. Are you sure you want "
 "to remove it from your device?"
 msgstr ""
+"Nid yw’r cofnod hwn wedi cael ei uwchlwytho i’r bas data eto. Ydych chi’n "
+"siŵr eich bod eisiau ei ddileu o’ch dyfais?"
 
 msgid "Enter your username or email address to request a password reset."
 msgstr ""
+"Nodwch eich enw defnyddiwr neu eich cyfeiriad e-bost i wneud cais am ailosod"
+" cyfrinair. "
 
 msgid ""
 "Locations should be represented as UK Grid Reference instead of Latitude and"
 " Longitude."
 msgstr ""
+"Dylid cynrychioli lleoliadau fel Cyfeirnod Grid yn y DU yn lle Lledred a "
+"Hydred.         "
 
 msgid "Show UK Grid Reference over the map."
-msgstr ""
+msgstr "Dangos Cyfeirnod Grid yn y DU dros y map."
 
 msgid "Mark any new records as 'training' and exclude from all reports."
 msgstr ""
+"Marcio unrhyw gofnodion newydd fel ‘hyfforddiant’ ac eithrio o bob "
+"adroddiad.    "
 
 msgid "Share app crash data so we can make the app more reliable."
 msgstr ""
+"Rhannu data am ap yn gwrthod gweithio er mwyn gallu gwneud yr ap yn fwy "
+"dibynadwy. "
 
 msgid ""
 "A technical consultancy that excels at building bespoke environmental "
 "science and community focussed solutions."
 msgstr ""
+"Ymgynghoriaeth dechnegol sy’n rhagori mewn creu datrysiadau gwyddoniaeth "
+"amgylcheddol pwrpasol a gyda ffocws ar y gymuned.  "
 
 msgid "For suggestions and feedback please do not hesitate to"
-msgstr ""
+msgstr "Ar gyfer awgrymiadau ac adborth, peidiwch ag oedi i "
 
 msgid ""
 "Quality assured data is passed onto Local Environmental Records Centres, "
 "National Recording Schemes and to the NBN Atlas"
 msgstr ""
+"Anfonir data gyda’u hansawdd wedi’i sicrhau at Ganolfannau Cofnodion "
+"Amgylcheddol Lleol, Cynlluniau Cofnodi Cenedlaethol ac i Atlas yr NBN "
 
 msgid "number"
-msgstr ""
+msgstr "nifer"
 
 msgid "Are you sure you want to remove this photo?"
-msgstr ""
+msgstr "Ydych chi’n siŵr eich bod chi eisiau dileu’r ffotograff yma?"
 
 msgid "Note: it will remain in the gallery."
-msgstr ""
+msgstr "Sylwer: bydd yn aros yn yr oriel."
 
 msgid "sex"
-msgstr ""
+msgstr "rhyw"
 
 msgid "Tip: Locking Attributes"
-msgstr ""
+msgstr "Cyngor: Cloi Nodweddion    "
 
 msgid ""
 "You can preserve your current attribute value for the subsequently added "
 "records by locking it. Click on the <ion-icon src=\"/images/ios-lock.svg"
 "\"></ion-icon> button."
 msgstr ""
+"Gallwch warchod eich nodwedd gwerth bresennol ar gyfer y cofnodion a "
+"ychwanegir yn ddilynol drwy ei chloi. Cliciwch ar y botwm <ion-icon "
+"src=\"/images/ios-lock.svg\"></ion-icon>."
 
 # Part of Help page
 msgid ""
@@ -1577,6 +1597,10 @@ msgid ""
 "to select the photo source: camera or gallery. Once you have picked a photo,"
 " the app will create a new record without any species associated with it."
 msgstr ""
+"Pwyswch fotwm y camera<1></1>ym mhennawd yr hafan. Bydd hyn yn eich ysgogi i"
+" ddewis ffynhonnell y ffotograff: camera neu oriel. Ar ôl i chi ddewis "
+"ffotograff, bydd yr ap yn creu cofnod newydd heb unrhyw rywogaeth yn "
+"gysylltiedig ag ef."
 
 # Part of Help page
 msgid ""
@@ -1588,6 +1612,13 @@ msgid ""
 "etc.<br/><br/>When finished, press the Upload button in the record's page "
 "header."
 msgstr ""
+"Pwyswch y botwm plws<1></1>yn yr hafan. Bydd hwn yn mynd â chi i’r dudalen "
+"chwilio am dacsa. Ar ôl dewis y rhywogaeth, agorwch y cofnod (drwy ei agor "
+"yn uniongyrchol o’r dudalen chwilio am dacsa neu ddefnyddio’r botwm "
+"golygu<3></3>wrth enw’r rhywogaeth neu drwy’r dudalen rhestr gartref) a "
+"llenwi’r manylion am weld y rhywogaeth, fel lleoliad, dyddiad, nifer a "
+"welwyd ac ati.<br/><br/>Ar ôl gorffen, pwyswch y botwm Uwchlwytho ym "
+"mhennawd tudalen y cofnod.  "
 
 # Part of Help page
 msgid ""
@@ -1604,6 +1635,19 @@ msgid ""
 "to your iRecord account and have a network connection, for the records to be"
 " automatically synchronised in the background .<br/>"
 msgstr ""
+"Bydd eich holl gofnodion sydd wedi’u cadw i’w gweld ar yr hafan. Yn ddiofyn "
+"mae cofnod mewn dull <i>drafft</i> nes ei fod yn barod i’w uwchlwytho. Tra "
+"mae mewn dull <i>drafft</i> ni fydd y rhaglen yn cydamseru eich cofnod "
+"gyda’r bas data.<br/><br/>I’w osod ar gyfer uwchlwytho, agorwch y cofnod a "
+"phwyswch y botwm Uwchlwytho yn y pennawd. Bydd y rhaglen yn ceisio cyflwyno "
+"eich cofnod unwaith mae cyswllt rhwydwaith da. Os yw’r cofnod wedi cyrraedd "
+"y bas data, bydd yn cael ei symud i’r rhestr Wedi Uwchlwytho yn yr Hafan "
+"(edrychwch ar y tabl Wedi Uwchlwytho).<br/><br/>Ar ôl iddo gyrraedd y bas "
+"data yn llwyddiannus, mae’r cofnod ar gael ar gyfer golygu o’r Newydd. I’w "
+"olygu ymhellach, defnyddiwch wefan "
+"<16>iRecord</16>.<br/><br/><20>Sylwer:</20> rhaid i chi fod wedi mewngofnodi"
+" i’ch cyfrif iRecord a bod â chyswllt rhwydwaith er mwyn i’r cofnodion "
+"gydamseru yn awtomatig yn y cefndir.<br/>"
 
 # Part of Help page
 msgid ""
@@ -1613,6 +1657,12 @@ msgid ""
 "This will leave the records on the database untouched. To do that go to "
 "settings page<7></7>and click <i>Remove All Saved</i><11></11>button."
 msgstr ""
+"I ddileu cofnod, symudwch ef i’r chwith yn yr Hafan a chlicio ar y botwm "
+"dileu<1></1>.<3></3><br/><br/>Gallwch hefyd dynnu’r holl gofnodion sydd "
+"wedi’u cadw’n lleol sydd wedi cael eu cydamseru’n llwyddiannus gyda’r bas "
+"data. Bydd hyn yn gadael y cofnodion yn y bas data heb eu cyffwrdd. I wneud "
+"hynny, ewch i’r dudalen gosodiadau<7></7>a chlicio ar y botwm <i>Dileu Pob "
+"Cofnod Wedi’i Gadw</i><11></11>."
 
 # Part of Help page
 msgid ""
@@ -1627,6 +1677,16 @@ msgid ""
 "a named area while keeping the location name the same. You can lock a "
 "location if it is selected using a map or entered manually."
 msgstr ""
+"Gallwch gloi nodweddion cofnod fel dyddiad, lleoliad, nifer ac ati, a fydd "
+"yn gwarchod eich gwerth nodwedd presennol ar gyfer cofnodion a ychwanegir "
+"wedyn. <br/><br/>I gloi nodwedd, cliciwch ar y botwm clo<4></4>yn y pennawd "
+"golygu tudalen nodwedd. Bydd hyn yn newid y symbol i wedi cloi<6></6>ar y "
+"botwm a nesaf at y nodwedd.<br/><br/><10>Note:</10> Ar gyfer lleoliad "
+"ffynhonnell GPS, dim ond enw’r lleoliad ellir ei gloi, nid y gwerth GPS. "
+"Wrth i chi symud o gwmpas, bydd y gwerth GPS yn newid. Bydd hyn yn galluogi "
+"cofnodi gwahanol werthoedd GPS mewn ardal wedi’i henwi gan gadw enw’r "
+"lleoliad yr un fath. Gallwch gloi lleoliad os caiff ei ddewis gan ddefnyddio"
+" map neu ei nodi gyda llaw."
 
 # Part of Help page
 msgid ""
@@ -1635,6 +1695,10 @@ msgid ""
 "mobile app records and only the ones that you have joined on the iRecord "
 "website will be available to select."
 msgstr ""
+"I anfon cofnodion i weithgaredd penodol gallwch ei ddewis yn y tudalen "
+"Gweithgareddau.<1></1><br/><br/><4> Sylwer:</4> dim ond y gweithgareddau "
+"sy’n galluogi’r cofnodion ap symudol hyn a dim ond y rhai rydych chi wedi "
+"ymuno â hwy ar wefan iRecord fydd ar gael i’w dewis.  "
 
 # Part of Help page
 msgid ""
@@ -1643,6 +1707,10 @@ msgid ""
 "delete<5></5>buttons.<br/><br/><9></9> You can make your location stick to "
 "the top of the locations list by clicking the Favourite toggle ."
 msgstr ""
+"Gallwch reoli eich lleoliadau wedi’u cadw ar dudalen lleoliad unrhyw gofnod "
+"ac o’r dudalen gosodiadau.<1></1> Symudwch leoliad i’r chwith a chlicio ar y"
+" botymau golygu<3></3>neu ddileu<5></5>.<br/><br/><9></9> Gallwch wneud i’ch"
+" lleoliad aros ar frig y rhestr lleoliadau drwy glicio ar y togl Ffefryn. "
 
 # Part of Help page
 msgid ""
@@ -1651,111 +1719,116 @@ msgid ""
 "me</i></9><br/><11><i>turdus .la</i></11><br/><13><i>turme</i></13> (3+2 "
 "characters)<br/><17><i>merula</i></17>"
 msgstr ""
+"Ar gyfer chwilio cyflymach drwy’r tacsa gallwch ddefnyddio gwahanol lwybrau "
+"byr.<br/><br/>For <5><i>Turdus merula</i></5>:<br/><br/><9><i>turdus "
+"me</i></9><br/><11><i>turdus .la</i></11><br/><13><i>turme</i></13> (3+2 "
+"characters)<br/><17><i>merula</i></17>"
 
 # Bird survey breeding attribute
 msgid "breeding"
-msgstr ""
+msgstr "magu"
 
 # Bird survey breeding attribute
 msgid "Non-breeding"
-msgstr ""
+msgstr "Ddim yn magu"
 
 # Bird survey breeding attribute
 msgid "Possible breeding"
-msgstr ""
+msgstr "Yn magu o bosib"
 
 # Bird survey breeding attribute
 msgid "Probable breeding"
-msgstr ""
+msgstr "Yn magu fwy na thebyg"
 
 # Bird survey breeding attribute
 msgid "Confirmed breeding"
-msgstr ""
+msgstr "Magu wedi’i gadarnhau "
 
 # Bird survey breeding attribute
 msgid "Please pick the breeding details for this record."
-msgstr ""
+msgstr "Dewiswch y manylion magu ar gyfer y cofnod hwn. "
 
 # Bird survey breeding attribute
 msgid "Not recorded"
-msgstr ""
+msgstr "Heb ei gofnodi "
 
 # Bird survey breeding attribute
 msgid "00: Migration, Flying or Summering (M/F/U)"
-msgstr ""
+msgstr "00: Mudo, Hedfan neu Dreulio’r Haf (M/F/U)"
 
 # Bird survey breeding attribute
 msgid "01: Nesting habitat (H)"
-msgstr ""
+msgstr "01: Cynefin nythu (H)"
 
 # Bird survey breeding attribute
 msgid "02: Singing male (S)"
-msgstr ""
+msgstr "02: Gwrywod yn canu (S)"
 
 # Bird survey breeding attribute
 msgid "03: Pair in suitable habitat (P)"
-msgstr ""
+msgstr "03: Pâr mewn cynefin addas (P)"
 
 # Bird survey breeding attribute
 msgid "04: Permanent territory (T)"
-msgstr ""
+msgstr "04: Tiriogaeth barhaol (T)"
 
 # Bird survey breeding attribute
 msgid "05: Courtship and display (D)"
-msgstr ""
+msgstr "05: Carwriaeth ac arddangosfa (D)"
 
 # Bird survey breeding attribute
 msgid "06: Visiting probable nest site (N)"
-msgstr ""
+msgstr "06: Ymweld â safle nythu tebygol (N)"
 
 # Bird survey breeding attribute
 msgid "07: Agitated behaviour (A)"
-msgstr ""
+msgstr "07: Ymddygiad anniddig (A)"
 
 # Bird survey breeding attribute
 msgid "08: Brood patch on incubating adult (I)"
-msgstr ""
+msgstr "08: Darn moel ar oedolyn sy’n incwbeiddio (I)"
 
 # Bird survey breeding attribute
 msgid "09: Nest building (B)"
-msgstr ""
+msgstr "09: Creu nyth (B)"
 
 # Bird survey breeding attribute
 msgid "10: Distraction display (DD)"
-msgstr ""
+msgstr "10: Arddangosfa tynnu sylw (DD)"
 
 # Bird survey breeding attribute
 msgid "11: Used nest or eggshells (UN)"
-msgstr ""
+msgstr "11: Nyth wedi’i defnyddio neu blisg wyau (UN)"
 
 # Bird survey breeding attribute
 msgid "12: Recently fledged (FL)"
-msgstr ""
+msgstr "12: Wedi hedfan y nyth yn ddiweddar (FL)"
 
 # Bird survey breeding attribute
 msgid "13: Occupied nest (ON)"
-msgstr ""
+msgstr "13: Nyth lawn (ON)"
 
 # Bird survey breeding attribute
 msgid "14: Faecal sac or food (FF)"
-msgstr ""
+msgstr "14: Sach carthion neu fwyd (FF)"
 
 # Bird survey breeding attribute
 msgid "15: Nest with eggs (NE)"
-msgstr ""
+msgstr "15: Nyth gydag wyau (NE)"
 
 # Bird survey breeding attribute
 msgid "16: Nest with young (NY)"
-msgstr ""
+msgstr "16: Nyth gyda chywion (NY)"
 
 # Record upload alert
 msgid "Please log in first to upload the records."
-msgstr ""
+msgstr "Mewngofnodwch i ddechrau i uwchlwytho’r cofnodion. "
 
 # Part of user account registration page
 msgid "I agree to <2>Terms and Conditions</2> and <6>Privacy Policy</6>"
 msgstr ""
+"Rwyf yn cytuno i’r <2>Telerau ac Amodau</2> a’r <6>Polisi Preifatrwydd</6>"
 
 # Part of user account registration page
 msgid "Please wait..."
-msgstr ""
+msgstr "Arhoswch..."
