@@ -12,7 +12,7 @@ import {
   IonLabel,
   IonPage,
 } from '@ionic/react';
-import { globeOutline } from 'ionicons/icons';
+import { globe } from 'ionicons/icons';
 import languages from 'common/config/languages';
 import './styles.scss';
 
@@ -42,7 +42,7 @@ function SelectLanguage({ appModel, hideHeader }) {
         <IonList>
           {hideHeader && (
             <div className="header">
-              <IonIcon icon={globeOutline} size="large" />
+              <IonIcon icon={globe} size="large" />
               <h4>Select your language</h4>
             </div>
           )}
