@@ -62,7 +62,7 @@ export default {
         type: 'radio',
         values: [
           { value: null, isDefault: true, label: 'Present' },
-          { value: 1, id: 665 },
+          { value: '1', id: 665 },
           { value: '2-5', id: 666 },
           { value: '6-20', id: 667 },
           { value: '21-100', id: 668 },

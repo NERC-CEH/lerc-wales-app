@@ -1,5 +1,5 @@
 const numRanges = {
-  1: 665,
+  '1': 665,
   '2-5': 666,
   '6-20': 667,
   '21-100': 668,
@@ -11,7 +11,7 @@ const numRanges = {
 export default {
   name: 'dragonflies',
   taxonGroups: [107],
-  
+
   render: [
     'smp:site',
     'occ:adCount',
