@@ -326,6 +326,14 @@ msgstr "page"
 msgid "only the activities that allow this mobile app records and only the ones that you have joined on the iRecord website will be available to select"
 msgstr "only the activities that allow this mobile app records and only the ones that you have joined on the iRecord website will be available to select"
 
+# Part of activities page 
+msgid "Pull to refresh the list."
+msgstr "Pull to refresh the list."
+
+# Part of activities page 
+msgid "Sorry, no activities data is available at the moment."
+msgstr "Sorry, no activities data is available at the moment."
+
 msgid "Other"
 msgstr "Other"
 

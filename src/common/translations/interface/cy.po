@@ -453,6 +453,14 @@ msgstr ""
 "dim ond y gweithgareddau sy'n caniatáu'r cofnodion ap symudol hyn a dim ond "
 "y rhai rydych wedi ymuno â hwy ar wefan iRecord fydd ar gael i'w dewis "
 
+# Part of activities page
+msgid "Pull to refresh the list."
+msgstr ""
+
+# Part of activities page
+msgid "Sorry, no activities data is available at the moment."
+msgstr ""
+
 msgid "Other"
 msgstr "Arall "
 
