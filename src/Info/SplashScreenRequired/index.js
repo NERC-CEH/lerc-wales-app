@@ -27,6 +27,7 @@ const SplashScreen = ({ appModel }) => {
           <p>
             <b>
               <T tOptions={tOptions}>LERC Wales</T>
+              {' '}
             </b>
             <T tOptions={tOptions}>
               helps you with management and sharing of your wildlife
