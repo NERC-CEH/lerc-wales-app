@@ -455,11 +455,12 @@ msgstr ""
 
 # Part of activities page
 msgid "Pull to refresh the list."
-msgstr ""
+msgstr "Tynnwch i adnewyddu’r rhestr"
 
 # Part of activities page
 msgid "Sorry, no activities data is available at the moment."
 msgstr ""
+"Mae’n ddrwg gennym. Nid oes data am weithgareddau ar gael ar hyn o bryd."
 
 msgid "Other"
 msgstr "Arall "
