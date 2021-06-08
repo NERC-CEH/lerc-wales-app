@@ -1,4 +1,3 @@
-import 'helpers/system_checkup';
 import 'common/translations/translator';
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';

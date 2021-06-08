@@ -79,9 +79,7 @@ export default () => (
             )}
             <br />
             <br />
-            For 
-            {' '}
-            <i>Puffinus baroli</i>
+            For <i>Puffinus baroli</i>
             :
             <br />
             <br />
@@ -89,9 +87,9 @@ export default () => (
             <br />
             <i>puffinus .oli</i>
             <br />
-            <i>pufba</i>
+            <i>pubar</i>
             {' '}
-(3+2
+(2+3 {' '}
             {t('characters')}
             )
             <br />
@@ -196,9 +194,7 @@ you have to be signed in to your iRecord account and
               both on the button and next to the attribute.
               <br />
               <br />
-              <b>Note:</b>
-              {' '}
-For a GPS-sourced location, only the location name
+              <b>Note:</b> For a GPS-sourced location, only the location name
               can be locked, not the GPS value. As you move about, the GPS value
               will change. This will allow recording of different GPS values
               within a named area while keeping the location name the same. You
@@ -211,36 +207,22 @@ For a GPS-sourced location, only the location name
         <IonItemDivider>{t('User')}</IonItemDivider>
         <Collapse title={t('Sign in/out or register')}>
           <p>
-            {t('To login, open the main menu page')}
-            {' '}
-            <IonIcon icon={menu} size="small" />
-,
-            {t('click Login')}
-            {' '}
+            {t('To login, open the main menu page')}{' '}
+            <IonIcon icon={menu} size="small" />,{t('click Login')}{' '}
             <IonIcon icon={person} size="small" />
-            {t('or Register')} 
-            {' '}
-            <IonIcon icon={personAdd} size="small" />
+            {t('or Register')} <IonIcon icon={personAdd} size="small" />
             {t('buttons and follow the instructions')}
             .
             <br />
             <br />
-            {t('To logout, visit the main menu page')}
-            {' '}
+            {t('To logout, visit the main menu page')}{' '}
             <IonIcon icon={menu} size="small" />
-            {t('and click the logout')} 
-            {' '}
-            <IonIcon icon={logOut} size="small" />
-            {' '}
+            {t('and click the logout')} <IonIcon icon={logOut} size="small" />{' '}
             {t('button')}
             .
             <br />
             <br />
-            <b>
-              {t('Note')}
-:
-            </b>
-            {' '}
+            <b>{t('Note')}:</b>{' '}
             {t(
               'after registering a new account you must verify your email address by clicking on a verification link sent to your email'
             )}
@@ -255,9 +237,7 @@ For a GPS-sourced location, only the location name
               <IonIcon icon={people} size="small" />
               <br />
               <br />
-              <b>Note:</b>
-              {' '}
-only the activities that allow this mobile app
+              <b>Note:</b> only the activities that allow this mobile app
               records and only the ones that you have joined on the iRecord
               website will be available to select.
             </T>
@@ -278,9 +258,7 @@ only the activities that allow this mobile app
               buttons.
               <br />
               <br />
-              <span className="location-favourite icon icon-star " />
-              {' '}
-You can
+              <span className="location-favourite icon icon-star " /> You can
               make your location stick to the top of the locations list by
               clicking the Favourite toggle .
             </T>
@@ -288,23 +266,16 @@ You can
         </Collapse>
         <Collapse title={t('Reset the application')}>
           <p>
-            {t('Go to the application settings page')}
-            {' '}
-            <IonIcon icon={settings} size="small" />
-            {' '}
-            {t('and click on the Reset')} 
-            {' '}
-            <IonIcon icon={undo} size="small" />
-            {t('button')}
-.
+            {t('Go to the application settings page')}{' '}
+            <IonIcon icon={settings} size="small" />{' '}
+            {t('and click on the Reset')} <IonIcon icon={undo} size="small" />
+            {t('button')}.
           </p>
         </Collapse>
         <IonItem>
           <p>
-            {t('For more help please visit the iRecord')}
-            {' '}
-            <a href={`${CONFIG.site_url}forum/26`}>{t('forum')}</a>
-.
+            {t('For more help please visit the iRecord')}{' '}
+            <a href={`${CONFIG.site_url}forum/26`}>{t('forum')}</a>.
           </p>
         </IonItem>
       </IonList>

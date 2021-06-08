@@ -90,10 +90,10 @@ const getSearchInfo = () => (
           </b>
           <br />
           <b>
-            <i>turme</i>
+            <i>tumer</i>
           </b>
           {' '}
-          (3+2 characters)
+          (2+3 characters)
           <br />
           <b>
             <i>merula</i>

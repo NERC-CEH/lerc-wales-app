@@ -1725,12 +1725,12 @@ msgstr ""
 msgid ""
 "For quicker searching of the taxa you can use different "
 "shortcuts.<br/><br/>For <5><i>Turdus merula</i></5>:<br/><br/><9><i>turdus "
-"me</i></9><br/><11><i>turdus .la</i></11><br/><13><i>turme</i></13> (3+2 "
+"me</i></9><br/><11><i>turdus .la</i></11><br/><13><i>tumer</i></13> (2+3 "
 "characters)<br/><17><i>merula</i></17>"
 msgstr ""
 "Ar gyfer chwilio cyflymach drwy’r tacsa gallwch ddefnyddio gwahanol lwybrau "
 "byr.<br/><br/>For <5><i>Turdus merula</i></5>:<br/><br/><9><i>turdus "
-"me</i></9><br/><11><i>turdus .la</i></11><br/><13><i>turme</i></13> (3+2 "
+"me</i></9><br/><11><i>turdus .la</i></11><br/><13><i>tumer</i></13> (2+3 "
 "characters)<br/><17><i>merula</i></17>"
 
 # Bird survey breeding attribute
@@ -1841,3 +1841,15 @@ msgstr ""
 # Part of user account registration page
 msgid "Please wait..."
 msgstr "Arhoswch..."
+
+# as in letters and symbols
+msgid "characters"
+msgstr ""
+
+# Odonata attribute name
+msgid "Ovip. scars"
+msgstr ""
+
+# Odonata attribute info message
+msgid "This attribute should be recorded for Willow Emerald only."
+msgstr ""

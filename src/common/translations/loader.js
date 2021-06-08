@@ -32,7 +32,6 @@ const rawToKeyVal = lang =>
     agg[key] = val; // eslint-disable-line no-param-reassign
     return agg;
   }, {});
-console.log(rawToKeyVal(en));
 
 export default {
   en: {
