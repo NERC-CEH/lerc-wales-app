@@ -58,7 +58,7 @@ export default function RegisterContainer({ userModel, appModel }) {
   const context = useContext(NavContext);
 
   const onSuccess = () => {
-    context.goBack();
+    context.navigate('/home/surveys', 'root');
   };
 
   return (
