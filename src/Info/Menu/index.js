@@ -16,7 +16,7 @@ function showLogoutConfirmationDialog(callback) {
       {
         name: 'reset',
         type: 'checkbox',
-        label: 'Discard local data',
+        label: t('Discard local data'),
         value: 'reset',
         checked: true,
       },

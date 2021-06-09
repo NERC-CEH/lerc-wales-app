@@ -1493,3 +1493,11 @@ msgstr "Ovip. scars"
 # Odonata attribute info message 
 msgid "This attribute should be recorded for Willow Emerald only."
 msgstr "This attribute should be recorded for Willow Emerald only."
+
+# Success toast message
+msgid "Done"
+msgstr "Done"
+
+# Logout alert message
+msgid "Discard local data"
+msgstr "Discard local data"

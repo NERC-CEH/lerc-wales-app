@@ -1,12 +1,12 @@
 # 
 # Translators:
-# Karolis, 2020
 # David Slade <david.slade@sewbrec.org.uk>, 2020
+# Karolis, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: temp\n"
-"Last-Translator: David Slade <david.slade@sewbrec.org.uk>, 2020\n"
+"Last-Translator: Karolis, 2021\n"
 "Language-Team: Welsh (https://www.transifex.com/ceh/teams/100775/cy/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1852,4 +1852,12 @@ msgstr ""
 
 # Odonata attribute info message
 msgid "This attribute should be recorded for Willow Emerald only."
+msgstr ""
+
+# Success toast message
+msgid "Done"
+msgstr ""
+
+# Logout alert message
+msgid "Discard local data"
 msgstr ""
