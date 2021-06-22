@@ -1,12 +1,12 @@
 # 
 # Translators:
-# David Slade <david.slade@sewbrec.org.uk>, 2020
 # Karolis, 2021
+# David Slade <david.slade@sewbrec.org.uk>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: temp\n"
-"Last-Translator: Karolis, 2021\n"
+"Last-Translator: David Slade <david.slade@sewbrec.org.uk>, 2021\n"
 "Language-Team: Welsh (https://www.transifex.com/ceh/teams/100775/cy/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1844,20 +1844,22 @@ msgstr "Arhoswch..."
 
 # as in letters and symbols
 msgid "characters"
-msgstr ""
+msgstr "nod"
 
 # Odonata attribute name
 msgid "Ovip. scars"
-msgstr ""
+msgstr "Creithiau Ofip."
 
 # Odonata attribute info message
 msgid "This attribute should be recorded for Willow Emerald only."
 msgstr ""
+"Dim ond ar gyfer Fursen Werdd yr Helyg y dylai'r briodoledd hon yn cael ei "
+"chofnodi."
 
 # Success toast message
 msgid "Done"
-msgstr ""
+msgstr "Wedi gorffen"
 
 # Logout alert message
 msgid "Discard local data"
-msgstr ""
+msgstr "Taflu data lleol"
