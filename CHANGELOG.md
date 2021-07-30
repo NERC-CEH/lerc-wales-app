@@ -1,3 +1,12 @@
+## 5.4.1
+
+Fixed OS maps layer.
+Updated UKSI species dictionary.
+
+## 5.4.0
+
+Add activities to General Survey.
+
 ## 5.3.0
 
 Fixed android camera issue when using external storage
