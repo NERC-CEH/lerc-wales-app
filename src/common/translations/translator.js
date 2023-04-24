@@ -1,4 +1,4 @@
-import appModel from 'app_model';
+import appModel from 'models/app';
 import i18n from 'i18next';
 import { observe } from 'mobx';
 import { initReactI18next } from 'react-i18next';
@@ -6,12 +6,13 @@ import resources from './loader';
 
 const DEFAULT_LANGUAGE = 'en';
 
-window.getNewTerms = () => {
+window.getNewTerms = function getNewTermsWrap() {
   window.dic = window.dic || [];
   let all = '';
-  window.dic.forEach(word => {
+  const showUntranslatedTerms = word => {
     all += `\n# Context term \nmsgid "${word}"\nmsgstr "${word}"\n`;
-  });
+  };
+  window.dic.forEach(showUntranslatedTerms);
   console.log(all);
 };
 
@@ -20,9 +21,11 @@ window.getNewTerms = () => {
 function saveMissingKey(key) {
   window.dic = window.dic || [];
 
-  if (window.dic.includes(key)) {
-    return;
-  }
+  if (window.dic.includes(key)) return;
+
+  if (!`${key}`.trim()) return;
+
+  if (Number.isFinite(parseInt(key, 10))) return;
 
   console.warn(`🇬🇧: ${key}`);
   window.dic.push(key);
@@ -51,14 +54,15 @@ i18n
     },
   });
 
-observe(appModel.attrs, 'language', ({ newValue }) => {
+const newValueWrap = ({ newValue }) => {
   if (!newValue) {
     return;
   }
 
   const newLanguageCode = newValue.replace('_', '-'); // backwards compatible
   i18n.changeLanguage(newLanguageCode);
-});
+};
+observe(appModel.attrs, 'language', newValueWrap);
 
 // backwards compatible: START
 function translate(key) {

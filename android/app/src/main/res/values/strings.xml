@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="app_name">LERC Wales</string>
+  <string name="title_activity_main">LERC Wales</string>
+  <string name="package_name">uk.ac.ceh.lercwales</string>
+  <string name="custom_url_scheme">uk.ac.ceh.lercwales</string>
+</resources>

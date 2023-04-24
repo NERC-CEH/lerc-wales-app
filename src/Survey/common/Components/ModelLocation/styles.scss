@@ -1,0 +1,31 @@
+.with-past-locations .leaflet-top {
+  // fix opening the layers overlap with the past locations button
+  top: 59px;
+}
+
+#bottom-sheet {
+  --height: 95vh;
+
+  &::part(handle) {
+    margin-top: 10px;
+  }
+
+  ion-toolbar {
+    --background: var(--ion-page-background);
+    --min-height: 35px;
+  }
+}
+
+.past-locations-control {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  ion-button {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    --padding-end: 3px;
+    --padding-start: 3px;
+  }
+}

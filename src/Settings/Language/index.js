@@ -1,8 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { observer } from 'mobx-react';
-import AppHeader from 'Components/Header';
-import AppMain from 'Components/Main';
+import { Main, Header, Page } from '@flumens';
 import {
   IonIcon,
   IonList,
@@ -10,7 +7,6 @@ import {
   IonRadioGroup,
   IonRadio,
   IonLabel,
-  IonPage,
 } from '@ionic/react';
 import { globe } from 'ionicons/icons';
 import languages from 'common/config/languages';
@@ -35,10 +31,10 @@ function SelectLanguage({ appModel, hideHeader }) {
     ));
 
   return (
-    <IonPage id="language-select">
-      {!hideHeader && <AppHeader title="Language" />}
+    <Page id="language-select">
+      {!hideHeader && <Header title="Language" />}
 
-      <AppMain>
+      <Main>
         <IonList>
           {hideHeader && (
             <div className="header">
@@ -50,14 +46,9 @@ function SelectLanguage({ appModel, hideHeader }) {
             {languagesOptions}
           </IonRadioGroup>
         </IonList>
-      </AppMain>
-    </IonPage>
+      </Main>
+    </Page>
   );
 }
-
-SelectLanguage.propTypes = {
-  appModel: PropTypes.object.isRequired,
-  hideHeader: PropTypes.bool,
-};
 
 export default observer(SelectLanguage);
