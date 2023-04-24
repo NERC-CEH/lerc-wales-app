@@ -11,9 +11,9 @@ import { device, isAxiosNetworkError } from '@flumens';
 import CONFIG from 'common/config';
 import { Survey } from 'Survey/common/config';
 import defaultSurvey from 'Survey/Default/config';
-import listSurvey from 'Survey/List/config';
-import mothSurvey from 'Survey/Moth/config';
-import plantSurvey from 'Survey/Plant/config';
+// import listSurvey from 'Survey/List/config';
+// import mothSurvey from 'Survey/Moth/config';
+// import plantSurvey from 'Survey/Plant/config';
 
 // export type
 interface API_Occurrence {
@@ -88,9 +88,10 @@ const getRecordsQuery = (timestamp: any) => {
         must: [
           {
             bool: {
-              should: [defaultSurvey, listSurvey, mothSurvey, plantSurvey].map(
-                getSurveyQuery
-              ),
+              should: [
+                defaultSurvey,
+                //  listSurvey, mothSurvey, plantSurvey
+              ].map(getSurveyQuery),
             },
           },
 
