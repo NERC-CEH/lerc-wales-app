@@ -186,7 +186,6 @@ msgstr "You can manage your saved locations both on any record's location page a
 msgid "Swipe a location left and click edit"
 msgstr "Swipe a location left and click edit"
 
-
 msgid "Reset the application"
 msgstr "Reset the application"
 
@@ -277,8 +276,6 @@ msgstr "Password"
 
 msgid "Email"
 msgstr "Email"
-
-
 
 
 msgid "No photo has been added.<br/>Press <3></3> to add."
@@ -1104,13 +1101,8 @@ msgstr "You can preserve your current attribute value for the subsequently added
 msgid "Other recording options"
 msgstr "Other recording options"
 
-# Plant Survey name
-msgid "Plant Survey"
-msgstr "Plant Survey"
 
-# Moth Survey name
-msgid "Moth Survey"
-msgstr "Moth Survey"
+
 
 # List Survey name
 msgid "Species List Survey"
@@ -1652,9 +1644,7 @@ msgstr "No site name"
 msgid "Recorders"
 msgstr "Recorders"
 
-# Part of Species List survey 
-msgid "Flumens Test"
-msgstr "Flumens Test"
+
 
 # Part of Species List survey 
 msgid "Add Species"
@@ -1708,65 +1698,6 @@ msgstr "Site name eg nearby village"
 msgid "Are you sure you want to delete the saved location?"
 msgstr "Are you sure you want to delete the saved location?"
 
-# Moth survey method message
-msgid "If trapping overnight please enter the date for the evening on which the trap was put out."
-msgstr "If trapping overnight please enter the date for the evening on which the trap was put out."
-
-# Moth survey entry
-msgid "Method"
-msgstr "Method"
-
-# Moth survey method options
-msgid "Please enter your sampling method (i.e. type of trap or recording method)."
-msgstr "Please enter your sampling method (i.e. type of trap or recording method)."
-
-# Moth survey method options
-msgid "MV light"
-msgstr "MV light"
-
-# Moth survey method options
-msgid "LED light"
-msgstr "LED light"
-
-# Moth survey method options
-msgid "Actinic light"
-msgstr "Actinic light"
-
-# Moth survey method options
-msgid "Light trapping"
-msgstr "Light trapping"
-
-# Moth survey method options
-msgid "Daytime observation"
-msgstr "Daytime observation"
-
-# Moth survey method options
-msgid "Dusking"
-msgstr "Dusking"
-
-# Moth survey method options
-msgid "Attracted to a lighted window"
-msgstr "Attracted to a lighted window"
-
-# Moth survey method options
-msgid "Sugaring"
-msgstr "Sugaring"
-
-# Moth survey method options
-msgid "Wine roping"
-msgstr "Wine roping"
-
-# Moth survey method options
-msgid "Beating tray"
-msgstr "Beating tray"
-
-# Moth survey method options
-msgid "Pheromone trap"
-msgstr "Pheromone trap"
-
-# Moth survey method options
-msgid "Other method (add comment)"
-msgstr "Other method (add comment)"
 
 # Survey entry 
 msgid "Quantity"
@@ -1849,37 +1780,6 @@ msgstr "This account is already activated."
 msgid "A new verification email was successfully sent now. If you did not receive the email, then check your Spam or Junk email folders."
 msgstr "A new verification email was successfully sent now. If you did not receive the email, then check your Spam or Junk email folders."
 
-# Plant Survey attributes 
-msgid "Grid square alert"
-msgstr "Grid square alert"
-
-# Plant Survey attributes 
-msgid "Square"
-msgstr "Square"
-
-# Plant Survey attributes 
-msgid "Vice County"
-msgstr "Vice County"
-
-# Plant Survey attributes 
-msgid "Are you sure you want to delete {{speciesPrettyName}}?"
-msgstr "Are you sure you want to delete {{speciesPrettyName}}?"
-
-# Plant Survey info message
-msgid "We will notify you when you cross into another grid square. You can select the square size in the app settings."
-msgstr "We will notify you when you cross into another grid square. You can select the square size in the app settings."
-
-# Plant Survey info message
-msgid "Use grid alert"
-msgstr "Use grid alert"
-
-# Plant survey attribute
-msgid "Status"
-msgstr "Status"
-
-# Plant survey attribute
-msgid "Sensitive"
-msgstr "Sensitive"
 
 # Status attribute message
 msgid "Please pick the status."
@@ -2036,7 +1936,7 @@ msgstr "rejected"
 
 # Verification message 
 msgid "Thanks for sending in your record. A verifier has marked it as <2>{{statusMessage}}</2> in this case. Please log in to the iRecord website to see any additional information that the verifier may have provided."
-msgstr "Thanks for sending in your record. A verifier has marked it as <2>{{statusMessage}}</2> in this case. Please log in to the iRecord website to see any additional information that the verifier may have provided." "in this case. Please log in to the iRecord website to see any additional information that the verifier may have provided."
+msgstr "Thanks for sending in your record. A verifier has marked it as <2>{{statusMessage}}</2> in this case. Please log in to the iRecord website to see any additional information that the verifier may have provided."
 
 # Account not verified alert button label
 msgid "Resend"
