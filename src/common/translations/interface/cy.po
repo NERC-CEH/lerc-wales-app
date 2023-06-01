@@ -1,12 +1,12 @@
 # 
 # Translators:
 # Karolis, 2020
-# David Slade <david.slade@sewbrec.org.uk>, 2021
+# David Slade <david.slade@sewbrec.org.uk>, 2023
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: temp\n"
-"Last-Translator: David Slade <david.slade@sewbrec.org.uk>, 2021\n"
+"Last-Translator: David Slade <david.slade@sewbrec.org.uk>, 2023\n"
 "Language-Team: Welsh (https://app.transifex.com/ceh/teams/100775/cy/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -339,6 +339,7 @@ msgid ""
 "If another person identified the species for you, please enter their name "
 "here."
 msgstr ""
+"Os mai person arall wnaeth adnabod y rhywogaeth i chi, rhowch ei enw yma."
 
 msgid "identifiers"
 msgstr "adnabyddwr"
@@ -350,7 +351,7 @@ msgid "Stage"
 msgstr "Cam "
 
 msgid "Identified by"
-msgstr ""
+msgstr "Wedi'i adnabod gan"
 
 msgid "Present"
 msgstr "Presennol "
@@ -363,6 +364,7 @@ msgstr "E-bost "
 
 msgid "No photo has been added.<br/>Press <3></3> to add."
 msgstr ""
+"Does dim ffotograff wedi ei ychwanegu.<br/>Pwyswch <3></3> i'w ychwanegu."
 
 msgid "acarine"
 msgstr "acarin "
@@ -692,7 +694,7 @@ msgid "How many individuals of this type?"
 msgstr "Faint o unigolion o'r math yma? "
 
 msgid "How many individuals of this species did you see?"
-msgstr ""
+msgstr "Faint o unigolion o'r rhywogaeth yma welsoch chi?"
 
 msgid "Yikes!"
 msgstr "Rargol! "
@@ -1225,22 +1227,22 @@ msgstr ""
 
 # Surveys list header
 msgid "Other recording options"
-msgstr ""
+msgstr "Opsiynau cofnodi eraill "
 
 # List Survey name
 msgid "Species List Survey"
-msgstr ""
+msgstr "Arolwg Rhestr Rhywogaethau"
 
 msgid "Map"
-msgstr ""
+msgstr "Map"
 
 # Popup close button
 msgid "Hide"
-msgstr ""
+msgstr "Cuddio "
 
 # Info popup message
 msgid "To delete any surveys swipe it to the left."
-msgstr ""
+msgstr "I ddileu unrhyw arolygon, sweipiwch i'r chwith."
 
 # Part of Help Page
 msgid ""
@@ -1249,6 +1251,9 @@ msgid ""
 "photo, the app will create a new record without any species associated with "
 "it."
 msgstr ""
+"Pwyswch y botwm camera <2></2> ym mhennyn yr hafan. Bydd hyn yn eich annog i"
+" ddewis ffynhonnell y ffotograff: camera neu oriel. Unwaith y byddwch wedi "
+"dewis ffotograff, bydd yr ap yn creu cofnod newydd "
 
 # Part of Help Page
 msgid ""
@@ -1258,24 +1263,37 @@ msgid ""
 "button <5></5> beside the species name or through the home-list page) and "
 "fill in the details of the sighting, like location, date, number seen etc."
 msgstr ""
+"Pwyswch y botwm plws <2></2> ar yr hafan. Bydd yn mynd â chi i'r dudalen "
+"chwilio tacsa. Ar ôl dewis y rhywogaeth, agorwch y cofnod (naill ai drwy ei "
+"agor yn uniongyrchol o'r dudalen chwilio tacsa gan ddefnyddio'r botwm golygu"
+" <5></5> wrth ymyl enw'r rhywogaeth neu drwy dudalen rhestr yr hafan) a "
+"llenwi'r manylion am yr hyn a welwyd, fel lleoliad, dyddiad, nifer a welwyd "
+"ac ati."
 
 # Part of Help Page
 msgid ""
 "Type in a species name - English or scientific name, or a genus or family "
 "etc."
 msgstr ""
+"Teipiwch enw rhywogaeth - Saesneg neu enw gwyddonol, neu genws neu deulu ac "
+"ati."
 
 # Part of Help Page
 msgid ""
 "To find a species from its scientific name you can use shortcuts, e.g. to "
 "find <i>Bellis perrenis</i> (Daisy) you can type:"
 msgstr ""
+"I ddod o hyd i rywogaeth oddi wrth ei henw gwyddonol gallwch ddefnyddio "
+"llwybrau byr, e.e. i ddod o hyd i <i>Bellis perrenis</i> (Llygad y dydd) "
+"gallwch deipio:"
 
 # Part of Help Page
 msgid ""
 "Once you have added the name, you can add a photo and the app will suggest "
 "an identification based on the photo."
 msgstr ""
+"Unwaith y byddwch wedi ychwanegu'r enw, gallwch ychwanegu ffotograff a bydd "
+"yr ap yn awgrymu enw yn seiliedig ar y ffotograff."
 
 # Part of Help Page
 msgid ""
@@ -1284,6 +1302,10 @@ msgid ""
 "<i>draft</i> mode the application will not synchronise your record with the "
 "database."
 msgstr ""
+"Bydd eich holl gofnodion sydd wedi'u cadw yn cael eu dangos ar yr hafan. Yn "
+"ddiofyn, mae cofnod yn y modd <i>draft</i> nes iddo gael ei osod i'w "
+"uwchlwytho. Tra mae yn y modd <i>draft</i> ni fydd y rhaglen yn cysoni eich "
+"cofnod â'r gronfa ddata."
 
 # Part of Help Page
 msgid ""
@@ -1292,12 +1314,20 @@ msgid ""
 "network connection. If the record has reached the database, it will be moved"
 " to the Uploaded list in the Home page (see Uploaded tab)."
 msgstr ""
+"I'w osod i'w uwchlwytho, agorwch y cofnod a gwasgwch y botwm Uwchlwytho yn y"
+" pennyn. Bydd y cais yn ceisio cyflwyno'ch cofnod unwaith y bydd cysylltiad "
+"rhwydwaith da. Os yw'r cofnod wedi cyrraedd y gronfa ddata, bydd yn cael ei "
+"symud i'r rhestr Wedi'i Uwchlwytho yn yr Hafan (edrychwch ar y tab Wedi'i "
+"Uwchlwytho)."
 
 # Part of Help Page
 msgid ""
 "Once it has successfully reached the database the record becomes unavailable"
 " for new edits. To further edit it please use the <1>iRecord Website</1>."
 msgstr ""
+"Unwaith y bydd wedi cyrraedd y gronfa ddata yn llwyddiannus ni fydd y cofnod"
+" ar gael ar gyfer ei olygu o'r newydd. I'w olygu ymhellach defnyddiwch "
+"<1>Wefan iRecord</1>."
 
 # Part of Help Page
 msgid ""
@@ -1305,12 +1335,17 @@ msgid ""
 "network connection, for the records to be automatically synchronised in the "
 "background."
 msgstr ""
+"<0>Sylwer:</0> rhaid i chi fod wedi mewngofnodi i'ch cyfrif iRecord a bod â "
+"chysylltiad rhwydwaith er mwyn i'r cofnodion gael eu cysoni'n awtomatig yn y"
+" cefndir."
 
 # Part of Help Page
 msgid ""
 "To delete a record, swipe it left in the Home page and click the delete "
 "<1></1> button."
 msgstr ""
+"I ddileu cofnod, sweipiwch ef i'r chwith yn yr Hafan a chliciwch ar y botwm "
+"dileu <1></1>."
 
 # Part of Help Page
 msgid ""
@@ -1319,6 +1354,11 @@ msgid ""
 "the database untouched. To do that go to settings page <1></1> and click "
 "<4>Remove Uploaded Surveys</4> <6></6> button."
 msgstr ""
+"Gallwch hefyd gael gwared ar yr holl gofnodion sydd wedi'u cadw'n lleol sydd"
+" wedi'u cysoni'n llwyddiannus â'r gronfa ddata. Bydd hyn yn gadael y "
+"cofnodion yn y gronfa ddata heb eu cyffwrdd. I wneud hynny ewch i'r dudalen "
+"gosodiadau <1></1> a chlicio ar y botwm <4>Dileu Arolygon Wedi'u "
+"Huwchlwytho</4> <6></6>."
 
 # Part of Help Page
 msgid ""
@@ -1326,6 +1366,9 @@ msgid ""
 "the lock <2></2> button. This will change the symbol to locked <5></5> both "
 "on the button and next to the attribute."
 msgstr ""
+"I gloi nodwedd, sweipiwch eitem nodwedd y ddewislen i'r chwith a chliciwch "
+"ar y botwm <2></2> cloi. Bydd hyn yn newid y symbol i gloi <5></5> ar y "
+"botwm a nesaf at y nodwedd."
 
 # Part of Help Page
 msgid ""
@@ -1335,28 +1378,40 @@ msgid ""
 " keeping the location name the same. You can lock a location if it is "
 "selected using a map or entered manually."
 msgstr ""
+"<0>Sylwer:</0> Ar gyfer lleoliad o ffynhonnell GPS, dim ond enw’r lleoliad y"
+" mae posib ei gloi, nid y gwerth GPS. Wrth i chi symud o gwmpas, bydd y "
+"gwerth GPS yn newid. Bydd hyn yn galluogi cofnodi gwahanol werthoedd GPS "
+"mewn ardal benodol ond cadw enw’r lleoliad yr un fath. Gallwch gloi lleoliad"
+" os caiff ei ddewis gan ddefnyddio map neu ei roi i mewn gyda llaw.   "
 
 # Part of Help Page
 msgid ""
 "To login, open the main menu page <2></2>, click Login <5></5> or Register "
 "<8></8> buttons and follow the instructions."
 msgstr ""
+"I fewngofnodi, agorwch dudalen y brif ddewislen <2></2>, cliciwch ar y "
+"botymau Mewngofnodi <5></5> neu Gofrestru <8></8> a dilynwch y "
+"cyfarwyddiadau."
 
 # Part of Help Page
 msgid ""
 "To logout, visit the main menu page <2></2> and click the logout <4></4> "
 "button"
 msgstr ""
+"I allgofnodi, ewch i dudalen y brif ddewislen <2></2> a chliciwch ar y botwm"
+" <4></4> allgofnodi"
 
 # Part of Help Page
 msgid ""
 "<0>Note:</0> after registering a new account you must verify your email "
 "address by clicking on a verification link sent to your email."
 msgstr ""
+"<0>Sylwer:</0> ar ôl cofrestru cyfrif newydd rhaid i chi wirio eich "
+"cyfeiriad e-bost drwy glicio ar ddolen ddilysu a anfonwyd i'ch e-bost."
 
 # Part of Help Page
 msgid "Verification of your records"
-msgstr ""
+msgstr "Dilysu eich cofnodion."
 
 # Part of Help Page
 msgid ""
@@ -1366,6 +1421,11 @@ msgid ""
 "notifications in the app to tell you that the record has been accepted or "
 "not."
 msgstr ""
+"Pan fyddwch chi'n ychwanegu cofnod at yr ap ac yna'n ei uwchlwytho i "
+"iRecord, efallai y bydd yn cael ei wirio gan un o'r dilyswyr arbenigol sy'n "
+"gwirfoddoli ar ran y cynlluniau cofnodi bywyd gwyllt cenedlaethol neu leol. "
+"Os bydd hynny'n digwydd fe welwch hysbysiadau yn yr ap i ddweud wrthych fod "
+"y cofnod wedi'i dderbyn ai peidio."
 
 # Part of Help Page
 msgid ""
@@ -1374,6 +1434,10 @@ msgid ""
 "may wish to log on to the iRecord website and view your records and "
 "notifications there."
 msgstr ""
+"Efallai bod rhai dilyswyr wedi ychwanegu sylwadau neu ymholiadau ychwanegol "
+"at eich cofnodion, ac ar hyn o bryd nid yw’r rhain ar gael o fewn yr ap, "
+"felly efallai y byddwch eisiau mewngofnodi i wefan iRecord a gweld y "
+"cofnodion a'r hysbysiadau yno."
 
 # Part of Help Page
 msgid ""
@@ -1381,18 +1445,25 @@ msgid ""
 "for “Do not show again”, but if you do this the notifications will become "
 "unavailable unless you reset the app settings or reinstall the app."
 msgstr ""
+"Os nad ydych chi eisiau gweld yr hysbysiadau yn yr ap gallwch dicio'r bocs "
+"ar gyfer “Peidiwch â dangos eto”, ond os gwnewch hyn ni fydd yr hysbysiadau "
+"ar gael oni bai eich bod yn ailosod gosodiadau'r ap neu'n ailosod yr ap."
 
 # Part of Help Page
 msgid ""
 "For more information about the record checking process see <2>Verification: "
 "what, who and why</2> on the iRecord website."
 msgstr ""
+"I gael rhagor o wybodaeth am y broses gwirio cofnodion edrychwch ar "
+"<2>Gwirio: beth, pwy a pham</2> ar wefan iRecord."
 
 # Part of Help Page
 msgid ""
 "To send records to a specific activity you can select it in the Activities "
 "<1></1> page."
 msgstr ""
+"I anfon cofnodion i weithgaredd penodol gallwch ei ddewis yn y dudalen "
+"<1></1> Gweithgareddau."
 
 # Part of Help Page
 msgid ""
@@ -1400,32 +1471,43 @@ msgid ""
 " the ones that you have joined on the iRecord website will be available to "
 "select."
 msgstr ""
+"<0>Sylwer:</0> dim ond y gweithgareddau sy'n caniatáu i'r ap symudol hwn "
+"gofnodi a dim ond y rhai rydych chi wedi ymuno â nhw ar wefan iRecord fydd "
+"ar gael i'w dewis."
 
 # Part of Help Page
 msgid ""
 "You can manage your saved locations both on any record's location page and "
 "from the settings <2></2> page"
 msgstr ""
+"Gallwch reoli eich lleoliadau sydd wedi'u cadw ar dudalen lleoliad unrhyw "
+"gofnod ac o'r dudalen <2></2> gosodiadau"
 
 # Part of Help Page
 msgid "Swipe a location left and click edit <2></2> or delete<4></4> buttons."
 msgstr ""
+"Sweipiwch leoliad i'r chwith a chlicio ar y botymau <2></2> golygu <4></4> "
+"neu ddileu."
 
 # Part of Help Page
 msgid ""
 "You can make your location stick to the top of the locations list by "
 "clicking the Favourite toggle."
 msgstr ""
+"Gallwch wneud i'ch lleoliad aros ar frig y rhestr o leoliadau drwy glicio ar"
+" y Togl Hoff."
 
 # Part of Help Page
 msgid ""
 "Go to the application settings page <2></2> and click on the Reset <4></4> "
 "button."
 msgstr ""
+"Ewch i dudalen gosodiadau'r ap <2></2> a chliciwch ar y botwm <4></4> "
+"Ailosod."
 
 # Part of Help Page
 msgid "For more help please visit the iRecord <2>forum</2>."
-msgstr ""
+msgstr "I gael rhagor o help, ewch i fforwm <2></2> iRecord."
 
 # Bird survey breeding attribute
 msgid "breeding"
@@ -1563,16 +1645,21 @@ msgid ""
 "Type in a species name (English or scientific name, or a genus or family "
 "etc.)."
 msgstr ""
+"Teipiwch enw rhywogaeth (enw Saesneg neu wyddonol, neu genws neu deulu ac "
+"ati)."
 
 # Species search info background message
 msgid ""
 "To find a species from its scientific name you can use shortcuts, e.g. to "
 "find <2><i>Bellis perrenis</i></2> (Daisy) you can type:"
 msgstr ""
+"I ddod o hyd i rywogaeth oddi wrth ei henw gwyddonol gallwch ddefnyddio "
+"llwybrau byr, e.e. i ddod o hyd i <2><i>Bellis perrenis</i></2> (Llygad y "
+"dydd) gallwch deipio:"
 
 # Activities page alert info message
 msgid "Click on the activity below which you would like to participate in."
-msgstr ""
+msgstr "Cliciwch ar y gweithgaredd isod yr hoffech gymryd rhan ynddo."
 
 # Activities page alert message
 msgid ""
@@ -1581,70 +1668,81 @@ msgid ""
 "Activities</2> page.</0></0><1><0>Pull to refresh the list.</0></1><2><0>For"
 " more about Activities see the <2>iRecord Help</2> page.</0></2></1>"
 msgstr ""
+"Cliciwch ar y gweithgaredd isod yr hoffech gymryd rhan "
+"ynddo.<1><0><0>Gallwch ymuno â mwy o weithgareddau drwy fynd i'r dudalen "
+"<2>Gweithgareddau iRecord</2>.</0></0 <1><0>Tynnwch i adnewyddu'r "
+"rhestr.</0></1><2><0>Am ragor am Weithgareddau edrychwch ar y dudalen "
+"<2>Help iRecord</2>.</0></ 2></1>"
 
 # Activities page button label
 msgid "READ MORE"
-msgstr ""
+msgstr "DARLLEN MWY"
 
 # Activities page alert button label
 msgid "Got it"
-msgstr ""
+msgstr "Deall "
 
 # Activities page alert message
 msgid ""
 "You can join in with more activities by visiting the <1>iRecord "
 "Activities</1> page."
 msgstr ""
+"Gallwch ymuno â rhagor o weithgareddau drwy fynd i'r dudalen "
+"<1>Gweithgareddau iRecord</1>."
 
 # Activities page alert message
 msgid "For more about Activities see the <1>iRecord Help</1> page."
 msgstr ""
+"Am fwy o wybodaeth am Weithgareddau edrychwch ar y dudalen <1>Help "
+"iRecord</1>."
 
 # Sign up page
 msgid "Welcome back"
-msgstr ""
+msgstr "Croeso'n ôl"
 
 # Sign up page
 msgid "Sign in to your account to start"
-msgstr ""
+msgstr "Mewngofnodwch i'ch cyfrif i ddechrau "
 
 # Sign up page
 msgid "Sign In"
-msgstr ""
+msgstr "Mewngofnodi "
 
 # Sign up page
 msgid "I don't have an account"
-msgstr ""
+msgstr "Does gen i ddim cyfrif "
 
 # Sign up page
 msgid "Sign Up"
-msgstr ""
+msgstr "Cofrestrwch"
 
 # Register page
 msgid "Create a free account"
-msgstr ""
+msgstr "Creu cyfrif am ddim "
 
 # Register user account page
 msgid "First name"
-msgstr ""
+msgstr "Enw cyntaf"
 
 # Register user account page
 msgid "Last name"
-msgstr ""
+msgstr "Enw diwethaf"
 
 # Register user account page
 msgid ""
 "By clicking Sign Up, you agree to our <2>Privacy Policy</2> and <6>Terms and"
 " Conditions</6>"
 msgstr ""
+"Drwy glicio ar Cofrestru, rydych chi'n cytuno i'n <2>Polisi Preifatrwtdd</2>"
+" a'n <6>Telerau ac Amodau</6>"
 
 # Register user account page
 msgid "Welcome aboard"
-msgstr ""
+msgstr "Croeso mawr"
 
 # Reset User account page
 msgid "Enter your email address to request a password reset."
-msgstr ""
+msgstr "Nodwch eich cyfeiriad e-bost a gofyn am ailosod y cyfrinair. "
 
 # About page content
 msgid ""
@@ -1654,6 +1752,11 @@ msgid ""
 "with important new biodiversity information that contributes to nature "
 "conservation, planning, research and education.'"
 msgstr ""
+"Mae Ap LERC Cymru yn ap sy'n eich galluogi i gymryd rhan mewn cofnodi "
+"biolegol. Gallwch gyfrannu'r hyn rydych wedi'i weld gyda ffotograffau, "
+"cyfesurynnau a gafwyd gan GPS, disgrifiadau a gwybodaeth arall, gan roi "
+"gwybodaeth bwysig newydd am fioamrywiaeth i wyddonwyr sy'n cyfrannu at "
+"gadwraeth natur, cynllunio, ymchwil ac addysg."
 
 # About page content
 msgid ""
@@ -1663,6 +1766,11 @@ msgid ""
 "biologist, iRecord App is for anyone who wants to contribute to our database"
 " observations of the natural environment.'"
 msgstr ""
+"Rydym yn annog pawb i ymwneud â chofnodi rhywogaethau gan ei bod yn hawdd "
+"iawn ac yn gyflym i gyflwyno cofnodion defnyddiol heb wybodaeth arbenigol. "
+"Does dim ots a ydych chi'n amatur brwdfrydig neu'n fiolegydd cymwys, mae Ap "
+"LERC Cymru ar gyfer unrhyw un sydd eisiau cyfrannu at ein cronfa ddata o'r "
+"amgylchedd naturiol."
 
 # About page content
 msgid ""
@@ -1670,6 +1778,9 @@ msgid ""
 "in building bespoke data oriented sollutions. For suggestions and feedback "
 "please do not hesitate to <5>contact us</5>."
 msgstr ""
+"Cafodd yr ap hwn ei greu â llaw gyda chariad gan <1> Flumens.</1> Asiantaeth"
+" sy'n arbenigo mewn adeiladu datrysiadau pwrpasol sy'n canolbwyntio ar "
+"ddata. Am awgrymiadau ac adborth mae croeso i chi <5>gysylltu â ni</5>."
 
 # Help page content
 msgid ""
@@ -1677,6 +1788,9 @@ msgid ""
 "camera or gallery. Once you have picked a photo, the app will create a new "
 "record without any species associated with it."
 msgstr ""
+"ym mhennyn yr hafan. Bydd hyn yn eich annog i ddewis ffynhonnell y "
+"ffotograff: camera neu oriel. Unwaith y byddwch wedi dewis ffotograff, bydd "
+"yr ap yn creu cofnod newydd heb unrhyw rywogaethau yn gysylltiedig ag ef."
 
 # Help page content
 msgid ""
@@ -1684,42 +1798,55 @@ msgid ""
 "selecting the species, open the record (either by opening it directly from "
 "the taxa search page using the edit button"
 msgstr ""
+"botwm yn yr hafan. Bydd hyn yn dod â chi i'r dudalen chwilio tacsa. Ar ôl "
+"dewis y rhywogaeth, agorwch y cofnod (naill ai drwy ei agor yn uniongyrchol "
+"o'r dudalen chwilio tacsa gan ddefnyddio'r botwm golygu"
 
 # Help page content
 msgid "When finished, press the Upload button in the record's page header."
 msgstr ""
+"Ar ôl gorffen, pwyswch y botwm Uwchlwytho ym mhennyn tudalen y cofnod."
 
 # Help page content
 msgid "Adding lists of records - surveying"
-msgstr ""
+msgstr "Ychwanegu rhestrau o gofnodion - arolygu "
 
 # Help page content
 msgid ""
 "You can record lists of species. Long-pressing the green plus button in the "
 "home page will show more advanced recording options."
 msgstr ""
+"Gallwch gofnodi rhestrau o rywogaethau. Bydd gwasgu'r botwm plws gwyrdd yn "
+"hir ar yr hafan yn dangos opsiynau cofnodi mwy datblygedig."
 
 # Help page content
 msgid ""
 "To find a species from its scientific name you can use shortcuts, e.g. to "
 "find<1><i> Bellis perrenis</i></1> (Daisy) you can type:"
 msgstr ""
+"I ddod o hyd i rywogaeth oddi wrth ei henw gwyddonol gallwch ddefnyddio "
+"llwybrau byr, e.e. i ddod o hyd i <1><i> Bellis perrenis</i></1> (Llygad y "
+"dydd) gallwch deipio:"
 
 # Help page content
 msgid ""
 "Once you have added the name, you can add a photo, and the app will suggest "
 "an identification based on the photo."
 msgstr ""
+"Unwaith y byddwch wedi ychwanegu'r enw, gallwch ychwanegu ffotograff, a bydd"
+" yr ap yn awgrymu dull adnabod yn seiliedig ar y ffotograff."
 
 # Help page content
 msgid "Image recognition"
-msgstr ""
+msgstr "Adnabod llun"
 
 # Help page content
 msgid ""
 "If you have added a photo to your record, the app will offer suggestions "
 "about the identification, using automatic image recognition."
 msgstr ""
+"Os ydych chi wedi ychwanegu ffotograff at eich cofnod, bydd yr ap yn cynnig "
+"awgrymiadau am ei adnabod, gan ddefnyddio system adnabod lluniau awtomatig."
 
 # Help page content
 msgid ""
@@ -1728,6 +1855,11 @@ msgid ""
 "the app will tell you if it agrees with the species name. If not it may "
 "suggest a different identification."
 msgstr ""
+"Os byddwch yn ychwanegu cofnod gan ddefnyddio'r botwm plws, gofynnir i chi "
+"ychwanegu enw rhywogaeth at eich cofnod yn gyntaf. Wedyn gallwch chi "
+"ychwanegu un neu fwy o ffotograffau, a bydd yr ap yn dweud wrthych chi a "
+"yw'n cytuno ag enw'r rhywogaeth. Os nad yw, gall awgrymu dull adnabod "
+"gwahanol."
 
 # Help page content
 msgid ""
@@ -1736,6 +1868,11 @@ msgid ""
 " the suggested species name if you agree with it, or add your own "
 "identification instead."
 msgstr ""
+"Os ydych chi'n ychwanegu cofnod gan ddefnyddio'r botwm ffotograff, gallwch "
+"chi ychwanegu ffotograff yn gyntaf, a bydd yr ap yn gallu awgrymu dull "
+"adnabod. Wedyn gallwch fynd ymlaen i ddefnyddio'r enw rhywogaeth a awgrymir "
+"os ydych yn cytuno ag ef, neu ychwanegu eich dull adnabod eich hun yn lle "
+"hynny."
 
 # Help page content
 msgid ""
@@ -1745,20 +1882,27 @@ msgid ""
 "be displayed – open the thumbnail to see alternative identification "
 "suggestions."
 msgstr ""
+"Ar ôl uwchlwytho'r ffotograff, gwiriwch y cryno-lun i weld a yw'n dangos "
+"canran sy'n nodi tebygolrwydd unrhyw adnabod a awgrymir. Os yw dull adnabod "
+"gwahanol yn cael ei awgrymu, bydd cylch rhybudd coch bach yn cael ei "
+"arddangos – agorwch y cryno-lun i weld yr awgrymiadau adnabod amgen."
 
 # Help page content
 msgid "Identification agreed"
-msgstr ""
+msgstr "Cytunwyd ar adnabod"
 
 # Help page content
 msgid "Alternative Identification suggested"
-msgstr ""
+msgstr "Awgrymwyd adnabod amgen "
 
 # Help page content
 msgid ""
 "When you open up the thumbnail image you can tap on any of the alternative "
 "suggestions shown, and that will set the identification for your record."
 msgstr ""
+"Pan fyddwch chi'n agor y cryno-lun gallwch chi dapio ar unrhyw un o'r "
+"awgrymiadau amgen a ddangosir, a bydd hynny'n gosod yr adnabod ar gyfer eich"
+" cofnod."
 
 # Help page content
 msgid ""
@@ -1767,15 +1911,19 @@ msgid ""
 "decision, and if you think the app suggestion is wrong feel free to stick to"
 " your own identification."
 msgstr ""
+"Gall y broses adnabod lluniau fod yn ddefnyddiol iawn, ond nid yw'n gywir "
+"bob tro! Gwiriwch beth sy'n cael ei awgrymu cyn gwneud eich penderfyniad "
+"terfynol, ac os ydych chi'n meddwl bod awgrym yr ap yn anghywir, mae croeso "
+"i chi gadw at eich dewis chi."
 
 # Help page content
 msgid "mode until it is set for upload. While it is in"
-msgstr ""
+msgstr "modd nes ei fod wedi'i osod i'w uwchlwytho. Tra mae yn y"
 
 # Help page content
 msgid ""
 "mode the application will not synchronise your record with the database."
-msgstr ""
+msgstr "modd ni fydd y rhaglen yn cysoni eich cofnod gyda'r gronfa ddata."
 
 # Help page content
 msgid ""
@@ -1783,39 +1931,51 @@ msgid ""
 "header. The application will try to submit your record once there is a good "
 "network connection."
 msgstr ""
+"I'w osod i'w uwchlwytho, agorwch y cofnod a gwasgwch y botwm Uwchlwytho yn y"
+" pennyn. Bydd y cais yn ceisio cyflwyno'ch cofnod unwaith y bydd cysylltiad "
+"rhwydwaith da."
 
 # Help page content
 msgid ""
 "If the record has reached the database, it will be moved to the Uploaded "
 "list in the Home page (see Uploaded tab)."
 msgstr ""
+"Os yw'r cofnod wedi cyrraedd y gronfa ddata, bydd yn cael ei symud i'r "
+"rhestr Wedi'i Uwchlwytho yn yr Hafan (edrychwch ar y tab Wedi'i Uwchlwytho)."
 
 # Help page content
 msgid ""
 "To delete a record, swipe it left in the Home page and click the delete"
 msgstr ""
+"I ddileu cofnod, sweipiwch ef i'r chwith yn yr Hafan a chliciwch ar dileu"
 
 # Help page content
 msgid ""
 "To lock an attribute swipe the menu attribute item to the left and click on "
 "the lock"
 msgstr ""
+"I gloi nodwedd, sweipiwch yr eitem nodwedd dewislen i'r chwith a chliciwch "
+"ar y botwm "
 
 # Help page content
 msgid "button. This will change the symbol to locked"
-msgstr ""
+msgstr "clo. Bydd hyn yn newid y symbol i gloi"
 
 # Help page content
 msgid ""
 "To send records to a specific activity you can select it in the Activities "
 "page."
 msgstr ""
+"I anfon cofnodion i weithgaredd penodol gallwch ei ddewis yn y dudalen "
+"Gweithgareddau."
 
 # Help page content
 msgid ""
 "You can manage your saved locations both on any record's location page and "
 "from the settings page."
 msgstr ""
+"Gallwch reoli eich lleoliadau sydd wedi'u cadw ar dudalen lleoliad unrhyw "
+"gofnod ac o'r dudalen gosodiadau."
 
 # BRC page content
 msgid ""
@@ -1827,6 +1987,13 @@ msgid ""
 "Centre for Ecology & Hydrology (UKCEH). The work of BRC is a major component"
 " of the National Biodiversity Network (NBN)."
 msgstr ""
+"Mae'r <2>Ganolfan Cofnodion Biolegol</2> (BRC), a sefydlwyd yn 1964, yn "
+"ffocws cenedlaethol yn y DU ar gyfer cofnodi rhywogaethau'r tir a dŵr croyw."
+" Mae BRC yn gweithio'n agos gyda'r gymuned gofnodi wirfoddol, yn bennaf drwy"
+" gefnogi cynlluniau a chymdeithasau cofnodi cenedlaethol. Cefnogir BRC gan y"
+" Cydbwyllgor Cadwraeth Natur (JNCC) a Chanolfan Ecoleg a Hydroleg y DU "
+"(UKCEH). Mae gwaith BRC yn elfen bwysig o'r Rhwydwaith Bioamrywiaeth "
+"Cenedlaethol (NBN)."
 
 # BRC page content
 msgid ""
@@ -1837,6 +2004,13 @@ msgid ""
 " same place, treated in the same way and will meet the established standards"
 " required by the Biological Record Centre."
 msgstr ""
+"Efallai eich bod wedi sylwi bod nifer o <2>apiau BRC</2> yn cynnwys rhai o'r"
+" un rhywogaethau? Rydym wedi cyflwyno'r logo Cymeradwywyd gan BRC i ddangos "
+"bod data o'n apiau i gyd yn mynd i'r un lle. Felly, rydych chi'n rhydd i "
+"ddewis pa ap rydych chi'n ei ddefnyddio i gofnodi rhywogaeth benodol. Bydd "
+"yr holl gofnodion yn cael eu hanfon i'r un lle, yn cael eu trin yn yr un "
+"modd a byddant yn bodloni'r safonau sydd wedi'u sefydlu sy'n ofynnol gan y "
+"Ganolfan Cofnodion Biolegol."
 
 # Credits page content
 msgid ""
@@ -1844,44 +2018,49 @@ msgid ""
 "Hydrology</2>/<4>Joint Nature Conservation Committee</4> partnership "
 "supporting BRC."
 msgstr ""
+"Mae'r ap yma wedi'i gyllido'n rhannol gan bartneriaeth <2>Canolfan Ecoleg a "
+"Hydroleg y DU</2>/<4>Cydbwyllgor Cadwraeth Natur</4> sy’n cefnogi BRC."
 
 # Credits page content
 msgid "Icons were made by"
-msgstr ""
+msgstr "Gwnaed yr eiconau gan"
 
 # Part of App settings page
 msgid "Geolocate Survey Entries"
-msgstr ""
+msgstr "Cofnodion Arolwg Geoleoliad"
 
 # Part of App settings page
 msgid "Suggest species"
-msgstr ""
+msgstr "Awgrymu rhywogaethau"
 
 # Part of App settings page
 msgid "Use image recognition to identify species from your photos."
 msgstr ""
+"Defnyddio adnabod llun i adnabod rhywogaeth oddi wrth eich ffotograffau. "
 
 # Part of App settings page
 msgid ""
 "Some features are in a trial state and are subject to change in future "
 "releases."
 msgstr ""
+"Mae rhai nodweddion mewn cyfnod arbrawf a gallant newid mewn datganiadau yn "
+"y dyfodol. "
 
 # Part of App settings page
 msgid "Remove Uploaded Surveys"
-msgstr ""
+msgstr "Dileu Arolygon Wedi'u Huwchlwytho"
 
 # Part of App settings page
 msgid "You can remove uploaded surveys from this device."
-msgstr ""
+msgstr "Gallwch ddileu arolygon sydd wedi'u huwchlwytho o'r ddyfais yma."
 
 # Part of App settings page
 msgid "Reset app"
-msgstr ""
+msgstr "Ailosod yr ap"
 
 # Part of App settings page
 msgid "You can reset the app data to its default settings."
-msgstr ""
+msgstr "Gallwch ailosod data'r ap i'w osodiadau diofyn. "
 
 # Part of App settings page
 msgid ""
@@ -1889,114 +2068,129 @@ msgid ""
 "records?<p><i><b>Note:</b> records on the server will not be "
 "touched.</i></p>"
 msgstr ""
+"Ydych chi'n siŵr eich bod chi eisiau cael gwared ar yr holl gofnodion lleol "
+"sydd wedi'u cysoni'n llwyddiannus?<p><i><b>Sylwer: ni fydd</b> cofnodion ar "
+"y gweinydd yn cael eu cyffwrdd.</i></p>"
 
 # Home page background message
 msgid ""
 "<0>You have no finished surveys.<br/><br/>Press <4></4> to add record "
 "details, or press <6></6> to add a photo first.</0>"
 msgstr ""
+"<0>Nid oes gennych unrhyw arolygon gorffenedig.<br/><br/>Pwyswch <4></4> i "
+"ychwanegu manylion cofnod, neu bwyso <6></6> i ychwanegu ffotograff yn "
+"gyntaf.</0>"
 
 # Alert message
 msgid "Incorrect password or email"
-msgstr ""
+msgstr "Cyfrinair neu e-bost anghywir"
 
 # Logout alert message
 msgid ""
 "Are you sure you want to logout?<br/><br/>Your pending and uploaded "
 "<4>surveys will not be deleted </4> from this device."
 msgstr ""
+"Ydych chi'n siŵr eich bod chi eisiau allgofnodi?<br/><br/>Ni fydd eich "
+"<4>arolygon ar y gweill ac wedi'u huwchlwytho yn cael eu dileu</4> o'r "
+"ddyfais yma."
 
 # Info message
 msgid ""
 "Looks like your <1>{{userEmail}}</1> email hasn't been verified "
 "yet.<3><0>Refresh</0><1>Resend Email</1></3>"
 msgstr ""
+"Mae'n ymddangos nad yw eich e-bost <1>{{userEmail}}</1> wedi'i ddilysu eto. "
+"<3><0>Adnewyddu</0><1>Ail-anfon E-bost</1></3>"
 
 # Toast message
 msgid "Successfully logged in as: {{email}}"
-msgstr ""
+msgstr "Wedi mewngofnodi'n llwyddiannus fel: {{e-bost}}"
 
 # Delete acount message
 msgid "Delete account"
-msgstr ""
+msgstr "Dileu'r cyfrif "
 
 # Delete acount message
 msgid "You can delete your user account from the system."
-msgstr ""
+msgstr "Gallwch ddileu eich cofnod defnyddiwr o'r system."
 
 # Delete acount alert message
 msgid ""
 "This will remove your account on the iRecord website. You will lose access "
 "to any records that you have previously submitted using the app or website."
 msgstr ""
+"Bydd hyn yn dileu eich cyfrif ar wefan iRecord. Byddwch yn colli mynediad i "
+"unrhyw gofnodion rydych chi wedi'u cyflwyno yn flaenorol gan ddefnyddio'r ap"
+" neu'r wefan."
 
 # Part of Species List survey
 msgid "Species List"
-msgstr ""
+msgstr "Rhestr Rhywogaethau"
 
 # Part of Species List survey
 msgid "No site name"
-msgstr ""
+msgstr "Dim enw safle"
 
 # Part of Species List survey
 msgid "Recorders"
-msgstr ""
+msgstr "Cofnodwyr "
 
 # Part of Species List survey
 msgid "Add Species"
-msgstr ""
+msgstr "Ychwanegu Rhywogaethau"
 
 # Part of Species List survey
 msgid "No species added"
-msgstr ""
+msgstr "Dim rhywogaethau wedi'u hychwanegu "
 
 # Part of Species List survey
 msgid "Added"
-msgstr ""
+msgstr "Ychwanegwyd "
 
 # Abundance options
 msgid "DAFOR"
-msgstr ""
+msgstr "DAFOR"
 
 # Abundance options
 msgid "Dominant"
-msgstr ""
+msgstr "Cryfaf "
 
 # Abundance options
 msgid "Abundant"
-msgstr ""
+msgstr "Toreithiog"
 
 # Abundance options
 msgid "Frequent"
-msgstr ""
+msgstr "Aml"
 
 # Abundance options
 msgid "Occasional"
-msgstr ""
+msgstr "Achlysurol "
 
 # Abundance options
 msgid "Rare"
-msgstr ""
+msgstr "Prin"
 
 # Abundance options
 msgid "Ranges"
-msgstr ""
+msgstr "Amrywio "
 
 # Location info message
 msgid "No location "
-msgstr ""
+msgstr "Dim lleoliad"
 
 # Location name placeholder
 msgid "Site name eg nearby village"
-msgstr ""
+msgstr "Enw safle ee pentref cyfagos "
 
 # Past location deleting entry alert message
 msgid "Are you sure you want to delete the saved location?"
 msgstr ""
+"Ydych chi'n siŵr eich bod chi eisiau dileu'r lleoliad sydd wedi'i gadw?"
 
 # Survey entry
 msgid "Quantity"
-msgstr ""
+msgstr "Nifer"
 
 # Stage info message
 msgid ""
@@ -2004,241 +2198,258 @@ msgid ""
 "cases or leaf-mines please add the foodplant in to the comments field, as "
 "this is often needed to verify the records."
 msgstr ""
+"Nodwch gyfnod yr organeb. Os ydych chi'n cofnodi larfa, cloriau neu lindys, "
+"ychwanegwch y planhigyn bwyd at y maes sylwadau, gan fod angen hyn yn aml i "
+"ddilysu'r cofnodion."
 
 # Stage options
 msgid "Larva"
-msgstr ""
+msgstr "Larfa"
 
 # Stage options
 msgid "Larval web"
-msgstr ""
+msgstr "Gwe larfal"
 
 # Stage options
 msgid "Larval case"
-msgstr ""
+msgstr "Clawr larfal"
 
 # Stage options
 msgid "Mine"
-msgstr ""
+msgstr "Lindysyn"
 
 # Stage options
 msgid "Egg"
-msgstr ""
+msgstr "Ŵy"
 
 # Stage options
 msgid "Egg batch"
-msgstr ""
+msgstr "Casgliad o wyau "
 
 # Stage options
 msgid "Pupa"
-msgstr ""
+msgstr "Chwiler"
 
 # Camera info message
 msgid "Place your species at the center of the frame."
-msgstr ""
+msgstr "Rhowch eich rhywogaethau yng nghanol y ffrâm. "
 
 # Location source
 msgid "gps"
-msgstr ""
+msgstr "gps"
 
 # Taxon search page label
 msgid "Suggestions"
-msgstr ""
+msgstr "Awgrymiadau "
 
 # Galery AI suggestion message
 msgid ""
 "Great! We also think it is <1>{{probability}}%</1> likely to be "
 "<4>{{species}}</4>."
 msgstr ""
+"Gwych! Rydyn ni hefyd yn meddwl ei bod yn <1>{{ tebygolrwydd}}%</1> debygol "
+"o fod yn <4>{{rhywogaeth}}</4>."
 
 # Galery AI suggestion message
 msgid ""
 "We think it is <1>{{probability}}%</1> likely to be <4>{{species}}</4>."
 msgstr ""
+"Rydyn ni'n meddwl ei fod yn<1>{{tebygolrwydd}}%</1> debygol o fod yn "
+"<4>{{rhywogaeth}}</4>."
 
 # Incomplete form message
 msgid "Please fill in"
-msgstr ""
+msgstr "Llenwch plîs"
 
 # Alert message
 msgid "This email is already taken."
-msgstr ""
+msgstr "Mae'r e-bost yma'n cael ei ddefnyddio eisoes. "
 
 # Incomplete form message
 msgid "email is not valid"
-msgstr ""
+msgstr "nid yw'r e-bost yn ddilys"
 
 # Toast message
 msgid "The user has not been activated or is blocked."
-msgstr ""
+msgstr "Nid yw'r defnyddiwr wedi cael ei weithredu neu mae wedi'i flocio."
 
 # Toast message
 msgid "This account is already activated."
-msgstr ""
+msgstr "Mae'r cyfrif yma wedi'i weithredu eisoes."
 
 # Toast message
 msgid ""
 "A new verification email was successfully sent now. If you did not receive "
 "the email, then check your Spam or Junk email folders."
 msgstr ""
+"Mae e-bost dilysu newydd wedi cael ei anfon yn llwyddiannus nawr. Os nad "
+"ydych wedi derbyn yr e-bost, gwiriwch eich ffolderi Sbam neu Jync. "
 
 # Status attribute message
 msgid "Please pick the status."
-msgstr ""
+msgstr "Dewiswch y statws."
 
 # Status option
 msgid "Native"
-msgstr ""
+msgstr "Brodorol "
 
 # Status option
 msgid "Unknown"
-msgstr ""
+msgstr "Anhysbys "
 
 # Status option
 msgid "Introduced"
-msgstr ""
+msgstr "Wedi'i chyflwyno"
 
 # Status option
 msgid "Introduced - planted"
-msgstr ""
+msgstr "Wedi'i chyflwyno - ei phlannu"
 
 # Status option
 msgid "Introduced - surviving"
-msgstr ""
+msgstr "Wedi'i chyflwyno - yn goroesi "
 
 # Status option
 msgid "Introduced - casual"
-msgstr ""
+msgstr "Wedi'i chyflwyno - achlysurol "
 
 # Status option
 msgid "Introduced - established"
-msgstr ""
+msgstr "Wedi'i chyflwyno - wedi sefydlu"
 
 # Status option
 msgid "Introduced - invasive"
-msgstr ""
+msgstr "Wedi'i chyflwyno - ymledol"
 
 # Survey attribute
 msgid "Site"
-msgstr ""
+msgstr "Safle "
 
 # User records map alert message
 msgid "Request aborted because of a network issue (timeout or similar)."
 msgstr ""
+"Y cais wedi dod i ben oherwydd problem gyda'r rhwydwaith (wedi dod i ben neu"
+" debyg)"
 
 # Delete account alert message
 msgid "Account delete"
-msgstr ""
+msgstr "Dileu'r cyfrif "
 
 # Delete account alert message
 msgid "Are you sure you want to delete your account?"
-msgstr ""
+msgstr "Ydych chi'n siŵr eich bod chi eisiau dileu'r cyfrif? "
 
 # Survey verification message
 msgid "Survey incomplete"
-msgstr ""
+msgstr "Arolwg yn anghyflawn "
 
 # Survey verification message
 msgid "Please enter location and its name."
-msgstr ""
+msgstr "Nodwch y lleoliad a'i enw. "
 
 # Survey verification message
 msgid "Recorders field is missing."
-msgstr ""
+msgstr "Maes cofnodwyr ar goll. "
 
 # Locking attributes message
 msgid ""
 "The attribute value was locked and will be pre-filled for subsequent "
 "records."
 msgstr ""
+"Roedd y gwerth nodwedd wedi'i gloi a bydd yn cael ei lenwi ymlaen llaw ar "
+"gyfer cofnodion dilynol."
 
 # Locking attributes message
 msgid "Can't lock location"
-msgstr ""
+msgstr "Methu cloi'r lleoliad "
 
 # Locking attributes message
 msgid ""
 "You can lock the location only if it was selected using a map or entered "
 "manually."
 msgstr ""
+"Gallwch gloi'r lleoliad os cafodd ei ddewis gan ddefnyddio map neu ei nodi'n"
+" faniwal yn unig. "
 
 # Header button label
 msgid "Finish"
-msgstr ""
+msgstr "Gorffen "
 
 # Taxon search info message
 msgid "(2 letters of genus + 3 of species)"
-msgstr ""
+msgstr "(2 lythyren y genws + 3 y rhywogaeth)"
 
 # Verification status
 msgid "Accepted as correct'"
-msgstr ""
+msgstr "Derbyniwyd fel *cywir"
 
 # Verification status
 msgid "Accepted as considered correct"
-msgstr ""
+msgstr "Derbyniwyd fel wedi'i ystyried yn gywir"
 
 # Verification status
 msgid "Accepted"
-msgstr ""
+msgstr "Derbyniwyd "
 
 # Verification status
 msgid "Pending review"
-msgstr ""
+msgstr "Yn aros adolygiad"
 
 # Verification status
 msgid "Plausible"
-msgstr ""
+msgstr "Credadwy "
 
 # Verification status
 msgid "Not accepted"
-msgstr ""
+msgstr "Heb ei dderbyn "
 
 # Verification status
 msgid "Not accepted as unable to verify"
-msgstr ""
+msgstr "Heb ei dderbyn - methu dilysu "
 
 # Verification status
 msgid "Not accepted as correct"
-msgstr ""
+msgstr "Heb ei dderbyn fel cywir "
 
 # Verification status
 msgid "Dubious"
-msgstr ""
+msgstr "Amheus "
 
 # Verification status
 msgid "Test"
-msgstr ""
+msgstr "Prawf"
 
 # Verification status
 msgid "Incomplete"
-msgstr ""
+msgstr "Anghyflawn "
 
 # Verification status
 msgid "Verification"
-msgstr ""
+msgstr "Dilysiad "
 
 # Verification status
 msgid "verified"
-msgstr ""
+msgstr "dilyswyd "
 
 # Verification message
 msgid "Thanks for sending in your record."
-msgstr ""
+msgstr "Diolch i chi am anfon eich cofnod. "
 
 # Verification status
 msgid "plausible"
-msgstr ""
+msgstr "Credadwy "
 
 # Verification message
 msgid ""
 "Thanks for sending in your record. From this record details, we think it "
 "could be the <1>{{taxonName}}</1> species."
 msgstr ""
+"Diolch i chi am anfon eich cofnod. Ar sail manylion y cofnod yma, rydyn ni'n"
+" meddwl mai <1>{{Enwtacson}}</1> ydyw."
 
 # Verification status
 msgid "rejected"
-msgstr ""
+msgstr "gwrthodwyd "
 
 # Verification message
 msgid ""
@@ -2246,108 +2457,118 @@ msgid ""
 "<2>{{statusMessage}}</2> in this case. Please log in to the iRecord website "
 "to see any additional information that the verifier may have provided."
 msgstr ""
+"Diolch i chi am anfon eich cofnod. Mae dilysydd wedi ei nodi fel "
+"<2>{{Negesstatws}}</2> yn yr achos hwn. Mewngofnodwch i wefan iRecord i weld"
+" unrhyw wybodaeth ychwanegol y gallai'r dilysydd fod wedi'i darparu."
 
 # Account not verified alert button label
 msgid "Resend"
-msgstr ""
+msgstr "Ailanfon"
 
 # Account not verified alert message
 msgid "Looks like your email hasn't been verified yet."
-msgstr ""
+msgstr "Nid yw eich e-bost wedi cael ei ddilysu eto yn ôl pob tebyg."
 
 # Account not verified alert message
 msgid "Should we resend the verification email?"
-msgstr ""
+msgstr "A ddylen ni ailanfon yr e-bost dilysu?"
 
 # Login required fields
 msgid "email is a required field"
-msgstr ""
+msgstr "mae'r e-bost yn faes gofynnol"
 
 # Login required fields
 msgid "password is a required field"
-msgstr ""
+msgstr "mae'r cyfrinair yn faes gofynnol "
 
 # Uploaded record Link to iRecord website
 msgid "iRecord website"
-msgstr ""
+msgstr "gwefan iRecord"
 
 # Verification status
 msgid "Unconfirmed"
-msgstr ""
+msgstr "Heb ei gadarnhau "
 
 # Verification status
 msgid "Rejected"
-msgstr ""
+msgstr "Gwrthodwyd "
 
 # Date
 msgid "Yesterday"
-msgstr ""
+msgstr "Ddoe"
 
 # Part of verification message
 msgid "Details"
-msgstr ""
+msgstr "Manylion "
 
 # Part of verification message
 msgid "Verified by:"
-msgstr ""
+msgstr "Dilyswyd gan: "
 
 # Part of verification message
 msgid "Verified on:"
-msgstr ""
+msgstr "Dilyswyd ar: "
 
 # Part of verification message
 msgid "Count"
-msgstr ""
+msgstr "Cyfrif"
 
 # Part of verification message
 msgid "New verified records"
-msgstr ""
+msgstr "Cofnodion newydd wedi'u dilysu "
 
 # Part of verification message
 msgid ""
 "Some of your records have been verified. You can find those in your "
 "<2>Uploaded</2> records list."
 msgstr ""
+"Mae rhai o'ch cofnodion wedi cael eu dilysu. Gallwch ddod o hyd i'r rheiny "
+"yn eich <2>Uploaded</2> rhestr cofnodion."
 
 # Part of verification message
 msgid "Do not show again"
-msgstr ""
+msgstr "Peidiwch â dangos eto "
 
 # Part of verification message
 msgid "See records"
-msgstr ""
+msgstr "Gweld cofnodion "
 
 # Camera permission denied
 msgid "User denied access to camera"
-msgstr ""
+msgstr "Gwrthodwyd mynediad i'r camera i'r defnyddiwr "
 
 # Location permission denied
 msgid "Location permission was denied"
-msgstr ""
+msgstr "Gwrthodwyd caniatâd lleoliad "
 
 # Sign up form required field
 msgid "email must be a valid email"
-msgstr ""
+msgstr "rhaid i'r e-bost fod yn un dilys "
 
 # Grid page header title
 msgid "Grid Unit"
-msgstr ""
+msgstr "Uned Grid "
 
 # Users map Login required message
 msgid ""
 "You need to login to your <2>iRecord account</2> to be able to view the "
 "records."
 msgstr ""
+"Mae angen i chi fewngofnodi i'ch <2>cyfrif iRecord</2> er mwyn gallu gweld y"
+" cofnodion."
 
 # Reset email alert message
 msgid "We've sent an email to you"
-msgstr ""
+msgstr "Rydyn ni wedi anfon e-bost atoch chi "
 
 # Reset email alert message
 msgid ""
 "Click the link in the email to reset your password. If you don't see the "
 "email, check other places like your junk, spam or other folders."
 msgstr ""
+"Cliciwch ar y ddolen yn yr e-bost er mwyn ailosod eich cyfrinair. Os nad "
+"ydych chi'n gweld yr e-bost, edrychwch mewn llefydd eraill fel eich ffolderi"
+" jync, sbam neu eraill. "
 
 # Past location label
 msgid "Favourite"
@@ -2355,7 +2576,7 @@ msgstr "Ffefryn "
 
 # Lock Tip message
 msgid "Tip: Locks for data entry"
-msgstr ""
+msgstr "Cyngor: Cloi ar gyfer cofnodion data"
 
 # Lock Tip message
 msgid ""
@@ -2364,47 +2585,51 @@ msgid ""
 "added to the next record as well.<1>Swipe an attribute to the left and tap "
 "on the <2></2> button.</1><2></2>"
 msgstr ""
+"Os ydych chi wedi ychwanegu rhywfaint o wybodaeth ar gyfer un o'r nodweddion"
+" sydd wedi'u hatodi gyda'ch cofnod, gallwch 'gloi' yr wybodaeth honno fel ei"
+" bod yn cael ei hychwanegu'n awtomatig at y cofnod nesaf hefyd.<1>Sweipiwch "
+"nodwedd i'r chwith a thapio ar y < 2 ></2> botwm.</1><2></2>"
 
 # Arthropods stage option
 msgid "Cocoon"
-msgstr ""
+msgstr "Cocŵn"
 
 # Arthropods stage option
 msgid "Exuvia"
-msgstr ""
+msgstr "Exuvia"
 
 # Arthropods stage option
 msgid "Mine (empty)"
-msgstr ""
+msgstr "Clawr lindysyn (gwag)"
 
 # Arthropods stage option
 msgid "Mine (tenanted)"
-msgstr ""
+msgstr "Clawr lindysyn (llawn)"
 
 # Arthropods stage option
 msgid "Case"
-msgstr ""
+msgstr "Clawr"
 
 # Arthropods stage option
 msgid "Nymph"
-msgstr ""
+msgstr "Nymff"
 
 # Arthropods stage option
 msgid "Gall"
-msgstr ""
+msgstr "Coden "
 
 # Arthropods stage option
 msgid "Dead"
-msgstr ""
+msgstr "Marw"
 
 # Toast message
 msgid "Sorry, looks like you're offline."
-msgstr ""
+msgstr "Sori, dydych chi ddim ar-lein"
 
 # Toast message
 msgid "timeout"
-msgstr ""
+msgstr "amser wedi dod i ben "
 
 # Device GPS is disabled
 msgid "Location services are not enabled"
-msgstr ""
+msgstr "Nid yw'r gwasanaethau lleoliad wedi'u galluogi"
