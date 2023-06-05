@@ -3,7 +3,7 @@
   "id": "uk.ac.ceh.lercwales",
   "title": "LERC Wales",
   "description": "LERC Wales mobile application.",
-  "version": "6.0.4",
+  "version": "6.0.6",
   "homepage": "https://www.lercwales.org.uk/",
   "scripts": {
     "start": "webpack serve --progress --port 8000",
