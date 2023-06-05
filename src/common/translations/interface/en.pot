@@ -2098,16 +2098,12 @@ msgid "Crop/Zoom"
 msgstr "Crop/Zoom"
 
 # Failed to indentify species message
-msgid "Sorry, we cwould not identify this species."
+msgid "Sorry, we could not identify this species."
 msgstr "Sorry, we could not identify this species."
 
 # Failed to indentify species message
 msgid "Make sure that your species is in the centre of the image and is in focus."
 msgstr "Make sure that your species is in the centre of the image and is in focus."
-
-# Part of species identification message 
-msgid "Identifying..."
-msgstr "Identifying..."
 
 # Part of species identification message 
 msgid "Suggestions:"
@@ -2132,3 +2128,7 @@ msgstr "<0>LERC Wales</0> helps you with management and sharing of your wildlife
 # Part of User records profile 
 msgid "Status"
 msgstr "Status"
+
+# Alert message
+msgid "Tap on the <1></1> button to capture a new record. <br/>"
+msgstr "Tap on the <1></1> button to capture a new record. <br/>"

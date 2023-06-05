@@ -2,11 +2,12 @@
 # Translators:
 # Karolis, 2020
 # David Slade <david.slade@sewbrec.org.uk>, 2023
+# Vilius Stankaitis <vilius@flumens.io>, 2023
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: temp\n"
-"Last-Translator: David Slade <david.slade@sewbrec.org.uk>, 2023\n"
+"Last-Translator: Vilius Stankaitis <vilius@flumens.io>, 2023\n"
 "Language-Team: Welsh (https://app.transifex.com/ceh/teams/100775/cy/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -364,7 +365,8 @@ msgstr "E-bost "
 
 msgid "No photo has been added.<br/>Press <4><0></0></4> to add."
 msgstr ""
-"Does dim ffotograff wedi ei ychwanegu.<br/>Pwyswch <3></3> i'w ychwanegu."
+"Does dim ffotograff wedi ei ychwanegu.<br/>Pwyswch <4><0></0></4> i'w "
+"ychwanegu."
 
 msgid "acarine"
 msgstr "acarin "
@@ -2247,15 +2249,15 @@ msgid ""
 "Great! We also think it is <1>{{probability}}%</1> likely to be "
 "<4>{{species}}</4>."
 msgstr ""
-"Gwych! Rydyn ni hefyd yn meddwl ei bod yn <1>{{ tebygolrwydd}}%</1> debygol "
-"o fod yn <4>{{rhywogaeth}}</4>."
+"Gwych! Rydyn ni hefyd yn meddwl ei bod yn <1> {{probability}}%</1> debygol o"
+" fod yn <4>{{species}}</4>."
 
 # Galery AI suggestion message
 msgid ""
 "We think it is <1>{{probability}}%</1> likely to be <4>{{species}}</4>."
 msgstr ""
-"Rydyn ni'n meddwl ei fod yn<1>{{tebygolrwydd}}%</1> debygol o fod yn "
-"<4>{{rhywogaeth}}</4>."
+"Rydyn ni'n meddwl ei fod yn<1> {{probability}}%</1> debygol o fod yn "
+"<4>{{species}}</4>."
 
 # Incomplete form message
 msgid "Please fill in"
@@ -2633,3 +2635,50 @@ msgstr "amser wedi dod i ben "
 # Device GPS is disabled
 msgid "Location services are not enabled"
 msgstr "Nid yw'r gwasanaethau lleoliad wedi'u galluogi"
+
+# Part of Camera
+msgid "Get species suggestions"
+msgstr ""
+
+# Part of Camera
+msgid "Crop/Zoom"
+msgstr ""
+
+# Failed to indentify species message
+msgid "Sorry, we could not identify this species."
+msgstr ""
+
+# Failed to indentify species message
+msgid ""
+"Make sure that your species is in the centre of the image and is in focus."
+msgstr ""
+
+# Part of species identification message
+msgid "Suggestions:"
+msgstr ""
+
+# Part of species identification message
+msgid "Loading suggestions"
+msgstr ""
+
+# Part of species identification message
+msgid "Identifying..."
+msgstr ""
+
+# Error message
+msgid "Not implemented on web."
+msgstr ""
+
+# Spashscreen message
+msgid ""
+"<0>LERC Wales</0> helps you with management and sharing of your wildlife "
+"observations"
+msgstr ""
+
+# Part of User records profile
+msgid "Status"
+msgstr ""
+
+# Alert message
+msgid "Tap on the <1></1> button to capture a new record. <br/>"
+msgstr ""
