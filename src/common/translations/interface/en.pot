@@ -2124,3 +2124,11 @@ msgstr "Identifying..."
 # Error message
 msgid "Not implemented on web."
 msgstr "Not implemented on web."
+
+# Spashscreen message 
+msgid "<0>LERC Wales</0> helps you with management and sharing of your wildlife observations"
+msgstr "<0>LERC Wales</0> helps you with management and sharing of your wildlife observations"
+
+# Part of User records profile 
+msgid "Status"
+msgstr "Status"

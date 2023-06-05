@@ -12,6 +12,7 @@ import {
 import SwiperCore, { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { arrowForward, checkmarkOutline } from 'ionicons/icons';
+import { Trans as T } from 'react-i18next';
 import './styles.scss';
 import welcomeBackground1 from './images/welcome_1.jpg';
 import './images/welcome_2.jpg';
@@ -61,10 +62,14 @@ const OnBoardingScreens: FC = ({ children }) => {
             style={{ backgroundImage: `url(${welcomeBackground1})` }}
           >
             <div className="message">
-              <h2>Welcome</h2>
+              <h2>
+                <T>Welcome</T>
+              </h2>
               <p>
-                <b>LERC Wales</b> helps you with management and sharing of your
-                wildlife observations
+                <T>
+                  <b>LERC Wales</b> helps you with management and sharing of
+                  your wildlife observations
+                </T>
               </p>
             </div>
           </SwiperSlide>
