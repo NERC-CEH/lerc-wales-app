@@ -362,7 +362,7 @@ msgstr "Cyfrinair "
 msgid "Email"
 msgstr "E-bost "
 
-msgid "No photo has been added.<br/>Press <3></3> to add."
+msgid "No photo has been added.<br/>Press <4><0></0></4> to add."
 msgstr ""
 "Does dim ffotograff wedi ei ychwanegu.<br/>Pwyswch <3></3> i'w ychwanegu."
 
