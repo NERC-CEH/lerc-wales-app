@@ -1,5 +1,9 @@
 ## 6.0.5
 
+- Update translations
+
+## 6.0.5
+
 - Updated the species dictionary.
 
 ## 6.0.4
