@@ -2106,7 +2106,7 @@ msgstr ""
 
 # Toast message
 msgid "Successfully logged in as: {{email}}"
-msgstr "Wedi mewngofnodi'n llwyddiannus fel: {{e-bost}}"
+msgstr "Wedi mewngofnodi'n llwyddiannus fel: {{email}}"
 
 # Delete acount message
 msgid "Delete account"
@@ -2447,7 +2447,7 @@ msgid ""
 "could be the <1>{{taxonName}}</1> species."
 msgstr ""
 "Diolch i chi am anfon eich cofnod. Ar sail manylion y cofnod yma, rydyn ni'n"
-" meddwl mai <1>{{Enwtacson}}</1> ydyw."
+" meddwl mai <1>{{taxonName}}</1> ydyw."
 
 # Verification status
 msgid "rejected"
@@ -2460,7 +2460,7 @@ msgid ""
 "to see any additional information that the verifier may have provided."
 msgstr ""
 "Diolch i chi am anfon eich cofnod. Mae dilysydd wedi ei nodi fel "
-"<2>{{Negesstatws}}</2> yn yr achos hwn. Mewngofnodwch i wefan iRecord i weld"
+"<2>{{statusMessage}}</2> yn yr achos hwn. Mewngofnodwch i wefan iRecord i weld"
 " unrhyw wybodaeth ychwanegol y gallai'r dilysydd fod wedi'i darparu."
 
 # Account not verified alert button label
