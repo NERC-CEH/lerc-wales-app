@@ -1,13 +1,13 @@
 # 
 # Translators:
 # Karolis, 2020
-# David Slade <david.slade@sewbrec.org.uk>, 2023
 # Vilius Stankaitis <vilius@flumens.io>, 2023
+# David Slade <david.slade@sewbrec.org.uk>, 2023
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: temp\n"
-"Last-Translator: Vilius Stankaitis <vilius@flumens.io>, 2023\n"
+"Last-Translator: David Slade <david.slade@sewbrec.org.uk>, 2023\n"
 "Language-Team: Welsh (https://app.transifex.com/ceh/teams/100775/cy/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2460,8 +2460,8 @@ msgid ""
 "to see any additional information that the verifier may have provided."
 msgstr ""
 "Diolch i chi am anfon eich cofnod. Mae dilysydd wedi ei nodi fel "
-"<2>{{statusMessage}}</2> yn yr achos hwn. Mewngofnodwch i wefan iRecord i weld"
-" unrhyw wybodaeth ychwanegol y gallai'r dilysydd fod wedi'i darparu."
+"<2>{{statusMessage}}</2> yn yr achos hwn. Mewngofnodwch i wefan iRecord i "
+"weld unrhyw wybodaeth ychwanegol y gallai'r dilysydd fod wedi'i darparu."
 
 # Account not verified alert button label
 msgid "Resend"
@@ -2638,11 +2638,11 @@ msgstr "Nid yw'r gwasanaethau lleoliad wedi'u galluogi"
 
 # Part of Camera
 msgid "Get species suggestions"
-msgstr ""
+msgstr "Cael awgrymiadau rhywogaethau"
 
 # Part of Camera
 msgid "Crop/Zoom"
-msgstr ""
+msgstr "Cnwd/Chwyddo"
 
 # Failed to indentify species message
 msgid "Sorry, we could not identify this species."
@@ -2655,15 +2655,15 @@ msgstr ""
 
 # Part of species identification message
 msgid "Suggestions:"
-msgstr ""
+msgstr "Awgrymiadau:"
 
 # Part of species identification message
 msgid "Loading suggestions"
-msgstr ""
+msgstr "Wrthi'n llwytho awgrymiadau"
 
 # Part of species identification message
 msgid "Identifying..."
-msgstr ""
+msgstr "Adnabod..."
 
 # Error message
 msgid "Not implemented on web."
@@ -2677,7 +2677,7 @@ msgstr ""
 
 # Part of User records profile
 msgid "Status"
-msgstr ""
+msgstr "Statws"
 
 # Alert message
 msgid "Tap on the <1></1> button to capture a new record. <br/>"
