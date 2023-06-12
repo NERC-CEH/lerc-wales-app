@@ -2646,12 +2646,14 @@ msgstr "Cnwd/Chwyddo"
 
 # Failed to indentify species message
 msgid "Sorry, we could not identify this species."
-msgstr ""
+msgstr "Mae'n ddrwg gennym, nid oeddem yn gallu adnabod y rhywogaeth yma."
 
 # Failed to indentify species message
 msgid ""
 "Make sure that your species is in the centre of the image and is in focus."
 msgstr ""
+"Gwnewch yn siŵr bod eich rhywogaeth yng nghanol y llun a bod y ffocws yn "
+"iawn."
 
 # Part of species identification message
 msgid "Suggestions:"
@@ -2667,13 +2669,15 @@ msgstr "Adnabod..."
 
 # Error message
 msgid "Not implemented on web."
-msgstr ""
+msgstr "Heb ei weithredu ar y we."
 
 # Spashscreen message
 msgid ""
 "<0>LERC Wales</0> helps you with management and sharing of your wildlife "
 "observations"
 msgstr ""
+"Mae <0> LERC Cymru </0> yn eich helpu chi i reoli a rhannu eich cofnodion am"
+" weld bywyd gwyllt"
 
 # Part of User records profile
 msgid "Status"
@@ -2681,4 +2685,4 @@ msgstr "Statws"
 
 # Alert message
 msgid "Tap on the <1></1> button to capture a new record. <br/>"
-msgstr ""
+msgstr "Tapiwch ar y botwm <1></1> i wneud cofnod newydd. <br/>"
