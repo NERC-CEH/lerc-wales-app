@@ -1,4 +1,5 @@
-import { FC, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Capacitor } from '@capacitor/core';
 import {
   PhotoPicker,
   ImageCropper,
@@ -9,16 +10,14 @@ import {
   deleteFile,
 } from '@flumens';
 import { isPlatform } from '@ionic/react';
-import { Capacitor } from '@capacitor/core';
-import Media from 'models/media';
-import Sample from 'models/sample';
-import appModel from 'models/app';
-import userModel from 'models/user';
-import Occurrence from 'models/occurrence';
 import config from 'common/config';
+import appModel from 'models/app';
+import Media from 'models/media';
+import Occurrence from 'models/occurrence';
+import Sample from 'models/sample';
+import userModel from 'models/user';
 import GalleryWithClassification from './GalleryWithClassification';
 import ImageWithClassification from './ImageWithClassification';
-import getPhotoFromCustomCamera from './customCamera';
 import './styles.scss';
 
 type URL = string;
@@ -54,11 +53,11 @@ const useOnBackButton = (onCancelEdit: () => void, editImage?: Media) => {
   useEffect(hideModal, [editImage]);
 };
 
-const AppPhotoPicker: FC<Props> = ({
+const AppPhotoPicker = ({
   model,
   allowToCrop = true,
   disableClassifier = false,
-}) => {
+}: Props) => {
   const [editImage, setEditImage] = useState<Media>();
   const toast = useToast();
 
@@ -78,19 +77,18 @@ const AppPhotoPicker: FC<Props> = ({
     }
   };
 
-  async function onAddNew(shouldUseCamera: boolean) {
+  async function onAdd(shouldUseCamera: boolean) {
     try {
       const photoURLs = await captureImage(
-        shouldUseCamera
-          ? { getPhoto: getPhotoFromCustomCamera }
-          : { multiple: true }
+        shouldUseCamera ? { camera: true } : { multiple: true }
       );
       if (!photoURLs.length) return;
 
       const getImageModel = async (imageURL: URL) =>
         Media.getImageModel(
           isPlatform('hybrid') ? Capacitor.convertFileSrc(imageURL) : imageURL,
-          config.dataPath
+          config.dataPath,
+          true
         );
       const imageModels: Media[] = await Promise.all<any>(
         photoURLs.map(getImageModel)
@@ -112,6 +110,8 @@ const AppPhotoPicker: FC<Props> = ({
     }
   }
 
+  const onRemove = (m: any) => m.destroy();
+
   const onDoneEdit = async (imageDataURL: URL) => {
     const image = editImage as Media;
 
@@ -129,7 +129,11 @@ const AppPhotoPicker: FC<Props> = ({
       : savedURL;
 
     // copy over new image values to existing model to preserve its observability
-    const newImageModel = await Media.getImageModel(savedURL, config.dataPath);
+    const newImageModel = await Media.getImageModel(
+      savedURL,
+      config.dataPath,
+      true
+    );
     Object.assign(image?.attrs, { ...newImageModel.attrs, species: null });
 
     if (!image.parent) {
@@ -165,8 +169,9 @@ const AppPhotoPicker: FC<Props> = ({
     <>
       <PhotoPicker
         className="with-cropper"
-        onAddNew={onAddNew}
-        model={model}
+        onAdd={onAdd}
+        onRemove={onRemove}
+        value={model.media}
         Image={useClassifier ? ImageWithClassification : undefined}
         Gallery={useClassifier ? GalleryWithClassification : undefined}
         galleryProps={{ onCrop: onCropExisting, onSpeciesSelect, isDisabled }}

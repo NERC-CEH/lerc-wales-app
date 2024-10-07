@@ -1,19 +1,20 @@
 /* eslint-disable no-param-reassign */
+
 /* eslint-disable camelcase */
-import axios, { AxiosRequestConfig } from 'axios';
 import { observable, set } from 'mobx';
-import { AppModel } from 'models/app';
-import Occurrence from 'models/occurrence';
-import SavedSamplesProps from 'models/savedSamples';
-import { UserModel } from 'models/user';
-import Sample from 'models/sample';
+import axios, { AxiosRequestConfig } from 'axios';
 import { device, isAxiosNetworkError } from '@flumens';
 import CONFIG from 'common/config';
-import { Survey } from 'Survey/common/config';
 import defaultSurvey from 'Survey/Default/config';
-// import listSurvey from 'Survey/List/config';
+import listSurvey from 'Survey/List/config';
 // import mothSurvey from 'Survey/Moth/config';
 // import plantSurvey from 'Survey/Plant/config';
+import { AppModel } from 'models/app';
+import Occurrence from 'models/occurrence';
+import Sample from 'models/sample';
+import SavedSamplesProps from 'models/savedSamples';
+import { UserModel } from 'models/user';
+import { getSurveyQuery } from 'common/services/ES';
 
 // export type
 interface API_Occurrence {
@@ -75,12 +76,6 @@ const getRecordsQuery = (timestamp: any) => {
   const time = timeFormat.format(lastFetchTime);
   const formattedTimestamp = `${date} ${time}`;
 
-  const getSurveyQuery = ({ id }: Survey) => ({
-    match: {
-      'metadata.survey.id': id,
-    },
-  });
-
   return JSON.stringify({
     size: 1000, // fetch only 1k of the last created. Note, not updated_on, since we mostly care for any last user uploaded records.
     query: {
@@ -90,7 +85,8 @@ const getRecordsQuery = (timestamp: any) => {
             bool: {
               should: [
                 defaultSurvey,
-                //  listSurvey, mothSurvey, plantSurvey
+                listSurvey,
+                //  mothSurvey, plantSurvey
               ].map(getSurveyQuery),
             },
           },
@@ -143,7 +139,7 @@ async function fetchUpdatedRemoteSamples(userModel: UserModel, timestamp: any) {
 
   const OPTIONS: AxiosRequestConfig = {
     method: 'post',
-    url: CONFIG.backend.recordsServiceURL,
+    url: CONFIG.backend.occurrenceServiceURL,
     headers: {
       authorization: `Bearer ${await userModel.getAccessToken()}`,
       'Content-Type': 'application/json',

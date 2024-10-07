@@ -1,7 +1,6 @@
-import { FC } from 'react';
-import { IonList, IonItem, IonSpinner } from '@ionic/react';
-import { hashCode } from 'helpers/UUID';
 import { Trans as T } from 'react-i18next';
+import { hashCode } from '@flumens';
+import { IonList, IonItem, IonSpinner } from '@ionic/react';
 import { Taxon } from 'models/occurrence';
 import Species from './components/Species';
 import './styles.scss';
@@ -122,14 +121,14 @@ type Props = {
   showEditButton?: boolean;
 };
 
-const Suggestions: FC<Props> = ({
+const Suggestions = ({
   searchResults,
   showEditButton,
   searchPhrase,
   onSpeciesSelected,
   suggestedSpecies,
   suggestionsAreLoading,
-}) => {
+}: Props) => {
   const getSuggestion = (species: Taxon) => {
     const key = hashCode(JSON.stringify(species));
     return (
@@ -148,10 +147,10 @@ const Suggestions: FC<Props> = ({
 
     return (
       <>
+        <div>{/* quick hack to fix odd css style */}</div>
         <h3>
           <T>Suggestions</T>:
         </h3>
-
         {deDuped.map(getSuggestion)}
       </>
     );

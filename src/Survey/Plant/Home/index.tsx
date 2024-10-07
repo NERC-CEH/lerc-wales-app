@@ -1,34 +1,22 @@
-import { FC, useContext } from 'react';
+import { useContext } from 'react';
 import { observer } from 'mobx-react';
-import { NavContext, IonToolbar } from '@ionic/react';
+import { Page, Header, useToast } from '@flumens';
+import { NavContext } from '@ionic/react';
+import distance from '@turf/distance';
+import gridAlertService from 'common/helpers/gridAlertService';
 import Sample, { useValidateCheck } from 'models/sample';
 import { useUserStatusCheck } from 'models/user';
-import { informationOutline } from 'ionicons/icons';
-import appModel from 'models/app';
-import { Trans as T } from 'react-i18next';
-import AppHeaderBand from 'Survey/common/Components/AppHeaderBand';
-import {
-  Page,
-  Header,
-  useToast,
-  useAlert,
-  MenuAttrToggle,
-  InfoButton,
-} from '@flumens';
-import PrimaryHeaderButton from 'Survey/common/Components/PrimaryHeaderButton';
-import gridAlertService from './gridAlertService';
+import SurveyHeaderButton from 'Survey/common/Components/SurveyHeaderButton';
+import TrainingBand from 'Survey/common/Components/TrainingBand';
 import Main from './Main';
 import './styles.scss';
-
-type Location = any;
 
 type Props = {
   sample: Sample;
 };
 
-const PlantHome: FC<Props> = ({ sample }) => {
+const PlantHome = ({ sample }: Props) => {
   const toast = useToast();
-  const alert = useAlert();
   const { navigate } = useContext(NavContext);
   const checkSampleStatus = useValidateCheck(sample);
   const checkUserStatus = useUserStatusCheck();
@@ -48,7 +36,7 @@ const PlantHome: FC<Props> = ({ sample }) => {
     const isValid = checkSampleStatus();
     if (!isValid) return;
 
-    if (gridAlertService.isRunning()) gridAlertService.stop();
+    gridAlertService.stop(sample.cid);
 
     // eslint-disable-next-line no-param-reassign
     sample.metadata.saved = true;
@@ -66,58 +54,25 @@ const PlantHome: FC<Props> = ({ sample }) => {
     !isSaved ? _processDraft() : _processSubmission();
 
   const finishButton = (
-    <PrimaryHeaderButton sample={sample} onClick={onFinish} />
-  );
-
-  const isGridAlertActive = gridAlertService.isRunning();
-
-  const showGridChangeAlert = (newLocation: Location) => {
-    if (!newLocation.gridref) {
-      console.error('No gridref in grid alert');
-      return;
-    }
-
-    const { gridSquareUnit } = appModel.attrs;
-
-    alert({
-      header: `Your ${gridSquareUnit} changed to:`,
-      cssClass: 'grid-square-alert',
-      message: <h1>{newLocation.gridref}</h1>,
-      buttons: [{ text: 'OK' }],
-    });
-  };
-
-  const onToggleGridAlert = (turnOn: boolean) =>
-    !gridAlertService.isRunning() && turnOn
-      ? gridAlertService.start(showGridChangeAlert)
-      : gridAlertService.stop();
-
-  const isDisabled = sample.isDisabled();
-
-  const GPSToggle = !isDisabled && (
-    <IonToolbar className="grid-alert-toggle">
-      <InfoButton header="Grid square alert" icon={informationOutline}>
-        <T>
-          We will notify you when you cross into another grid square. You can
-          select the square size in the app settings.
-        </T>
-      </InfoButton>
-
-      <MenuAttrToggle
-        label="Use grid alert"
-        value={isGridAlertActive}
-        onChange={onToggleGridAlert}
-      />
-    </IonToolbar>
+    <SurveyHeaderButton sample={sample} onClick={onFinish} />
   );
 
   const { training } = sample.attrs;
 
-  const subheader = (
-    <div>
-      {!!training && <AppHeaderBand training />}
-      {GPSToggle}
-    </div>
+  const subheader = <div>{!!training && <TrainingBand />}</div>;
+
+  const { location } = sample.attrs;
+
+  const isLocationFurtherThan5000m = (smp: Sample) =>
+    distance(
+      [location.latitude, location.longitude],
+      [smp.attrs.location.latitude, smp.attrs.location.longitude],
+      {
+        units: 'meters',
+      }
+    ) > 5000;
+  const showChildSampleDistanceWarning = sample.samples.some(
+    isLocationFurtherThan5000m
   );
 
   return (
@@ -128,7 +83,11 @@ const PlantHome: FC<Props> = ({ sample }) => {
         defaultHref="/home/surveys"
         subheader={subheader}
       />
-      <Main sample={sample} onDelete={onSubSampleDelete} />
+      <Main
+        sample={sample}
+        onDelete={onSubSampleDelete}
+        showChildSampleDistanceWarning={showChildSampleDistanceWarning}
+      />
     </Page>
   );
 };

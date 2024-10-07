@@ -6,11 +6,11 @@
 
 .attr-lock-tip {
   ion-icon {
-    background-color: var(--custom-color-lock);
+    margin-bottom: -5px;
+    border-radius: 3px;
+    background-color: var(--attr-lock-color);
     padding: 5px;
     color: white;
-    border-radius: 3px;
-    margin-bottom: -5px;
   }
 
   img {

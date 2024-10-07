@@ -1,18 +1,20 @@
-import { FC, useContext } from 'react';
+import { useContext } from 'react';
 import { observer } from 'mobx-react';
+import { Page, Header, useToast } from '@flumens';
 import { NavContext } from '@ionic/react';
+import distance from '@turf/distance';
+import gridAlertService from 'common/helpers/gridAlertService';
 import Sample, { useValidateCheck } from 'models/sample';
 import { useUserStatusCheck } from 'models/user';
-import { Page, Header, useToast } from '@flumens';
-import AppHeaderBand from 'Survey/common/Components/AppHeaderBand';
-import PrimaryHeaderButton from 'Survey/common/Components/PrimaryHeaderButton';
+import SurveyHeaderButton from 'Survey/common/Components/SurveyHeaderButton';
+import TrainingBand from 'Survey/common/Components/TrainingBand';
 import Main from './Main';
 
 type Props = {
   sample: Sample;
 };
 
-const ListHome: FC<Props> = ({ sample }) => {
+const ListHome = ({ sample }: Props) => {
   const toast = useToast();
   const { navigate } = useContext(NavContext);
   const checkSampleStatus = useValidateCheck(sample);
@@ -33,6 +35,8 @@ const ListHome: FC<Props> = ({ sample }) => {
     const isValid = checkSampleStatus();
     if (!isValid) return;
 
+    gridAlertService.stop(sample.cid);
+
     // eslint-disable-next-line no-param-reassign
     sample.metadata.saved = true;
     sample.save();
@@ -50,12 +54,26 @@ const ListHome: FC<Props> = ({ sample }) => {
     !isSaved ? _processDraft() : _processSubmission();
 
   const finishButton = (
-    <PrimaryHeaderButton sample={sample} onClick={onFinish} />
+    <SurveyHeaderButton sample={sample} onClick={onFinish} />
   );
 
   const { training } = sample.attrs;
 
-  const subheader = !!training && <AppHeaderBand training />;
+  const subheader = !!training && <TrainingBand />;
+
+  const { location } = sample.attrs;
+
+  const isLocationFurtherThan5000m = (smp: Sample) =>
+    distance(
+      [location.latitude, location.longitude],
+      [smp.attrs.location.latitude, smp.attrs.location.longitude],
+      {
+        units: 'meters',
+      }
+    ) > 5000;
+  const showChildSampleDistanceWarning = sample.samples.some(
+    isLocationFurtherThan5000m
+  );
 
   return (
     <Page id="survey-complex-default-edit">
@@ -65,7 +83,11 @@ const ListHome: FC<Props> = ({ sample }) => {
         defaultHref="/home/surveys"
         subheader={subheader}
       />
-      <Main sample={sample} onDelete={onSubSampleDelete} />
+      <Main
+        sample={sample}
+        onDelete={onSubSampleDelete}
+        showChildSampleDistanceWarning={showChildSampleDistanceWarning}
+      />
     </Page>
   );
 };

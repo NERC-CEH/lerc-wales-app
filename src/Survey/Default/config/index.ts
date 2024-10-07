@@ -1,11 +1,13 @@
 /* eslint-disable no-param-reassign */
-import appModel from 'models/app';
+import mergeWith from 'lodash.mergewith';
+import * as Yup from 'yup';
 import genderIcon from 'common/images/gender.svg';
 import numberIcon from 'common/images/number.svg';
 import progressIcon from 'common/images/progress-circles.svg';
+import userModel from 'common/models/user';
+import appModel from 'models/app';
 import AppOccurrence from 'models/occurrence';
 import AppSample from 'models/sample';
-import * as Yup from 'yup';
 import {
   coreAttributes,
   dateAttr,
@@ -18,15 +20,15 @@ import {
   identifiersAttr,
   getSystemAttrs,
   makeSubmissionBackwardsCompatible,
+  recorderAttr,
 } from 'Survey/common/config';
-import mergeWith from 'lodash.mergewith';
 import arthropodSurvey from './arthropods';
-import dragonfliesSurvey from './dragonflies';
+import birdsSurvey from './birds';
 import bryophytesSurvey from './bryophytes';
 import butterfliesSurvey from './butterflies';
+import dragonfliesSurvey from './dragonflies';
 import mothsSurvey from './moths';
 import plantFungiSurvey from './plantFungi';
-import birdsSurvey from './birds';
 
 export const taxonGroupSurveys = {
   arthropods: arthropodSurvey,
@@ -102,6 +104,10 @@ const survey: Survey = {
     location: locationAttr,
 
     date: dateAttr,
+
+    recorder: recorderAttr,
+    /** @deprecated */
+    recorders: recorderAttr,
 
     activity: activityAttr,
   },
@@ -224,21 +230,25 @@ const survey: Survey = {
     },
   },
 
-  async create(Sample, Occurrence, options) {
+  async create({ Sample, Occurrence, image, taxon, skipLocation, skipGPS }) {
     const ignoreErrors = () => {};
-
-    const { image, taxon, skipLocation, skipGPS } = options;
 
     const occurrence = new Occurrence();
 
     if (image) occurrence.media.push(image);
+
+    // add currently logged in user as one of the recorders
+    let recorder = '';
+    if (userModel.isLoggedIn()) {
+      recorder = userModel.getPrettyName();
+    }
 
     const sample = new Sample({
       metadata: {
         survey_id: survey.id,
         survey: survey.name,
       },
-      attrs: { location: {} },
+      attrs: { location: {}, recorder },
     });
     sample.occurrences.push(occurrence);
 
@@ -275,10 +285,6 @@ const survey: Survey = {
     }
 
     return sample;
-  },
-
-  async createWithPhoto(Sample, Occurrence, { image }) {
-    return survey.create(Sample, Occurrence, { image });
   },
 
   modifySubmission(submission) {
@@ -337,7 +343,7 @@ export function _getFullTaxaGroupSurvey(
     return undefined;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, unused-imports/no-unused-vars
   const { render, taxaGroups, ...defaultSurveyCopy } = survey;
   const mergedDefaultSurvey: Survey = mergeWith(
     {},

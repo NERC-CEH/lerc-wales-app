@@ -4,13 +4,13 @@ import {
   clipboardOutline,
 } from 'ionicons/icons';
 import * as Yup from 'yup';
-import { date as DateHelp, device, PageProps, RemoteConfig } from '@flumens';
-import { Config as MenuProps } from 'Survey/common/Components/MenuAttr';
-import Occurrence, { Taxon } from 'models/occurrence';
-import Sample from 'models/sample';
-import Media from 'models/media';
+import { dateFormat, device, PageProps, RemoteConfig } from '@flumens';
 import config from 'common/config';
 import progressIcon from 'common/images/progress-circles.svg';
+import Media from 'models/media';
+import Occurrence, { Taxon } from 'models/occurrence';
+import Sample from 'models/sample';
+import { Config as MenuProps } from 'Survey/common/Components/MenuAttr';
 
 const fixedLocationSchema = Yup.object().shape({
   latitude: Yup.number().required(),
@@ -50,7 +50,7 @@ export const dateAttr = {
     },
   },
 
-  values: (date: any) => DateHelp.print(date, false),
+  values: (date: any) => dateFormat.format(new Date(date)),
 };
 
 export const commentAttr = {
@@ -71,11 +71,11 @@ export const activityAttr = {
   remote: { id: 'group_id', values: (activity: any) => activity.id },
 };
 
-export const recordersAttr = {
+export const recorderAttr = {
   menuProps: { icon: peopleOutline, skipValueTranslation: true },
   pageProps: {
     attrProps: {
-      input: 'inputList',
+      input: 'input',
       info: 'If anyone helped with documenting the record please enter their name here.',
       inputProps: { placeholder: 'Recorder name' },
     },
@@ -109,6 +109,7 @@ export const coreAttributes = [
   'smp:locationName',
   'smp:location_type',
   'smp:date',
+  'smp:recorder',
   'occ:comment',
   'smp:activity',
 ];
@@ -201,8 +202,9 @@ export const locationAttr = {
       // eslint-disable-next-line
       submission.values = { ...submission.values };
 
-      submission.values['smpAttr:760'] = source; // eslint-disable-line
-      submission.values['smpAttr:335'] = gridref; // eslint-disable-line
+      if (source) submission.values['smpAttr:760'] = source; // eslint-disable-line
+      if (gridref) submission.values['smpAttr:335'] = gridref; // eslint-disable-line
+
       submission.values['smpAttr:282'] = accuracy; // eslint-disable-line
       submission.values['smpAttr:283'] = altitude; // eslint-disable-line
       submission.values['smpAttr:284'] = altitudeAccuracy; // eslint-disable-line
@@ -254,14 +256,12 @@ interface Attrs {
 type OccurrenceConfig = {
   render?: any[] | ((model: Occurrence) => any[]);
   attrs: Attrs;
-  create?: (
-    Occ: typeof Occurrence,
-    options: {
-      taxon: Taxon;
-      identifier?: string;
-      photo?: any;
-    }
-  ) => Occurrence;
+  create?: (props: {
+    Occurrence: typeof Occurrence;
+    taxon: Taxon;
+    identifier?: string;
+    photo?: any;
+  }) => Occurrence;
   verify?: (attrs: any) => any;
   modifySubmission?: (submission: any, model: any) => any;
   /**
@@ -273,15 +273,13 @@ type OccurrenceConfig = {
 export type SampleConfig = {
   render?: any[] | ((model: Sample) => any[]);
   attrs?: Attrs;
-  create?: (
-    Smp: typeof Sample,
-    Occ: typeof Occurrence,
-    options: {
-      taxon: Taxon;
-      surveySample: Sample;
-      skipGPS?: boolean;
-    }
-  ) => Promise<Sample>;
+  create?: (props: {
+    Sample: typeof Sample;
+    Occurrence: typeof Occurrence;
+    taxon: Taxon;
+    surveySample: Sample;
+    skipGPS?: boolean;
+  }) => Promise<Sample>;
   verify?: (attrs: any) => any;
   modifySubmission?: (submission: any, model: any) => any;
   smp?: SampleConfig;
@@ -326,22 +324,13 @@ export interface Survey extends SampleConfig {
    */
   get?: (sample: Sample) => Survey;
 
-  create: (
-    Smp: typeof Sample,
-    Occ: typeof Occurrence,
-    options: {
-      taxon?: Taxon;
-      image?: Media | null;
-      skipLocation?: boolean;
-      skipGPS?: boolean;
-    }
-  ) => Promise<Sample>;
-
-  createWithPhoto?: (
-    Smp: typeof Sample,
-    Occ: typeof Occurrence,
-    options: {
-      image: Media;
-    }
-  ) => Promise<Sample>;
+  create: (props: {
+    Sample: typeof Sample;
+    Occurrence: typeof Occurrence;
+    taxon?: Taxon;
+    image?: Media | null;
+    skipLocation?: boolean;
+    skipGPS?: boolean;
+    alert?: any;
+  }) => Promise<Sample>;
 }

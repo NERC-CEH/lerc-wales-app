@@ -1,9 +1,12 @@
+import * as Yup from 'yup';
+import gridAlertService from 'common/helpers/gridAlertService';
 import appModel from 'models/app';
+import AppSample from 'models/sample';
 import userModel from 'models/user';
 import {
   coreAttributes,
   dateAttr,
-  recordersAttr,
+  recorderAttr,
   commentAttr,
   verifyLocationSchema,
   Survey,
@@ -13,8 +16,6 @@ import {
   makeSubmissionBackwardsCompatible,
   assignParentLocationIfMissing,
 } from 'Survey/common/config';
-import AppSample from 'models/sample';
-import * as Yup from 'yup';
 
 function appendLockedAttrs(sample: AppSample) {
   const defaultSurveyLocks = appModel.attrs.attrLocks.complex || {};
@@ -53,12 +54,14 @@ const survey: Survey = {
 
   webForm: 'enter-app-record-list',
 
-  render: ['smp:location', 'smp:date', 'smp:recorders', 'smp:comment'],
+  render: ['smp:location', 'smp:date', 'smp:recorder', 'smp:comment'],
 
   attrs: {
     location: locationAttr,
 
-    recorders: recordersAttr,
+    recorder: recorderAttr,
+    /** @deprecated */
+    recorders: recorderAttr,
 
     comment: commentAttr,
 
@@ -88,9 +91,7 @@ const survey: Survey = {
   },
 
   smp: {
-    async create(Sample, Occurrence, options) {
-      const { taxon, surveySample, skipGPS = false } = options;
-
+    async create({ Sample, Occurrence, taxon, surveySample, skipGPS = false }) {
       const occurrence = new Occurrence();
 
       const { activity } = surveySample.attrs;
@@ -139,9 +140,8 @@ const survey: Survey = {
       Yup.object()
         .shape({
           location: verifyLocationSchema,
-          recorders: Yup.array()
-            .of(Yup.string())
-            .min(1, 'Recorders field is missing.'),
+          // TODO: re-enable in future versions after everyone uploads
+          // recorder: Yup.string().nullable().required('Recorder field is missing.'),
         })
         .validateSync(attrs, { abortEarly: false });
     } catch (attrError) {
@@ -151,11 +151,11 @@ const survey: Survey = {
     return null;
   },
 
-  create(Sample) {
+  create({ Sample, alert }) {
     // add currently logged in user as one of the recorders
-    const recorders = [];
+    let recorder = '';
     if (userModel.isLoggedIn()) {
-      recorders.push(userModel.getPrettyName());
+      recorder = userModel.getPrettyName();
     }
 
     const activity = appModel.getAttrLock('smp', 'activity');
@@ -167,10 +167,13 @@ const survey: Survey = {
       },
       attrs: {
         location: {},
-        recorders,
+        recorder,
         activity,
       },
     });
+
+    const { useGridNotifications } = appModel.attrs;
+    if (useGridNotifications) gridAlertService.start(sample.cid, alert);
 
     return Promise.resolve(sample);
   },

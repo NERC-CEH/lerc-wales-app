@@ -1,25 +1,26 @@
-import { device, date as DateHelp } from '@flumens';
-import Sample from 'models/sample';
-import Occurrence from 'models/occurrence';
-import userModel from 'models/user';
+import i18n from 'i18next';
+import stringify from 'json-stable-stringify';
+import { initReactI18next } from 'react-i18next';
+import sinon from 'sinon';
+import { device, dateFormat } from '@flumens';
+import config from 'common/config';
 import appModel from 'models/app';
-import { coreAttributes, systemAttrs } from 'Survey/common/config';
+import Occurrence from 'models/occurrence';
+import Sample from 'models/sample';
+import userModel from 'models/user';
 import defaultSurvey, { taxonGroupSurveys } from 'Survey/Default/config';
 import listSurvey from 'Survey/List/config';
 import plantsSurvey from 'Survey/Plant/config';
-import stringify from 'json-stable-stringify';
-import config from 'common/config';
-import sinon from 'sinon';
-import i18n from 'i18next';
-
-import { initReactI18next } from 'react-i18next';
+import { coreAttributes, systemAttrs } from 'Survey/common/config';
 
 i18n.use(initReactI18next).init({ lng: 'en' });
 
 const validTaxon = { warehouse_id: 1, group: 1 };
 
 const getDefaultSample = taxon =>
-  defaultSurvey.create(Sample, Occurrence, {
+  defaultSurvey.create({
+    Sample,
+    Occurrence,
     taxon: taxon || validTaxon,
     skipGPS: true,
   });
@@ -40,7 +41,9 @@ describe('Sample', () => {
     const sample = new Sample({});
     const { date } = sample.attrs;
 
-    expect(DateHelp.print(date)).toBe(DateHelp.print(new Date()));
+    expect(dateFormat.format(new Date(date))).toBe(
+      dateFormat.format(new Date(new Date()))
+    );
   });
 
   it('should set training mode', async () => {
@@ -210,11 +213,15 @@ describe('Sample', () => {
   describe('getSubmission', () => {
     it('should add survey id and webform to be backwards compatible', async () => {
       // Given
-      const sample = await listSurvey.create(Sample, Occurrence, {
+      const sample = await listSurvey.create({
+        Sample,
+        Occurrence,
         taxon: validTaxon,
         skipGPS: true,
       });
-      const subSample = await listSurvey.smp.create(Sample, Occurrence, {
+      const subSample = await listSurvey.smp.create({
+        Sample,
+        Occurrence,
         taxon: validTaxon,
         skipGPS: true,
         surveySample: sample,
@@ -254,10 +261,12 @@ describe('Sample', () => {
 
     it('should set subsamples missing location to parent survey location', async () => {
       // Given
-      const sample = await listSurvey.create(Sample, { skipGPS: true });
+      const sample = await listSurvey.create({ Sample, skipGPS: true });
       sample.attrs.location = { name: 'location' };
       const bird = { group: taxonGroupSurveys.birds.taxaGroups[0] };
-      const subSample = await listSurvey.smp.create(Sample, Occurrence, {
+      const subSample = await listSurvey.smp.create({
+        Sample,
+        Occurrence,
         taxon: bird,
         surveySample: sample,
         skipGPS: true,
@@ -317,7 +326,7 @@ describe('Sample', () => {
 
     it('should match plant', async () => {
       // Given
-      const sample = await plantsSurvey.create(Sample);
+      const sample = await plantsSurvey.create({ Sample });
 
       // When
       const survey = sample.getSurvey();

@@ -1,12 +1,7 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { cameraOutline } from 'ionicons/icons';
-import defaultSurveyConfig from 'Survey/Default/config';
-import Sample from 'models/sample';
-import Occurrence from 'models/occurrence';
-import Media from 'models/media';
-import userModel from 'models/user';
-import appModel from 'models/app';
-import getPhotoFromCustomCamera from 'Survey/common/Components/PhotoPicker/customCamera';
+import { Trans as T } from 'react-i18next';
+import { Capacitor } from '@capacitor/core';
 import {
   captureImage,
   ImageCropper,
@@ -15,11 +10,15 @@ import {
   deleteFile,
   device,
 } from '@flumens';
-import savedSamples from 'models/savedSamples';
-import { Capacitor } from '@capacitor/core';
 import { IonIcon, IonLabel, isPlatform } from '@ionic/react';
-import { Trans as T } from 'react-i18next';
 import config from 'common/config';
+import appModel from 'models/app';
+import Media from 'models/media';
+import Occurrence from 'models/occurrence';
+import Sample from 'models/sample';
+import savedSamples from 'models/savedSamples';
+import userModel from 'models/user';
+import defaultSurveyConfig from 'Survey/Default/config';
 
 type URL = string;
 
@@ -37,21 +36,20 @@ const identify = (imageModel: Media) => {
   }
 };
 
-const DefaultCameraSurveyButton: FC = () => {
+const DefaultCameraSurveyButton = () => {
   const [editImage, setEditImage] = useState<Media>();
   const toast = useToast();
 
   async function onClick() {
     try {
-      const photoURLs = await captureImage({
-        getPhoto: getPhotoFromCustomCamera,
-      });
+      const photoURLs = await captureImage({ camera: true });
       if (!photoURLs.length) return;
 
       const getImageModel = async (imageURL: URL) =>
         Media.getImageModel(
           isPlatform('hybrid') ? Capacitor.convertFileSrc(imageURL) : imageURL,
-          config.dataPath
+          config.dataPath,
+          true
         );
       const imageModels: Media[] = await Promise.all<any>(
         photoURLs.map(getImageModel)
@@ -80,18 +78,20 @@ const DefaultCameraSurveyButton: FC = () => {
       : savedURL;
 
     // copy over new image values to existing model to preserve its observability
-    const newImageModel = await Media.getImageModel(savedURL, config.dataPath);
+    const newImageModel: any = await Media.getImageModel(
+      savedURL,
+      config.dataPath,
+      true
+    );
     Object.assign(image?.attrs, { ...newImageModel.attrs, species: null });
 
     setEditImage(undefined);
 
-    const sample = await (defaultSurveyConfig as any).createWithPhoto(
+    const sample = await defaultSurveyConfig.create({
       Sample,
       Occurrence,
-      {
-        image: newImageModel,
-      }
-    );
+      image: newImageModel,
+    });
 
     await sample.save();
 
@@ -105,7 +105,7 @@ const DefaultCameraSurveyButton: FC = () => {
   return (
     <>
       {/* https://github.com/ionic-team/ionic-framework/issues/22511 */}
-      <div className="on-click-container" onClick={onClick}>
+      <div className="flex flex-col" onClick={onClick}>
         <IonIcon icon={cameraOutline} />
         <IonLabel>
           <T>Photo</T>

@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { FC } from 'react';
-import { IonIcon, IonButton, IonSpinner } from '@ionic/react';
 import { observer } from 'mobx-react';
 import { alertCircleOutline, close } from 'ionicons/icons';
-import ProbabilityBadge from 'Survey/common/Components/ProbabilityBadge';
+import { IonIcon, IonButton, IonSpinner } from '@ionic/react';
 import Media from 'models/media';
 import Occurrence from 'models/occurrence';
+import ProbabilityBadge from 'Survey/common/Components/ProbabilityBadge';
 import './styles.scss';
 
 type Props = {
@@ -15,7 +14,7 @@ type Props = {
   onClick: any;
 };
 
-const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
+const Image = ({ media, isDisabled, onDelete, onClick }: Props) => {
   const hasBeenIdentified = !!media.attrs?.species;
 
   const userSpeciesMatchesAI = media.getIdentifiedTaxonThatMatchParent();
@@ -35,16 +34,19 @@ const Image: FC<Props> = ({ media, isDisabled, onDelete, onClick }) => {
   return (
     <div className="img">
       {!isDisabled && (
-        <IonButton fill="clear" class="delete" onClick={onDelete}>
+        <IonButton fill="clear" className="delete" onClick={onDelete}>
           <IonIcon icon={close} />
         </IonButton>
       )}
-      <img src={media.attrs.thumbnail} onClick={onClick} />
+      <img src={media.getURL()} onClick={onClick} />
 
       {showLoading && <IonSpinner slot="end" />}
 
       {!showLoading && hasBeenIdentified && selectedSpeciesMatch && (
-        <ProbabilityBadge probability={probability} />
+        <ProbabilityBadge
+          probability={probability}
+          className="absolute bottom-0 z-10 ml-1 rounded-lg"
+        />
       )}
 
       {!showLoading && hasBeenIdentified && !selectedSpeciesMatch && (

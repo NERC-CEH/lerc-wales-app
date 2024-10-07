@@ -1,8 +1,7 @@
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { observer } from 'mobx-react';
-import CONFIG from 'common/config';
-import { IonList, IonRefresher, IonRefresherContent } from '@ionic/react';
 import { chevronDownOutline, informationCircleOutline } from 'ionicons/icons';
+import { Trans as T, useTranslation } from 'react-i18next';
 import {
   InfoMessage,
   InfoButton,
@@ -11,11 +10,17 @@ import {
   useLoader,
   device,
 } from '@flumens';
+import {
+  IonIcon,
+  IonList,
+  IonRefresher,
+  IonRefresherContent,
+} from '@ionic/react';
+import CONFIG from 'common/config';
+import { AppModel } from 'models/app';
 import Sample from 'models/sample';
 import { UserModel } from 'models/user';
-import { AppModel } from 'models/app';
 import InfoBackgroundMessage from 'Components/InfoBackgroundMessage';
-import { Trans as T, useTranslation } from 'react-i18next';
 import './styles.scss';
 
 type Props = {
@@ -25,7 +30,7 @@ type Props = {
   onSelect: any;
 };
 
-const Activities: FC<Props> = ({ sample, userModel, appModel, onSelect }) => {
+const Activities = ({ sample, userModel, appModel, onSelect }: Props) => {
   const toast = useToast();
   const loader = useLoader();
   const { t } = useTranslation();
@@ -114,6 +119,7 @@ const Activities: FC<Props> = ({ sample, userModel, appModel, onSelect }) => {
 
   const showEmptyDataMessage = () => {
     // Do nothing?
+    return null;
   };
 
   const getReport = () => {
@@ -137,11 +143,16 @@ const Activities: FC<Props> = ({ sample, userModel, appModel, onSelect }) => {
 
   return (
     <>
-      <InfoMessage icon={informationCircleOutline} className="blue">
-        {t(
-          'Click on the activity below which you would like to participate in.'
-        )}
-        <InfoButton label="READ MORE" header="Activities">
+      <InfoMessage
+        prefix={<IonIcon src={informationCircleOutline} className="size-6" />}
+        className="m-2"
+        color="secondary"
+        skipTranslation
+      >
+        <T>
+          Click on the activity below which you would like to participate in.
+        </T>
+        <InfoButton label="READ MORE" header="Activities" color="dark">
           <p>
             <T>
               You can join in with more activities by visiting the{' '}
@@ -152,9 +163,8 @@ const Activities: FC<Props> = ({ sample, userModel, appModel, onSelect }) => {
             </T>
           </p>
           <p>
-            <T>Pull to refresh the list.</T>
+            <T>Swipe down on the activity list to refresh it.</T>
           </p>
-
           <p>
             <T>
               For more about Activities see the{' '}
