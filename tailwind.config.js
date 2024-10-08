@@ -4,18 +4,18 @@ const flumensTailwind = require('@flumens/tailwind/tailwind.config.js');
 
 const primary = {
   // https://www.tailwindshades.com/#color=69.49640287769785%2C71.2820512820513%2C38.23529411764706&step-up=11&step-down=10&hue-shift=0&name=citron&base-stop=6&v=1&overrides=e30%3D
-  DEFAULT: '#91A71C',
-  50: '#FDFEF9',
-  100: '#F6FAE1',
-  200: '#E8F2B1',
-  300: '#D9EA81',
-  400: '#CBE251',
-  500: '#BBD724',
-  600: '#91A71C',
-  700: '#6B7B15',
-  800: '#45500D',
-  900: '#1F2406',
-  950: '#0C0E02',
+  DEFAULT: '#47934F',
+  50: '#F7FBF8',
+  100: '#E6F3E7',
+  200: '#C4E2C7',
+  300: '#A1D2A6',
+  400: '#7FC186',
+  500: '#5CB165',
+  600: '#47934F',
+  700: '#356D3B',
+  800: '#224726',
+  900: '#102212',
+  950: '#070F08',
 };
 
 /** @type {import('tailwindcss').Config} */
