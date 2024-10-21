@@ -1,13 +1,13 @@
 # 
 # Translators:
 # Vilius Stankaitis <vilius@flumens.io>, 2023
-# David Slade <david.slade@sewbrec.org.uk>, 2023
 # Karolis, 2024
+# David Slade <david.slade@sewbrec.org.uk>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: temp\n"
-"Last-Translator: Karolis, 2024\n"
+"Last-Translator: David Slade <david.slade@sewbrec.org.uk>, 2024\n"
 "Language-Team: Welsh (https://app.transifex.com/ceh/teams/100775/cy/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -353,12 +353,12 @@ msgstr "Cam "
 
 # Survey attribute
 msgid "Recorder name"
-msgstr ""
+msgstr "Enw'r cofnodwr"
 
 # Survey attribute
 msgid ""
 "If anyone helped with documenting the record please enter their name here."
-msgstr ""
+msgstr "Os gwnaeth unrhyw un helpu gyda dogfennu'r cofnod rhowch eu henw yma."
 
 msgid "Identified by"
 msgstr "Wedi'i adnabod gan"
@@ -663,7 +663,7 @@ msgid "tapeworm"
 msgstr "llynghyren rhuban "
 
 msgid "parasitic roundworm"
-msgstr ""
+msgstr "llyngyren gron barasitig"
 
 msgid "thorny-headed worm"
 msgstr "llynghyren ddreiniog "
@@ -1135,23 +1135,23 @@ msgstr "Dim arolygon wedi’u huwchlwytho"
 
 # Surveys Map
 msgid "Last three days"
-msgstr ""
+msgstr "Tridiau diwethaf"
 
 # Surveys Map
 msgid "Last month"
-msgstr ""
+msgstr "Mis diwethaf"
 
 # Surveys Map
 msgid "Last six months"
-msgstr ""
+msgstr "Chwe mis diwethaf"
 
 # Surveys Map
 msgid "Last year"
-msgstr ""
+msgstr "Blwyddyn diwethaf"
 
 # Surveys Map
 msgid "All species"
-msgstr ""
+msgstr "Rhywogaethau i gyd"
 
 msgid "Back"
 msgstr "Yn ôl"
@@ -2210,86 +2210,88 @@ msgstr ""
 
 # Location map page settings
 msgid "Map Settings"
-msgstr ""
+msgstr "Gosodiadau Map"
 
 # Location map page settings
 msgid "Map Type"
-msgstr ""
+msgstr "Math o Fap"
 
 # Location map page settings
 msgid "Satellite"
-msgstr ""
+msgstr "Lloeren"
 
 # Location map page settings
 msgid "Ordnance Survey"
-msgstr ""
+msgstr "Arolwg Ordnans"
 
 # Location map page settings
 msgid "Ordnance Survey (Explorer)"
-msgstr ""
+msgstr "Arolwg Ordnans (Explorer)"
 
 # Moth survey method message
 msgid ""
 "If trapping overnight please enter the date for the evening on which the "
 "trap was put out."
 msgstr ""
+"Os ydych chi'n trapio dros nos, rhowch y dyddiad ar gyfer y noson y cafodd y"
+" trap ei roi allan."
 
 # Moth survey entry
 msgid "Method"
-msgstr ""
+msgstr "Dull"
 
 # Moth survey method options
 msgid ""
 "Please enter your sampling method (i.e. type of trap or recording method)."
-msgstr ""
+msgstr "Nodwch eich dull samplo (h.y. math o drap neu dull cofnodi)"
 
 # Moth survey method options
 msgid "MV light"
-msgstr ""
+msgstr "Golau MV"
 
 # Moth survey method options
 msgid "LED light"
-msgstr ""
+msgstr "Golau LED"
 
 # Moth survey method options
 msgid "Actinic light"
-msgstr ""
+msgstr "Golau actinig"
 
 # Moth survey method options
 msgid "Light trapping"
-msgstr ""
+msgstr "Trapio golau"
 
 # Moth survey method options
 msgid "Daytime observation"
-msgstr ""
+msgstr "Arsylwad yn ystod y dydd"
 
 # Moth survey method options
 msgid "Dusking"
-msgstr ""
+msgstr "Gwyllio"
 
 # Moth survey method options
 msgid "Attracted to a lighted window"
-msgstr ""
+msgstr "Wedi'i ddenu at ffenestr wedi'i goleuo"
 
 # Moth survey method options
 msgid "Sugaring"
-msgstr ""
+msgstr "Siwgrio"
 
 # Moth survey method options
 msgid "Wine roping"
-msgstr ""
+msgstr "Rhaffio gwin"
 
 # Moth survey method options
 msgid "Beating tray"
-msgstr ""
+msgstr "Hambwrdd curo"
 
 # Moth survey method options
 msgid "Pheromone trap"
-msgstr ""
+msgstr "Trap fferomon"
 
 # Moth survey method options
 msgid "Other method (add comment)"
-msgstr ""
+msgstr "Dull arall (ychwanegwch sylw)"
 
 # Survey entry
 msgid "Quantity"
