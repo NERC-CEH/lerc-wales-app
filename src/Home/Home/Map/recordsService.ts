@@ -1,11 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { HandledError, isAxiosNetworkError, ElasticOccurrence } from '@flumens';
 import CONFIG from 'common/config';
-import defaultSurvey from 'Survey/Default/config';
-import listSurvey from 'Survey/List/config';
-// import mothSurvey from 'Survey/Moth/config';
-// import plantSurvey from 'Survey/Plant/config';
-import { getSurveyQuery, matchAppSurveys } from 'common/services/ES';
+import { matchAppSurveys } from 'common/services/ES';
 import userModel from 'models/user';
 
 export interface Square {
@@ -74,17 +70,7 @@ const getRecordsQuery = ({
     size: 1000,
     query: {
       bool: {
-        must: [
-          {
-            bool: {
-              should: [
-                defaultSurvey,
-                listSurvey, 
-                // mothSurvey, plantSurvey
-              ].map(getSurveyQuery),
-            },
-          },
-        ],
+        must,
         filter: {
           geo_bounding_box: {
             'location.point': {
@@ -183,17 +169,7 @@ const getSquaresQuery = ({
     size: 0,
     query: {
       bool: {
-        must: [
-          {
-            bool: {
-              should: [
-                defaultSurvey,
-                listSurvey, 
-                // mothSurvey, plantSurvey
-              ].map(getSurveyQuery),
-            },
-          },
-        ],
+        must,
         filter: {
           geo_bounding_box: {
             'location.point': {
