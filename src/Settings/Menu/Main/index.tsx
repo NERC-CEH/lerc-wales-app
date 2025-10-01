@@ -27,13 +27,13 @@ function useDatabaseExportDialog(exportFn: any) {
     alert({
       header: 'Export',
       message: (
-        <>
+        <T>
           Are you sure you want to export the data?
           <p className="my-2 font-bold">
             This feature is intended solely for technical support and is not a
             supported method for exporting your data
           </p>
-        </>
+        </T>
       ),
       buttons: [
         {
@@ -281,7 +281,7 @@ const MenuMain = ({
           </InfoMessage>
           <IonItem onClick={showDatabaseExportDialog}>
             <IonIcon icon={cloudDownloadOutline} size="small" slot="start" />
-            Export database
+            <T>Export database</T>
           </IonItem>
 
           {!isPlatform('hybrid') && (
