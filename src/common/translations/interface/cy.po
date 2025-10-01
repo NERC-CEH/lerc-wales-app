@@ -160,15 +160,6 @@ msgstr "gysylltu â ni"
 msgid "How to make a new record"
 msgstr "Sut i wneud cofnod newydd "
 
-msgid "There are two ways to start a record"
-msgstr "Mae dwy ffordd i ddechrau cofnod "
-
-msgid "Taking a photo"
-msgstr "Tynnu llun "
-
-msgid "Selecting species"
-msgstr "Dewis rhywogaethau "
-
 msgid "Searching for species"
 msgstr "Chwilio am rywogaethau "
 
@@ -335,6 +326,14 @@ msgstr "Cyn-oedolyn"
 
 msgid "stage"
 msgstr "oedolyn "
+
+# Survey attribute
+msgid "Geolocate list entries"
+msgstr ""
+
+# Survey attribute
+msgid "Recorders"
+msgstr ""
 
 msgid ""
 "If another person identified the species for you, please enter their name "
@@ -977,6 +976,9 @@ msgstr "Cofnod"
 msgid "This record has been submitted and cannot be edited within this App."
 msgstr "Mae'r cofnod hwn wedi'i gyflwyno ac ni ellir ei olygu yn yr Ap hwn."
 
+msgid "To view the full record, please visit the iRecord website."
+msgstr ""
+
 msgid "No species found with this name"
 msgstr "Dim rhywogaethau wedi'u canfod gyda'r enw hwn"
 
@@ -1110,16 +1112,6 @@ msgstr "Llun"
 
 msgid "Menu"
 msgstr "Dewislen"
-
-msgid "Tip: Adding Observations"
-msgstr "Cyngor: Ychwanegu Sylwadau "
-
-msgid ""
-"Tap on the <ion-icon class=\"tip-icon\" src=\"/images/ios-add.svg\"></ion-"
-"icon> button to capture a new record."
-msgstr ""
-"Tapiwch ar y botwm <ion-icon class=\"tip-icon\" src=\"/images/ios-"
-"add.svg\"></ion-icon> i gofnodi cofnod newydd."
 
 msgid "Pending"
 msgstr "Yn aros"
@@ -1277,32 +1269,6 @@ msgstr "Cuddio "
 # Info popup message
 msgid "To delete any surveys swipe it to the left."
 msgstr "I ddileu unrhyw arolygon, sweipiwch i'r chwith."
-
-# Part of Help Page
-msgid ""
-"Press the camera button <2></2> in the home page header. This will prompt "
-"you to select the photo source: camera or gallery. Once you have picked a "
-"photo, the app will create a new record without any species associated with "
-"it."
-msgstr ""
-"Pwyswch y botwm camera <2></2> ym mhennyn yr hafan. Bydd hyn yn eich annog i"
-" ddewis ffynhonnell y ffotograff: camera neu oriel. Unwaith y byddwch wedi "
-"dewis ffotograff, bydd yr ap yn creu cofnod newydd "
-
-# Part of Help Page
-msgid ""
-"Please press the plus <2></2> button in the home page. This will bring you "
-"to the taxa search page. After selecting the species, open the record "
-"(either by opening it directly from the taxa search page using the edit "
-"button <5></5> beside the species name or through the home-list page) and "
-"fill in the details of the sighting, like location, date, number seen etc."
-msgstr ""
-"Pwyswch y botwm plws <2></2> ar yr hafan. Bydd yn mynd â chi i'r dudalen "
-"chwilio tacsa. Ar ôl dewis y rhywogaeth, agorwch y cofnod (naill ai drwy ei "
-"agor yn uniongyrchol o'r dudalen chwilio tacsa gan ddefnyddio'r botwm golygu"
-" <5></5> wrth ymyl enw'r rhywogaeth neu drwy dudalen rhestr yr hafan) a "
-"llenwi'r manylion am yr hyn a welwyd, fel lleoliad, dyddiad, nifer a welwyd "
-"ac ati."
 
 # Part of Help Page
 msgid ""
@@ -1493,29 +1459,86 @@ msgstr ""
 
 # Part of Help Page
 msgid ""
-"To send records to a specific activity you can select it in the Activities "
-"<1></1> page."
-msgstr ""
-"I anfon cofnodion i weithgaredd penodol gallwch ei ddewis yn y dudalen "
-"<1></1> Gweithgareddau."
-
-# Part of Help Page
-msgid ""
-"<0>Note:</0> only the activities that allow this mobile app records and only"
-" the ones that you have joined on the iRecord website will be available to "
-"select."
-msgstr ""
-"<0>Sylwer:</0> dim ond y gweithgareddau sy'n caniatáu i'r ap symudol hwn "
-"gofnodi a dim ond y rhai rydych chi wedi ymuno â nhw ar wefan iRecord fydd "
-"ar gael i'w dewis."
-
-# Part of Help Page
-msgid ""
 "You can manage your saved locations both on any record's location page and "
 "from the settings <2></2> page"
 msgstr ""
 "Gallwch reoli eich lleoliadau sydd wedi'u cadw ar dudalen lleoliad unrhyw "
 "gofnod ac o'r dudalen <2></2> gosodiadau"
+
+# Part of Help Page
+msgid ""
+"<0>Start off by tapping the plus <2></2> button on the home page. This gives"
+" you four options:</0><1>Add a record without a photo</1><p>Tap here to add "
+"your record. You will first be asked to give the name of the species you are"
+" recording, and then you can add the other record information.</p><3>Take a "
+"new photo of the species</3><p>Tap here to start a new record by adding a "
+"photo first, and then completing the species name and other details. The app"
+" provides image recognition that may be able to help suggest an "
+"identification for your species photo – once your photo has been added you "
+"can tap on it to see the suggested identifications. It is also possible to "
+"add extra photos of your species.</p><5>Select multiple photos to add to a "
+"single record</5><p>Tap here to select multiple photos from your gallery and"
+" add them to a single record. In this case the image recognition will "
+"provide a single suggested identification based on all the photos – tap on "
+"any one photo to see the suggestions, or tap on the “Species missing” "
+"button. Once you have agreed an ID and added the other details you can save "
+"the record with all the photos attached.</p><7>Show other surveys</7><p>Tap "
+"here to see the other survey options in the app. These allow you to add a "
+"list of records from the same site on the same date. Currently there are "
+"three options:</p><9><0>Plant List Survey (e.g. to record a list of species "
+"in a grid square)</0><1>Moth List Survey (e.g. for recording moths at a moth"
+" trap)</1><2>Species List Survey (e.g. for recording a range of different "
+"species on one date)</2></9><p>Records in the list will be linked to the "
+"overall location for the survey. For the Plant List and Species List surveys"
+" you can choose to “Geolocate list entries”. If you switch that on, the app "
+"will add a precise GPS location to each individual record in your list. Be "
+"careful not to leave this switched on if you are adding records from a "
+"different location (e.g. if you leave your survey site and then want to add "
+"more records after you have arrive home).</p>"
+msgstr ""
+
+# Part of Help Page
+msgid ""
+"<p>If you have added a photo to your record, the app will offer suggestions "
+"about the identification (ID), using automatic image "
+"recognition.</p><p>After uploading a photo, check the thumbnail to see if it"
+" shows a coloured circle indicating the probability of a suggested ID. This "
+"uses ‘traffic light’ colours to suggest how confident the app is about the "
+"suggested ID:</p><2><0><0></0> = high confidence</0><1><0></0> = medium "
+"confidence</1><2><0></0> = low confidence</2></2><p>If you have already "
+"suggested an ID, and the image recognition suggests a different ID, a small "
+"red warning circle will be displayed – open the thumbnail or edit the "
+"species name to see the alternative ID suggestion.</p><p>Example of an ID "
+"that the image recognition agrees with, and has high "
+"confidence:</p><5></5><6>Identification agreed, with high "
+"confidence</6><7></7><8>! Alternative Identification suggested</8><p>When "
+"you open up the thumbnail image you can tap on the “Suggestions” button to "
+"see the suggested ID, and you can then tap on “Select” to set the "
+"identification for your record.</p><10></10>"
+msgstr ""
+
+# Part of Help Page
+msgid "Respond to a queried record"
+msgstr ""
+
+# Part of Help Page
+msgid ""
+"<p>The records that you upload from the app may be checked by a verifier. If"
+" a verifier queries one of your app records, the next time you open the app "
+"you will see a message to let you know:</p><1></1><p>Tap on “See Records” to"
+" see the records that have been queried – they will be shown with a question"
+" mark:</p><3></3>"
+msgstr ""
+
+# Part of Help Page
+msgid ""
+"<0>To send records to a specific activity you can select it in the "
+"Activities <1></1> page. Activities you have already joined can be seen in "
+"“My Activities”. To join an Activity for the first time search for it in "
+"“All Activities”.</0><p>Make sure you remember to change your Activity "
+"setting if you want to add a record that is not linked to an activity. To do"
+" this, set the My Activity page to “Not linked to any activity”.</p>"
+msgstr ""
 
 # Part of Help Page
 msgid "Swipe a location left and click edit <2></2> or delete<4></4> buttons."
@@ -1804,41 +1827,8 @@ msgstr ""
 "ddata. Am awgrymiadau ac adborth mae croeso i chi <5>gysylltu â ni</5>."
 
 # Help page content
-msgid ""
-"in the home page header. This will prompt you to select the photo source: "
-"camera or gallery. Once you have picked a photo, the app will create a new "
-"record without any species associated with it."
-msgstr ""
-"ym mhennyn yr hafan. Bydd hyn yn eich annog i ddewis ffynhonnell y "
-"ffotograff: camera neu oriel. Unwaith y byddwch wedi dewis ffotograff, bydd "
-"yr ap yn creu cofnod newydd heb unrhyw rywogaethau yn gysylltiedig ag ef."
-
-# Help page content
-msgid ""
-"button in the home page. This will bring you to the taxa search page. After "
-"selecting the species, open the record (either by opening it directly from "
-"the taxa search page using the edit button"
-msgstr ""
-"botwm yn yr hafan. Bydd hyn yn dod â chi i'r dudalen chwilio tacsa. Ar ôl "
-"dewis y rhywogaeth, agorwch y cofnod (naill ai drwy ei agor yn uniongyrchol "
-"o'r dudalen chwilio tacsa gan ddefnyddio'r botwm golygu"
-
-# Help page content
-msgid "When finished, press the Upload button in the record's page header."
-msgstr ""
-"Ar ôl gorffen, pwyswch y botwm Uwchlwytho ym mhennyn tudalen y cofnod."
-
-# Help page content
 msgid "Adding lists of records - surveying"
 msgstr "Ychwanegu rhestrau o gofnodion - arolygu "
-
-# Help page content
-msgid ""
-"You can record lists of species. Long-pressing the green plus button in the "
-"home page will show more advanced recording options."
-msgstr ""
-"Gallwch gofnodi rhestrau o rywogaethau. Bydd gwasgu'r botwm plws gwyrdd yn "
-"hir ar yr hafan yn dangos opsiynau cofnodi mwy datblygedig."
 
 # Help page content
 msgid ""
@@ -1860,70 +1850,6 @@ msgstr ""
 # Help page content
 msgid "Image recognition"
 msgstr "Adnabod llun"
-
-# Help page content
-msgid ""
-"If you have added a photo to your record, the app will offer suggestions "
-"about the identification, using automatic image recognition."
-msgstr ""
-"Os ydych chi wedi ychwanegu ffotograff at eich cofnod, bydd yr ap yn cynnig "
-"awgrymiadau am ei adnabod, gan ddefnyddio system adnabod lluniau awtomatig."
-
-# Help page content
-msgid ""
-"If you add a record using the plus button, you will be asked to add a "
-"species name to your record first. You can then add one or more photos, and "
-"the app will tell you if it agrees with the species name. If not it may "
-"suggest a different identification."
-msgstr ""
-"Os byddwch yn ychwanegu cofnod gan ddefnyddio'r botwm plws, gofynnir i chi "
-"ychwanegu enw rhywogaeth at eich cofnod yn gyntaf. Wedyn gallwch chi "
-"ychwanegu un neu fwy o ffotograffau, a bydd yr ap yn dweud wrthych chi a "
-"yw'n cytuno ag enw'r rhywogaeth. Os nad yw, gall awgrymu dull adnabod "
-"gwahanol."
-
-# Help page content
-msgid ""
-"If you add a record using the photo button, you can add a photo first, and "
-"the app will be able to suggest an identification. You can then go on to use"
-" the suggested species name if you agree with it, or add your own "
-"identification instead."
-msgstr ""
-"Os ydych chi'n ychwanegu cofnod gan ddefnyddio'r botwm ffotograff, gallwch "
-"chi ychwanegu ffotograff yn gyntaf, a bydd yr ap yn gallu awgrymu dull "
-"adnabod. Wedyn gallwch fynd ymlaen i ddefnyddio'r enw rhywogaeth a awgrymir "
-"os ydych yn cytuno ag ef, neu ychwanegu eich dull adnabod eich hun yn lle "
-"hynny."
-
-# Help page content
-msgid ""
-"After uploading the photo, check the thumbnail to see if it shows a "
-"percentage indicating the probability of a suggested identification. If a "
-"different identification is being suggested a small red warning circle will "
-"be displayed – open the thumbnail to see alternative identification "
-"suggestions."
-msgstr ""
-"Ar ôl uwchlwytho'r ffotograff, gwiriwch y cryno-lun i weld a yw'n dangos "
-"canran sy'n nodi tebygolrwydd unrhyw adnabod a awgrymir. Os yw dull adnabod "
-"gwahanol yn cael ei awgrymu, bydd cylch rhybudd coch bach yn cael ei "
-"arddangos – agorwch y cryno-lun i weld yr awgrymiadau adnabod amgen."
-
-# Help page content
-msgid "Identification agreed"
-msgstr "Cytunwyd ar adnabod"
-
-# Help page content
-msgid "Alternative Identification suggested"
-msgstr "Awgrymwyd adnabod amgen "
-
-# Help page content
-msgid ""
-"When you open up the thumbnail image you can tap on any of the alternative "
-"suggestions shown, and that will set the identification for your record."
-msgstr ""
-"Pan fyddwch chi'n agor y cryno-lun gallwch chi dapio ar unrhyw un o'r "
-"awgrymiadau amgen a ddangosir, a bydd hynny'n gosod yr adnabod ar gyfer eich"
-" cofnod."
 
 # Help page content
 msgid ""
@@ -2093,13 +2019,8 @@ msgstr ""
 " y gweinydd yn cael eu cyffwrdd.</1>"
 
 # Home page background message
-msgid ""
-"<0>You have no finished surveys.<br/><br/>Press <5></5> to add record "
-"details, or press <8></8> to add a photo first.</0>"
+msgid "<0>You have no finished surveys.<br/><br/>Press <5></5> to add one</0>"
 msgstr ""
-"<0>Nid oes gennych unrhyw arolygon gorffenedig.<br/><br/>Pwyswch <5></5> i "
-"ychwanegu manylion cofnod, neu bwyso <8></8> i ychwanegu ffotograff yn "
-"gyntaf.</0>"
 
 # Alert message
 msgid "Incorrect password or email"
@@ -2347,20 +2268,17 @@ msgstr "gps"
 msgid "Suggestions"
 msgstr "Awgrymiadau "
 
-# Galery AI suggestion message
-msgid ""
-"Great! We also think it is <1>{{probability}}%</1> likely to be "
-"<4>{{species}}</4>."
+# AI suggestions page
+msgid "Note that AI confidence levels are not absolute."
 msgstr ""
-"Gwych! Rydyn ni hefyd yn meddwl ei bod yn <1> {{probability}}%</1> debygol o"
-" fod yn <4>{{species}}</4>."
 
-# Galery AI suggestion message
-msgid ""
-"We think it is <1>{{probability}}%</1> likely to be <4>{{species}}</4>."
+# AI suggestions page
+msgid "Supplement identifications with additional evidence where possible."
 msgstr ""
-"Rydyn ni'n meddwl ei fod yn<1> {{probability}}%</1> debygol o fod yn "
-"<4>{{species}}</4>."
+
+# AI suggestions page
+msgid "Select"
+msgstr ""
 
 # Incomplete form message
 msgid "Please fill in"
@@ -2449,8 +2367,68 @@ msgid "Survey incomplete"
 msgstr "Arolwg yn anghyflawn "
 
 # Survey verification message
-msgid "Please enter location and its name."
-msgstr "Nodwch y lleoliad a'i enw. "
+msgid "Location is missing."
+msgstr ""
+
+# Survey verification message
+msgid "Species is missing."
+msgstr ""
+
+# Survey verification message
+msgid "Location name is missing"
+msgstr ""
+
+# Activities page
+msgid "My activities"
+msgstr ""
+
+# Activities page
+msgid "All activities"
+msgstr ""
+
+# Activities page
+msgid "Not linked to any activity"
+msgstr ""
+
+# Activities page
+msgid ""
+"You haven't joined any activities yet. Go to the \"All activities\" tab to "
+"join an activity.<br/><br/>Pull the page down to refresh the list."
+msgstr ""
+
+# Activities page
+msgid ""
+"There are currently no new activities available to join.<br/><br/>Pull the "
+"page down to refresh the list."
+msgstr ""
+
+# Activities page
+msgid "Activity name"
+msgstr ""
+
+# Activities page
+msgid "Join"
+msgstr ""
+
+# Activities page
+msgid "This activity requires administrator approval for membership requests."
+msgstr ""
+
+# Activities page
+msgid "From"
+msgstr ""
+
+# Activities page
+msgid "To"
+msgstr ""
+
+# Activities page
+msgid "Successfully joined the activity."
+msgstr ""
+
+# Activities page
+msgid "Leave"
+msgstr ""
 
 # Survey verification message
 msgid "Recorder field is missing."
@@ -2598,6 +2576,10 @@ msgstr "Heb ei gadarnhau "
 msgid "Rejected"
 msgstr "Gwrthodwyd "
 
+# Verification status
+msgid "Queried"
+msgstr ""
+
 # Date
 msgid "Yesterday"
 msgstr "Ddoe"
@@ -2623,12 +2605,18 @@ msgid "New verified records"
 msgstr "Cofnodion newydd wedi'u dilysu "
 
 # Part of verification message
-msgid ""
-"Some of your records have been verified. You can find those in your "
-"<2>Uploaded</2> records list."
+msgid "You can find the verifier query and comments on the iRecord website."
 msgstr ""
-"Mae rhai o'ch cofnodion wedi cael eu dilysu. Gallwch ddod o hyd i'r rheiny "
-"yn eich <2>Uploaded</2> rhestr cofnodion."
+
+# Part of verification message
+msgid "This record has been queried."
+msgstr ""
+
+# Part of verification message
+msgid ""
+"Some of your records have been verified or queried. You can find those in "
+"your <2>Uploaded</2> records list."
+msgstr ""
 
 # Part of verification message
 msgid "Do not show again"
@@ -2782,10 +2770,165 @@ msgstr ""
 "Mae <0> LERC Cymru </0> yn eich helpu chi i reoli a rhannu eich cofnodion am"
 " weld bywyd gwyllt"
 
-# Part of User records profile
-msgid "Status"
-msgstr "Statws"
+# From record attributes
+msgid ""
+"This option will 'blur' the location details: they will be displayed as a 1 "
+"km square (rather than a precise point) and will have the site name hidden. "
+"Precise location details will be made available to verifiers and local "
+"records centres, but will not be displayed publicly."
+msgstr ""
 
-# Alert message
-msgid "Tap on the <1></1> button to capture a new record. <br/>"
-msgstr "Tapiwch ar y botwm <1></1> i wneud cofnod newydd. <br/>"
+# From Help page
+msgid ""
+"Tap on a queried record to get a link to that record via the iRecord "
+"website. If you go to the website you will be able to see what the query is,"
+" and to add a reply or edit your record if required:"
+msgstr ""
+
+# Context term
+msgid "Membership pending"
+msgstr ""
+
+# Context term
+msgid ""
+"Any records you add from now on will be submitted to the chosen activity."
+msgstr ""
+
+# Context term
+msgid "Successfully left the activity."
+msgstr ""
+
+# Taxon group name
+msgid "Amphibians and reptiles"
+msgstr ""
+
+# Taxon group name
+msgid "Birds"
+msgstr ""
+
+# Taxon group name
+msgid "Fish"
+msgstr ""
+
+# Taxon group name
+msgid "Fungi and slime moulds"
+msgstr ""
+
+# Taxon group name
+msgid "Insects"
+msgstr ""
+
+# Taxon group name
+msgid "Invertebrates"
+msgstr ""
+
+# Taxon group name
+msgid "Lichens"
+msgstr ""
+
+# Taxon group name
+msgid "Mammals"
+msgstr ""
+
+# Taxon group name
+msgid "Other groups"
+msgstr ""
+
+# Taxon group name
+msgid "Plants"
+msgstr ""
+
+# Taxon group name
+msgid "Ants, bees, sawflies, wasps"
+msgstr ""
+
+# Taxon group name
+msgid "Beetles"
+msgstr ""
+
+# Taxon group name
+msgid "Butterflies"
+msgstr ""
+
+# Taxon group name
+msgid "Dragonflies and damselflies"
+msgstr ""
+
+# Taxon group name
+msgid "Grasshoppers and allies"
+msgstr ""
+
+# Taxon group name
+msgid "Moths"
+msgstr ""
+
+# Taxon group name
+msgid "Other insect groups"
+msgstr ""
+
+# Taxon group name
+msgid "Riverflies"
+msgstr ""
+
+# Taxon group name
+msgid "True bugs and hoppers"
+msgstr ""
+
+# Taxon group name
+msgid "True flies"
+msgstr ""
+
+# Taxon group name
+msgid "Centipedes, millipedes"
+msgstr ""
+
+# Taxon group name
+msgid "Crustaceans"
+msgstr ""
+
+# Taxon group name
+msgid "Molluscs"
+msgstr ""
+
+# Taxon group name
+msgid "Other invertebrate groups"
+msgstr ""
+
+# Taxon group name
+msgid "Spiders, harvestmen and other arachnids"
+msgstr ""
+
+# Taxon group name
+msgid "Worms"
+msgstr ""
+
+# Taxon group name
+msgid "Vascular plants"
+msgstr ""
+
+# Taxon group name
+msgid "Algae"
+msgstr ""
+
+# Taxon group name
+msgid "Mosses and relatives"
+msgstr ""
+
+# Attr name
+msgid "Immature"
+msgstr ""
+
+# Attr name
+msgid "Chick"
+msgstr ""
+
+# Attr name
+msgid "Nest"
+msgstr ""
+
+# Setting page
+msgid ""
+"Are you sure you want to export the data?<1>This feature is intended solely "
+"for technical support and is not a supported method for exporting your "
+"data</1>"
+msgstr ""
