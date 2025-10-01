@@ -10,10 +10,10 @@ type Props = {
   hideHeader?: boolean;
 };
 function SelectLanguage({ hideHeader }: Props) {
-  const currentValue = appModel.attrs.language;
+  const currentValue = appModel.data.language;
 
   function onSelect(newValue: any) {
-    appModel.attrs.language = newValue; // eslint-disable-line no-param-reassign
+    appModel.data.language = newValue; // eslint-disable-line no-param-reassign
     appModel.save();
   }
 

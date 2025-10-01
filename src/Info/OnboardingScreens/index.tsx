@@ -27,14 +27,14 @@ const OnBoardingScreens = ({ children }: Props) => {
   const [moreSlidesExist, setMoreSlidesExist] = useState(false);
   const [controlledSwiper, setControlledSwiper] = useState<SwiperCore>();
 
-  const { showWelcome } = appModel.attrs;
+  const { showWelcome } = appModel.data;
   if (!showWelcome) {
     return <>{children}</>; // eslint-disable-line react/jsx-no-useless-fragment
   }
 
   function exit() {
     // eslint-disable-next-line no-param-reassign
-    appModel.attrs.showWelcome = false;
+    appModel.data.showWelcome = false;
     appModel.save();
   }
 

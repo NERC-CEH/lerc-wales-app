@@ -1,34 +1,37 @@
 /* eslint-disable no-param-reassign */
 import mergeWith from 'lodash.mergewith';
-import * as Yup from 'yup';
+import { object, string } from 'zod';
 import genderIcon from 'common/images/gender.svg';
 import numberIcon from 'common/images/number.svg';
 import progressIcon from 'common/images/progress-circles.svg';
 import userModel from 'common/models/user';
 import appModel from 'models/app';
-import AppOccurrence from 'models/occurrence';
+import AppOccurrence, { MachineInvolvement } from 'models/occurrence';
 import AppSample from 'models/sample';
 import {
   coreAttributes,
   dateAttr,
   activityAttr,
-  verifyLocationSchema,
   Survey,
   locationAttr,
   taxonAttr,
   commentAttr,
   identifiersAttr,
   getSystemAttrs,
-  makeSubmissionBackwardsCompatible,
   recorderAttr,
+  groupIdAttr,
+  sensitivityPrecisionAttr,
+  locationAttrValidator,
 } from 'Survey/common/config';
 import arthropodSurvey from './arthropods';
 import birdsSurvey from './birds';
 import bryophytesSurvey from './bryophytes';
 import butterfliesSurvey from './butterflies';
 import dragonfliesSurvey from './dragonflies';
+import mammalsSurvey from './mammals';
 import mothsSurvey from './moths';
 import plantFungiSurvey from './plantFungi';
+import reptilesSurvey from './reptiles';
 
 export const taxonGroupSurveys = {
   arthropods: arthropodSurvey,
@@ -38,6 +41,8 @@ export const taxonGroupSurveys = {
   moths: mothsSurvey,
   'plants-fungi': plantFungiSurvey,
   birds: birdsSurvey,
+  mammals: mammalsSurvey,
+  reptiles: reptilesSurvey,
 };
 
 export function getTaxaGroupSurvey(taxaGroup: number) {
@@ -85,6 +90,7 @@ const survey: Survey = {
   name: 'default',
   id: 511,
   webForm: 'enter-app-record',
+  webViewForm: 'record-details',
 
   taxaGroups: [], // all // TODO: remove?
 
@@ -106,23 +112,25 @@ const survey: Survey = {
     date: dateAttr,
 
     recorder: recorderAttr,
+
     /** @deprecated */
     recorders: recorderAttr,
 
+    groupId: groupIdAttr,
+
+    /** @deprecated */
     activity: activityAttr,
   },
 
-  verify(attrs: any) {
-    try {
-      Yup.object()
-        .shape({ location: verifyLocationSchema })
-        .validateSync(attrs, { abortEarly: false });
-    } catch (attrError) {
-      return attrError;
-    }
-
-    return null;
-  },
+  verify: (attrs: any) =>
+    object({
+      location: locationAttrValidator({
+        name: string({ required_error: 'Location name is missing' }).min(
+          1,
+          'Location name is missing'
+        ),
+      }),
+    }).safeParse(attrs).error,
 
   occ: {
     attrs: {
@@ -133,7 +141,7 @@ const survey: Survey = {
           label: 'Abundance',
           icon: numberIcon,
           parse: (_, model: any) =>
-            model.attrs['number-ranges'] || model.attrs.number,
+            model.data['number-ranges'] || model.data.number,
           isLocked: (model: any) => {
             const value =
               survey.occ?.attrs?.number?.menuProps?.getLock?.(model);
@@ -144,7 +152,7 @@ const survey: Survey = {
             );
           },
           getLock: (model: any) =>
-            model.attrs['number-ranges'] || model.attrs.number,
+            model.data['number-ranges'] || model.data.number,
           unsetLock: model => {
             appModel.unsetAttrLock(model, 'number', true);
             appModel.unsetAttrLock(model, 'number-ranges', true);
@@ -163,22 +171,22 @@ const survey: Survey = {
           attrProps: [
             {
               set: (value: number, model: AppOccurrence) =>
-                Object.assign(model.attrs, {
+                Object.assign(model.data, {
                   number: value,
                   'number-ranges': undefined,
                 }),
-              get: (model: AppOccurrence) => model.attrs.number,
+              get: (model: AppOccurrence) => model.data.number,
               input: 'slider',
               info: 'How many individuals of this species did you see?',
               inputProps: { max: 500 },
             },
             {
               set: (value: string, model: AppOccurrence) =>
-                Object.assign(model.attrs, {
+                Object.assign(model.data, {
                   number: undefined,
                   'number-ranges': value,
                 }),
-              get: (model: AppOccurrence) => model.attrs['number-ranges'],
+              get: (model: AppOccurrence) => model.data['number-ranges'],
               onChange: () => window.history.back(),
               input: 'radio',
               inputProps: { options: numberOptions },
@@ -214,28 +222,27 @@ const survey: Survey = {
       },
       identifiers: identifiersAttr,
       comment: commentAttr,
+      sensitivityPrecision: sensitivityPrecisionAttr(1000),
     },
-    verify(attrs) {
-      try {
-        Yup.object()
-          .shape({
-            taxon: Yup.object().nullable().required('Species is missing.'),
-          })
-          .validateSync(attrs, { abortEarly: false });
-      } catch (attrError) {
-        return attrError;
-      }
 
-      return null;
+    verify: (attrs: any) =>
+      object({
+        taxon: object({}, { required_error: 'Species is missing.' }).nullable(),
+      }).safeParse(attrs).error,
+
+    modifySubmission(submission: any, occ: AppOccurrence) {
+      return { ...submission, ...occ.getClassifierSubmission() };
     },
   },
 
-  async create({ Sample, Occurrence, image, taxon, skipLocation, skipGPS }) {
+  async create({ Sample, Occurrence, images, taxon, skipLocation }) {
     const ignoreErrors = () => {};
 
-    const occurrence = new Occurrence();
+    const occurrence = new Occurrence({
+      data: { machineInvolvement: MachineInvolvement.NONE },
+    });
 
-    if (image) occurrence.media.push(image);
+    if (images?.length) occurrence.media.push(...images);
 
     // add currently logged in user as one of the recorders
     let recorder = '';
@@ -244,18 +251,21 @@ const survey: Survey = {
     }
 
     const sample = new Sample({
-      metadata: {
-        survey_id: survey.id,
-        survey: survey.name,
+      data: {
+        surveyId: survey.id,
+        inputForm: survey.webForm,
+        date: new Date().toISOString(),
+        enteredSrefSystem: 4326,
+        location: {},
+        recorder,
       },
-      attrs: { location: {}, recorder },
     });
     sample.occurrences.push(occurrence);
 
     if (taxon) sample.setTaxon(taxon);
 
     // append locked attributes
-    const defaultSurveyLocks = appModel.attrs.attrLocks.default || {};
+    const defaultSurveyLocks = appModel.data.attrLocks.default || {};
     const locks = defaultSurveyLocks.default || {};
     const coreLocks = Object.keys(locks).reduce((agg, key) => {
       if (coreAttributes.includes(key)) {
@@ -280,7 +290,7 @@ const survey: Survey = {
     appModel.appendAttrLocks(sample, fullSurveyLocks, skipLocation);
 
     const isLocationLocked = appModel.getAttrLock('smp', 'location');
-    if (!isLocationLocked && !skipGPS) {
+    if (!isLocationLocked) {
       sample.startGPS().catch(ignoreErrors);
     }
 
@@ -290,16 +300,14 @@ const survey: Survey = {
   modifySubmission(submission) {
     Object.assign(submission.values, getSystemAttrs());
 
-    makeSubmissionBackwardsCompatible(submission, survey);
-
     return submission;
   },
 
   get(sample: AppSample) {
     const getTaxaSpecifigConfig = () => {
-      if (!sample.occurrences.length) return sample.survey;
+      if (!sample.occurrences.length) return survey;
 
-      if (!sample.metadata.taxa) return sample.survey;
+      if (!sample.metadata.taxa) return survey;
 
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
       return _getFullTaxaGroupSurvey(sample.metadata.taxa);

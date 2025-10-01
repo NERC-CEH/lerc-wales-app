@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react';
 import { Route, Redirect } from 'react-router-dom';
 import {
+  SamplesContext,
   TailwindBlockContext,
   TailwindContext,
   TailwindContextValue,
@@ -8,8 +9,8 @@ import {
 } from '@flumens';
 import { IonApp, IonRouterOutlet, isPlatform } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import LanguageCountrySelectRequired from 'common/Components/LanguageCountrySelectRequired';
 import UpdatedRecordsAlert from 'common/Components/UpdatedRecordsAlert';
+import samples from 'common/models/collections/samples';
 import 'common/theme.scss';
 import 'common/translations/translator';
 import Home from './Home';
@@ -27,14 +28,16 @@ const tailwindBlockContext = {
   basePath: '',
 };
 
+const samplesContext = { samples };
+
 const HomeRedirect = () => <Redirect to="home" />;
 
 const App = () => (
   <IonApp>
-    <LanguageCountrySelectRequired>
-      <OnboardingScreens>
-        <TailwindContext.Provider value={tailwindContext}>
-          <TailwindBlockContext.Provider value={tailwindBlockContext}>
+    <OnboardingScreens>
+      <TailwindContext.Provider value={tailwindContext}>
+        <TailwindBlockContext.Provider value={tailwindBlockContext}>
+          <SamplesContext.Provider value={samplesContext}>
             <IonReactRouter>
               <UpdatedRecordsAlert />
               <IonRouterOutlet id="main">
@@ -46,10 +49,10 @@ const App = () => (
                 {Settings}
               </IonRouterOutlet>
             </IonReactRouter>
-          </TailwindBlockContext.Provider>
-        </TailwindContext.Provider>
-      </OnboardingScreens>
-    </LanguageCountrySelectRequired>
+          </SamplesContext.Provider>
+        </TailwindBlockContext.Provider>
+      </TailwindContext.Provider>
+    </OnboardingScreens>
   </IonApp>
 );
 
