@@ -83,16 +83,9 @@ const Help = () => (
                 <p>
                   Tap here to see the other survey options in the app. These
                   allow you to add a list of records from the same site on the
-                  same date. Currently there are three options:
+                  same date. Currently there is one option:
                 </p>
                 <ul className="my-2 list-disc pl-4">
-                  <li>
-                    Plant List Survey (e.g. to record a list of species in a
-                    grid square)
-                  </li>
-                  <li>
-                    Moth List Survey (e.g. for recording moths at a moth trap)
-                  </li>
                   <li>
                     Species List Survey (e.g. for recording a range of different
                     species on one date)
@@ -101,13 +94,13 @@ const Help = () => (
 
                 <p>
                   Records in the list will be linked to the overall location for
-                  the survey. For the Plant List and Species List surveys you
-                  can choose to “Geolocate list entries”. If you switch that on,
-                  the app will add a precise GPS location to each individual
-                  record in your list. Be careful not to leave this switched on
-                  if you are adding records from a different location (e.g. if
-                  you leave your survey site and then want to add more records
-                  after you have arrive home).
+                  the survey. For the Species List survey you can choose to
+                  “Geolocate list entries”. If you switch that on, the app will
+                  add a precise GPS location to each individual record in your
+                  list. Be careful not to leave this switched on if you are
+                  adding records from a different location (e.g. if you leave
+                  your survey site and then want to add more records after you
+                  have arrive home).
                 </p>
               </T>
             </div>

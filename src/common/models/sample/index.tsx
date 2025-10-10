@@ -130,10 +130,10 @@ export default class Sample extends SampleOriginal<Data, Metadata> {
 
     // backwards compatible, remove once everyone uploads their surveys
     if ((this.metadata as any).survey) {
-      if ((this.metadata as any).survey === 'default') surveyId = 374;
+      if ((this.metadata as any).survey === 'default') surveyId = 511;
       if ((this.metadata as any).survey === 'list') surveyId = 576;
-      if ((this.metadata as any).survey === 'moth') surveyId = 90;
-      if ((this.metadata as any).survey === 'plant') surveyId = 325;
+      // if ((this.metadata as any).survey === 'moth') surveyId = 90;
+      // if ((this.metadata as any).survey === 'plant') surveyId = 325;
     } else if ((this.metadata as any).survey_id) {
       surveyId = (this.metadata as any).survey_id;
       this.data.surveyId = surveyId;

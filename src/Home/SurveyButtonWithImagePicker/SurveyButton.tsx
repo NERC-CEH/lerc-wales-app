@@ -56,11 +56,13 @@ const SurveyButton = ({
     setShowOptions(false);
     setShowOtherSurveys(true);
   };
+  // eslint-disable-next-line unused-imports/no-unused-vars
   const onPlantSurveyWrap = () => {
     setShowOptions(false);
     setShowOtherSurveys(false);
     onPlantSurvey();
   };
+  // eslint-disable-next-line unused-imports/no-unused-vars
   const onMothSurveyWrap = () => {
     setShowOptions(false);
     setShowOtherSurveys(false);
@@ -137,8 +139,8 @@ const SurveyButton = ({
         isOpen={showOtherSurveys}
         header={t('Other recording options')}
         buttons={[
-          { text: t('Plant List Survey'), handler: onPlantSurveyWrap },
-          { text: t('Moth List Survey'), handler: onMothSurveyWrap },
+          // { text: t('Plant List Survey'), handler: onPlantSurveyWrap },
+          // { text: t('Moth List Survey'), handler: onMothSurveyWrap },
           { text: t('Species List Survey'), handler: onListSurveyWrap },
           { text: t('Cancel'), role: 'cancel' },
         ]}
