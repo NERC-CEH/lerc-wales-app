@@ -3,6 +3,9 @@
 	"appName": "LERC Wales",
 	"webDir": "build",
 	"cordova": {},
+	"android": {
+		"adjustMarginsForEdgeToEdge": "force"
+	},
 	"packageClassList": [
 		"CapacitorSQLitePlugin",
 		"AppPlugin",
