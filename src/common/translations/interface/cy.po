@@ -1,13 +1,13 @@
 # 
 # Translators:
 # Vilius Stankaitis <vilius@flumens.io>, 2023
-# Karolis, 2024
-# David Slade <david.slade@sewbrec.org.uk>, 2024
+# David Slade <david.slade@sewbrec.org.uk>, 2025
+# Karolis, 2025
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: temp\n"
-"Last-Translator: David Slade <david.slade@sewbrec.org.uk>, 2024\n"
+"Last-Translator: Karolis, 2025\n"
 "Language-Team: Welsh (https://app.transifex.com/ceh/teams/100775/cy/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -329,11 +329,11 @@ msgstr "oedolyn "
 
 # Survey attribute
 msgid "Geolocate list entries"
-msgstr ""
+msgstr "Cofnodion rhestr geoleoliad"
 
 # Survey attribute
 msgid "Recorders"
-msgstr ""
+msgstr "Cofnodwyr"
 
 msgid ""
 "If another person identified the species for you, please enter their name "
@@ -977,7 +977,7 @@ msgid "This record has been submitted and cannot be edited within this App."
 msgstr "Mae'r cofnod hwn wedi'i gyflwyno ac ni ellir ei olygu yn yr Ap hwn."
 
 msgid "To view the full record, please visit the iRecord website."
-msgstr ""
+msgstr "I weld y cofnod llawn, ewch i wefan iRecord."
 
 msgid "No species found with this name"
 msgstr "Dim rhywogaethau wedi'u canfod gyda'r enw hwn"
@@ -1496,6 +1496,36 @@ msgid ""
 "different location (e.g. if you leave your survey site and then want to add "
 "more records after you have arrive home).</p>"
 msgstr ""
+"<0>Dechreuwch drwy dapio'r botwm plws <2></2> ar yr hafan. Mae hwn yn rhoi "
+"pedwar opsiwn i chi:</0><1>Ychwanegu cofnod heb lun</1><p>Tapiwch yma i "
+"ychwanegu eich cofnod. Gofynnir i chi roi enw'r rhywogaeth rydych chi'n ei "
+"chofnodi i ddechrau, ac wedyn gallwch ychwanegu'r wybodaeth arall ar gyfer y"
+" cofnod.</p><3>Tynnu llun newydd o'r rhywogaeth</3><p>Tapiwch yma i ddechrau"
+" cofnod newydd drwy ychwanegu llun i ddechrau, ac wedyn cwblhau enw'r "
+"rhywogaeth a manylion eraill. Mae'r ap yn darparu cyfleuster adnabod lluniau"
+" a allai helpu i awgrymu enw ar gyfer eich llun o rywogaeth - ar ôl i'ch "
+"llun gael ei ychwanegu gallwch dapio arno i weld yr enwau sy'n cael eu "
+"hawgrymu. Mae hefyd yn bosibl ychwanegu lluniau eraill o'ch "
+"rhywogaeth.</p><5>Dewiswch luniau niferus i'w hychwanegu at un "
+"cofnod</5><p>Tapiwch yma i ddewis lluniau niferus o'ch oriel a'u hychwanegu "
+"at un cofnod. Yn yr achos yma, bydd y cyfleuster adnabod lluniau'n darparu "
+"un enw a awgrymir yn seiliedig ar yr holl luniau - tapiwch ar unrhyw un llun"
+" i weld yr awgrymiadau, neu dapio'r botwm \"Rhywogaeth goll\". Ar ôl i chi "
+"gytuno ar enw ac ychwanegu'r manylion eraill, gallwch gadw'r cofnod gyda'r "
+"holl luniau ynghlwm.</p><7>Dangos arolygon eraill</7><p>Tapiwch yma i weld "
+"yr opsiynau arolygu eraill yn yr ap. Mae'r rhain yn caniatáu i chi ychwanegu"
+" rhestr o gofnodion o'r un safle ar yr un dyddiad. Ar hyn o bryd mae tri "
+"opsiwn:</p><9><0>Arolwg Rhestr Planhigion (e.e. i gofnodi rhestr o "
+"rywogaethau mewn sgwâr grid)</0><1>Arolwg Rhestr Gwyfynod (e.e. i gofnodi "
+"gwyfynod mewn trap gwyfynod)</1><2>Arolwg Rhestr Rhywogaethau (e.e. i "
+"gofnodi amrywiaeth o wahanol rywogaethau ar un dyddiad)</2></9><p>Bydd y "
+"cofnodion ar y rhestr yn gysylltiedig â lleoliad cyffredinol yr arolwg. Ar "
+"gyfer yr arolygon Rhestr Planhigion a Rhestr Rhywogaethau gallwch ddewis "
+"\"Geoleoli cofnodion rhestr\". Os byddwch chi'n defnyddio'r cyfleuster "
+"hwnnw, bydd yr ap yn ychwanegu lleoliad GPS manwl gywir at bob cofnod unigol"
+" ar eich rhestr. Cofiwch beidio â gadael hwn ymlaen os ydych chi'n ychwanegu"
+" cofnodion o leoliad gwahanol (e.e. os ydych chi'n gadael eich safle arolygu"
+" ac wedyn eisiau ychwanegu mwy o gofnodion ar ôl i chi gyrraedd adref).</p>"
 
 # Part of Help Page
 msgid ""
@@ -1516,10 +1546,25 @@ msgid ""
 "see the suggested ID, and you can then tap on “Select” to set the "
 "identification for your record.</p><10></10>"
 msgstr ""
+"<p>Os ydych chi wedi ychwanegu llun at eich cofnod, bydd yr ap yn cynnig "
+"awgrymiadau ar gyfer ei adnabod (ID), gan ddefnyddio cyfleuster adnabod "
+"lluniau yn awtomatig.</p><p>Ar ôl uwchlwytho llun, gwiriwch y cryno-lun i "
+"weld a yw'n dangos cylch lliw sy'n nodi tebygolrwydd o awgrymu enw. Mae'r "
+"drefn yma'n defnyddio lliwiau 'goleuadau traffig' i awgrymu pa mor hyderus "
+"yw'r ap ynglŷn â'r adnabod:</p><2><0><0></0> = hyder uchel</0><1><0></0> = "
+"hyder canolig</1><2><0></0> = hyder isel</2></2><p>Os ydych chi eisoes wedi "
+"awgrymu enw, a bod y cyfleuster adnabod llun yn awgrymu enw gwahanol, bydd "
+"cylch rhybuddio coch bach yn cael ei arddangos - agorwch y cryno-lun neu "
+"olygu enw'r rhywogaeth i weld yr awgrym arall.</p><p>Enghraifft o enw y "
+"mae'r cyfleuster adnabod llun yn cytuno ag ef, ac sydd â hyder "
+"uchel:</p><5></5><6>Cytunwyd ar yr adnabod, gyda hyder uchel</6><7></7><8>! "
+"Awgrymwyd enw arall</8><p>Pan fyddwch chi'n agor y cryno-lun gallwch dapio "
+"ar y botwm \"Awgrymiadau\" i weld yr enw a awgrymir, ac wedyn gallwch dapio "
+"ar \"Dewis\" i ddewis yr enw ar gyfer eich cofnod.</p><10></10>"
 
 # Part of Help Page
 msgid "Respond to a queried record"
-msgstr ""
+msgstr "Ymateb i gofnod a ofynnwyd amdano"
 
 # Part of Help Page
 msgid ""
@@ -1529,6 +1574,11 @@ msgid ""
 " see the records that have been queried – they will be shown with a question"
 " mark:</p><3></3>"
 msgstr ""
+"<p>Efallai y bydd dilysydd yn gwirio'r cofnodion rydych chi'n eu huwchlwytho"
+" o'r ap. Os bydd dilysydd yn cwestiynu un o gofnodion eich ap, y tro nesaf y"
+" byddwch yn agor yr ap fe welwch chi neges i roi gwybod i "
+"chi:</p><1></1><p>Tapiwch ar “Gweld Cofnodion” i weld y cofnodion sydd wedi "
+"cael eu cwestiynu – byddant yn cael eu dangos gyda marc cwestiwn:</p><3></3>"
 
 # Part of Help Page
 msgid ""
@@ -1539,6 +1589,13 @@ msgid ""
 "setting if you want to add a record that is not linked to an activity. To do"
 " this, set the My Activity page to “Not linked to any activity”.</p>"
 msgstr ""
+"<0>I anfon cofnodion at weithgaredd penodol gallwch ei ddewis ar y dudalen "
+"Gweithgareddau <1></1>. Gellir gweld y gweithgareddau rydych chi wedi ymuno "
+"â hwy eisoes yn “Fy Ngweithgareddau”. I ymuno â Gweithgaredd am y tro cyntaf"
+" chwiliwch amdano yn “Pob Gweithgaredd”.</0><p>Gwnewch yn siŵr eich bod yn "
+"cofio newid eich gosodiad Gweithgaredd os ydych chi eisiau ychwanegu cofnod "
+"nad yw wedi'i gysylltu â gweithgaredd. I wneud hyn, gosodwch y dudalen Fy "
+"Ngweithgaredd i “Heb ei gysylltu ag unrhyw weithgaredd”.</p>"
 
 # Part of Help Page
 msgid "Swipe a location left and click edit <2></2> or delete<4></4> buttons."
@@ -2021,6 +2078,8 @@ msgstr ""
 # Home page background message
 msgid "<0>You have no finished surveys.<br/><br/>Press <5></5> to add one</0>"
 msgstr ""
+"<0>Nid oes gennych unrhyw arolygon wedi'u gorffen.<br/><br/>Pwyswch <5></5> "
+"i ychwanegu un</0>"
 
 # Alert message
 msgid "Incorrect password or email"
@@ -2270,15 +2329,15 @@ msgstr "Awgrymiadau "
 
 # AI suggestions page
 msgid "Note that AI confidence levels are not absolute."
-msgstr ""
+msgstr "Nodwch nad yw lefelau hyder Deallusrwydd Artiffisial yn absoliwt."
 
 # AI suggestions page
 msgid "Supplement identifications with additional evidence where possible."
-msgstr ""
+msgstr "Ychwanegwch dystiolaeth ategol at adnabod lle bo modd."
 
 # AI suggestions page
 msgid "Select"
-msgstr ""
+msgstr "Ddewis"
 
 # Incomplete form message
 msgid "Please fill in"
@@ -2368,67 +2427,74 @@ msgstr "Arolwg yn anghyflawn "
 
 # Survey verification message
 msgid "Location is missing."
-msgstr ""
+msgstr "Mae'r lleoliad ar goll"
 
 # Survey verification message
 msgid "Species is missing."
-msgstr ""
+msgstr "Mae rhywogaeth ar goll"
 
 # Survey verification message
 msgid "Location name is missing"
-msgstr ""
+msgstr "Mae enw'r lleoliad ar goll"
 
 # Activities page
 msgid "My activities"
-msgstr ""
+msgstr "Fy ngweithgareddau"
 
 # Activities page
 msgid "All activities"
-msgstr ""
+msgstr "Pob gweithgaredd"
 
 # Activities page
 msgid "Not linked to any activity"
-msgstr ""
+msgstr "Heb ei gysylltu ag unrhyw weithgaredd"
 
 # Activities page
 msgid ""
 "You haven't joined any activities yet. Go to the \"All activities\" tab to "
 "join an activity.<br/><br/>Pull the page down to refresh the list."
 msgstr ""
+"Nid ydych wedi ymuno ag unrhyw weithgareddau eto. Ewch i'r tab \"Pob "
+"gweithgaredd\" i ymuno â gweithgaredd.<br/><br/>Tynnwch y dudalen i lawr i "
+"adnewyddu'r rhestr."
 
 # Activities page
 msgid ""
 "There are currently no new activities available to join.<br/><br/>Pull the "
 "page down to refresh the list."
 msgstr ""
+"Ar hyn o bryd nid oes unrhyw weithgareddau newydd ar gael i ymuno â "
+"hwy.<br/><br/>Tynnwch y dudalen i lawr i adnewyddu'r rhestr."
 
 # Activities page
 msgid "Activity name"
-msgstr ""
+msgstr "Enw gweithgaredd"
 
 # Activities page
 msgid "Join"
-msgstr ""
+msgstr "Ymuno"
 
 # Activities page
 msgid "This activity requires administrator approval for membership requests."
 msgstr ""
+"Mae angen cymeradwyaeth gweinyddydd ar gyfer ceisiadau aelodaeth ar gyfer y "
+"gweithgaredd hwn."
 
 # Activities page
 msgid "From"
-msgstr ""
+msgstr "O"
 
 # Activities page
 msgid "To"
-msgstr ""
+msgstr "I"
 
 # Activities page
 msgid "Successfully joined the activity."
-msgstr ""
+msgstr "Ymunwyd â'r gweithgaredd yn llwyddiannus"
 
 # Activities page
 msgid "Leave"
-msgstr ""
+msgstr "Adael"
 
 # Survey verification message
 msgid "Recorder field is missing."
@@ -2537,12 +2603,14 @@ msgstr "gwrthodwyd "
 # Verification message
 msgid ""
 "Thanks for sending in your record. A verifier has marked it as "
-"<2>{{statusMessage}}</2> in this case. Please log in to the iRecord website "
-"to see any additional information that the verifier may have provided."
+"<2>\"{{statusMessage}}\"</2> in this case."
 msgstr ""
-"Diolch i chi am anfon eich cofnod. Mae dilysydd wedi ei nodi fel "
-"<2>{{statusMessage}}</2> yn yr achos hwn. Mewngofnodwch i wefan iRecord i "
-"weld unrhyw wybodaeth ychwanegol y gallai'r dilysydd fod wedi'i darparu."
+
+# Verification message
+msgid ""
+"Please log in to the iRecord website to see any additional information that "
+"the verifier may have provided."
+msgstr ""
 
 # Account not verified alert button label
 msgid "Resend"
@@ -2578,7 +2646,7 @@ msgstr "Gwrthodwyd "
 
 # Verification status
 msgid "Queried"
-msgstr ""
+msgstr "Cwestiynodd"
 
 # Date
 msgid "Yesterday"
@@ -2606,17 +2674,19 @@ msgstr "Cofnodion newydd wedi'u dilysu "
 
 # Part of verification message
 msgid "You can find the verifier query and comments on the iRecord website."
-msgstr ""
+msgstr "Gallwch ddod o hyd i ymholiad a sylwadau'r dilysydd ar wefan iRecord."
 
 # Part of verification message
 msgid "This record has been queried."
-msgstr ""
+msgstr "Mae'r cofnod hwn wedi cael ei gwestiynu"
 
 # Part of verification message
 msgid ""
 "Some of your records have been verified or queried. You can find those in "
 "your <2>Uploaded</2> records list."
 msgstr ""
+"Mae rhai o'ch cofnodion wedi cael eu dilysu neu eu cwestiynu. Gallwch ddod o"
+" hyd i'r rhain ar eich rhestr o gofnodion <2>Wedi'u huwchlwytho</2>."
 
 # Part of verification message
 msgid "Do not show again"
@@ -2754,10 +2824,6 @@ msgstr "Awgrymiadau:"
 msgid "Loading suggestions"
 msgstr "Wrthi'n llwytho awgrymiadau"
 
-# Part of species identification message
-msgid "Identifying..."
-msgstr "Adnabod..."
-
 # Error message
 msgid "Not implemented on web."
 msgstr "Heb ei weithredu ar y we."
@@ -2777,6 +2843,11 @@ msgid ""
 "Precise location details will be made available to verifiers and local "
 "records centres, but will not be displayed publicly."
 msgstr ""
+"Bydd yr opsiwn hwn yn gwneud manylion y lleoliad yn 'aneglur': byddant yn "
+"cael eu harddangos fel sgwâr 1 km (yn hytrach na phwynt manwl gywir) a bydd "
+"enw'r safle wedi'i guddio. Bydd union fanylion y lleoliad ar gael i "
+"ddilyswyr a chanolfannau cofnodion lleol, ond ni fyddant yn cael eu "
+"harddangos yn gyhoeddus."
 
 # From Help page
 msgid ""
@@ -2784,146 +2855,160 @@ msgid ""
 "website. If you go to the website you will be able to see what the query is,"
 " and to add a reply or edit your record if required:"
 msgstr ""
+"Tapiwch ar gofnod sydd wedi'i gwestiynu i gael dolen i'r cofnod hwnnw drwy "
+"wefan iRecord. Os ewch chi i'r wefan byddwch yn gallu gweld beth yw'r "
+"cwestiwn, ac ychwanegu ateb neu olygu eich cofnod os oes angen:"
 
 # Context term
 msgid "Membership pending"
-msgstr ""
+msgstr "Aelodaeth yn yr arfaeth"
 
 # Context term
 msgid ""
 "Any records you add from now on will be submitted to the chosen activity."
 msgstr ""
+"Bydd unrhyw gofnodion fyddwch chi'n eu hychwanegu o hyn ymlaen yn cael eu "
+"cyflwyno i'r gweithgaredd a ddewiswyd."
 
 # Context term
 msgid "Successfully left the activity."
-msgstr ""
+msgstr "Wedi gadael y gweithgaredd yn llwyddiannus"
 
 # Taxon group name
 msgid "Amphibians and reptiles"
-msgstr ""
+msgstr "Amffibiadau ac ymlusgiad"
 
 # Taxon group name
 msgid "Birds"
-msgstr ""
+msgstr "Adar"
 
 # Taxon group name
 msgid "Fish"
-msgstr ""
+msgstr "Pysgodyn"
 
 # Taxon group name
 msgid "Fungi and slime moulds"
-msgstr ""
+msgstr "Madarch a llwydni llysnafedd"
 
 # Taxon group name
 msgid "Insects"
-msgstr ""
+msgstr "Pryfed"
 
 # Taxon group name
 msgid "Invertebrates"
-msgstr ""
+msgstr "Infertebratau"
 
 # Taxon group name
 msgid "Lichens"
-msgstr ""
+msgstr "Cen"
 
 # Taxon group name
 msgid "Mammals"
-msgstr ""
+msgstr "Mamaliaid"
 
 # Taxon group name
 msgid "Other groups"
-msgstr ""
+msgstr "Grwpiau eraill"
 
 # Taxon group name
 msgid "Plants"
-msgstr ""
+msgstr "Planhigion"
 
 # Taxon group name
 msgid "Ants, bees, sawflies, wasps"
-msgstr ""
+msgstr "Morgrug, gwenyn, llifbryfed, gwenynen"
 
 # Taxon group name
 msgid "Beetles"
-msgstr ""
+msgstr "Chwilod"
 
 # Taxon group name
 msgid "Butterflies"
-msgstr ""
+msgstr "Gloÿnnod byw"
 
 # Taxon group name
 msgid "Dragonflies and damselflies"
-msgstr ""
+msgstr "Gweision y neidr a mursennod"
 
 # Taxon group name
 msgid "Grasshoppers and allies"
-msgstr ""
+msgstr "Ceiliogod y rhedyn a chynghreiriaid"
 
 # Taxon group name
 msgid "Moths"
-msgstr ""
+msgstr "Gwyfynod"
 
 # Taxon group name
 msgid "Other insect groups"
-msgstr ""
+msgstr "Grwpiau pryfed eraill"
 
 # Taxon group name
 msgid "Riverflies"
-msgstr ""
+msgstr "Pryfed afon"
 
 # Taxon group name
 msgid "True bugs and hoppers"
-msgstr ""
+msgstr "Bygiau Gwir a hopranau"
 
 # Taxon group name
 msgid "True flies"
-msgstr ""
+msgstr "Gwir bryfau"
 
 # Taxon group name
 msgid "Centipedes, millipedes"
-msgstr ""
+msgstr "Chwilenau canol, chwilenau cannoedd traed"
 
 # Taxon group name
 msgid "Crustaceans"
-msgstr ""
+msgstr "Cramennogau"
 
 # Taxon group name
 msgid "Molluscs"
-msgstr ""
+msgstr "Molwsgau"
 
 # Taxon group name
 msgid "Other invertebrate groups"
-msgstr ""
+msgstr "Grwpiau Infertebrataidd Eraill"
 
 # Taxon group name
 msgid "Spiders, harvestmen and other arachnids"
-msgstr ""
+msgstr "Pryfed cop, llynghyren y cynhaeafwyr ac arachnidau eraill"
 
 # Taxon group name
 msgid "Worms"
-msgstr ""
+msgstr "Mwydod"
 
 # Taxon group name
 msgid "Vascular plants"
-msgstr ""
+msgstr "Planhigyn blodeuol"
 
 # Taxon group name
 msgid "Algae"
-msgstr ""
+msgstr "Algâu"
 
 # Taxon group name
 msgid "Mosses and relatives"
-msgstr ""
+msgstr "Mwsoglau a pherthnasau"
 
 # Attr name
 msgid "Immature"
-msgstr ""
+msgstr "Aneddfed"
 
 # Attr name
 msgid "Chick"
-msgstr ""
+msgstr "Cyw"
 
 # Attr name
 msgid "Nest"
+msgstr "Nyth"
+
+# Setting page
+msgid "Export database"
+msgstr ""
+
+# Map page
+msgid ""
+"You need to <1>login</1> to your account to be able to view the records."
 msgstr ""
 
 # Setting page
@@ -2931,4 +3016,19 @@ msgid ""
 "Are you sure you want to export the data?<1>This feature is intended solely "
 "for technical support and is not a supported method for exporting your "
 "data</1>"
+msgstr ""
+"Ydych chi'n siŵr eich bod chi eisiau allforio'r data?<1>Mae'r nodwedd hon "
+"wedi'i bwriadu ar gyfer cymorth technegol yn unig ac nid yw'n ddull a "
+"gefnogir ar gyfer allforio eich data</1>"
+
+# Attr Name
+msgid "Sensitive"
+msgstr "Sensitif"
+
+# Species list ordering option
+msgid "Changed list ordering to alphabetical."
+msgstr ""
+
+# Species list ordering option
+msgid "Changed list ordering to last added."
 msgstr ""
