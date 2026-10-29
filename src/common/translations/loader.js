@@ -1,3 +1,5 @@
+import { addNamespace as ionic } from '@flumens/ionic/locales';
+import { addNamespace as tailwind } from '@flumens/tailwind/locales';
 import en from './interface/en.pot';
 
 // Adding some context, reference and other in po files:
@@ -31,8 +33,10 @@ const rawToKeyVal = lang =>
     return agg;
   }, {});
 
-export default {
-  en: {
-    interface: rawToKeyVal(en),
-  },
-};
+export default ionic(
+  tailwind({
+    en: {
+      interface: rawToKeyVal(en),
+    },
+  })
+);

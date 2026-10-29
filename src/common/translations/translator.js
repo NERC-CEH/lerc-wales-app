@@ -39,7 +39,7 @@ i18n
     lng: DEFAULT_LANGUAGE,
     fallbackLng: DEFAULT_LANGUAGE,
 
-    keySeparator: false, // we do not use keys in form messages.welcome
+    keySeparator: '.', // package namespaces use nested keys; flat app keys still work
     nsSeparator: false, // no namespace use in keys
 
     interpolation: {

@@ -11,6 +11,13 @@
 @import '@flumens/ionic/dist/themes/rounded.css';
 @import '@flumens/ionic/dist/themes/tailwindUtils.css';
 
+/* Preserve Ionic's slotted icon margins against Tailwind's reset. */
+@layer base {
+  ion-item > ion-icon[slot='start'] {
+    margin: revert-layer;
+  }
+}
+
 @theme {
   /* https://www.tailwindshades.com/#color=69.49640287769785%2C71.2820512820513%2C38.23529411764706&step-up=11&step-down=10&hue-shift=0&name=primary&base-stop=6&v=1&overrides=e30%3D */
   --color-primary: oklch(68.775% 0.15379 119);

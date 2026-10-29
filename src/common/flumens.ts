@@ -80,14 +80,15 @@ export { default as Store } from '@flumens/models/dist/Stores/SQLiteStore';
 export {
   type default as ElasticOccurrence,
   type Media as ElasticOccurrenceMedia,
-} from '@flumens/models/dist/Indicia/ElasticOccurrence.d';
+} from '@flumens/models/dist/Indicia/ElasticOccurrence';
 
 // TAILWIND
 export {
   default as MapContainer,
   useMapStyles,
 } from '@flumens/tailwind/dist/components/Map/Container';
-export * from '@flumens/tailwind/dist/components/Map/utils';
+export * from '@flumens/tailwind/dist/components/Map/helpers';
+export * from '@flumens/tailwind/dist/components/Map/hooks';
 export {
   default as RadioInput,
   type RadioOption,
