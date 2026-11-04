@@ -1,3 +1,7 @@
+## 6.5.4
+
+- Bug fixes related to the website migration.
+
 ## 6.5.3
 
 - Fixed List survey default abundance values.
