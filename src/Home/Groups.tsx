@@ -6,14 +6,14 @@ import appModel from 'common/models/app';
 const GroupsController = () => {
   const toast = useToast();
 
-  const setGroupLock = (groupId: string = '') => {
+  const setGroupLock = (groupId = '') => {
     groupId &&
       toast.success(
         'Any records you add from now on will be submitted to the chosen activity.',
         { color: 'secondary' }
       );
 
-    appModel.setAttrLock('smp', 'groupId', groupId);
+    appModel.locks.set('default', 'all', 'smp', 'groupId', groupId);
   };
 
   return (

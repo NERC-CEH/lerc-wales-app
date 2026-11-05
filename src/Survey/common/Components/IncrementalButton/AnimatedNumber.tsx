@@ -7,7 +7,7 @@ type Props = {
 
 const AnimatedNumber = ({ value }: Props) => {
   const [initialised, setInitialised] = useState<boolean>(false);
-  const first = useRef<any>(null);
+  const first = useRef<CreateAnimation>(null);
 
   const playAnimation = () => {
     if (!initialised) {
@@ -17,8 +17,8 @@ const AnimatedNumber = ({ value }: Props) => {
 
     // doing this programmatically to reset the progress
     // on value change before animation finishes
-    first.current.animation.progressStep(0);
-    first.current.animation.play();
+    first.current?.animation.progressStep(0);
+    first.current?.animation.play();
   };
   useEffect(playAnimation, [value, first]);
 
@@ -27,7 +27,11 @@ const AnimatedNumber = ({ value }: Props) => {
       duration={2500}
       ref={first}
       fromTo={[
-        { property: 'color', fromValue: '#2c3400', toValue: '' },
+        {
+          property: 'color',
+          fromValue: 'var(--color-primary-700)',
+          toValue: 'var(--color-tertiary-800)',
+        },
         { property: 'background', fromValue: '#91a71c2b', toValue: '' },
       ]}
     >

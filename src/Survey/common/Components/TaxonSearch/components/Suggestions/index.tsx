@@ -10,13 +10,17 @@ import './styles.scss';
  * a latin name next to it.
  * @param suggestions
  */
-function deDuplicateSuggestions(suggestions: any) {
-  let previous: any;
-  const results: any = [];
+type Suggestion = (Taxon | ClassifierSuggestion) & {
+  _dedupedScientificName?: string;
+};
 
-  suggestions.forEach((taxon: any) => {
+function deDuplicateSuggestions(suggestions: Suggestion[]) {
+  let previous: Suggestion | undefined;
+  const results: Suggestion[] = [];
+
+  suggestions.forEach(taxon => {
     const name =
-      taxon.foundInName >= 0
+      typeof taxon.foundInName === 'number' && taxon.foundInName >= 0
         ? taxon.commonNames[taxon.foundInName]
         : taxon.scientificName;
 
@@ -25,7 +29,7 @@ function deDuplicateSuggestions(suggestions: any) {
     let previousNameNormalized;
     if (previous) {
       const previousName =
-        previous.foundInName >= 0
+        typeof previous.foundInName === 'number' && previous.foundInName >= 0
           ? previous.commonNames[previous.foundInName]
           : previous.scientificName;
 
@@ -41,6 +45,8 @@ function deDuplicateSuggestions(suggestions: any) {
       return;
     }
 
+    if (!previous) return;
+
     const sameSpecies = previous.warehouseId === taxon.warehouseId;
     const sameScientificName = previous.scientificName === taxon.scientificName;
     if (!sameSpecies && !sameScientificName) {
@@ -54,9 +60,8 @@ function deDuplicateSuggestions(suggestions: any) {
 
       results.push({
         ...taxon,
-        ...{
-          _dedupedScientificName: taxon.scientificName,
-        },
+
+        _dedupedScientificName: taxon.scientificName,
       });
     }
   });
@@ -113,9 +118,9 @@ const getSearchInfo = () => (
 
 type Props = {
   searchPhrase: string;
-  onSpeciesSelected: any;
+  onSpeciesSelected: (species: Taxon | ClassifierSuggestion) => void;
   searchResults?: Taxon[];
-  suggestedSpecies?: Taxon[];
+  suggestedSpecies?: ClassifierSuggestion[];
   suggestionsAreLoading?: boolean;
   showEditButton?: boolean;
 };
@@ -128,20 +133,17 @@ const Suggestions = ({
   suggestedSpecies,
   suggestionsAreLoading,
 }: Props) => {
-  const getSuggestion = (species: ClassifierSuggestion) => {
-    const key = hashCode(JSON.stringify(species));
-    return (
-      <Species
-        key={key}
-        species={species}
-        showEditButton={showEditButton}
-        searchPhrase={searchPhrase}
-        onSelect={onSpeciesSelected}
-      />
-    );
-  };
+  const getSuggestion = (species: Suggestion) => (
+    <Species
+      key={hashCode(JSON.stringify(species))}
+      species={species}
+      showEditButton={showEditButton}
+      searchPhrase={searchPhrase}
+      onSelect={onSpeciesSelected}
+    />
+  );
 
-  const getSuggestedSpecies = (species: Taxon[]) => {
+  const getSuggestedSpecies = (species: Suggestion[]) => {
     const deDuped = deDuplicateSuggestions(species);
 
     return (

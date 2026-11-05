@@ -14,13 +14,17 @@ import {
   flagOutline,
 } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
-import { Main, useAlert, InfoMessage, Toggle } from '@flumens';
+import { Main, useAlert, InfoMessage, Toggle, type PickByType } from '@flumens';
 import { IonIcon, IonList, IonItem, IonLabel, isPlatform } from '@ionic/react';
 import config from 'common/config';
 import languages from 'common/config/languages';
+import type { Data as AppModelData } from 'models/app';
 import './styles.scss';
 
-function useDatabaseExportDialog(exportFn: any) {
+type Action = () => void | Promise<void>;
+type BooleanSetting = keyof PickByType<AppModelData, boolean>;
+
+function useDatabaseExportDialog(exportFn: Action) {
   const alert = useAlert();
 
   const showDatabaseExportDialog = () => {
@@ -51,7 +55,7 @@ function useDatabaseExportDialog(exportFn: any) {
   return showDatabaseExportDialog;
 }
 
-function useResetDialog(resetApp: any) {
+function useResetDialog(resetApp: Action) {
   const alert = useAlert();
 
   const showResetDialog = () =>
@@ -82,7 +86,7 @@ function useResetDialog(resetApp: any) {
   return showResetDialog;
 }
 
-function useUserDeleteDialog(deleteUser: any) {
+function useUserDeleteDialog(deleteUser: Action) {
   const alert = useAlert();
 
   const showUserDeleteDialog = () => {
@@ -115,7 +119,7 @@ function useUserDeleteDialog(deleteUser: any) {
   return showUserDeleteDialog;
 }
 
-function useDeleteAllSamplesDialog(deleteAllSamples: any) {
+function useDeleteAllSamplesDialog(deleteAllSamples: Action) {
   const alert = useAlert();
 
   const showDeleteAllSamplesDialog = () =>
@@ -147,19 +151,19 @@ function useDeleteAllSamplesDialog(deleteAllSamples: any) {
 }
 
 type Props = {
-  resetApp: any;
-  deleteUser: any;
-  deleteAllSamples: any;
+  resetApp: Action;
+  deleteUser: Action;
+  deleteAllSamples: Action;
   isLoggedIn: boolean;
   useTraining: boolean;
   // gridSquareUnit: string;
-  onToggle: any;
+  onToggle: (setting: BooleanSetting, checked: boolean) => void;
   sendAnalytics?: boolean;
   useGridNotifications?: boolean;
   // useExperiments?: boolean;
   useSpeciesImageClassifier: boolean;
-  exportDatabase: any;
-  importDatabase: any;
+  exportDatabase: Action;
+  importDatabase: Action;
   language: string;
 };
 

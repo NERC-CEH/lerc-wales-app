@@ -4,9 +4,9 @@ import { IonItem } from '@ionic/react';
 import { Badge } from 'common/flumens';
 import Occurrence from 'models/occurrence';
 
-interface Props {
+type Props = {
   occ: Occurrence;
-}
+};
 
 const MenuTaxonItem = ({ occ }: Props) => {
   const { isDisabled } = occ;
@@ -14,14 +14,18 @@ const MenuTaxonItem = ({ occ }: Props) => {
 
   const { taxon } = occ.data;
 
-  const scientificName =
-    taxon?.scientificName ||
-    // backwards compatible
-    (taxon as any)?.scientific_name;
-  const commonName =
-    taxon && Number.isFinite(taxon.foundInName)
-      ? taxon.commonNames[taxon.foundInName as number]
-      : '';
+  const scientificName = taxon?.scientificName;
+
+  let commonName = '';
+
+  if (taxon && Number.isFinite(taxon.foundInName)) {
+    commonName = taxon.commonNames[taxon.foundInName as number];
+  }
+
+  if (taxon?.commonName) {
+    // in case pulling from warehouse, it is different format
+    commonName = taxon.commonName;
+  }
 
   const empty = !commonName && !scientificName;
 
@@ -35,7 +39,7 @@ const MenuTaxonItem = ({ occ }: Props) => {
     >
       <div
         slot="end"
-        className="flex w-full !max-w-none flex-col items-end py-2"
+        className="flex w-full max-w-none! flex-col items-end py-2 text-(--form-value-color)"
       >
         {empty && <Badge color="warning">Species missing</Badge>}
         {commonName && <div className="long">{commonName}</div>}

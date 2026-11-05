@@ -4,7 +4,6 @@ import listSurvey from 'Survey/List/config';
 // import plantSurvey from 'Survey/Plant/config';
 import { Survey } from 'Survey/common/config';
 
-// eslint-disable-next-line import/prefer-default-export
 export const getSurveyQuery = ({ id }: Survey) => ({
   match: {
     'metadata.survey.id': id,

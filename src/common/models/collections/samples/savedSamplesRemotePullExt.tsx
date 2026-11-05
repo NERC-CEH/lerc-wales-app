@@ -1,12 +1,9 @@
 /* eslint-disable no-param-reassign */
-
-/* eslint-disable camelcase */
 import { observable, set } from 'mobx';
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { type AxiosRequestConfig } from 'axios';
 import { ElasticOccurrence, device, isAxiosNetworkError } from '@flumens';
 import CONFIG from 'common/config';
-import defaultSurvey from 'Survey/Default/config';
-import listSurvey from 'Survey/List/config';
+import { getSurveyQuery } from 'common/services/ES';
 // import mothSurvey from 'Survey/Moth/config';
 // import plantSurvey from 'Survey/Plant/config';
 import { AppModel } from 'models/app';
@@ -14,11 +11,12 @@ import SavedSamplesProps from 'models/collections/samples';
 import Occurrence from 'models/occurrence';
 import Sample from 'models/sample';
 import { UserModel } from 'models/user';
-import { getSurveyQuery } from 'common/services/ES';
+import defaultSurvey from 'Survey/Default/config';
+import listSurvey from 'Survey/List/config';
 
-interface Hit {
+type Hit = {
   _source: ElasticOccurrence;
-}
+};
 
 export type Verification = {
   timestamp: number | null;
@@ -28,7 +26,7 @@ export type Verification = {
 const SQL_TO_ES_LAG = 15 * 60 * 1000; // 15mins
 const SYNC_WAIT = SQL_TO_ES_LAG;
 
-const getRecordsQuery = (timestamp: any) => {
+const getRecordsQuery = (timestamp: number) => {
   const lastFetchTime = new Date(timestamp - SQL_TO_ES_LAG);
 
   const dateFormat = new Intl.DateTimeFormat('en-GB', {
@@ -110,7 +108,10 @@ const getRecordsQuery = (timestamp: any) => {
 
 type UpdatedSamples = Record<string, Hit>;
 
-async function fetchUpdatedRemoteSamples(userModel: UserModel, timestamp: any) {
+async function fetchUpdatedRemoteSamples(
+  userModel: UserModel,
+  timestamp: number
+) {
   console.log('SavedSamples: pulling remote verified surveys');
 
   const samples: UpdatedSamples = {};
@@ -130,14 +131,12 @@ async function fetchUpdatedRemoteSamples(userModel: UserModel, timestamp: any) {
   try {
     const res = await axios(options);
     data = res.data;
-  } catch (error: any) {
-    if (isAxiosNetworkError(error)) return samples;
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error) && isAxiosNetworkError(error)) return samples;
 
     console.error(error);
     return samples;
   }
-
-  // eslint-disable-next-line no-param-reassign
 
   const normalizeResponse = ({ ...hit }: Hit) => {
     samples[hit._source.occurrence.source_system_key] = { ...hit };
@@ -226,7 +225,6 @@ async function init(
   allSamples.verified = observable({ updated: [], timestamp: null });
 
   const originalResetDefaults = allSamples.reset;
-  // eslint-disable-next-line @getify/proper-arrows/name
   allSamples.reset = () => {
     set(allSamples.verified, { count: 0, timestamp: null });
     return originalResetDefaults();

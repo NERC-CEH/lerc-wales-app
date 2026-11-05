@@ -2,8 +2,5 @@
 	"appId": "uk.ac.ceh.lercwales",
 	"appName": "LERC Wales",
 	"webDir": "build",
-	"cordova": {},
-	"android": {
-		"adjustMarginsForEdgeToEdge": "force"
-	}
+	"cordova": {}
 }

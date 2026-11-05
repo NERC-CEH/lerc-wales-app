@@ -1,5 +1,3 @@
-/* eslint-disable max-classes-per-file */
-
 /* eslint-disable no-param-reassign */
 import { IObservableArray } from 'mobx';
 import { useTranslation } from 'react-i18next';
@@ -12,18 +10,15 @@ import {
   device,
   useAlert,
   locationToGrid,
-  Location,
+  type Location,
 } from '@flumens';
 import config from 'common/config';
 import gridAlertService from 'common/helpers/gridAlertService';
+import { getGridRefSystem, printLocation } from 'common/helpers/location';
 import appModel from 'models/app';
 import userModel from 'models/user';
-import defaultSurvey, {
-  taxonGroupSurveys,
-  getTaxaGroupSurvey,
-} from 'Survey/Default/config';
 import { coreAttributes, Survey } from 'Survey/common/config';
-import { getSurveyConfigs } from 'Survey/common/surveyConfigs';
+import getSurveyConfigs from 'Survey/common/surveyConfigs';
 import Media from '../media';
 import Occurrence, { Taxon } from '../occurrence';
 import { samplesStore } from '../store';
@@ -40,22 +35,19 @@ const ATTRS_TO_LEAVE = [
   'occ:training',
   'occ:classifier',
   'occ:machineInvolvement',
+  'occ:taxon',
 ];
 
-type Data = SampleData & {
-  surveyId: any;
-  location?: any;
-  groupId?: string;
-  recorder?: any;
-  recorders?: any;
-  childGeolocation?: any;
+export type Data = SampleData & {
+  location?: Partial<Location>;
+  recorder?: string;
+  childGeolocation?: boolean;
 };
 
-type Metadata = SampleMetadata & {
-  /**
-   * Taxa group name e.g. 'birds'.
-   */
-  taxa: keyof typeof taxonGroupSurveys;
+type GeocodedLocation = { center: [number, number] };
+
+export type Metadata = SampleMetadata & {
+  geocoded?: GeocodedLocation;
   gridSquareUnit?: 'monad' | 'tetrad';
   /**
    * If overwrite which survey to use.
@@ -64,22 +56,27 @@ type Metadata = SampleMetadata & {
   saved?: boolean;
 };
 
-export default class Sample extends SampleOriginal<Data, Metadata> {
+export default class Sample<T extends Data = Data> extends SampleOriginal<
+  T,
+  Metadata
+> {
   declare occurrences: IObservableArray<Occurrence>;
 
-  declare samples: IObservableArray<Sample>;
+  declare samples: IObservableArray<Sample<T>>;
 
   declare media: IObservableArray<Media>;
 
-  declare parent?: Sample;
+  declare parent?: Sample<T>;
 
-  startGPS: any; // from extension
+  declare startGPS: (accuracyLimit?: number) => Promise<void>;
 
-  isGPSRunning: any; // from extension
+  declare isGPSRunning: () => boolean;
 
-  stopGPS: any; // from extension
+  declare stopGPS: () => void;
 
-  constructor(options: SampleOptions<Data>) {
+  declare gps: { locating: string | null };
+
+  constructor(options: SampleOptions<Data, Metadata>) {
     super({
       ...options,
       Occurrence,
@@ -87,7 +84,7 @@ export default class Sample extends SampleOriginal<Data, Metadata> {
       store: samplesStore,
       url: config.backend.indicia.url,
       getAccessToken: () => userModel.getAccessToken(),
-    });
+    } as SampleOptions<T, Metadata>);
 
     this.data.training = appModel.data.useTraining;
 
@@ -121,21 +118,21 @@ export default class Sample extends SampleOriginal<Data, Metadata> {
     return this.saveRemote();
   }
 
-  async save() {
-    super.save();
-  }
-
   getSurvey(): Survey {
     let surveyId = this.metadata.forceSurveyId || this.data.surveyId;
 
     // backwards compatible, remove once everyone uploads their surveys
-    if ((this.metadata as any).survey) {
-      if ((this.metadata as any).survey === 'default') surveyId = 511;
-      if ((this.metadata as any).survey === 'list') surveyId = 576;
-      // if ((this.metadata as any).survey === 'moth') surveyId = 90;
-      // if ((this.metadata as any).survey === 'plant') surveyId = 325;
-    } else if ((this.metadata as any).survey_id) {
-      surveyId = (this.metadata as any).survey_id;
+    const legacyMetadata = this.metadata as Metadata & {
+      survey?: 'default' | 'list' | 'moth' | 'plant';
+      survey_id?: number;
+    };
+    if (legacyMetadata.survey) {
+      if (legacyMetadata.survey === 'default') surveyId = 511;
+      if (legacyMetadata.survey === 'list') surveyId = 576;
+      // if (legacyMetadata.survey === 'moth') surveyId = 90;
+      // if (legacyMetadata.survey === 'plant') surveyId = 325;
+    } else if (legacyMetadata.survey_id) {
+      surveyId = legacyMetadata.survey_id;
       this.data.surveyId = surveyId;
     }
 
@@ -144,7 +141,7 @@ export default class Sample extends SampleOriginal<Data, Metadata> {
       this.data.surveyId = surveyId;
     }
 
-    const survey = getSurveyConfigs()[surveyId];
+    const survey = getSurveyConfigs()[surveyId!];
 
     if (survey?.get) return survey.get(this);
 
@@ -154,14 +151,18 @@ export default class Sample extends SampleOriginal<Data, Metadata> {
     if (!survey) {
       console.log(JSON.stringify(this.metadata));
       console.log(JSON.stringify(this.data));
-      console.error(`Survey config was missing`);
+      console.error('Survey config was missing');
       return {} as Survey;
     }
 
-    return survey as Survey;
+    return survey;
   }
 
-  setTaxon(newTaxon: Taxon, occurrenceId?: string) {
+  setTaxon(
+    newTaxon: Taxon,
+    occurrenceId?: string,
+    skipOldTaxonRemoval?: boolean
+  ) {
     if (this.samples.length)
       throw new Error('setTaxon must be used with subSamples only');
 
@@ -175,45 +176,51 @@ export default class Sample extends SampleOriginal<Data, Metadata> {
       ? this.occurrences.find(byId)!
       : this.occurrences[0];
 
-    if (this.getSurvey().name === 'default') {
-      if (occ.data.taxon) this.removeOldTaxonAttributes(occ, newTaxon);
+    const oldSurvey = this.getSurvey();
+    const oldTaxonGroup = occ.data.taxon?.group;
+    const hadTaxon = !!occ.data.taxon;
 
-      const survey = getTaxaGroupSurvey(newTaxon.group);
-      this.metadata.taxa = survey?.taxa as any;
+    occ.data.taxon = structuredClone(newTaxon);
+    occ.updateMachineInvolvement(newTaxon);
+
+    const newSurvey = this.getSurvey();
+
+    if (skipOldTaxonRemoval || oldTaxonGroup === newTaxon.group) return;
+
+    const usingNewTaxaGroup = oldSurvey.taxa !== newSurvey.taxa;
+    if (hadTaxon && usingNewTaxaGroup)
+      this.removeOldTaxonAttributes(occ, oldSurvey);
+
+    const surveyName = this.parent?.getSurvey().name || newSurvey.name;
+
+    // Default survey defers occurrence locks until a taxon is selected.
+    const isDefaultSurvey = surveyName === 'default' || surveyName === 'list';
+    if (usingNewTaxaGroup || (!hadTaxon && isDefaultSurvey)) {
+      const locks = appModel.locks.getAll(surveyName, newSurvey.taxa);
+      Object.assign(this.data, locks.smp);
+      Object.assign(occ.data, locks.occ);
     }
 
-    occ.data.taxon = JSON.parse(JSON.stringify(newTaxon));
-
-    occ.updateMachineInvolvement(newTaxon);
+    const isListSurvey = surveyName === 'list';
+    Object.assign(
+      occ.data,
+      newSurvey.occ?.getDefaultValues?.({ data: occ.data, isListSurvey })
+    );
   }
 
-  removeOldTaxonAttributes(occ: Occurrence, newTaxon: any) {
-    const survey = this.getSurvey();
-    const newSurvey = getTaxaGroupSurvey(newTaxon.group) || defaultSurvey;
-
-    if (survey.taxa === newSurvey.taxa) return;
-
+  private removeOldTaxonAttributes(occ: Occurrence, oldSurvey: Survey) {
     process.env.NODE_ENV !== 'test' &&
-      console.log(`Removing old ${survey.taxa} taxa attributes`);
+      console.log(`Removing old ${oldSurvey.taxa} taxa attributes`);
 
     // remove non-core attributes for survey switch
-    const removeSmpNonCoreAttr = (key: any) => {
-      if (!ATTRS_TO_LEAVE.includes(`smp:${key}`)) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        delete this.data[key];
-      }
+    const removeSmpNonCoreAttr = (key: string) => {
+      if (!ATTRS_TO_LEAVE.includes(`smp:${key}`)) delete this.data[key];
     };
 
     Object.keys(this.data).forEach(removeSmpNonCoreAttr);
 
-    const removeOccNonCoreAttr = (key: any) => {
-      if (!ATTRS_TO_LEAVE.includes(`occ:${key}`)) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        // eslint-disable-next-line no-param-reassign
-        delete occ.data[key];
-      }
+    const removeOccNonCoreAttr = (key: string) => {
+      if (!ATTRS_TO_LEAVE.includes(`occ:${key}`)) delete occ.data[key];
     };
     Object.keys(occ.data).forEach(removeOccNonCoreAttr);
   }
@@ -224,7 +231,7 @@ export default class Sample extends SampleOriginal<Data, Metadata> {
    */
   printLocation() {
     const location = this.data.location || {};
-    return appModel.printLocation(location);
+    return printLocation(location);
   }
 
   setGPSLocation = (location: Location) => {
@@ -241,6 +248,14 @@ export default class Sample extends SampleOriginal<Data, Metadata> {
       location.source = 'gridref';
       location.gridref = gridref;
       location.accuracy = accuracy;
+    }
+
+    const usesGridRefSystem =
+      this.data.enteredSrefSystem === 'OSGB' ||
+      this.data.enteredSrefSystem === 'OSIE';
+
+    if (usesGridRefSystem) {
+      this.data.enteredSrefSystem = getGridRefSystem(location.gridref);
     }
 
     if (!this.data.location) this.data.location = {};
@@ -287,6 +302,7 @@ export const useValidateCheck = (sample?: Sample) => {
   const showValidateCheck = () => {
     const invalids = sample?.validateRemote();
     if (invalids) {
+      console.log('Invalid sample', invalids);
       alert({
         header: t('Survey incomplete'),
         skipTranslation: true,

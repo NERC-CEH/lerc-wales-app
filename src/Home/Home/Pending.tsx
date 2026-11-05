@@ -1,7 +1,13 @@
 import { useContext } from 'react';
 import { addOutline } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
-import { useToast, getRelativeDate, VirtualList, Button } from '@flumens';
+import {
+  useToast,
+  getRelativeDate,
+  VirtualList,
+  Button,
+  type ItemProps,
+} from '@flumens';
 import { IonIcon, IonLabel, IonList, NavContext } from '@ionic/react';
 import samplesCollection, {
   bySurveyDate,
@@ -26,15 +32,19 @@ function roundDate(date: number) {
   return new Date(roundedDate);
 }
 
-const getSurveys = (surveys: Sample[], showUploadAll?: boolean) => {
-  const dates: any = [];
-  const dateIndices: any = [];
+type DateDivider = { date: string; count: number };
 
-  const groupedSurveys: any = [];
-  let counter: any = {};
+const getSurveys = (surveys: Sample[], showUploadAll?: boolean) => {
+  const dates: string[] = [];
+  const dateIndices: number[] = [];
+
+  const groupedSurveys: (DateDivider | Sample)[] = [];
+  let counter: DateDivider = { date: '', count: 0 };
 
   [...surveys].forEach(survey => {
-    const date = roundDate(new Date(survey.data.date).getTime()).toString();
+    const date = roundDate(
+      new Date(survey.data.date ?? '').getTime()
+    ).toString();
     if (!dates.includes(date) && date !== 'Invalid Date') {
       dates.push(date);
       dateIndices.push(groupedSurveys.length);
@@ -45,33 +55,25 @@ const getSurveys = (surveys: Sample[], showUploadAll?: boolean) => {
     counter.count += 1;
     groupedSurveys.push(survey);
   });
-
-  // eslint-disable-next-line react/no-unstable-nested-components
-  const Item = ({ index, ...itemProps }: { index: number }) => {
-    if (dateIndices.includes(index)) {
-      const { date, count } = groupedSurveys[index];
+  const Item = ({ index, style }: ItemProps) => {
+    const item = groupedSurveys[index];
+    if (!(item instanceof Sample)) {
       return (
-        <div
-          className="list-divider rounded-md"
-          key={date}
-          style={(itemProps as any).style}
-        >
+        <div className="list-divider rounded-md" key={item.date} style={style}>
           <IonLabel>
-            <T>{getRelativeDate(date)}</T>
+            <T>{getRelativeDate(item.date)}</T>
           </IonLabel>
-          {count > 1 && <IonLabel slot="end">{count}</IonLabel>}
+          {item.count > 1 && <IonLabel slot="end">{item.count}</IonLabel>}
         </div>
       );
     }
 
-    const sample = groupedSurveys[index];
-
     return (
       <Survey
-        key={sample.cid}
-        sample={sample}
+        key={item.cid}
+        sample={item}
         uploadIsPrimary={!showUploadAll}
-        {...itemProps}
+        style={style}
       />
     );
   };
@@ -83,8 +85,8 @@ const getSurveys = (surveys: Sample[], showUploadAll?: boolean) => {
 
   return (
     <VirtualList
-      itemCount={itemCount}
-      itemSize={getItemSize}
+      rowCount={itemCount}
+      rowHeight={getItemSize}
       Item={Item}
       topPadding={LIST_PADDING}
       bottomPadding={LIST_ITEM_HEIGHT / 2}
@@ -100,19 +102,19 @@ const PendingSurveys = () => {
   const surveys = samplesCollection.filter(notUploaded).sort(bySurveyDate);
 
   const isFinished = (sample: Sample) => sample.metadata.saved;
-  const hasManyPending = () => surveys.filter(isFinished).length > 4;
+  const hasPending = () => surveys.filter(isFinished).length > 0;
 
   const onUploadAll = () => {
     const isLoggedIn = userModel.isLoggedIn();
     if (!isLoggedIn) {
-      navigate(`/user/login`);
+      navigate('/user/login');
       return null;
     }
 
     return uploadAllSamples(toast);
   };
 
-  const navigateToPrimarySurvey = () => navigate(`/survey/default`);
+  const navigateToPrimarySurvey = () => navigate('/survey/default');
 
   if (!surveys.length) {
     return (
@@ -132,7 +134,7 @@ const PendingSurveys = () => {
     );
   }
 
-  const showUploadAll = hasManyPending();
+  const showUploadAll = hasPending();
 
   return (
     <IonList>

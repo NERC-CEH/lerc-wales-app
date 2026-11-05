@@ -1,5 +1,5 @@
-import { Page, Main, Header, Section } from '@flumens';
 import { Trans as T } from 'react-i18next';
+import { Page, Main, Header, Section } from '@flumens';
 import './styles.scss';
 
 const { P, H } = Section;

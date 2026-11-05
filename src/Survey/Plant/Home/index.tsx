@@ -9,18 +9,20 @@ import {
   captureImage,
   useSample,
   useRemoteSample,
+  HandledError,
 } from '@flumens';
 import { NavContext, isPlatform } from '@ionic/react';
 import distance from '@turf/distance';
 import config from 'common/config';
 import gridAlertService from 'common/helpers/gridAlertService';
+import { hasCoordinates } from 'common/helpers/location';
 import appModel from 'common/models/app';
 import Media from 'common/models/media';
-import Occurrence from 'common/models/occurrence';
 import Sample, { useValidateCheck } from 'models/sample';
 import userModel, { useUserStatusCheck } from 'models/user';
 import SurveyHeaderButton from 'Survey/common/Components/SurveyHeaderButton';
 import TrainingBand from 'Survey/common/Components/TrainingBand';
+import surveyConfig from '../config';
 import Main from './Main';
 import './styles.scss';
 
@@ -41,7 +43,7 @@ const PlantHome = () => {
 
   if (!sample) return null;
 
-  const _processSubmission = async () => {
+  const processSubmission = async () => {
     const isUserOK = await checkUserStatus();
     if (!isUserOK) return;
 
@@ -49,20 +51,18 @@ const PlantHome = () => {
     if (!isValid) return;
 
     sample.upload().catch(toast.error);
-    navigate(`/home/surveys`, 'root');
+    navigate('/home/surveys', 'root');
   };
 
-  const _processDraft = async () => {
+  const processDraft = async () => {
     const isValid = checkSampleStatus();
     if (!isValid) return;
 
     gridAlertService.stop(sample.cid);
-
-    // eslint-disable-next-line no-param-reassign
     sample.metadata.saved = true;
     sample.save();
 
-    navigate(`/home/surveys`, 'root');
+    navigate('/home/surveys', 'root');
   };
 
   const onSubSampleDelete = async (subSample: Sample) => subSample.destroy();
@@ -71,7 +71,7 @@ const PlantHome = () => {
   const isSaved = sample.metadata.saved;
 
   const onFinish = async () =>
-    !isSaved ? _processDraft() : _processSubmission();
+    !isSaved ? processDraft() : processSubmission();
 
   const finishButton = (
     <SurveyHeaderButton sample={sample} onClick={onFinish} />
@@ -83,14 +83,19 @@ const PlantHome = () => {
 
   const { location } = sample.data;
 
-  const isLocationFurtherThan5000m = (smp: Sample) =>
-    distance(
-      [location?.latitude, location?.longitude],
-      [smp.data.location?.latitude, smp.data.location?.longitude],
-      {
-        units: 'meters',
-      }
-    ) > 5000;
+  const isLocationFurtherThan5000m = (smp: Sample) => {
+    const childLocation = smp.data.location;
+    if (!hasCoordinates(location) || !hasCoordinates(childLocation))
+      return false;
+
+    return (
+      distance(
+        [location.latitude, location.longitude],
+        [childLocation.latitude, childLocation.longitude],
+        { units: 'meters' }
+      ) > 5000
+    );
+  };
   const showChildSampleDistanceWarning = sample.samples.some(
     isLocationFurtherThan5000m
   );
@@ -104,25 +109,22 @@ const PlantHome = () => {
     if (!images) return;
 
     const imageArray = Array.isArray(images) ? images : [images];
-    const surveyConfig = sample!.getSurvey();
 
-    const subSamplePromise = imageArray.map(async (img: any) => {
-      const imageModel: any = await Media.getImageModel(
+    const subSamplePromise = imageArray.map(async img => {
+      const imageModel = (await Media.getImageModel(
         isPlatform('hybrid') ? Capacitor.convertFileSrc(img) : img,
         config.dataPath,
         true
-      );
+      )) as Media;
 
-      const subSample = await surveyConfig.smp!.create!({
-        Occurrence,
-        Sample,
+      const subSample = await surveyConfig.smp.create({
         surveySample: sample!,
         images: [imageModel],
       });
 
       if (shouldAutoID()) {
-        const processError = (error: any) =>
-          !error.isHandled && console.error(error); // don't toast this to user
+        const processError = (error: unknown) =>
+          !(error instanceof HandledError) && console.error(error); // don't toast this to user
         subSample.occurrences[0].identify('plant').catch(processError);
       }
 

@@ -1,11 +1,12 @@
+import type { MouseEventHandler } from 'react';
 import clsx from 'clsx';
 import CONFIG from 'common/config';
 
-interface Props {
+type Props = {
   probability?: number;
   className?: string;
-  onClick?: any;
-}
+  onClick?: MouseEventHandler<HTMLDivElement>;
+};
 
 const ProbabilityBadge = ({ probability, className, onClick }: Props) => {
   if (!probability) return null;

@@ -12,13 +12,17 @@ type Props = {
 function SelectLanguage({ hideHeader }: Props) {
   const currentValue = appModel.data.language;
 
-  function onSelect(newValue: any) {
-    appModel.data.language = newValue; // eslint-disable-line no-param-reassign
+  function onSelect(newValue: string) {
+    appModel.data.language = newValue;
     appModel.save();
   }
 
-  const alphabetically = ([, l1]: any, [, l2]: any) => l1.localeCompare(l2);
-  const getOption = ([id, title]: any) => ({ value: id, label: title });
+  const alphabetically = ([, l1]: [string, string], [, l2]: [string, string]) =>
+    l1.localeCompare(l2);
+  const getOption = ([id, title]: [string, string]) => ({
+    value: id,
+    label: title,
+  });
   const options = Object.entries(languages).sort(alphabetically).map(getOption);
 
   return (

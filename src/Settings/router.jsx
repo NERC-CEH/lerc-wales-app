@@ -1,10 +1,10 @@
 import { Route } from 'react-router-dom';
 import appModel from 'models/app';
 import userModel from 'models/user';
+import Language from './Language';
 import Locations from './Locations';
 import Menu from './Menu';
 import Survey from './Survey';
-import Language from './Language';
 
 export default [
   <Route

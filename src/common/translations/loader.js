@@ -1,6 +1,15 @@
-/* eslint-disable camelcase */
-import en from './interface/en.pot';
+import {
+  addNamespace as ionic,
+  en as ionicEnglish,
+  namespace as ionicNamespace,
+} from '@flumens/ionic/locales';
+import {
+  addNamespace as tailwind,
+  en as tailwindEnglish,
+  namespace as tailwindNamespace,
+} from '@flumens/tailwind/locales';
 import cy from './interface/cy.po';
+import en from './interface/en.pot';
 
 // Adding some context, reference and other in po files:
 
@@ -33,11 +42,34 @@ const rawToKeyVal = lang =>
     return agg;
   }, {});
 
-export default {
-  en: {
-    interface: rawToKeyVal(en),
-  },
-  cy: {
-    interface: rawToKeyVal(cy),
-  },
-};
+const welsh = rawToKeyVal(cy);
+
+// Reuse existing Welsh translations for the packages' new namespaced keys.
+const translateNamespace = dictionary =>
+  Object.fromEntries(
+    Object.entries(dictionary).map(([section, terms]) => [
+      section,
+      Object.fromEntries(
+        Object.entries(terms).map(([key, english]) => [
+          key,
+          welsh[english] || english,
+        ])
+      ),
+    ])
+  );
+
+const resources = ionic(
+  tailwind({
+    en: {
+      interface: rawToKeyVal(en),
+    },
+    cy: {
+      interface: welsh,
+    },
+  })
+);
+
+resources.cy[ionicNamespace] = translateNamespace(ionicEnglish);
+resources.cy[tailwindNamespace] = translateNamespace(tailwindEnglish);
+
+export default resources;

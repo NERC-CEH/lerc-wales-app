@@ -9,6 +9,7 @@ import {
   device,
   useSample,
   useRemoteSample,
+  HandledError,
 } from '@flumens';
 import { NavContext, isPlatform } from '@ionic/react';
 import config from 'common/config';
@@ -41,7 +42,7 @@ const MothHome = () => {
 
   const survey = sample.getSurvey();
 
-  const _processSubmission = async () => {
+  const processSubmission = async () => {
     const isUserOK = await checkUserStatus();
     if (!isUserOK) return;
 
@@ -49,29 +50,27 @@ const MothHome = () => {
     if (!isValid) return;
 
     sample.upload().catch(toast.error);
-    navigate(`/home/surveys`, 'root');
+    navigate('/home/surveys', 'root');
   };
 
-  const _processDraft = async () => {
+  const processDraft = async () => {
     const isValid = checkSampleStatus();
     if (!isValid) return;
-
-    // eslint-disable-next-line no-param-reassign
     sample.metadata.saved = true;
     sample.save();
 
-    navigate(`/home/surveys`, 'root');
+    navigate('/home/surveys', 'root');
   };
 
   const onFinish = async () =>
-    !sample.metadata.saved ? _processDraft() : _processSubmission();
+    !sample.metadata.saved ? processDraft() : processSubmission();
 
   const finishButton = (
     <SurveyHeaderButton sample={sample} onClick={onFinish} />
   );
 
-  const onSubSampleDelete = async (subSample: Sample) => {
-    await subSample.destroy();
+  const onSubSampleDelete = async (occurrence: Occurrence) => {
+    await occurrence.destroy();
   };
 
   async function onSpeciesImageAttach(shouldUseCamera: boolean) {
@@ -85,21 +84,18 @@ const MothHome = () => {
     const imageArray = Array.isArray(images) ? images : [images];
     const surveyConfig = sample!.getSurvey();
 
-    const occurrencesPromise = imageArray.map(async (img: any) => {
-      const imageModel: any = await Media.getImageModel(
+    const occurrencesPromise = imageArray.map(async img => {
+      const imageModel = (await Media.getImageModel(
         isPlatform('hybrid') ? Capacitor.convertFileSrc(img) : img,
         config.dataPath,
         true
-      );
+      )) as Media;
 
-      const occ = await surveyConfig.occ!.create!({
-        Occurrence,
-        images: [imageModel],
-      });
+      const occ = await surveyConfig.occ!.create!({ images: [imageModel] });
 
       if (shouldAutoID()) {
-        const processError = (error: any) =>
-          !error.isHandled && console.error(error); // don't toast this to user
+        const processError = (error: unknown) =>
+          !(error instanceof HandledError) && console.error(error); // don't toast this to user
         occ.identify().catch(processError);
       }
 

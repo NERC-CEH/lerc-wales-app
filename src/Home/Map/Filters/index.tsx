@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { ReactNode } from 'react';
+import type { ChangeEvent, ReactNode } from 'react';
 import clsx from 'clsx';
 import { t } from 'i18next';
 import FilterSelect from './FilterSelect';
@@ -30,7 +30,7 @@ export const getDateRanges = () => [
 ];
 
 type Props = {
-  onChange: any;
+  onChange: (value: boolean) => void;
   value: boolean;
   label: string;
   icon: ReactNode;
@@ -55,7 +55,8 @@ const Filter = ({
   label,
   icon: iconProp,
 }: Props) => {
-  const onChange = (e: any) => onChangeProp(e.target.checked);
+  const onChange = (event: ChangeEvent<HTMLInputElement>) =>
+    onChangeProp(event.target.checked);
 
   const icon = value ? CheckmarkIcon : <img src={iconProp as string} />;
 
@@ -72,14 +73,14 @@ const Filter = ({
   );
 };
 
-interface MapFiltersProps {
+type MapFiltersProps = {
   children: ReactNode;
   className?: string;
-}
-
-const MapFilters = ({ children, className }: MapFiltersProps) => {
-  return <div className={clsx('map-filters', className)}>{children}</div>;
 };
+
+const MapFilters = ({ children, className }: MapFiltersProps) => (
+  <div className={clsx('map-filters', className)}>{children}</div>
+);
 
 MapFilters.Filter = Filter;
 MapFilters.Select = FilterSelect;

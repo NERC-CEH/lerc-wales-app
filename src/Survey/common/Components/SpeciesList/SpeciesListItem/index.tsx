@@ -3,6 +3,12 @@ import { alertOutline } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
 import { useRouteMatch } from 'react-router';
 import { Badge, useAlert } from '@flumens';
+import type {
+  ChoiceInputConf,
+  NumberInputConf,
+  TextInputConf,
+} from '@flumens/tailwind/dist/Survey';
+import { getChoiceTitle } from '@flumens/tailwind/dist/components/Block';
 import {
   IonItemOption,
   IonItemOptions,
@@ -14,20 +20,17 @@ import VerificationStatus from 'common/Components/VerificationStatus';
 import Occurrence from 'models/occurrence';
 import Sample from 'models/sample';
 import IncrementalButton from 'Survey/common/Components/IncrementalButton';
+import CheckboxOption from '../BulkEdit/CheckboxOption';
 import './styles.scss';
 
-function useDeleteOccurrenceDialog(occ: Occurrence, onDelete: any) {
+function useDeleteOccurrenceDialog(occ: Occurrence, onDelete: () => void) {
   const alert = useAlert();
 
   const showDeleteOccurrenceDialog = () => {
     const speciesPrettyName = occ.getPrettyName();
     alert({
       header: 'Delete',
-      message: (
-        <>
-          <T>Are you sure you want to delete {{ speciesPrettyName }}?</T>
-        </>
-      ),
+      message: <T>Are you sure you want to delete {{ speciesPrettyName }}?</T>,
       buttons: [
         {
           text: 'Cancel',
@@ -66,9 +69,11 @@ const getLocationCommponent = (model: Sample) => {
 
 type Props = {
   model: Sample | Occurrence;
-  increaseCount: any;
-  onDelete: any;
+  increaseCount: (occurrence: Occurrence, is5x: boolean) => void;
+  onDelete: () => void;
   useSubSamples?: boolean;
+  isBulkEditing?: boolean;
+  numberAttrs?: (ChoiceInputConf | NumberInputConf | TextInputConf)[];
 };
 
 const SpeciesListItem = ({
@@ -76,6 +81,8 @@ const SpeciesListItem = ({
   increaseCount,
   onDelete,
   useSubSamples,
+  isBulkEditing,
+  numberAttrs,
 }: Props) => {
   const { url } = useRouteMatch();
 
@@ -89,12 +96,24 @@ const SpeciesListItem = ({
 
   if (!occ) return null; // if remote deleted but left sub-sample
 
-  const getIncrementButton = () => {
-    const increaseCountWrap = () => increaseCount(occ);
-    const increase5xCountWrap = () => increaseCount(occ, true);
+  // Empty choice labels must not mask later abundance values or imply absence.
+  const value = numberAttrs
+    ?.map(attr => {
+      const rawValue = occ.data[attr.id];
+      return attr.type === 'choiceInput'
+        ? getChoiceTitle(attr, rawValue)
+        : rawValue;
+    })
+    .find(
+      (item): item is string | number =>
+        (typeof item === 'string' && item !== '') || typeof item === 'number'
+    );
 
-    const value =
-      occ.data.number || occ.data['number-ranges'] || occ.data.abundance;
+  const getEditButton = () => <CheckboxOption value={model.cid} />;
+
+  const getIncrementButton = () => {
+    const increaseCountWrap = () => increaseCount(occ, false);
+    const increase5xCountWrap = () => increaseCount(occ, true);
 
     if (!value && isDisabled) return null;
 
@@ -103,7 +122,7 @@ const SpeciesListItem = ({
         onClick={increaseCountWrap}
         onLongClick={increase5xCountWrap}
         value={value}
-        disabled={isDisabled}
+        disabled={isDisabled || !occ.data.taxon}
       />
     );
   };
@@ -112,9 +131,10 @@ const SpeciesListItem = ({
 
   const modelPath = useSubSamples ? 'smp' : 'occ';
 
-  const survey = model.getSurvey();
-  const isValid =
-    !isDisabled && survey.verify ? !survey.verify(model.data) : true;
+  const isValid = isDisabled || !model.validateRemote();
+
+  const getStartElement = () =>
+    isBulkEditing ? getEditButton() : getIncrementButton();
 
   return (
     <IonItemSliding
@@ -126,7 +146,7 @@ const SpeciesListItem = ({
         routerLink={`${url}/${modelPath}/${model.cid}`}
         detail={!occ.hasOccurrenceBeenVerified() && isValid}
       >
-        {getIncrementButton()}
+        {getStartElement()}
 
         <div className="details">
           <div className="species">

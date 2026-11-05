@@ -39,7 +39,7 @@ i18n
     lng: DEFAULT_LANGUAGE,
     fallbackLng: DEFAULT_LANGUAGE,
 
-    keySeparator: false, // we do not use keys in form messages.welcome
+    keySeparator: '.', // package namespaces use nested keys; flat app keys still work
     nsSeparator: false, // no namespace use in keys
 
     interpolation: {
@@ -54,22 +54,7 @@ i18n
     },
   });
 
-const newValueWrap = ({ newValue }) => {
-  if (!newValue) {
-    return;
-  }
+const newValueWrap = ({ newValue }) =>
+  newValue && i18n.changeLanguage(newValue);
 
-  const newLanguageCode = newValue.replace('_', '-'); // backwards compatible
-  i18n.changeLanguage(newLanguageCode);
-};
 observe(appModel.data, 'language', newValueWrap);
-
-// backwards compatible: START
-function translate(key) {
-  return i18n.t(key);
-}
-
-window.t = translate;
-// backwards compatible: END
-
-export default translate;

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
+import type { LngLatBoundsLike } from 'mapbox-gl';
 import { Trans as T, useTranslation } from 'react-i18next';
 import { MapRef, LngLatBounds } from 'react-map-gl/mapbox';
 import { Link } from 'react-router-dom';
@@ -44,7 +45,7 @@ const Map = () => {
   const { t } = useTranslation();
   const [mapRef, setMapRef] = useState<MapRef>();
 
-  const [isFetchingRecords, setFetchingRecords] = useState<any>(null);
+  const [isFetchingRecords, setIsFetchingRecords] = useState(false);
   const toast = useToast();
 
   const [totalSquares, setTotalSquares] = useState<number>(1);
@@ -52,20 +53,16 @@ const Map = () => {
   const [records, setRecords] = useState<ElasticOccurrence[]>([]);
 
   const [startDate, setStartDate] = useState(monthAgo);
-  const onStartDateSelect = (value: any) => setStartDate(value);
+  const onStartDateSelect = (value: string) => setStartDate(value);
 
   const [speciesGroup, setSpeciesGroup] = useState('');
-  const onSpeciesGroupSelect = (value: any) => setSpeciesGroup(value);
+  const onSpeciesGroupSelect = (value: string) => setSpeciesGroup(value);
   const speciesGroupOptions = [
     { label: t('All species'), value: '' },
 
-    ...Object.keys(informalGroups)
-      .sort((a: string, b: string) =>
-        t((informalGroups as any)[a]).localeCompare(
-          t((informalGroups as any)[b])
-        )
-      )
-      .map((id: string) => ({ value: id, label: (informalGroups as any)[id] })),
+    ...Object.entries(informalGroups)
+      .sort(([, first], [, second]) => t(first).localeCompare(t(second)))
+      .map(([id, label]) => ({ value: id, label })),
   ];
 
   const userIsLoggedIn = userModel.isLoggedIn();
@@ -89,7 +86,7 @@ const Map = () => {
 
     const shouldFetchRecords = zoomLevel >= 13;
     if (shouldFetchRecords) {
-      setFetchingRecords(true);
+      setIsFetchingRecords(true);
       const fetchedRecords = await fetchRecords({
         northWest,
         southEast,
@@ -100,13 +97,13 @@ const Map = () => {
       if (!fetchedRecords) return;
       setRecords(fetchedRecords);
       setSquares([]);
-      setFetchingRecords(false);
+      setIsFetchingRecords(false);
       return;
     }
 
     const squareSize = getSquareSize(zoomLevel);
 
-    setFetchingRecords(true);
+    setIsFetchingRecords(true);
     const fetchedSquares = await fetchSquares({
       northWest,
       southEast,
@@ -121,7 +118,7 @@ const Map = () => {
 
     setTotalSquares(getTotalSquares(fetchedSquares));
     setSquares(fetchedSquares);
-    setFetchingRecords(false);
+    setIsFetchingRecords(false);
   };
 
   const updateMapCentre = () => updateRecords();
@@ -178,7 +175,7 @@ const Map = () => {
 
     const [longitude, latitude] = square.key.split(' ').map(parseFloat);
 
-    const radius = square.size! / 2;
+    const radius = square.size / 2;
     const padding = 1.1; // extra padding between squares
     const metersToPixels =
       radius / padding / 0.075 / Math.cos((latitude * Math.PI) / 180);
@@ -230,7 +227,7 @@ const Map = () => {
     <Page id="home-map">
       <MapContainer
         id="user-records"
-        onReady={setMapRef as any}
+        onReady={setMapRef}
         accessToken={config.map.mapboxApiKey}
         maxZoom={17}
         customAttribution='&copy; <a href="http://www.ordnancesurvey.co.uk/">Ordnance Survey</a>'
@@ -239,7 +236,7 @@ const Map = () => {
           [
             [-8.834, 49.562], // Southwest
             [1.9, 60.934], // Northeast
-          ] as any
+          ] as LngLatBoundsLike
         }
         maxPitch={0}
         initialViewState={initialViewState}

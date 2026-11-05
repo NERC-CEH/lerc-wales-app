@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type MouseEventHandler, type ReactNode } from 'react';
 import clsx from 'clsx';
 import { close, arrowForwardOutline, arrowBackOutline } from 'ionicons/icons';
 import SwiperCore from 'swiper';
@@ -12,8 +12,8 @@ import CustomAlert from './CustomAlert';
 import './styles.scss';
 
 type Props = {
-  onClose: any;
-  children: any;
+  onClose: MouseEventHandler<HTMLIonButtonElement>;
+  children: ReactNode;
 };
 
 const MultiPageCustomAlert = ({ children, onClose }: Props) => {
@@ -22,10 +22,10 @@ const MultiPageCustomAlert = ({ children, onClose }: Props) => {
   const [prevSlidesExist, setPrevSlidesExist] = useState(false);
 
   const slideNext = () => {
-    controlledSwiper && controlledSwiper.slideNext();
+    controlledSwiper?.slideNext();
   };
   const slidePrev = () => {
-    controlledSwiper && controlledSwiper.slidePrev();
+    controlledSwiper?.slidePrev();
   };
 
   const handleSlideChange = async () => {

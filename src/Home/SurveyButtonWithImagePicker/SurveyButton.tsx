@@ -16,12 +16,12 @@ const vibrate = () =>
   isPlatform('hybrid') && Haptics.impact({ style: ImpactStyle.Light });
 
 type Props = {
-  onPrimarySurvey: any;
-  onListSurvey: any;
-  onPlantSurvey: any;
-  onMothSurvey: any;
-  onCameraSurveyStart: any;
-  onGallerySurveyStart: any;
+  onPrimarySurvey: () => void;
+  onListSurvey: () => void;
+  onPlantSurvey: () => void;
+  onMothSurvey: () => void;
+  onCameraSurveyStart: () => void;
+  onGallerySurveyStart: () => void;
 };
 
 const SurveyButton = ({
@@ -56,13 +56,13 @@ const SurveyButton = ({
     setShowOptions(false);
     setShowOtherSurveys(true);
   };
-  // eslint-disable-next-line unused-imports/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onPlantSurveyWrap = () => {
     setShowOptions(false);
     setShowOtherSurveys(false);
     onPlantSurvey();
   };
-  // eslint-disable-next-line unused-imports/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onMothSurveyWrap = () => {
     setShowOptions(false);
     setShowOtherSurveys(false);

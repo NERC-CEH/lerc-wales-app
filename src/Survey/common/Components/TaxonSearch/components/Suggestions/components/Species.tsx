@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+import clsx from 'clsx';
 import { createOutline } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
 import { IonItem, IonIcon } from '@ionic/react';
@@ -15,16 +17,27 @@ function prettifyName(
   species: Taxon & { _dedupedScientificName?: string },
   searchPhrase?: string
 ) {
-  const foundInCommonName = Number.isFinite(species.foundInName);
+  let foundInCommonName = Number.isFinite(species.foundInName);
+  if (appModel.data.searchNamesOnly === 'scientific') {
+    foundInCommonName = false; // the species coming from search usually reflects what the user has selected (scientific name or common), but AI suggestions always have common name as the main one.
+  }
+
   const name = foundInCommonName
     ? species.commonNames[species.foundInName as number]
     : species.scientificName;
 
-  if (!searchPhrase) return name;
-
-  const searchPos = name.toLowerCase().indexOf(searchPhrase);
-  if (!(searchPos >= 0)) {
-    return name;
+  let primaryName: ReactNode = name;
+  if (searchPhrase) {
+    const searchPos = name.toLowerCase().indexOf(searchPhrase);
+    if (searchPos >= 0) {
+      primaryName = (
+        <span>
+          {name.slice(0, searchPos)}
+          <b>{name.slice(searchPos, searchPos + searchPhrase.length)}</b>
+          {name.slice(searchPos + searchPhrase.length)}
+        </span>
+      );
+    }
   }
 
   let secondaryName;
@@ -48,12 +61,7 @@ function prettifyName(
 
   return (
     <>
-      <span>
-        {name.slice(0, searchPos)}
-        <b>{name.slice(searchPos, searchPos + searchPhrase.length)}</b>
-        {name.slice(searchPos + searchPhrase.length)}
-      </span>
-
+      {primaryName}
       {secondaryName}
     </>
   );
@@ -62,7 +70,10 @@ function prettifyName(
 type Props = {
   species: Taxon | ClassifierSuggestion;
   searchPhrase?: string;
-  onSelect: any;
+  onSelect: (
+    species: Taxon | ClassifierSuggestion,
+    editBtnClicked?: boolean
+  ) => void;
   showEditButton?: boolean;
 };
 
@@ -73,7 +84,7 @@ const Species = ({
   onSelect,
 }: Props) => {
   const prettyName = prettifyName(species, searchPhrase);
-  const group = (informalGroups as any)[species.group];
+  const group = informalGroups[species.group as keyof typeof informalGroups];
 
   let probability;
   if ('probability' in species) {
@@ -82,7 +93,10 @@ const Species = ({
 
   return (
     <IonItem
-      className="search-result relative overflow-hidden p-0 py-1 text-base [--background:none] [--inner-padding-end:0px] [--padding-start:0px]"
+      className={clsx(
+        'search-result relative overflow-hidden p-0 py-1 text-base [--background:none] pe-ion-i-0 ps-ion-0',
+        Boolean('isRecorded' in species && species.isRecorded) && 'recorded'
+      )}
       onClick={() => onSelect(species)}
     >
       <div className="flex w-full items-center py-1">
@@ -92,7 +106,9 @@ const Species = ({
           </div>
         )}
 
-        <div className="taxon">{prettyName}</div>
+        <div className="mb-[3px] ml-2 flex w-full flex-col overflow-visible whitespace-normal font-normal leading-5">
+          {prettyName}
+        </div>
 
         <span className={`group ${!showEditButton ? 'right' : ''} `}>
           <T>{group}</T>

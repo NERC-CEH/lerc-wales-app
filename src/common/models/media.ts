@@ -3,19 +3,17 @@ import {
   Filesystem,
   Directory as FilesystemDirectory,
 } from '@capacitor/filesystem';
-import { Media as MediaOriginal, MediaData } from '@flumens';
+import { Media as MediaOriginal, type MediaOptions } from '@flumens';
 import { isPlatform } from '@ionic/react';
 import config from 'common/config';
-import Occurrence from 'models/occurrence';
-import Sample from 'models/sample';
+import type Occurrence from 'models/occurrence';
+import type Sample from 'models/sample';
 import userModel from 'models/user';
 
-type Attrs = MediaData;
-
-export default class Media extends MediaOriginal<Attrs> {
+export default class Media extends MediaOriginal {
   declare parent?: Sample | Occurrence;
 
-  constructor(options: any) {
+  constructor(options: MediaOptions = {}) {
     super({
       ...options,
       url: config.backend.indicia.url,
@@ -37,6 +35,7 @@ export default class Media extends MediaOriginal<Attrs> {
     }
 
     const URL = this.data.data;
+    if (!URL) return;
 
     try {
       if (this.data.path) {
@@ -67,7 +66,7 @@ export default class Media extends MediaOriginal<Attrs> {
       process.env.NODE_ENV === 'test' ||
       name?.includes('http')
     ) {
-      return name;
+      return name || '';
     }
 
     let pathToFile = config.dataPath;
@@ -80,7 +79,6 @@ export default class Media extends MediaOriginal<Attrs> {
     return Capacitor.convertFileSrc(`${pathToFile}/${name}`);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   validateRemote() {
     return null;
   }
