@@ -66,6 +66,12 @@ export const butterflyStageAttrOld = {
       { value: 'Larva', id: 3931 },
       { value: 'Larval web', id: 14079 },
       { value: 'Pupa', id: 3930 },
+      // even older ones
+      { value: 'Adults', id: 3929 },
+      { value: 'Larvae', id: 3931 },
+      { value: 'Eggs', id: 3932 },
+      { value: 'Pupae', id: 3930 },
+      { value: 'Larval webs', id: 14079 },
     ],
   },
 } as const;

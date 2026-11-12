@@ -2233,10 +2233,6 @@ msgid "Gall"
 msgstr "Gall"
 
 # Arthropods stage option
-msgid "Immature"
-msgstr "Immature"
-
-# Arthropods stage option
 msgid "Dead"
 msgstr "Dead"
 
@@ -2466,9 +2462,98 @@ msgid "<0>DAFOR refers to a subjective abundance scale comprising the following 
 msgstr "<0>DAFOR refers to a subjective abundance scale comprising the following ordered terms: <1>D</1>ominant / <3>A</3>bundant / <6>F</6>requent / <8>O</8>ccasional / <10>R</10>are.</0><p>Assessed abundance should either relate to the scale of the survey (e.g. 1 or 2 km grid squares), or be clearly qualified in the record comments field.</p>"
 
 # Attribute help text 
-msgid "<0>Abundance (DAFOR, LA, LF or count).<1><0>DAFOR refers to a subjective abundance scale comprising the following ordered terms: <1>D</1>ominant / <3>A</3>bundant / <5>F</5>requent / <7>O</7>ccasional / <9>R</9>are. The prefix \"Locally\" can also be used with the Abundant and Frequent classes (e.g. LA = Locally Abundant).</0><p>Assessed abundance should either relate to the scale of the survey (e.g. 1 or 2 km grid squares), or be clearly qualified in the record comments field.</p></1></0>"
-msgstr "<0>Abundance (DAFOR, LA, LF or count).<1><0>DAFOR refers to a subjective abundance scale comprising the following ordered terms: <1>D</1>ominant / <3>A</3>bundant / <5>F</5>requent / <7>O</7>ccasional / <9>R</9>are. The prefix \"Locally\" can also be used with the Abundant and Frequent classes (e.g. LA = Locally Abundant).</0><p>Assessed abundance should either relate to the scale of the survey (e.g. 1 or 2 km grid squares), or be clearly qualified in the record comments field.</p></1></0>"
+msgid "Abundance (DAFOR, LA, LF or count).<1><p>DAFOR refers to a subjective abundance scale comprising the following ordered terms: <1>D</1>ominant / <3>A</3>bundant / <5>F</5>requent / <7>O</7>ccasional / <9>R</9>are. The prefix \"Locally\" can also be used with the Abundant and Frequent classes (e.g. LA = Locally Abundant).</p><p>Assessed abundance should either relate to the scale of the survey (e.g. 1 or 2 km grid squares), or be clearly qualified in the record comments field.</p></1>"
+msgstr "Abundance (DAFOR, LA, LF or count).<1><p>DAFOR refers to a subjective abundance scale comprising the following ordered terms: <1>D</1>ominant / <3>A</3>bundant / <5>F</5>requent / <7>O</7>ccasional / <9>R</9>are. The prefix \"Locally\" can also be used with the Abundant and Frequent classes (e.g. LA = Locally Abundant).</p><p>Assessed abundance should either relate to the scale of the survey (e.g. 1 or 2 km grid squares), or be clearly qualified in the record comments field.</p></1>"
 
 # Survey verification message 
 msgid "Add quantity for at least one life stage."
 msgstr "Add quantity for at least one life stage."
+
+# Bulk-edit action
+msgid "Bulk action"
+msgstr "Bulk action"
+
+# Bulk-edit selection control
+msgid "Toggle all"
+msgstr "Toggle all"
+
+# Bulk-edit action sheet header
+msgid "Bulk edit actions"
+msgstr "Bulk edit actions"
+
+# Bulk-delete confirmation
+msgid "Are you sure you want to delete the selected entries?"
+msgstr "Are you sure you want to delete the selected entries?"
+
+# Bryophyte attribute name
+msgid "Microhabitat"
+msgstr "Microhabitat"
+
+# Attribute name
+msgid "Altitude"
+msgstr "Altitude"
+
+# Abundance validation message
+msgid "Abundance must be a count, D, A, F, O, R, LA or LF."
+msgstr "Abundance must be a count, D, A, F, O, R, LA or LF."
+
+# Plant status option
+msgid "Native - origin unknown"
+msgstr "Native - origin unknown"
+
+# Plant status option
+msgid "Introduced - accidental"
+msgstr "Introduced - accidental"
+
+# Plant status option
+msgid "Introduced - accidental - regenerating"
+msgstr "Introduced - accidental - regenerating"
+
+# Plant status option
+msgid "Introduced - intentional"
+msgstr "Introduced - intentional"
+
+# Plant status option
+msgid "Introduced - intentional - regenerating"
+msgstr "Introduced - intentional - regenerating"
+
+# Plant status option
+msgid "Introduced - origin unknown"
+msgstr "Introduced - origin unknown"
+
+# Plant status option
+msgid "Introduced - origin unknown - regenerating"
+msgstr "Introduced - origin unknown - regenerating"
+
+msgid "Juvenile"
+msgstr "Juvenile"
+
+msgid "Flowering"
+msgstr "Flowering"
+
+msgid "Fruiting"
+msgstr "Fruiting"
+
+msgid "Mature"
+msgstr "Mature"
+
+msgid "Seedling"
+msgstr "Seedling"
+
+msgid "Vegetative"
+msgstr "Vegetative"
+
+msgid "Sporophyte"
+msgstr "Sporophyte"
+
+msgid "Gametophyte"
+msgstr "Gametophyte"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Sensitivity"
+msgstr "Sensitivity"
+
+msgid "Are you sure you want to delete {{speciesPrettyName}}?"
+msgstr "Are you sure you want to delete {{speciesPrettyName}}?"

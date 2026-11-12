@@ -1,4 +1,3 @@
-# 
 # Translators:
 # Vilius Stankaitis <vilius@flumens.io>, 2023
 # Karolis, 2025
@@ -709,6 +708,50 @@ msgstr "Faint o unigolion o'r math yma? "
 msgid "How many individuals of this species did you see?"
 msgstr "Faint o unigolion o'r rhywogaeth yma welsoch chi?"
 
+# Dragonfly attribute info
+msgid ""
+"Total number of adults, including teneral adults. Also include in this total"
+" twice the count of coupled pairs plus the count of ovipositing females."
+msgstr ""
+"Cyfanswm nifer yr oedolion, gan gynnwys oedolion sydd newydd ymddangos. "
+"Dylech hefyd gynnwys yn y cyfanswm hwn ddwywaith nifer y parau cysylltiedig, "
+"ynghyd â nifer y benywod sy'n dodwy wyau."
+
+# Dragonfly attribute info
+msgid "Number of coupled pairs or mating pairs seen."
+msgstr "Nifer y parau cysylltiedig neu'r parau sy'n paru a welwyd."
+
+# Dragonfly attribute info
+msgid "Number of egg-laying females seen."
+msgstr "Nifer y benywod sy'n dodwy wyau a welwyd."
+
+# Dragonfly attribute info
+msgid "Number of live larvae seen."
+msgstr "Nifer y larfâu byw a welwyd."
+
+# Dragonfly attribute info
+msgid ""
+"For Willow Emerald Damselfly only, enter 1 if any egg-laying scars seen in "
+"the bark of waterside tree branches."
+msgstr ""
+"Ar gyfer Mursen Werdd yr Helyg yn unig, rhowch 1 os gwelwyd unrhyw "
+"greithiau dodwy wyau yn rhisgl canghennau coed ar lan y dŵr."
+
+# Dragonfly attribute info
+msgid ""
+"Number of emergents – from larvae just out of the water to pre-flight "
+"adults, including deformed adults incapable of flight (do not include these "
+"in the total count of adults)."
+msgstr ""
+"Nifer yr unigolion sy'n ymddangos – o larfâu sydd newydd ddod allan o'r "
+"dŵr i oedolion cyn hedfan, gan gynnwys oedolion anffurfiedig nad ydynt yn "
+"gallu hedfan (peidiwch â chynnwys y rhain yng nghyfanswm yr oedolion)."
+
+# Dragonfly attribute info
+msgid "Number of shed larval skins (left over after the adult has emerged)."
+msgstr ""
+"Nifer y crwyn larfal a fwrwyd (sy'n weddill ar ôl i'r oedolyn ymddangos)."
+
 msgid "Yikes!"
 msgstr "Rargol! "
 
@@ -832,11 +875,17 @@ msgstr "Math o safle"
 msgid "Adults"
 msgstr "Oedolion "
 
-msgid "Cop. pairs"
-msgstr "Parau cop. "
+# Odonata attribute name
+msgid "Coupled pairs"
+msgstr "Parau cysylltiedig"
 
-msgid "Ovip. females"
-msgstr "Benywod Ovip. "
+# Odonata attribute name
+msgid "Ovipositing females"
+msgstr "Benywod sy'n dodwy wyau"
+
+# Odonata attribute name
+msgid "Oviposition scars"
+msgstr "Creithiau dodwy wyau"
 
 msgid "Larvae"
 msgstr "Larfa "
@@ -1735,10 +1784,6 @@ msgstr "Arhoswch..."
 # as in letters and symbols
 msgid "characters"
 msgstr "nod"
-
-# Odonata attribute name
-msgid "Ovip. scars"
-msgstr "Creithiau Ofip."
 
 # Odonata attribute info message
 msgid "This attribute should be recorded for Willow Emerald only."
@@ -3038,3 +3083,143 @@ msgstr "Wedi newid trefn y rhestr i'r trefn wyddonol."
 # Species list ordering option
 msgid "Changed list ordering to last added."
 msgstr "Newidiwyd trefn y rhestr i'r un a ychwanegwyd yn ddiwethaf."
+
+# Photo cropping instructions
+msgid ""
+"<0>Crop Your Photo</0><1><0>Pinch to zoom in/out</0><1>Center the species in"
+" frame</1><2>For best results from image recognition, we advise cropping in "
+"closely to the species you want to identify</2><3>Where possible, ensure "
+"your image is in focus and well lit</3></1>"
+msgstr ""
+"<0>Tociwch eich llun</0><1><0>Pinsiwch i chwyddo i mewn/allan</0>"
+"<1>Rhowch y rhywogaeth yng nghanol y ffrâm</1><2>I gael y canlyniadau gorau "
+"o adnabod delweddau, rydym yn argymell tocio'n agos at y rhywogaeth rydych "
+"am ei hadnabod</2><3>Lle bo modd, sicrhewch fod eich delwedd mewn ffocws "
+"ac wedi'i goleuo'n dda</3></1>"
+
+# Attribute help text
+msgid ""
+"<0>DAFOR refers to a subjective abundance scale comprising the following "
+"ordered terms: <1>D</1>ominant / <3>A</3>bundant / <6>F</6>requent / "
+"<8>O</8>ccasional / <10>R</10>are.</0><p>Assessed abundance should either "
+"relate to the scale of the survey (e.g. 1 or 2 km grid squares), or be "
+"clearly qualified in the record comments field.</p>"
+msgstr ""
+"<0>Mae DAFOR yn cyfeirio at raddfa oddrychol o niferoedd sy'n cynnwys y "
+"termau canlynol mewn trefn: <1>D</1> (Cryfaf) / <3>A</3> (Toreithiog) / "
+"<6>F</6> (Aml) / <8>O</8> (Achlysurol) / <10>R</10> (Prin).</0>"
+"<p>Dylai'r asesiad o niferoedd naill ai ymwneud â graddfa'r arolwg "
+"(e.e. sgwariau grid 1 neu 2 km), neu gael ei egluro'n glir ym maes "
+"sylwadau'r cofnod.</p>"
+
+# Attribute help text
+msgid ""
+"Abundance (DAFOR, LA, LF or count).<1><p>DAFOR refers to a subjective "
+"abundance scale comprising the following ordered terms: <1>D</1>ominant / "
+"<3>A</3>bundant / <5>F</5>requent / <7>O</7>ccasional / <9>R</9>are. The "
+"prefix \"Locally\" can also be used with the Abundant and Frequent classes "
+"(e.g. LA = Locally Abundant).</p><p>Assessed abundance should either relate "
+"to the scale of the survey (e.g. 1 or 2 km grid squares), or be clearly "
+"qualified in the record comments field.</p></1>"
+msgstr ""
+"Niferoedd (DAFOR, LA, LF neu gyfrif).<1><p>Mae DAFOR yn cyfeirio at raddfa "
+"oddrychol o niferoedd sy'n cynnwys y termau canlynol mewn trefn: "
+"<1>D</1> (Cryfaf) / <3>A</3> (Toreithiog) / <5>F</5> (Aml) / "
+"<7>O</7> (Achlysurol) / <9>R</9> (Prin). Gellir defnyddio'r rhagddodiad "
+"\"Locally\" (yn lleol) hefyd gyda'r dosbarthiadau Toreithiog ac Aml "
+"(e.e. LA = Locally Abundant, sef toreithiog yn lleol).</p><p>Dylai'r "
+"asesiad o niferoedd naill ai ymwneud â graddfa'r arolwg (e.e. sgwariau grid "
+"1 neu 2 km), neu gael ei egluro'n glir ym maes sylwadau'r cofnod.</p></1>"
+
+# Survey verification message
+msgid "Add quantity for at least one life stage."
+msgstr "Ychwanegwch nifer ar gyfer o leiaf un cam bywyd."
+
+# Bulk-edit action
+msgid "Bulk action"
+msgstr "Gweithred ar y cyd"
+
+# Bulk-edit selection control
+msgid "Toggle all"
+msgstr "Dewis/dad-ddewis popeth"
+
+# Bulk-edit action sheet header
+msgid "Bulk edit actions"
+msgstr "Gweithredoedd golygu ar y cyd"
+
+# Bulk-delete confirmation
+msgid "Are you sure you want to delete the selected entries?"
+msgstr "Ydych chi'n siŵr eich bod chi eisiau dileu'r cofnodion a ddewiswyd?"
+
+# Bryophyte attribute name
+msgid "Microhabitat"
+msgstr "Microgynefin"
+
+# Attribute name
+msgid "Altitude"
+msgstr "Uchder"
+
+# Abundance validation message
+msgid "Abundance must be a count, D, A, F, O, R, LA or LF."
+msgstr "Rhaid i'r niferoedd fod yn gyfrif, D, A, F, O, R, LA neu LF."
+
+# Plant status option
+msgid "Native - origin unknown"
+msgstr "Brodorol - tarddiad anhysbys"
+
+# Plant status option
+msgid "Introduced - accidental"
+msgstr "Wedi'i chyflwyno - yn ddamweiniol"
+
+# Plant status option
+msgid "Introduced - accidental - regenerating"
+msgstr "Wedi'i chyflwyno - yn ddamweiniol - yn adfywio"
+
+# Plant status option
+msgid "Introduced - intentional"
+msgstr "Wedi'i chyflwyno - yn fwriadol"
+
+# Plant status option
+msgid "Introduced - intentional - regenerating"
+msgstr "Wedi'i chyflwyno - yn fwriadol - yn adfywio"
+
+# Plant status option
+msgid "Introduced - origin unknown"
+msgstr "Wedi'i chyflwyno - tarddiad anhysbys"
+
+# Plant status option
+msgid "Introduced - origin unknown - regenerating"
+msgstr "Wedi'i chyflwyno - tarddiad anhysbys - yn adfywio"
+
+msgid "Juvenile"
+msgstr "Ifanc"
+
+msgid "Flowering"
+msgstr "Yn blodeuo"
+
+msgid "Fruiting"
+msgstr "Yn ffrwytho"
+
+msgid "Mature"
+msgstr "Aeddfed"
+
+msgid "Seedling"
+msgstr "Eginblanhigyn"
+
+msgid "Vegetative"
+msgstr "Llystyfol"
+
+msgid "Sporophyte"
+msgstr "Sporoffyt"
+
+msgid "Gametophyte"
+msgstr "Gametoffyt"
+
+msgid "Status"
+msgstr "Statws"
+
+msgid "Sensitivity"
+msgstr "Sensitifrwydd"
+
+msgid "Are you sure you want to delete {{speciesPrettyName}}?"
+msgstr "Ydych chi'n siŵr eich bod chi eisiau dileu {{speciesPrettyName}}?"
