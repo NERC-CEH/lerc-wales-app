@@ -35,7 +35,7 @@ export { defaultSensitivityPrecisionAttr } from 'Survey/Default/config';
 
 const getTaxon = (sample: Sample) => sample.getSurvey().taxa || null;
 
-const SURVEY_ID = 576;
+const SURVEY_ID = 1045;
 const SURVEY_WEBFORM = 'enter-app-record-list';
 
 const attrs = {

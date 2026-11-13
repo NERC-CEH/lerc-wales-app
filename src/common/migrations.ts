@@ -79,6 +79,7 @@ import {
   reptileStageAttr,
   reptileStageAttrOld,
 } from 'Survey/Default/config/reptiles';
+import listSurvey from 'Survey/List/config';
 import {
   methodAttr,
   methodAttrOld,
@@ -172,6 +173,56 @@ const migrateLocation = (sample: Sample) => {
     preserveMigratedValue(metadata, 'location.geocoded', location.geocoded);
     delete location.geocoded;
   }
+};
+
+const LEGACY_LIST_SURVEY_ID = 576;
+
+type SurveyMigrationSample = Pick<Sample, 'metadata'> & {
+  samples: SurveyMigrationSample[];
+} & (Pick<Sample, 'data'> | { attrs: Sample['data'] });
+
+const migrateListSurveyId = (sample: SurveyMigrationSample): boolean => {
+  // Older stored snapshots use attrs instead of data.
+  const data = 'data' in sample ? sample.data : sample.attrs;
+  const metadata = sample.metadata as Sample['metadata'] & {
+    survey?: string;
+    survey_id?: number;
+  };
+  const isListSurvey =
+    data.surveyId === LEGACY_LIST_SURVEY_ID ||
+    metadata.survey === 'list' ||
+    metadata.survey_id === LEGACY_LIST_SURVEY_ID ||
+    metadata.forceSurveyId === LEGACY_LIST_SURVEY_ID;
+
+  if (isListSurvey) {
+    preserveMigratedValue(metadata, 'surveyId', data.surveyId);
+    data.surveyId = listSurvey.id;
+
+    // Legacy metadata overrides data.surveyId when resolving a survey.
+    if (metadata.survey === 'list') {
+      preserveMigratedValue(metadata, 'survey', metadata.survey);
+      delete metadata.survey;
+    }
+
+    if (metadata.survey_id === LEGACY_LIST_SURVEY_ID) {
+      preserveMigratedValue(metadata, 'survey_id', metadata.survey_id);
+      delete metadata.survey_id;
+    }
+
+    if (metadata.forceSurveyId === LEGACY_LIST_SURVEY_ID) {
+      preserveMigratedValue(metadata, 'forceSurveyId', metadata.forceSurveyId);
+      metadata.forceSurveyId = listSurvey.id;
+    }
+  }
+
+  let migrated = isListSurvey;
+
+  for (const subSample of sample.samples) {
+    const migratedChild = migrateListSurveyId(subSample);
+    migrated = migratedChild || migrated;
+  }
+
+  return migrated;
 };
 
 export const migrateSampleTree = (sample: Sample) => {
@@ -394,7 +445,8 @@ const migrations: Migration[] = [
 
       for (const sample of samples) {
         const isDefaultSurvey = sample.data.surveyId === 511;
-        const isListSurvey = sample.data.surveyId === 576;
+        // Resolve list configs before migrating taxon-specific attributes.
+        const isListSurvey = migrateListSurveyId(sample);
         const isPlantSurvey = sample.data.surveyId === 325;
         const isMothSurvey = sample.data.surveyId === 90;
 
@@ -517,12 +569,31 @@ const migrations: Migration[] = [
       await samples.fetch();
 
       for (const sample of samples) {
+        // Keep delayed model saves from restoring legacy List survey IDs.
+        migrateListSurveyId(sample);
+
         const isPlantSurvey = sample.data.surveyId === 325;
         if (isPlantSurvey) {
           migratePlantGridRefSystems(sample);
 
           // eslint-disable-next-line no-await-in-loop
           await sample.save();
+        }
+      }
+    },
+  },
+
+  {
+    version: '6.5.4',
+    name: 'Update stored List survey IDs',
+    up: async () => {
+      // Avoid model hydration changing unrelated fields such as training.
+      const samples = await samplesStore.findAll();
+
+      for (const sample of samples) {
+        if (migrateListSurveyId(sample.data as SurveyMigrationSample)) {
+          // eslint-disable-next-line no-await-in-loop
+          await samplesStore.save(sample);
         }
       }
     },

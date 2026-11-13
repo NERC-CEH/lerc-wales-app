@@ -7,6 +7,7 @@ import migrationManager, {
   migrateOldPlantFungiAbundanceAttrs,
 } from 'common/migrations';
 import Sample from 'models/sample';
+import { samplesStore } from 'models/store';
 
 it('migrates legacy LERC records using survey 511', async () => {
   const sample = new Sample({
@@ -26,6 +27,7 @@ it('migrates legacy LERC records using survey 511', async () => {
       this.data.push(sample);
     });
   const save = jest.spyOn(sample, 'save').mockResolvedValue();
+  jest.spyOn(samplesStore, 'findAll').mockResolvedValue([]);
 
   await migrationManager.run();
 
