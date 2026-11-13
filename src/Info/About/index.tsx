@@ -47,7 +47,7 @@ const About = () => (
             environmental science and community focussed solutions.
           </T>
           <T>For suggestions and feedback please do not hesitate to</T>{' '}
-          <a href="mailto:apps%40ceh.ac.uk?subject=LERC%20App">
+          <a href="mailto:info%40sewbrec.org.uk?subject=LERC%20App">
             <T>contact us</T>
           </a>
           .
