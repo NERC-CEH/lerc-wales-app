@@ -62,9 +62,12 @@ describe('Taxon Search Engine', () => {
       expect(Array.isArray(results)).toBe(true);
       expect(results.length).toBe(1);
 
-      const cupressocyparisResults = await search('X Cupressocyparis');
-      expect(Array.isArray(cupressocyparisResults)).toBe(true);
-      expect(cupressocyparisResults.length).toBe(1);
+      const hybridGenusResults = await search('X Crataemespilus');
+      expect(hybridGenusResults).toContainEqual(
+        expect.objectContaining({
+          scientificName: 'X Crataemespilus dardarii',
+        })
+      );
     });
 
     it('should find genus common names', () =>
